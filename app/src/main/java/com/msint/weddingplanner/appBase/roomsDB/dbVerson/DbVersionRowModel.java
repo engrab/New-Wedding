@@ -10,6 +10,9 @@ public class DbVersionRowModel {
     private String versionDesc = "";
     private int versionNumber;
 
+    public DbVersionRowModel() {
+    }
+
     public DbVersionRowModel(int i) {
         this.versionNumber = i;
     }

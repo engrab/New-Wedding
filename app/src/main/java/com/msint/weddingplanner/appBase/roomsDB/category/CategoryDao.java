@@ -20,7 +20,7 @@ public interface CategoryDao {
     List<CategoryRowModel> getAll();
 
     @Query("Select * FROM categoryList where id=:id")
-    CategoryRowModel getDetail(String str);
+    CategoryRowModel getDetail(String id);
 
     @Insert
     long insert(CategoryRowModel categoryRowModel);

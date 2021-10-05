@@ -13,28 +13,28 @@ public interface CostDao {
     int delete(CostRowModel costRowModel);
 
     @Query("DELETE FROM costList where eventId=:currentId and id=:id")
-    void delete(String str, String str2);
+    void delete(String currentId, String id);
 
     @Query("Select * FROM costList where eventId=:currentId")
-    List<CostRowModel> getAll(String str);
+    List<CostRowModel> getAll(String currentId);
 
     @Query("Select id FROM costList where eventId=:currentId and categoryId=:categoryId")
-    List<String> getAll(String str, String str2);
+    List<String> getAll(String currentId, String categoryId);
 
     @Query("Select id FROM costList where eventId=:currentId")
-    List<String> getAllMarriage(String str);
+    List<String> getAllMarriage(String currentId);
 
     @Query("Select sum(expectedAmount) FROM costList where eventId=:currentId")
-    double getAllTotal(String str);
+    double getAllTotal(String currentId);
 
     @Query("Select sum(expectedAmount) FROM costList where eventId=:currentId and categoryId=:categoryId")
-    double getAllTotal(String str, String str2);
+    double getAllTotal(String currentId, String categoryId);
 
     @Query("Select sum(paymentList.amount) FROM costList left join paymentList on paymentList.parentId = costList.id where eventId=:currentId and isPending=:isPending")
-    double getTotal(String str, int i);
+    double getTotal(String currentId, int isPending);
 
     @Query("Select sum(paymentList.amount) FROM costList left join paymentList on paymentList.parentId = costList.id where eventId=:currentId and isPending=:isPending and categoryId=:categoryId")
-    double getTotal(String str, int i, String str2);
+    double getTotal(String currentId, int isPending, String categoryId);
 
     @Insert
     long insert(CostRowModel costRowModel);

@@ -43,7 +43,7 @@ public interface DbVersionDao {
     List<DbVersionRowModel> getAll();
 
     @Query("Select * FROM dbVersionList where versionNumber=:versionNumber")
-    DbVersionRowModel getDetail(int i);
+    DbVersionRowModel getDetail(int versionNumber);
 
     @Insert
     long insert(DbVersionRowModel dbVersionRowModel);
