@@ -61,9 +61,9 @@ public class WeddingDisclosure extends AppCompatActivity implements View.OnClick
     private void GoToMainScreen() {
         try {
             if (!AppPref.isFirstLaunch(this)) {
-                startActivity(new Intent(this, MainActivityDashboard.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
+                startActivity(new Intent(this, MainActivityDashboard.class));
             } else {
-                startActivity(new Intent(this, AddEditProfileActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
+                startActivity(new Intent(this, AddEditProfileActivity.class));
             }
             finish();
         } catch (Exception e) {

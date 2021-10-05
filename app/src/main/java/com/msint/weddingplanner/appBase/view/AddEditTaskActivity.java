@@ -10,6 +10,8 @@ import android.os.Environment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,6 +52,7 @@ import com.msint.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.msint.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.msint.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.msint.weddingplanner.databinding.ActivityTaskAddEditBinding;
+import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.msint.weddingplanner.databinding.AlertDialogNewCategoryBinding;
 import com.msint.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.msint.weddingplanner.pdfRepo.ReportRowModel;
@@ -118,10 +121,12 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
 
 
     public void setBinding() {
-        this.binding = (ActivityTaskAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_task_add_edit);
+        binding = ActivityTaskAddEditBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.f546db = AppDataBase.getAppDatabase(this);
         setModelDetail();
-        this.binding.setRowModel(this.model);
+//        this.binding.setRowModel(this.model);
     }
 
     private void setModelDetail() {
@@ -148,7 +153,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         this.toolbarModel.setOtherMenu(true);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
         this.toolbarModel.setShare(this.isEdit);
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -306,7 +311,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
     }
 
     public void setCategoryListDialog() {
-        this.dialogCategoryListBinding = (AlertDialogRecyclerListBinding) DataBindingUtil.inflate(LayoutInflater.from(this.context), R.layout.alert_dialog_recycler_list, (ViewGroup) null, false);
+        this.dialogCategoryListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context), (ViewGroup) null, false);
         this.dialogCategoryList = new Dialog(this.context);
         this.dialogCategoryList.setContentView(this.dialogCategoryListBinding.getRoot());
         this.dialogCategoryList.setCancelable(false);
@@ -422,14 +427,14 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
     }
 
     public void setNewCatDialog() {
-        this.dialogNewCatBinding = (AlertDialogNewCategoryBinding) DataBindingUtil.inflate(LayoutInflater.from(this.context), R.layout.alert_dialog_new_category, (ViewGroup) null, false);
+        this.dialogNewCatBinding = AlertDialogNewCategoryBinding.inflate(LayoutInflater.from(this.context),  (ViewGroup) null, false);
         this.dialogNewCat = new Dialog(this.context);
         this.dialogNewCat.setContentView(this.dialogNewCatBinding.getRoot());
         this.dialogNewCat.setCancelable(false);
         this.dialogNewCat.getWindow().setBackgroundDrawableResource(17170445);
         this.dialogNewCat.getWindow().setLayout(-1, -2);
         this.dialogNewCatBinding.txtTitle.setText(R.string.add_new_category);
-        this.dialogNewCatBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context, 0, false));
+        this.dialogNewCatBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false));
         this.dialogNewCatBinding.recycler.setAdapter(new ImageAdapter(true, this.context, this.imageList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
                 int unused = AddEditTaskActivity.this.selectedNewCatPos = i;
@@ -531,7 +536,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         intent.putExtra(AddEditSubTaskActivity.EXTRA_IS_EDIT, z);
         intent.putExtra(AddEditSubTaskActivity.EXTRA_POSITION, i);
         intent.putExtra(AddEditSubTaskActivity.EXTRA_MODEL, subTaskRowModel);
-        intent.setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE);
+
         startActivityForResult(intent, 1002);
     }
 
@@ -544,7 +549,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
 
     private void setViewVisibility() {
         int i = 8;
-        this.binding.linData.setVisibility(this.model.isListData() ? 0 : 8);
+        this.binding.linData.setVisibility(this.model.isListData() ? View.VISIBLE : View.GONE);
         LinearLayout linearLayout = this.binding.linNoData;
         if (!this.model.isListData()) {
             i = 0;
@@ -594,7 +599,6 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         intent.putExtra(EXTRA_POSITION_MAIN, getIntent().getIntExtra(EXTRA_POSITION_MAIN, 0));
         intent.putExtra(EXTRA_MODEL, this.model);
         setResult(-1, intent);
-        MainActivityDashboard.BackPressedAd(this);
     }
 
 
@@ -637,7 +641,6 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         if (this.isUpdateList) {
             openItemList(false);
         } else if (this.isEdit) {
-            MainActivityDashboard.BackPressedAd(this);
         } else {
             super.onBackPressed();
         }
@@ -682,20 +685,20 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
 
 
     public void initDoc() {
-        this.document = new Document(PageSize.f191A4, 16.0f, 16.0f, 16.0f, 16.0f);
+        this.document = new Document(PageSize.A4, 16.0f, 16.0f, 16.0f, 16.0f);
         this.dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Constants.REPORT_DIRECTORY);
         if (!this.dir.exists()) {
             this.dir.mkdirs();
         }
         try {
             this.fileName = this.repoType + "_" + this.repoTitle + "_" + getCurrentDateTime() + ".pdf";
-            this.writer = PdfWriter.getInstance(this.document, new FileOutputStream(new File(this.dir, this.fileName)));
-        } catch (FileNotFoundException e) {
             try {
+                this.writer = PdfWriter.getInstance(this.document, new FileOutputStream(new File(this.dir, this.fileName)));
+            } catch (DocumentException e) {
                 e.printStackTrace();
-            } catch (DocumentException e2) {
-                e2.printStackTrace();
             }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
         this.document.open();
     }
@@ -813,7 +816,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
 
 
     public void openReportList() {
-        startActivity(new Intent(this, ReportsListActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
+        startActivity(new Intent(this, ReportsListActivity.class));
     }
 
     public class FooterPageEvent extends PdfPageEventHelper {

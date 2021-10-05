@@ -16,25 +16,25 @@ public interface SubTaskDao {
     void deleteAll();
 
     @Query("DELETE FROM subTaskList where taskId=:taskId")
-    void deleteAll(String str);
+    void deleteAll(String taskId);
 
     @Query("Select * FROM subTaskList")
     List<SubTaskRowModel> getAll();
 
     @Query("Select * FROM subTaskList where taskId=:parentId")
-    List<SubTaskRowModel> getAll(String str);
+    List<SubTaskRowModel> getAll(String parentId);
 
     @Query("Select count(*) FROM subTaskList left join taskList on subTaskList.taskId = taskList.id where taskList.eventId =:currentId ")
-    long getAllCount(String str);
+    long getAllCount(String currentId);
 
     @Query("Select count(*) FROM subTaskList left join taskList on subTaskList.taskId = taskList.id where taskList.eventId =:currentId and taskList.categoryId =:categoryId")
-    long getAllCount(String str, String str2);
+    long getAllCount(String currentId, String categoryId);
 
     @Query("Select count(*) FROM subTaskList left join taskList on subTaskList.taskId = taskList.id where taskList.eventId =:currentId and subTaskList.isPending=0 ")
-    long getCompletedCount(String str);
+    long getCompletedCount(String currentId);
 
     @Query("Select count(*) FROM subTaskList left join taskList on subTaskList.taskId = taskList.id where taskList.eventId =:currentId and taskList.categoryId =:categoryId and subTaskList.isPending=0 ")
-    long getCompletedCount(String str, String str2);
+    long getCompletedCount(String currentId, String categoryId);
 
     @Insert
     long insert(SubTaskRowModel subTaskRowModel);

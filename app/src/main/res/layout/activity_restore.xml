@@ -1,11 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:layout_width="match_parent" android:layout_height="match_parent">
-    <android.support.p004v7.widget.Toolbar android:theme="@style/AppTheme" android:textSize="20dp" android:gravity="center" android:id="@+id/toolbar" android:background="@color/actionbar" android:layout_width="match_parent" android:layout_height="wrap_content" app:title="Restore" app:titleTextColor="@color/white"/>
-    <RelativeLayout android:id="@+id/backuppath" android:background="@color/divider" android:padding="7dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:layout_below="@+id/toolbar">
-        <TextView android:textColor="@color/white" android:gravity="left" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Backup Path : /storage/emulated/0/BaseDemo" android:textIsSelectable="true" android:fontFamily="@font/semibold"/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/actionbar"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:theme="@style/AppTheme"
+        app:title="Restore"
+        app:titleTextColor="@color/white" />
+
+    <RelativeLayout
+        android:id="@+id/backuppath"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginBottom="5dp"
+        android:background="@color/divider"
+        android:padding="7dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/semibold"
+            android:gravity="left"
+            android:text="Backup Path : /storage/emulated/0/BaseDemo"
+            android:textColor="@color/white"
+            android:textIsSelectable="true" />
     </RelativeLayout>
-    <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerView_files" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/backuppath"/>
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/no_backup_file" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
-        <TextView android:textSize="20dp" android:textColor="#3d3d3d" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="You do not have any backup file." android:fontFamily="@font/semibold"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_files"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/backuppath" />
+
+    <LinearLayout
+        android:id="@+id/no_backup_file"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/semibold"
+            android:gravity="center"
+            android:text="You do not have any backup file."
+            android:textColor="#3d3d3d"
+            android:textSize="20dp" />
     </LinearLayout>
 </RelativeLayout>

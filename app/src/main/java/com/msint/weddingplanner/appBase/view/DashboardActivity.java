@@ -11,6 +11,7 @@ import com.msint.weddingplanner.appBase.baseClass.BaseActivityBinding;
 import com.msint.weddingplanner.appBase.models.toolbar.ToolbarModel;
 import com.msint.weddingplanner.appBase.roomsDB.AppDataBase;
 import com.msint.weddingplanner.databinding.ActivityDashboardBinding;
+import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
 
 public class DashboardActivity extends BaseActivityBinding {
     private ActivityDashboardBinding binding;
@@ -21,7 +22,9 @@ public class DashboardActivity extends BaseActivityBinding {
 
 
     public void setBinding() {
-        this.binding = (ActivityDashboardBinding) DataBindingUtil.setContentView(this, R.layout.activity_dashboard);
+        binding = ActivityDashboardBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.f551db = AppDataBase.getAppDatabase(this);
     }
 
@@ -29,7 +32,7 @@ public class DashboardActivity extends BaseActivityBinding {
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.drawerTitleHome));
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
 
@@ -147,7 +150,6 @@ public class DashboardActivity extends BaseActivityBinding {
         Intent intent = new Intent(this.context, TaskListActivity.class);
         intent.putExtra(TaskListActivity.EXTRA_IS_FILTER, true);
         intent.putExtra(TaskListActivity.EXTRA_IS_PENDING, z);
-        intent.setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE);
         startActivityForResult(intent, 1002);
     }
 
@@ -155,7 +157,6 @@ public class DashboardActivity extends BaseActivityBinding {
         Intent intent = new Intent(this.context, GuestListActivity.class);
         intent.putExtra(GuestListActivity.EXTRA_IS_FILTER, true);
         intent.putExtra(GuestListActivity.EXTRA_IS_PENDING, !z);
-        intent.setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE);
         startActivityForResult(intent, 1002);
     }
 
@@ -163,7 +164,6 @@ public class DashboardActivity extends BaseActivityBinding {
         Intent intent = new Intent(this.context, CostListActivity.class);
         intent.putExtra(CostListActivity.EXTRA_IS_FILTER, true);
         intent.putExtra(CostListActivity.EXTRA_IS_PENDING, z);
-        intent.setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE);
         startActivityForResult(intent, 1002);
     }
 
@@ -171,7 +171,6 @@ public class DashboardActivity extends BaseActivityBinding {
         Intent intent = new Intent(this.context, VendorListActivity.class);
         intent.putExtra(VendorListActivity.EXTRA_IS_FILTER, true);
         intent.putExtra(VendorListActivity.EXTRA_IS_PENDING, z);
-        intent.setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE);
         startActivityForResult(intent, 1002);
     }
 

@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Environment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -48,6 +50,7 @@ import com.msint.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.msint.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.msint.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.msint.weddingplanner.databinding.ActivityTaskListBinding;
+import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.msint.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.msint.weddingplanner.pdfRepo.ReportRowModel;
 import com.msint.weddingplanner.pdfRepo.ReportsListActivity;
@@ -112,14 +115,16 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
 
 
     public void setBinding() {
-        this.binding = (ActivityTaskListBinding) DataBindingUtil.setContentView(this, R.layout.activity_task_list);
+        binding = ActivityTaskListBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.model = new TaskListModel();
         this.model.setArrayList(new ArrayList());
         this.listMain = new ArrayList<>();
         this.model.setNoDataIcon(R.drawable.drawer_tasks);
         this.model.setNoDataText(getString(R.string.noDataTitleTasks));
         this.model.setNoDataDetail(getString(R.string.noDataDescTasks));
-        this.binding.setModel(this.model);
+//        this.binding.setModel(this.model);
         this.f556db = AppDataBase.getAppDatabase(this.context);
     }
 
@@ -132,7 +137,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.order_list);
         this.binding.includedToolbar.imgAdd.setImageResource(R.drawable.summary);
         this.toolbarModel.setShare(true);
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
         setSupportActionBar(this.binding.includedToolbar.toolbar);
     }
 
@@ -155,7 +160,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
     }
 
     private void openSummary() {
-        startActivity(new Intent(this.context, TaskSummaryActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
+        startActivity(new Intent(this.context, TaskSummaryActivity.class));
     }
 
 
@@ -251,9 +256,9 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         this.binding.recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             public void onScrolled(RecyclerView recyclerView, int i, int i2) {
                 super.onScrolled(recyclerView, i, i2);
-                if (i2 > 0 && TaskListActivity.this.binding.fabAdd.getVisibility() == 0) {
+                if (i2 > 0 && TaskListActivity.this.binding.fabAdd.getVisibility() == View.VISIBLE) {
                     TaskListActivity.this.binding.fabAdd.hide();
-                } else if (i2 < 0 && TaskListActivity.this.binding.fabAdd.getVisibility() != 0) {
+                } else if (i2 < 0 && TaskListActivity.this.binding.fabAdd.getVisibility() != View.VISIBLE) {
                     TaskListActivity.this.binding.fabAdd.show();
                 }
             }
@@ -267,7 +272,6 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         intent.putExtra(AddEditTaskActivity.EXTRA_POSITION, i);
         intent.putExtra(AddEditTaskActivity.EXTRA_POSITION_MAIN, i2);
         intent.putExtra(AddEditTaskActivity.EXTRA_MODEL, taskRowModel);
-        intent.setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE);
         startActivityForResult(intent, 1002);
     }
 
@@ -284,7 +288,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
 
     private void setViewVisibility() {
         int i = 8;
-        this.binding.linData.setVisibility(this.model.isListData() ? 0 : 8);
+        this.binding.linData.setVisibility(this.model.isListData() ? View.VISIBLE : View.GONE);
         LinearLayout linearLayout = this.binding.linNoData;
         if (!this.model.isListData()) {
             i = 0;
@@ -323,7 +327,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
     }
 
     public void setOrderTypeListDialog() {
-        this.dialogOrderTypeListBinding = (AlertDialogRecyclerListBinding) DataBindingUtil.inflate(LayoutInflater.from(this.context), R.layout.alert_dialog_recycler_list, (ViewGroup) null, false);
+        this.dialogOrderTypeListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context),  (ViewGroup) null, false);
         this.dialogOrderTypeList = new Dialog(this.context);
         this.dialogOrderTypeList.setContentView(this.dialogOrderTypeListBinding.getRoot());
         this.dialogOrderTypeList.getWindow().setBackgroundDrawableResource(17170445);
@@ -557,7 +561,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
     }
 
     public void setFilterTypeListDialog() {
-        this.dialogFilterTypeListBinding = (AlertDialogRecyclerListBinding) DataBindingUtil.inflate(LayoutInflater.from(this.context), R.layout.alert_dialog_recycler_list, (ViewGroup) null, false);
+        this.dialogFilterTypeListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context),  (ViewGroup) null, false);
         this.dialogFilterTypeList = new Dialog(this.context);
         this.dialogFilterTypeList.setContentView(this.dialogFilterTypeListBinding.getRoot());
         this.dialogFilterTypeList.getWindow().setBackgroundDrawableResource(17170445);
@@ -815,20 +819,20 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
 
     
     public void initDoc() {
-        this.document = new Document(PageSize.f191A4, 16.0f, 16.0f, 16.0f, 16.0f);
+        this.document = new Document(PageSize.A4, 16.0f, 16.0f, 16.0f, 16.0f);
         this.dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Constants.REPORT_DIRECTORY);
         if (!this.dir.exists()) {
             this.dir.mkdirs();
         }
         try {
             this.fileName = this.repoType + "_" + this.repoTitle + "_" + getCurrentDateTime() + ".pdf";
-            this.writer = PdfWriter.getInstance(this.document, new FileOutputStream(new File(this.dir, this.fileName)));
-        } catch (FileNotFoundException e) {
             try {
+                this.writer = PdfWriter.getInstance(this.document, new FileOutputStream(new File(this.dir, this.fileName)));
+            } catch (DocumentException e) {
                 e.printStackTrace();
-            } catch (DocumentException e2) {
-                e2.printStackTrace();
             }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
         this.document.open();
     }
@@ -959,7 +963,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
 
     
     public void openReportList() {
-        startActivity(new Intent(this, ReportsListActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
+        startActivity(new Intent(this, ReportsListActivity.class));
     }
 
     public String getCurrentDateTime() {

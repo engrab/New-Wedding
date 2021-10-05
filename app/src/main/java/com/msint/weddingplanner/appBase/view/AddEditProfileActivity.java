@@ -32,6 +32,7 @@ import com.msint.weddingplanner.appBase.utils.Constants;
 import com.msint.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.msint.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.msint.weddingplanner.databinding.ActivityProfileAddEditBinding;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -50,7 +51,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
     
 
     /* renamed from: db */
-    public AppDataBase f544db;
+    public AppDataBase db;
     private boolean isEdit = false;
     
     public ProfileRowModel model;
@@ -76,10 +77,12 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
 
 
     public void setBinding() {
-        this.binding = (ActivityProfileAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_profile_add_edit);
-        this.f544db = AppDataBase.getAppDatabase(this.context);
+        binding = ActivityProfileAddEditBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+        this.db = AppDataBase.getAppDatabase(this.context);
         setModelDetail();
-        this.binding.setRowModel(this.model);
+//        this.binding.setRowModel(this.model);
     }
 
     private void setModelDetail() {
@@ -109,7 +112,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
         this.toolbarModel.setOtherMenu(true);
         this.toolbarModel.setDelete(this.isEdit);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -138,72 +141,72 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
             public void doInBackground() {
                 ArrayList arrayList = new ArrayList();
                 try {
-                    arrayList.addAll(AddEditProfileActivity.this.f544db.taskDao().getAllMarriage(AddEditProfileActivity.this.model.getId()));
+                    arrayList.addAll(AddEditProfileActivity.this.db.taskDao().getAllMarriage(AddEditProfileActivity.this.model.getId()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 for (int i = 0; i < arrayList.size(); i++) {
                     try {
-                        AddEditProfileActivity.this.f544db.subTaskDao().deleteAll((String) arrayList.get(i));
+                        AddEditProfileActivity.this.db.subTaskDao().deleteAll((String) arrayList.get(i));
                     } catch (Exception e2) {
                         e2.printStackTrace();
                     }
                     try {
-                        AddEditProfileActivity.this.f544db.taskDao().delete(AddEditProfileActivity.this.model.getId(), (String) arrayList.get(i));
+                        AddEditProfileActivity.this.db.taskDao().delete(AddEditProfileActivity.this.model.getId(), (String) arrayList.get(i));
                     } catch (Exception e3) {
                         e3.printStackTrace();
                     }
                 }
                 ArrayList arrayList2 = new ArrayList();
                 try {
-                    arrayList2.addAll(AddEditProfileActivity.this.f544db.guestDao().getAllMarriage(AddEditProfileActivity.this.model.getId()));
+                    arrayList2.addAll(AddEditProfileActivity.this.db.guestDao().getAllMarriage(AddEditProfileActivity.this.model.getId()));
                 } catch (Exception e4) {
                     e4.printStackTrace();
                 }
                 for (int i2 = 0; i2 < arrayList2.size(); i2++) {
                     try {
-                        AddEditProfileActivity.this.f544db.guestDao().deleteAllComp(AddEditProfileActivity.this.model.getId(), (String) arrayList2.get(i2));
+                        AddEditProfileActivity.this.db.guestDao().deleteAllComp(AddEditProfileActivity.this.model.getId(), (String) arrayList2.get(i2));
                     } catch (Exception e5) {
                         e5.printStackTrace();
                     }
                     try {
-                        AddEditProfileActivity.this.f544db.guestDao().delete(AddEditProfileActivity.this.model.getId(), (String) arrayList2.get(i2));
+                        AddEditProfileActivity.this.db.guestDao().delete(AddEditProfileActivity.this.model.getId(), (String) arrayList2.get(i2));
                     } catch (Exception e6) {
                         e6.printStackTrace();
                     }
                 }
                 ArrayList arrayList3 = new ArrayList();
                 try {
-                    arrayList3.addAll(AddEditProfileActivity.this.f544db.costDao().getAllMarriage(AddEditProfileActivity.this.model.getId()));
+                    arrayList3.addAll(AddEditProfileActivity.this.db.costDao().getAllMarriage(AddEditProfileActivity.this.model.getId()));
                 } catch (Exception e7) {
                     e7.printStackTrace();
                 }
                 for (int i3 = 0; i3 < arrayList3.size(); i3++) {
                     try {
-                        AddEditProfileActivity.this.f544db.paymentDao().deleteAll((String) arrayList3.get(i3));
+                        AddEditProfileActivity.this.db.paymentDao().deleteAll((String) arrayList3.get(i3));
                     } catch (Exception e8) {
                         e8.printStackTrace();
                     }
                     try {
-                        AddEditProfileActivity.this.f544db.costDao().delete(AddEditProfileActivity.this.model.getId(), (String) arrayList3.get(i3));
+                        AddEditProfileActivity.this.db.costDao().delete(AddEditProfileActivity.this.model.getId(), (String) arrayList3.get(i3));
                     } catch (Exception e9) {
                         e9.printStackTrace();
                     }
                 }
                 ArrayList arrayList4 = new ArrayList();
                 try {
-                    arrayList4.addAll(AddEditProfileActivity.this.f544db.vendorDao().getAllMarriage(AddEditProfileActivity.this.model.getId()));
+                    arrayList4.addAll(AddEditProfileActivity.this.db.vendorDao().getAllMarriage(AddEditProfileActivity.this.model.getId()));
                 } catch (Exception e10) {
                     e10.printStackTrace();
                 }
                 for (int i4 = 0; i4 < arrayList4.size(); i4++) {
                     try {
-                        AddEditProfileActivity.this.f544db.paymentDao().deleteAll((String) arrayList4.get(i4));
+                        AddEditProfileActivity.this.db.paymentDao().deleteAll((String) arrayList4.get(i4));
                     } catch (Exception e11) {
                         e11.printStackTrace();
                     }
                     try {
-                        AddEditProfileActivity.this.f544db.vendorDao().delete(AddEditProfileActivity.this.model.getId(), (String) arrayList4.get(i4));
+                        AddEditProfileActivity.this.db.vendorDao().delete(AddEditProfileActivity.this.model.getId(), (String) arrayList4.get(i4));
                     } catch (Exception e12) {
                         e12.printStackTrace();
                     }
@@ -212,7 +215,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
 
             public void onPostExecute() {
                 try {
-                    AddEditProfileActivity.this.f544db.profileDao().delete(AddEditProfileActivity.this.model);
+                    AddEditProfileActivity.this.db.profileDao().delete(AddEditProfileActivity.this.model);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -445,7 +448,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
                 this.model.getWeddingName().trim();
                 if (this.isEdit) {
                     try {
-                        this.f544db.profileDao().update(this.model);
+                        this.db.profileDao().update(this.model);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -453,7 +456,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
                     return;
                 }
                 try {
-                    i = this.f544db.profileDao().getNameExistCount(this.model.getName());
+                    i = this.db.profileDao().getNameExistCount(this.model.getName());
                 } catch (Exception e2) {
                     e2.printStackTrace();
                     i = 0;
@@ -466,9 +469,9 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
                     return;
                 }
                 try {
-                    this.f544db.profileDao().setDeselectAll();
+                    this.db.profileDao().setDeselectAll();
                     AppPref.setCurrentEvenId(this.context, this.model.getId());
-                    j = this.f544db.profileDao().insert(this.model);
+                    j = this.db.profileDao().insert(this.model);
                 } catch (Exception e3) {
                     e3.printStackTrace();
                     j = 0;
@@ -654,8 +657,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
                     }
                 }
             } catch (Exception e5) {
-                e = e5;
-                e.printStackTrace();
+
                 ContentResolver contentResolver22 = getContentResolver();
                 Uri uri22 = ContactsContract.CommonDataKinds.Email.CONTENT_URI;
                 query3 = contentResolver22.query(uri22, (String[]) null, "contact_id = " + string3, (String[]) null, (String) null);
@@ -690,8 +692,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
                     str3 = string2;
                 }
             } catch (Exception e6) {
-                e = e6;
-                e.printStackTrace();
+
                 ContentResolver contentResolver3222 = getContentResolver();
                 Uri uri3222 = ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_URI;
                 query2 = contentResolver3222.query(uri3222, (String[]) null, "contact_id=" + string3, (String[]) null, (String) null);
@@ -720,8 +721,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
                     str4 = string;
                 }
             } catch (Exception e7) {
-                e = e7;
-                e.printStackTrace();
+
                 ContentResolver contentResolver422222 = getContentResolver();
                 Uri uri422222 = ContactsContract.Data.CONTENT_URI;
                 query = contentResolver422222.query(uri422222, new String[]{"data1", "data2"}, "contact_id = " + string3 + " AND " + "mimetype" + " = '" + "vnd.android.cursor.item/website" + "'", (String[]) null, (String) null);
@@ -853,8 +853,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
                     }
                 }
             } catch (Exception e5) {
-                e = e5;
-                e.printStackTrace();
+
                 ContentResolver contentResolver22 = getContentResolver();
                 Uri uri22 = ContactsContract.CommonDataKinds.Email.CONTENT_URI;
                 query3 = contentResolver22.query(uri22, (String[]) null, "contact_id = " + string3, (String[]) null, (String) null);
@@ -889,8 +888,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
                     str3 = string2;
                 }
             } catch (Exception e6) {
-                e = e6;
-                e.printStackTrace();
+
                 ContentResolver contentResolver3222 = getContentResolver();
                 Uri uri3222 = ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_URI;
                 query2 = contentResolver3222.query(uri3222, (String[]) null, "contact_id=" + string3, (String[]) null, (String) null);
@@ -919,8 +917,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
                     str4 = string;
                 }
             } catch (Exception e7) {
-                e = e7;
-                e.printStackTrace();
+
                 ContentResolver contentResolver422222 = getContentResolver();
                 Uri uri422222 = ContactsContract.Data.CONTENT_URI;
                 query = contentResolver422222.query(uri422222, new String[]{"data1", "data2"}, "contact_id = " + string3 + " AND " + "mimetype" + " = '" + "vnd.android.cursor.item/website" + "'", (String[]) null, (String) null);

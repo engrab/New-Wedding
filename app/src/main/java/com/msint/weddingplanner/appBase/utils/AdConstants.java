@@ -13,11 +13,11 @@ import com.google.ads.consent.ConsentStatus;
 import com.msint.weddingplanner.R;
 
 public class AdConstants {
-    public static String AD_BANNER = strAdBanner();
-    public static String AD_FULL = strAdFull();
+    public static String AD_BANNER = "ca-app-pub-3940256099942544/6300978111";
+    public static String AD_FULL = "ca-app-pub-3940256099942544/1033173712";
     public static boolean isAdShown = false;
     public static boolean npaflag = false;
-    public static String[] publisherIds = {strPublisherId()};
+    public static String[] publisherIds = {"abcd"};
 
     private static native String strAdBanner();
 
@@ -25,9 +25,9 @@ public class AdConstants {
 
     private static native String strPublisherId();
 
-    static {
-        System.loadLibrary("native-lib");
-    }
+//    static {
+//        System.loadLibrary("native-lib");
+//    }
 
     public static void showPersonalizeDialog(boolean z, Context context, String str, String str2, String str3, String str4, AdMobTwoButtonDialogListener adMobTwoButtonDialogListener) {
         final AdMobTwoButtonDialogListener adMobTwoButtonDialogListener2 = adMobTwoButtonDialogListener;

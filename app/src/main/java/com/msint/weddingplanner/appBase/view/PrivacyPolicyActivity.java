@@ -12,6 +12,7 @@ import android.webkit.WebViewClient;
 import com.msint.weddingplanner.R;
 import com.msint.weddingplanner.appBase.models.toolbar.ToolbarModel;
 import com.msint.weddingplanner.databinding.ActivityPrivacyPolicyBinding;
+import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
 
 public class PrivacyPolicyActivity extends AppCompatActivity implements View.OnClickListener {
     
@@ -22,7 +23,9 @@ public class PrivacyPolicyActivity extends AppCompatActivity implements View.OnC
 
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        this.binding = (ActivityPrivacyPolicyBinding) DataBindingUtil.setContentView(this, R.layout.activity_privacy_policy);
+        binding = ActivityPrivacyPolicyBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         setToolbar();
         setOnClicks();
         initMethods();
@@ -32,7 +35,7 @@ public class PrivacyPolicyActivity extends AppCompatActivity implements View.OnC
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.drawerTitlePrivacyPolicy));
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
     private void setOnClicks() {

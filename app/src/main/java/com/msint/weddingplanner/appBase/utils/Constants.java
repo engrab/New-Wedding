@@ -6,9 +6,10 @@ import java.text.SimpleDateFormat;
 public class Constants {
     public static final String APP_DB_NAME = "wedding.db";
     public static final int APP_DB_VERSION = 2;
-    public static final String APP_EMAIL_ID = "msdeveloper0291@gmail.com";
+    public static final String showDatePatternDDMMMMYYYY = "dd/MM/yyyy";
+    public static final String APP_EMAIL_ID = "demo@gmail.com";
     public static final String APP_EMAIL_SUBJECT = "Your Suggestion - Wedding Planner & Organizer, Guest Checklists";
-    public static final String APP_PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.msint.weddingplanner";
+    public static final String APP_PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.example.weddingplanner";
     public static final int CLICK_TYPE_BTN = 2;
     public static final int CLICK_TYPE_ROW = 1;
     public static final String COST_CAT_TYPE_ACCESSORIES = "Accessories";
@@ -79,6 +80,5 @@ public class Constants {
     public static final int VIEW_TYPE_BOTTOM = 3;
     public static final int VIEW_TYPE_HEADER = 1;
     public static final int VIEW_TYPE_ROW = 2;
-    public static final String showDatePatternDDMMMMYYYY = "dd/MM/yyyy";
     public static String showTimePattern = "hh:mm a";
 }

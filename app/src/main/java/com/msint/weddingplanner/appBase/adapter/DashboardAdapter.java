@@ -39,8 +39,8 @@ public class DashboardAdapter extends RecyclerView.Adapter {
         if (viewHolder instanceof RowHolder) {
             RowHolder rowHolder = (RowHolder) viewHolder;
             rowHolder.binding.linSub.setBackground(getBgDrawable(i));
-            rowHolder.binding.setRowModel(this.arrayList.get(i));
-            rowHolder.binding.executePendingBindings();
+//            rowHolder.binding.setRowModel(this.arrayList.get(i));
+//            rowHolder.binding.executePendingBindings();
         }
     }
 

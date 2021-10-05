@@ -14,6 +14,8 @@ import android.provider.ContactsContract;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -54,6 +56,7 @@ import com.msint.weddingplanner.appBase.utils.Constants;
 import com.msint.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.msint.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.msint.weddingplanner.appBase.utils.TwoButtonDialogListener;
+import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.msint.weddingplanner.databinding.ActivityVendorAddEditBinding;
 import com.msint.weddingplanner.databinding.AlertDialogNewCategoryBinding;
 import com.msint.weddingplanner.databinding.AlertDialogRecyclerListBinding;
@@ -123,10 +126,12 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
 
     public void setBinding() {
-        this.binding = (ActivityVendorAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_vendor_add_edit);
+        binding = ActivityVendorAddEditBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.f547db = AppDataBase.getAppDatabase(this);
         setModelDetail();
-        this.binding.setRowModel(this.model);
+//        this.binding.setRowModel(this.model);
     }
 
     private void setModelDetail() {
@@ -154,7 +159,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         this.toolbarModel.setOtherMenu(true);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
         this.toolbarModel.setShare(this.isEdit);
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -350,7 +355,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     }
 
     public void setCategoryListDialog() {
-        this.dialogCategoryListBinding = (AlertDialogRecyclerListBinding) DataBindingUtil.inflate(LayoutInflater.from(this.context), R.layout.alert_dialog_recycler_list, (ViewGroup) null, false);
+        this.dialogCategoryListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context),  (ViewGroup) null, false);
         this.dialogCategoryList = new Dialog(this.context);
         this.dialogCategoryList.setContentView(this.dialogCategoryListBinding.getRoot());
         this.dialogCategoryList.setCancelable(false);
@@ -466,14 +471,14 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     }
 
     public void setNewCatDialog() {
-        this.dialogNewCatBinding = (AlertDialogNewCategoryBinding) DataBindingUtil.inflate(LayoutInflater.from(this.context), R.layout.alert_dialog_new_category, (ViewGroup) null, false);
+        this.dialogNewCatBinding = AlertDialogNewCategoryBinding.inflate(LayoutInflater.from(this.context), (ViewGroup) null, false);
         this.dialogNewCat = new Dialog(this.context);
         this.dialogNewCat.setContentView(this.dialogNewCatBinding.getRoot());
         this.dialogNewCat.setCancelable(false);
         this.dialogNewCat.getWindow().setBackgroundDrawableResource(17170445);
         this.dialogNewCat.getWindow().setLayout(-1, -2);
         this.dialogNewCatBinding.txtTitle.setText(R.string.add_new_category);
-        this.dialogNewCatBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context, 0, false));
+        this.dialogNewCatBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false));
         this.dialogNewCatBinding.recycler.setAdapter(new ImageAdapter(true, this.context, this.imageList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
                 int unused = AddEditVendorActivity.this.selectedNewCatPos = i;
@@ -577,7 +582,6 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         intent.putExtra(AddEditPaymentActivity.EXTRA_IS_EDIT, z);
         intent.putExtra(AddEditPaymentActivity.EXTRA_POSITION, i);
         intent.putExtra(AddEditPaymentActivity.EXTRA_MODEL, paymentRowModel);
-        intent.setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE);
         startActivityForResult(intent, 1002);
     }
 
@@ -590,7 +594,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
     private void setViewVisibility() {
         int i = 8;
-        this.binding.linData.setVisibility(this.model.isListData() ? 0 : 8);
+        this.binding.linData.setVisibility(this.model.isListData() ? View.VISIBLE : View.GONE);
         LinearLayout linearLayout = this.binding.linNoData;
         if (!this.model.isListData()) {
             i = 0;
@@ -649,7 +653,6 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         intent.putExtra(EXTRA_POSITION_MAIN, getIntent().getIntExtra(EXTRA_POSITION_MAIN, 0));
         intent.putExtra(EXTRA_MODEL, this.model);
         setResult(-1, intent);
-        MainActivityDashboard.BackPressedAd(this);
     }
 
     public void pickContactPerm() {
@@ -813,8 +816,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
                     }
                 }
             } catch (Exception e6) {
-                e = e6;
-                e.printStackTrace();
+
                 ContentResolver contentResolver22 = getContentResolver();
                 Uri uri22 = ContactsContract.CommonDataKinds.Email.CONTENT_URI;
                 query3 = contentResolver22.query(uri22, (String[]) null, "contact_id = " + string4, (String[]) null, (String) null);
@@ -849,8 +851,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
                     str3 = string3;
                 }
             } catch (Exception e7) {
-                e = e7;
-                e.printStackTrace();
+
                 ContentResolver contentResolver3222 = getContentResolver();
                 Uri uri3222 = ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_URI;
                 query2 = contentResolver3222.query(uri3222, (String[]) null, "contact_id=" + string4, (String[]) null, (String) null);
@@ -879,8 +880,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
                     str4 = string2;
                 }
             } catch (Exception e8) {
-                e = e8;
-                e.printStackTrace();
+
                 ContentResolver contentResolver422222 = getContentResolver();
                 Uri uri422222 = ContactsContract.Data.CONTENT_URI;
                 query = contentResolver422222.query(uri422222, new String[]{"data1", "data2"}, "contact_id = " + string4 + " AND " + "mimetype" + " = '" + "vnd.android.cursor.item/website" + "'", (String[]) null, (String) null);
@@ -903,8 +903,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
                     str5 = string;
                 }
             } catch (Exception e9) {
-                e = e9;
-                e.printStackTrace();
+
                 this.model.setName(str);
                 this.model.setPhoneNo(str2);
                 this.model.setEmailId(str3);
@@ -961,7 +960,6 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         if (this.isUpdateList) {
             openItemList(false);
         } else if (this.isEdit) {
-            MainActivityDashboard.BackPressedAd(this);
         } else {
             super.onBackPressed();
         }
@@ -1014,8 +1012,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
                 startActivity(intent);
             }
         } catch (Exception e2) {
-            e = e2;
-            e.printStackTrace();
+
             startActivity(intent);
         }
         try {
@@ -1076,20 +1073,20 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
 
     public void initDoc() {
-        this.document = new Document(PageSize.f191A4, 16.0f, 16.0f, 16.0f, 16.0f);
+        this.document = new Document(PageSize.A4, 16.0f, 16.0f, 16.0f, 16.0f);
         this.dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Constants.REPORT_DIRECTORY);
         if (!this.dir.exists()) {
             this.dir.mkdirs();
         }
         try {
             this.fileName = this.repoType + "_" + this.repoTitle + "_" + getCurrentDateTime() + ".pdf";
-            this.writer = PdfWriter.getInstance(this.document, new FileOutputStream(new File(this.dir, this.fileName)));
-        } catch (FileNotFoundException e) {
             try {
+                this.writer = PdfWriter.getInstance(this.document, new FileOutputStream(new File(this.dir, this.fileName)));
+            } catch (DocumentException e) {
                 e.printStackTrace();
-            } catch (DocumentException e2) {
-                e2.printStackTrace();
             }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
         this.document.open();
     }
@@ -1239,7 +1236,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
 
     public void openReportList() {
-        startActivity(new Intent(this, ReportsListActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
+        startActivity(new Intent(this, ReportsListActivity.class));
     }
 
     public class FooterPageEvent extends PdfPageEventHelper {

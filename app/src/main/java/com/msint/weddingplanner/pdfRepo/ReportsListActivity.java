@@ -21,6 +21,8 @@ import com.msint.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.msint.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.msint.weddingplanner.appBase.view.MainActivityDashboard;
 import com.msint.weddingplanner.databinding.ActivityReportsListBinding;
+import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,7 +55,9 @@ public class ReportsListActivity extends BaseActivityRecyclerBinding implements 
 
 
     public void setBinding() {
-        this.binding = (ActivityReportsListBinding) DataBindingUtil.setContentView(this, R.layout.activity_reports_list);
+        binding = ActivityReportsListBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.list = new ArrayList<>();
     }
 
@@ -62,7 +66,7 @@ public class ReportsListActivity extends BaseActivityRecyclerBinding implements 
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.pdf_reports));
         this.toolbarModel.setAdd(true);
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
 
@@ -149,7 +153,7 @@ public class ReportsListActivity extends BaseActivityRecyclerBinding implements 
     }
 
     public void onBackPressed() {
-        MainActivityDashboard.BackPressedAd(this);
+//        MainActivityDashboard.BackPressedAd(this);
     }
 
 

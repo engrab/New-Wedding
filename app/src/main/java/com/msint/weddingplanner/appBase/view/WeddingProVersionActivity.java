@@ -53,7 +53,7 @@ public class WeddingProVersionActivity extends BaseActivityBinding implements Pu
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.drawerTitleProVersion));
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
 

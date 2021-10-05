@@ -68,10 +68,12 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
 
 
     public void setBinding() {
-        this.binding = (ActivityGuestAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_guest_add_edit);
+        binding = ActivityGuestAddEditBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.f540db = AppDataBase.getAppDatabase(this);
         setModelDetail();
-        this.binding.setRowModel(this.model);
+//        this.binding.setRowModel(this.model);
     }
 
     private void setModelDetail() {
@@ -95,7 +97,7 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
         this.binding.includedToolbar.imgDelete.setImageResource(this.isEdit ? R.drawable.delete : R.drawable.phone_book);
         this.toolbarModel.setOtherMenu(true);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -415,8 +417,7 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
                     }
                 }
             } catch (Exception e5) {
-                e = e5;
-                e.printStackTrace();
+
                 ContentResolver contentResolver22 = getContentResolver();
                 Uri uri22 = ContactsContract.CommonDataKinds.Email.CONTENT_URI;
                 query3 = contentResolver22.query(uri22, (String[]) null, "contact_id = " + string3, (String[]) null, (String) null);
@@ -450,8 +451,7 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
                     str3 = string2;
                 }
             } catch (Exception e6) {
-                e = e6;
-                e.printStackTrace();
+
                 ContentResolver contentResolver3222 = getContentResolver();
                 Uri uri3222 = ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_URI;
                 query2 = contentResolver3222.query(uri3222, (String[]) null, "contact_id=" + string3, (String[]) null, (String) null);
@@ -479,8 +479,7 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
                     str4 = string;
                 }
             } catch (Exception e7) {
-                e = e7;
-                e.printStackTrace();
+
                 ContentResolver contentResolver422222 = getContentResolver();
                 Uri uri422222 = ContactsContract.Data.CONTENT_URI;
                 query = contentResolver422222.query(uri422222, new String[]{"data1", "data2"}, "contact_id = " + string3 + " AND " + "mimetype" + " = '" + "vnd.android.cursor.item/website" + "'", (String[]) null, (String) null);

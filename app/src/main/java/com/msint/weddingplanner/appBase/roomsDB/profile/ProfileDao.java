@@ -20,10 +20,10 @@ public interface ProfileDao {
     List<ProfileRowModel> getAll();
 
     @Query("Select * FROM profileList where id=:id")
-    ProfileRowModel getDetail(String str);
+    ProfileRowModel getDetail(String id);
 
     @Query("SELECT COUNT(name) FROM profileList WHERE name =:name COLLATE NOCASE")
-    int getNameExistCount(String str);
+    int getNameExistCount(String name);
 
     @Query("Select id FROM profileList where isSelected = 1")
     String getSelectedId();
@@ -35,7 +35,7 @@ public interface ProfileDao {
     int setDeselectAll();
 
     @Query("update profileList set isSelected =1 where id =:id")
-    int setSelection(String str);
+    int setSelection(String id);
 
     @Update
     int update(ProfileRowModel profileRowModel);

@@ -107,7 +107,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         setContentView(view);
         this.f542db = AppDataBase.getAppDatabase(this);
         setModelDetail();
-        this.binding.setRowModel(this.model);
+//        this.binding.setRowModel(this.model);
     }
 
     private void setModelDetail() {
@@ -135,7 +135,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         this.toolbarModel.setOtherMenu(true);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
         this.toolbarModel.setShare(this.isEdit);
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -319,7 +319,6 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         intent.putExtra(AddEditPaymentActivity.EXTRA_IS_EDIT, z);
         intent.putExtra(AddEditPaymentActivity.EXTRA_POSITION, i);
         intent.putExtra(AddEditPaymentActivity.EXTRA_MODEL, guestRowModel);
-        intent.setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE);
         startActivityForResult(intent, 1002);
     }
 
@@ -332,7 +331,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
 
     private void setViewVisibility() {
         int i = 8;
-        this.binding.linData.setVisibility(this.model.isListData() ? 0 : 8);
+        this.binding.linData.setVisibility(this.model.isListData() ? View.VISIBLE : View.GONE);
         LinearLayout linearLayout = this.binding.linNoData;
         if (!this.model.isListData()) {
             i = 0;
@@ -384,7 +383,6 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         intent.putExtra(EXTRA_POSITION_MAIN, getIntent().getIntExtra(EXTRA_POSITION_MAIN, 0));
         intent.putExtra(EXTRA_MODEL, this.model);
         setResult(-1, intent);
-        MainActivityDashboard.BackPressedAd(this);
     }
 
     public void pickContactPerm() {
@@ -532,8 +530,6 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
                     }
                 }
             } catch (Exception e5) {
-                e = e5;
-                e.printStackTrace();
                 ContentResolver contentResolver22 = getContentResolver();
                 Uri uri22 = ContactsContract.CommonDataKinds.Email.CONTENT_URI;
                 query3 = contentResolver22.query(uri22, (String[]) null, "contact_id = " + string3, (String[]) null, (String) null);
@@ -567,8 +563,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
                     str3 = string2;
                 }
             } catch (Exception e6) {
-                e = e6;
-                e.printStackTrace();
+
                 ContentResolver contentResolver3222 = getContentResolver();
                 Uri uri3222 = ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_URI;
                 query2 = contentResolver3222.query(uri3222, (String[]) null, "contact_id=" + string3, (String[]) null, (String) null);
@@ -596,8 +591,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
                     str4 = string;
                 }
             } catch (Exception e7) {
-                e = e7;
-                e.printStackTrace();
+
                 ContentResolver contentResolver422222 = getContentResolver();
                 Uri uri422222 = ContactsContract.Data.CONTENT_URI;
                 query = contentResolver422222.query(uri422222, new String[]{"data1", "data2"}, "contact_id = " + string3 + " AND " + "mimetype" + " = '" + "vnd.android.cursor.item/website" + "'", (String[]) null, (String) null);
@@ -659,7 +653,6 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         if (this.isUpdateList) {
             openItemList(false);
         } else if (this.isEdit) {
-            MainActivityDashboard.BackPressedAd(this);
         } else {
             super.onBackPressed();
         }
@@ -741,20 +734,20 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
 
 
     public void initDoc() {
-        this.document = new Document(PageSize.f191A4, 16.0f, 16.0f, 16.0f, 16.0f);
+        this.document = new Document(PageSize.A4, 16.0f, 16.0f, 16.0f, 16.0f);
         this.dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Constants.REPORT_DIRECTORY);
         if (!this.dir.exists()) {
             this.dir.mkdirs();
         }
         try {
             this.fileName = this.repoType + "_" + this.repoTitle + "_" + getCurrentDateTime() + ".pdf";
-            this.writer = PdfWriter.getInstance(this.document, new FileOutputStream(new File(this.dir, this.fileName)));
-        } catch (FileNotFoundException e) {
             try {
+                this.writer = PdfWriter.getInstance(this.document, new FileOutputStream(new File(this.dir, this.fileName)));
+            } catch (DocumentException e) {
                 e.printStackTrace();
-            } catch (DocumentException e2) {
-                e2.printStackTrace();
             }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
         this.document.open();
     }
@@ -903,7 +896,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
 
 
     public void openReportList() {
-        startActivity(new Intent(this, ReportsListActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
+        startActivity(new Intent(this, ReportsListActivity.class));
     }
 
     public class FooterPageEvent extends PdfPageEventHelper {

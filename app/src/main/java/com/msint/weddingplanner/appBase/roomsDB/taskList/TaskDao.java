@@ -13,28 +13,28 @@ public interface TaskDao {
     int delete(TaskRowModel taskRowModel);
 
     @Query("DELETE FROM taskList where eventId=:currentId and id=:id")
-    void delete(String str, String str2);
+    void delete(String currentId, String id);
 
     @Query("Select * FROM taskList where eventId=:currentId ")
-    List<TaskRowModel> getAll(String str);
+    List<TaskRowModel> getAll(String currentId);
 
     @Query("Select id FROM taskList where eventId=:currentId and categoryId=:categoryId")
-    List<String> getAll(String str, String str2);
+    List<String> getAll(String currentId, String categoryId);
 
     @Query("Select count(*) FROM taskList where eventId=:currentId ")
-    long getAllCount(String str);
+    long getAllCount(String currentId);
 
     @Query("Select count(*) FROM taskList where eventId=:currentId and isPending =:isPending ")
-    long getAllCount(String str, int i);
+    long getAllCount(String currentId, int isPending);
 
     @Query("Select count(*) FROM taskList where eventId=:currentId and categoryId=:categoryId")
-    long getAllCount(String str, String str2);
+    long getAllCount(String currentId, String categoryId);
 
     @Query("Select count(*) FROM taskList where eventId=:currentId and isPending =:isPending and categoryId=:categoryId")
-    long getAllCount(String str, String str2, int i);
+    long getAllCount(String currentId, String isPending, int categoryId);
 
     @Query("Select id FROM taskList where eventId=:currentId")
-    List<String> getAllMarriage(String str);
+    List<String> getAllMarriage(String currentId);
 
     @Insert
     long insert(TaskRowModel taskRowModel);

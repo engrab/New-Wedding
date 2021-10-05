@@ -36,8 +36,8 @@ public class CompanionAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         if (viewHolder instanceof RowHolder) {
             RowHolder rowHolder = (RowHolder) viewHolder;
-            rowHolder.binding.setRowModel(this.arrayList.get(i));
-            rowHolder.binding.executePendingBindings();
+//            rowHolder.binding.setRowModel(this.arrayList.get(i));
+//            rowHolder.binding.executePendingBindings();
         }
     }
 

@@ -44,8 +44,8 @@ public class CategoryAdapter extends RecyclerView.Adapter {
 
         } else if (viewHolder instanceof RowManageHolder) {
             RowManageHolder rowManageHolder = (RowManageHolder) viewHolder;
-            rowManageHolder.binding.setRowModel(this.arrayList.get(i));
-            rowManageHolder.binding.executePendingBindings();
+//            rowManageHolder.binding.setRowModel(this.arrayList.get(i));
+//            rowManageHolder.binding.executePendingBindings();
         }
     }
 

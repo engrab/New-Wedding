@@ -20,10 +20,12 @@ public class GuestSummaryActivity extends BaseActivityBinding {
 
 
     public void setBinding() {
-        this.binding = (ActivityGuestSummaryBinding) DataBindingUtil.setContentView(this, R.layout.activity_guest_summary);
+        binding = ActivityGuestSummaryBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.f553db = AppDataBase.getAppDatabase(this);
         setModelDetail();
-        this.binding.setRowModel(this.model);
+//        this.binding.setRowModel(this.model);
     }
 
     private void setModelDetail() {
@@ -34,7 +36,7 @@ public class GuestSummaryActivity extends BaseActivityBinding {
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle("Guest Summary");
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
 
@@ -49,7 +51,7 @@ public class GuestSummaryActivity extends BaseActivityBinding {
     }
 
     public void onBackPressed() {
-        MainActivityDashboard.BackPressedAd(this);
+//        MainActivityDashboard.BackPressedAd(this);
     }
 
 

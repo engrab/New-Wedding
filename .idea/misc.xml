@@ -3,9 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="../../../.gradle/caches/transforms-3/e759884e8e1539e68246ec4d8729cc98/transformed/core-1.5.0/res/layout-v21/notification_action.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_arrow_drop_down_black.xml" value="0.184375" />
         <entry key="app/src/main/res/layout/activity_backup_transfer_guid.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/activity_cost_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_guest_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main_dashboard.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_profile_add_edit.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_profile_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_restore.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_task_summary.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_vendor_add_edit.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_vendor_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/alert_dialog_addmob.xml" value="0.67" />
         <entry key="app/src/main/res/layout/design_bottom_navigation_item.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/notification_action.xml" value="0.1" />

@@ -5,6 +5,9 @@ import android.app.Dialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.msint.weddingplanner.R;
 import com.msint.weddingplanner.appBase.adapter.CategoryAdapter;
 import com.msint.weddingplanner.appBase.appPref.AppPref;
@@ -42,7 +45,7 @@ public class TaskSummaryActivity extends BaseActivityBinding {
         setContentView(view);
         this.f557db = AppDataBase.getAppDatabase(this);
         setModelDetail();
-        this.binding.setRowModel(this.model);
+//        this.binding.setRowModel(this.model);
     }
 
     private void setModelDetail() {
@@ -54,7 +57,7 @@ public class TaskSummaryActivity extends BaseActivityBinding {
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle("Task Summary");
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
 
@@ -73,7 +76,7 @@ public class TaskSummaryActivity extends BaseActivityBinding {
     }
 
     public void onBackPressed() {
-        MainActivityDashboard.BackPressedAd(this);
+//        MainActivityDashboard.BackPressedAd(this);
     }
 
 
@@ -106,7 +109,7 @@ public class TaskSummaryActivity extends BaseActivityBinding {
     }
 
     public void setCategoryListDialog() {
-        this.dialogCategoryListBinding = (AlertDialogRecyclerListBinding) DataBindingUtil.inflate(LayoutInflater.from(this.context), R.layout.alert_dialog_recycler_list, (ViewGroup) null, false);
+        this.dialogCategoryListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context),  (ViewGroup) null, false);
         this.dialogCategoryList = new Dialog(this.context);
         this.dialogCategoryList.setContentView(this.dialogCategoryListBinding.getRoot());
         this.dialogCategoryList.setCancelable(false);

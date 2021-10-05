@@ -122,7 +122,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         this.model.setNoDataIcon(R.drawable.drawer_guests);
         this.model.setNoDataText(getString(R.string.noDataTitleGuests));
         this.model.setNoDataDetail(getString(R.string.noDataDescGuests));
-        this.binding.setModel(this.model);
+//        this.binding.setModel(this.model);
         this.f552db = AppDataBase.getAppDatabase(this.context);
     }
 
@@ -135,7 +135,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.order_list);
         this.binding.includedToolbar.imgAdd.setImageResource(R.drawable.summary);
         this.toolbarModel.setShare(true);
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
         setSupportActionBar(this.binding.includedToolbar.toolbar);
     }
 
@@ -158,7 +158,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
     }
 
     private void openSummary() {
-        startActivity(new Intent(this.context, GuestSummaryActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
+        startActivity(new Intent(this.context, GuestSummaryActivity.class));
     }
 
 
@@ -250,9 +250,9 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         this.binding.recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             public void onScrolled(RecyclerView recyclerView, int i, int i2) {
                 super.onScrolled(recyclerView, i, i2);
-                if (i2 > 0 && GuestListActivity.this.binding.fabAdd.getVisibility() == 0) {
-                    GuestListActivity.this.binding.fabAdd.hide();
-                } else if (i2 < 0 && GuestListActivity.this.binding.fabAdd.getVisibility() != 0) {
+                if (i2 > 0 && GuestListActivity.this.binding.fabAdd.getVisibility() == View.VISIBLE) {
+                    binding.fabAdd.hide();
+                } else if (i2 < 0 && GuestListActivity.this.binding.fabAdd.getVisibility() != View.VISIBLE) {
                     GuestListActivity.this.binding.fabAdd.show();
                 }
             }
@@ -266,7 +266,6 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         intent.putExtra(AddEditGuestActivity.EXTRA_POSITION, i);
         intent.putExtra(AddEditGuestActivity.EXTRA_POSITION_MAIN, i2);
         intent.putExtra(AddEditGuestActivity.EXTRA_MODEL, guestRowModel);
-        intent.setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE);
         startActivityForResult(intent, 1002);
     }
 
@@ -814,7 +813,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
 
 
     public void initDoc() {
-        this.document = new Document(PageSize.f191A4, 16.0f, 16.0f, 16.0f, 16.0f);
+        this.document = new Document(PageSize.A4, 16.0f, 16.0f, 16.0f, 16.0f);
         this.dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Constants.REPORT_DIRECTORY);
         if (!this.dir.exists()) {
             this.dir.mkdirs();
@@ -988,7 +987,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
 
 
     public void openReportList() {
-        startActivity(new Intent(this, ReportsListActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
+        startActivity(new Intent(this, ReportsListActivity.class));
     }
 
     public String getCurrentDateTime() {

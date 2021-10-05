@@ -17,6 +17,7 @@ import com.msint.weddingplanner.appBase.roomsDB.category.CategoryRowModel;
 import com.msint.weddingplanner.appBase.utils.Constants;
 import com.msint.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.msint.weddingplanner.databinding.ActivityBudgetSummaryBinding;
+import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.msint.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import java.util.ArrayList;
 
@@ -38,10 +39,12 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
 
 
     public void setBinding() {
-        this.binding = (ActivityBudgetSummaryBinding) DataBindingUtil.setContentView(this, R.layout.activity_budget_summary);
+        binding = ActivityBudgetSummaryBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.f548db = AppDataBase.getAppDatabase(this);
         setModelDetail();
-        this.binding.setRowModel(this.model);
+//        this.binding.setRowModel(this.model);
     }
 
     private void setModelDetail() {
@@ -53,7 +56,7 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle("Budget Summary");
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
 
@@ -72,7 +75,7 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
     }
 
     public void onBackPressed() {
-        MainActivityDashboard.BackPressedAd(this);
+//        MainActivityDashboard.BackPressedAd(this);
     }
 
 
@@ -105,7 +108,7 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
     }
 
     public void setCategoryListDialog() {
-        this.dialogCategoryListBinding = (AlertDialogRecyclerListBinding) DataBindingUtil.inflate(LayoutInflater.from(this.context), R.layout.alert_dialog_recycler_list, (ViewGroup) null, false);
+        this.dialogCategoryListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context),  (ViewGroup) null, false);
         this.dialogCategoryList = new Dialog(this.context);
         this.dialogCategoryList.setContentView(this.dialogCategoryListBinding.getRoot());
         this.dialogCategoryList.setCancelable(false);

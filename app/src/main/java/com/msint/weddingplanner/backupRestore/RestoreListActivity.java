@@ -74,7 +74,7 @@ public class RestoreListActivity extends BaseActivityRecyclerBinding implements 
         this.model.setNoDataIcon(R.drawable.dummy_empty);
         this.model.setNoDataText(getString(R.string.noDataTitleBackup));
         this.model.setNoDataDetail(getString(R.string.noDataDescBackup));
-        this.binding.setModel(this.model);
+//        this.binding.setModel(this.model);
         this.localBackupRestore = new LocalBackupRestore(this);
         this.progressDialog = new BackupRestoreProgress(this);
     }
@@ -84,7 +84,7 @@ public class RestoreListActivity extends BaseActivityRecyclerBinding implements 
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle("Restore");
         this.toolbarModel.setAdd(true);
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
 
@@ -178,9 +178,9 @@ public class RestoreListActivity extends BaseActivityRecyclerBinding implements 
         this.binding.recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             public void onScrolled(RecyclerView recyclerView, int i, int i2) {
                 super.onScrolled(recyclerView, i, i2);
-                if (i2 > 0 && RestoreListActivity.this.binding.fabAdd.getVisibility() == 0) {
+                if (i2 > 0 && RestoreListActivity.this.binding.fabAdd.getVisibility() == View.VISIBLE) {
                     RestoreListActivity.this.binding.fabAdd.hide();
-                } else if (i2 < 0 && RestoreListActivity.this.binding.fabAdd.getVisibility() != 0) {
+                } else if (i2 < 0 && RestoreListActivity.this.binding.fabAdd.getVisibility() != View.VISIBLE) {
                     RestoreListActivity.this.binding.fabAdd.show();
                 }
             }

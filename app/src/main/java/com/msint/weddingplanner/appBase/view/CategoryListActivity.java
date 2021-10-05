@@ -3,6 +3,7 @@ package com.msint.weddingplanner.appBase.view;
 import android.app.Dialog;
 import android.content.Context;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +35,7 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
 
 
     /* renamed from: db */
-    public AppDataBase f549db;
+    public AppDataBase db;
 
     public Dialog dialogNewCat;
 
@@ -55,21 +56,23 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
 
 
     public void setBinding() {
-        this.binding = (ActivityCategoryListBinding) DataBindingUtil.setContentView(this, R.layout.activity_category_list);
+        binding = ActivityCategoryListBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.model = new CategoryListModel();
         this.model.setArrayList(new ArrayList());
         this.model.setNoDataIcon(R.drawable.dummy_empty);
         this.model.setNoDataText(getString(R.string.noDataTitleCategory));
         this.model.setNoDataDetail(getString(R.string.noDataDescCategory));
-        this.binding.setModel(this.model);
-        this.f549db = AppDataBase.getAppDatabase(this.context);
+//        this.binding.setModel(this.model);
+        this.db = AppDataBase.getAppDatabase(this.context);
     }
 
 
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle("Manage Category");
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
 
@@ -106,7 +109,7 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
 
     public void fillFromDB() {
         try {
-            this.model.getArrayList().addAll(this.f549db.categoryDao().getAll());
+            this.model.getArrayList().addAll(this.db.categoryDao().getAll());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -127,9 +130,9 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
         this.binding.recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             public void onScrolled(RecyclerView recyclerView, int i, int i2) {
                 super.onScrolled(recyclerView, i, i2);
-                if (i2 > 0 && CategoryListActivity.this.binding.fabAdd.getVisibility() == 0) {
+                if (i2 > 0 && CategoryListActivity.this.binding.fabAdd.getVisibility() == View.VISIBLE) {
                     CategoryListActivity.this.binding.fabAdd.hide();
-                } else if (i2 < 0 && CategoryListActivity.this.binding.fabAdd.getVisibility() != 0) {
+                } else if (i2 < 0 && CategoryListActivity.this.binding.fabAdd.getVisibility() != View.VISIBLE) {
                     CategoryListActivity.this.binding.fabAdd.show();
                 }
             }
@@ -146,7 +149,7 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
 
     private void setViewVisibility() {
         int i = 8;
-        this.binding.linData.setVisibility(this.model.isListData() ? 0 : 8);
+        this.binding.linData.setVisibility(this.model.isListData() ? View.VISIBLE : View.GONE);
         LinearLayout linearLayout = this.binding.linNoData;
         if (!this.model.isListData()) {
             i = 0;
@@ -179,54 +182,54 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
             public void doInBackground() {
                 ArrayList arrayList = new ArrayList();
                 try {
-                    arrayList.addAll(CategoryListActivity.this.f549db.taskDao().getAll(AppPref.getCurrentEvenId(CategoryListActivity.this.context), CategoryListActivity.this.model.getArrayList().get(i).getId()));
+                    arrayList.addAll(CategoryListActivity.this.db.taskDao().getAll(AppPref.getCurrentEvenId(CategoryListActivity.this.context), CategoryListActivity.this.model.getArrayList().get(i).getId()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 for (int i = 0; i < arrayList.size(); i++) {
                     try {
-                        CategoryListActivity.this.f549db.subTaskDao().deleteAll((String) arrayList.get(i));
+                        CategoryListActivity.this.db.subTaskDao().deleteAll((String) arrayList.get(i));
                     } catch (Exception e2) {
                         e2.printStackTrace();
                     }
                     try {
-                        CategoryListActivity.this.f549db.taskDao().delete(AppPref.getCurrentEvenId(CategoryListActivity.this.context), (String) arrayList.get(i));
+                        CategoryListActivity.this.db.taskDao().delete(AppPref.getCurrentEvenId(CategoryListActivity.this.context), (String) arrayList.get(i));
                     } catch (Exception e3) {
                         e3.printStackTrace();
                     }
                 }
                 ArrayList arrayList2 = new ArrayList();
                 try {
-                    arrayList2.addAll(CategoryListActivity.this.f549db.costDao().getAll(AppPref.getCurrentEvenId(CategoryListActivity.this.context), CategoryListActivity.this.model.getArrayList().get(i).getId()));
+                    arrayList2.addAll(CategoryListActivity.this.db.costDao().getAll(AppPref.getCurrentEvenId(CategoryListActivity.this.context), CategoryListActivity.this.model.getArrayList().get(i).getId()));
                 } catch (Exception e4) {
                     e4.printStackTrace();
                 }
                 for (int i2 = 0; i2 < arrayList2.size(); i2++) {
                     try {
-                        CategoryListActivity.this.f549db.paymentDao().deleteAll((String) arrayList2.get(i2));
+                        CategoryListActivity.this.db.paymentDao().deleteAll((String) arrayList2.get(i2));
                     } catch (Exception e5) {
                         e5.printStackTrace();
                     }
                     try {
-                        CategoryListActivity.this.f549db.costDao().delete(AppPref.getCurrentEvenId(CategoryListActivity.this.context), (String) arrayList2.get(i2));
+                        CategoryListActivity.this.db.costDao().delete(AppPref.getCurrentEvenId(CategoryListActivity.this.context), (String) arrayList2.get(i2));
                     } catch (Exception e6) {
                         e6.printStackTrace();
                     }
                 }
                 ArrayList arrayList3 = new ArrayList();
                 try {
-                    arrayList3.addAll(CategoryListActivity.this.f549db.vendorDao().getAll(AppPref.getCurrentEvenId(CategoryListActivity.this.context), CategoryListActivity.this.model.getArrayList().get(i).getId()));
+                    arrayList3.addAll(CategoryListActivity.this.db.vendorDao().getAll(AppPref.getCurrentEvenId(CategoryListActivity.this.context), CategoryListActivity.this.model.getArrayList().get(i).getId()));
                 } catch (Exception e7) {
                     e7.printStackTrace();
                 }
                 for (int i3 = 0; i3 < arrayList3.size(); i3++) {
                     try {
-                        CategoryListActivity.this.f549db.paymentDao().deleteAll((String) arrayList3.get(i3));
+                        CategoryListActivity.this.db.paymentDao().deleteAll((String) arrayList3.get(i3));
                     } catch (Exception e8) {
                         e8.printStackTrace();
                     }
                     try {
-                        CategoryListActivity.this.f549db.vendorDao().delete(AppPref.getCurrentEvenId(CategoryListActivity.this.context), (String) arrayList3.get(i3));
+                        CategoryListActivity.this.db.vendorDao().delete(AppPref.getCurrentEvenId(CategoryListActivity.this.context), (String) arrayList3.get(i3));
                     } catch (Exception e9) {
                         e9.printStackTrace();
                     }
@@ -235,7 +238,7 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
 
             public void onPostExecute() {
                 try {
-                    CategoryListActivity.this.f549db.categoryDao().delete(CategoryListActivity.this.model.getArrayList().get(i));
+                    CategoryListActivity.this.db.categoryDao().delete(CategoryListActivity.this.model.getArrayList().get(i));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -291,14 +294,14 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
     }
 
     public void setNewCatDialog() {
-        this.dialogNewCatBinding = (AlertDialogNewCategoryBinding) DataBindingUtil.inflate(LayoutInflater.from(this.context), R.layout.alert_dialog_new_category, (ViewGroup) null, false);
+        this.dialogNewCatBinding = AlertDialogNewCategoryBinding.inflate(LayoutInflater.from(this.context), (ViewGroup) null, false);
         this.dialogNewCat = new Dialog(this.context);
         this.dialogNewCat.setContentView(this.dialogNewCatBinding.getRoot());
         this.dialogNewCat.setCancelable(false);
         this.dialogNewCat.getWindow().setBackgroundDrawableResource(17170445);
         this.dialogNewCat.getWindow().setLayout(-1, -2);
         this.dialogNewCatBinding.txtTitle.setText(R.string.add_new_category);
-        this.dialogNewCatBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context, 0, false));
+        this.dialogNewCatBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false));
         this.dialogNewCatBinding.recycler.setAdapter(new ImageAdapter(true, this.context, this.imageList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
                 int unused = CategoryListActivity.this.selectedNewCatPos = i;

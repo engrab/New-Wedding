@@ -15,6 +15,7 @@ import com.msint.weddingplanner.appBase.roomsDB.taskList.SubTaskRowModel;
 import com.msint.weddingplanner.appBase.utils.AppConstants;
 import com.msint.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.msint.weddingplanner.databinding.ActivitySubTaskAddEditBinding;
+import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
 
 public class AddEditSubTaskActivity extends BaseActivityBinding {
     public static String EXTRA_ID = "id";
@@ -38,10 +39,13 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
 
 
     public void setBinding() {
-        this.binding = (ActivitySubTaskAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_sub_task_add_edit);
+        binding = ActivitySubTaskAddEditBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+//        this.binding = (ActivitySubTaskAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_sub_task_add_edit);
         this.f545db = AppDataBase.getAppDatabase(this);
         setModelDetail();
-        this.binding.setRowModel(this.model);
+//        this.binding.setRowModel(this.model);
     }
 
     private void setModelDetail() {
@@ -64,7 +68,7 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
         this.toolbarModel.setDelete(this.isEdit);
         this.toolbarModel.setOtherMenu(true);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

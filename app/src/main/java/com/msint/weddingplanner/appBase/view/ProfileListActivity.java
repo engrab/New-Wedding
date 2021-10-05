@@ -18,6 +18,8 @@ import com.msint.weddingplanner.appBase.roomsDB.AppDataBase;
 import com.msint.weddingplanner.appBase.utils.AppConstants;
 import com.msint.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.msint.weddingplanner.databinding.ActivityProfileListBinding;
+import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -44,13 +46,15 @@ public class ProfileListActivity extends BaseActivityRecyclerBinding {
 
 
     public void setBinding() {
-        this.binding = (ActivityProfileListBinding) DataBindingUtil.setContentView(this, R.layout.activity_profile_list);
+        binding = ActivityProfileListBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.model = new ProfileListModel();
         this.model.setArrayList(new ArrayList());
         this.model.setNoDataIcon(R.drawable.dummy_empty);
         this.model.setNoDataText(getString(R.string.noDataTitleProfile));
         this.model.setNoDataDetail(getString(R.string.noDataDescProfile));
-        this.binding.setModel(this.model);
+//        this.binding.setModel(this.model);
         this.f554db = AppDataBase.getAppDatabase(this.context);
     }
 
@@ -58,7 +62,7 @@ public class ProfileListActivity extends BaseActivityRecyclerBinding {
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.manage_marriages));
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
 
@@ -118,9 +122,9 @@ public class ProfileListActivity extends BaseActivityRecyclerBinding {
         this.binding.recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             public void onScrolled(RecyclerView recyclerView, int i, int i2) {
                 super.onScrolled(recyclerView, i, i2);
-                if (i2 > 0 && ProfileListActivity.this.binding.fabAdd.getVisibility() == 0) {
+                if (i2 > 0 && ProfileListActivity.this.binding.fabAdd.getVisibility() == View.VISIBLE) {
                     ProfileListActivity.this.binding.fabAdd.hide();
-                } else if (i2 < 0 && ProfileListActivity.this.binding.fabAdd.getVisibility() != 0) {
+                } else if (i2 < 0 && ProfileListActivity.this.binding.fabAdd.getVisibility() != View.VISIBLE) {
                     ProfileListActivity.this.binding.fabAdd.show();
                 }
             }
@@ -140,7 +144,6 @@ public class ProfileListActivity extends BaseActivityRecyclerBinding {
         intent.putExtra(AddEditProfileActivity.EXTRA_IS_EDIT, z);
         intent.putExtra(AddEditProfileActivity.EXTRA_POSITION, i);
         intent.putExtra(AddEditProfileActivity.EXTRA_MODEL, profileRowModel);
-        intent.setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE);
         startActivityForResult(intent, 1002);
     }
 
@@ -153,7 +156,7 @@ public class ProfileListActivity extends BaseActivityRecyclerBinding {
 
     private void setViewVisibility() {
         int i = 8;
-        this.binding.linData.setVisibility(this.model.isListData() ? 0 : 8);
+        this.binding.linData.setVisibility(this.model.isListData() ? View.VISIBLE : View.GONE);
         LinearLayout linearLayout = this.binding.linNoData;
         if (!this.model.isListData()) {
             i = 0;

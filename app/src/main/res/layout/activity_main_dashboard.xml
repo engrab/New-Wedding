@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/linMain" android:tag="layout/activity_main_dashboard_0" android:layout_width="match_parent" android:layout_height="match_parent">
     <LinearLayout android:orientation="vertical" android:id="@+id/includedToolbar" android:layout_width="match_parent" android:layout_height="wrap_content">
         <FrameLayout android:gravity="center" android:orientation="horizontal" android:id="@+id/linMainTool" android:layout_width="match_parent" android:layout_height="wrap_content">
-            <android.support.p004v7.widget.Toolbar android:theme="@style/AppTheme" android:gravity="center" android:layout_gravity="center" android:id="@+id/toolbar" android:background="@color/splash_gradient_start" android:padding="0dp" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" app:contentInsetEnd="0dp" app:contentInsetStart="0dp">
+            <androidx.appcompat.widget.Toolbar android:theme="@style/AppTheme" android:gravity="center" android:layout_gravity="center" android:id="@+id/toolbar" android:background="@color/splash_gradient_start" android:padding="0dp" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" app:contentInsetEnd="0dp" app:contentInsetStart="0dp">
                 <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
                     <LinearLayout android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
                         <FrameLayout android:gravity="left" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:layout_weight="1">
@@ -10,10 +10,10 @@
                         </FrameLayout>
                     </LinearLayout>
                 </LinearLayout>
-            </android.support.p004v7.widget.Toolbar>
+            </androidx.appcompat.widget.Toolbar>
         </FrameLayout>
     </LinearLayout>
-    <android.support.p001v4.widget.NestedScrollView android:id="@+id/scrollRoot" android:background="@color/splashBg" android:scrollbars="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:fillViewport="true" android:layout_weight="1">
+    <androidx.core.widget.NestedScrollView android:id="@+id/scrollRoot" android:background="@color/splashBg" android:scrollbars="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:fillViewport="true" android:layout_weight="1">
         <LinearLayout android:orientation="vertical" android:id="@+id/linRoot" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp">
             <LinearLayout android:orientation="vertical" android:id="@+id/linTop" android:background="@drawable/dashboard_bg_gradient" android:layout_width="match_parent" android:layout_height="wrap_content">
                 <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
@@ -84,5 +84,5 @@
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
         </LinearLayout>
-    </android.support.p001v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

@@ -19,6 +19,8 @@ import com.msint.weddingplanner.appBase.roomsDB.payment.PaymentRowModel;
 import com.msint.weddingplanner.appBase.utils.AppConstants;
 import com.msint.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.msint.weddingplanner.databinding.ActivityPaymentAddEditBinding;
+import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
+
 import java.util.Calendar;
 
 public class AddEditPaymentActivity extends BaseActivityBinding {
@@ -39,10 +41,12 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
 
 
     public void setBinding() {
-        this.binding = (ActivityPaymentAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_payment_add_edit);
+        binding = ActivityPaymentAddEditBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.f543db = AppDataBase.getAppDatabase(this);
         setModelDetail();
-        this.binding.setRowModel(this.model);
+//        this.binding.setRowModel(this.model);
     }
 
     private void setModelDetail() {
@@ -65,7 +69,7 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
         this.toolbarModel.setDelete(this.isEdit);
         this.toolbarModel.setOtherMenu(true);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

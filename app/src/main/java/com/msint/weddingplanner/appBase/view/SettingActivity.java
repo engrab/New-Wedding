@@ -22,6 +22,7 @@ import com.msint.weddingplanner.backupRestore.BackupTransferGuidActivity;
 import com.msint.weddingplanner.backupRestore.LocalBackupRestore;
 import com.msint.weddingplanner.backupRestore.RestoreListActivity;
 import com.msint.weddingplanner.databinding.ActivitySettingBinding;
+import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.msint.weddingplanner.pdfRepo.ReportsListActivity;
 import java.util.List;
 import pub.devrel.easypermissions.AppSettingsDialog;
@@ -42,7 +43,9 @@ public class SettingActivity extends BaseActivityBinding implements EasyPermissi
 
 
     public void setBinding() {
-        this.binding = (ActivitySettingBinding) DataBindingUtil.setContentView(this, R.layout.activity_setting);
+        binding = ActivitySettingBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.backupRestore = new LocalBackupRestore(this);
         this.progressDialog = new BackupRestoreProgress(this);
         if (!ConsentInformation.getInstance(this.context).isRequestLocationInEeaOrUnknown() || AppPref.getIsAdfree(this.context)) {
@@ -56,7 +59,7 @@ public class SettingActivity extends BaseActivityBinding implements EasyPermissi
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.drawerTitleSetting));
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
 
@@ -80,22 +83,22 @@ public class SettingActivity extends BaseActivityBinding implements EasyPermissi
                 showDialog();
                 return;
             case R.id.cardBackupTransferGuid:
-                startActivity(new Intent(this.context, BackupTransferGuidActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
+                startActivity(new Intent(this.context, BackupTransferGuidActivity.class));
                 return;
             case R.id.cardCategory:
-                startActivity(new Intent(this.context, CategoryListActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
+                startActivity(new Intent(this.context, CategoryListActivity.class));
                 return;
             case R.id.cardLocalBackup:
                 checkPermAndBackup();
                 return;
             case R.id.cardPdfReport:
-                startActivity(new Intent(this, ReportsListActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
+                startActivity(new Intent(this, ReportsListActivity.class));
                 return;
             case R.id.cardProfile:
-                startActivityForResult(new Intent(this.context, ProfileListActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE), 1002);
+                startActivityForResult(new Intent(this.context, ProfileListActivity.class), 1002);
                 return;
             case R.id.cardRestoreBackups:
-                startActivityForResult(new Intent(this.context, RestoreListActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE), 1002);
+                startActivityForResult(new Intent(this.context, RestoreListActivity.class), 1002);
                 return;
             case R.id.imgBack:
                 onBackPressed();

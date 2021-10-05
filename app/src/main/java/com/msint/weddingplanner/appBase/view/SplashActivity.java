@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
@@ -14,6 +16,8 @@ import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.msint.weddingplanner.R;
 import com.msint.weddingplanner.appBase.appPref.AppPref;
@@ -68,16 +72,16 @@ public class SplashActivity extends AppCompatActivity {
         C08862() {
         }
 
-        public void onAdLoaded() {
-            if (SplashActivity.this.interstitialAd.isLoaded() && SplashActivity.this.Ad_Show) {
-                SplashActivity.this.Ad_Show = false;
-                try {
-                    SplashActivity.this.interstitialAd.show();
-                } catch (Exception unused) {
-                    SplashActivity.this.GoToMainScreen();
-                }
-            }
-        }
+//        public void onAdLoaded() {
+//            if (SplashActivity.this.interstitialAd.isLoaded() && SplashActivity.this.Ad_Show) {
+//                SplashActivity.this.Ad_Show = false;
+//                try {
+//                    SplashActivity.this.interstitialAd.show();
+//                } catch (Exception unused) {
+//                    SplashActivity.this.GoToMainScreen();
+//                }
+//            }
+//        }
 
         public void onAdFailedToLoad(int i) {
             new Handler().postDelayed(new C08851(), 3000);
@@ -91,9 +95,9 @@ public class SplashActivity extends AppCompatActivity {
             super.onAdOpened();
         }
 
-        public void onAdLeftApplication() {
-            super.onAdLeftApplication();
-        }
+//        public void onAdLeftApplication() {
+//            super.onAdLeftApplication();
+//        }
     }
 
     public SplashActivity() {
@@ -112,11 +116,16 @@ public class SplashActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         if (AppPref.getIsAdfree(this.context)) {
-            new Handler().postDelayed(new C08841(), 3000);
+            new Handler().postDelayed(new C08841(), 1000);
             return;
         }
-        MobileAds.initialize(this.context, getString(R.string.strAdmobAppId));
-        new Handler().postDelayed(new C08841(), 15000);
+        MobileAds.initialize(this.context, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+
+            }
+        });
+        new Handler().postDelayed(new C08841(), 2000);
         this.splash_activity = this;
         this.splash_activityWeakReference = new WeakReference<>(this.splash_activity);
         fornpa();
@@ -237,11 +246,11 @@ public class SplashActivity extends AppCompatActivity {
                 Log.d("NPA", "" + AdConstants.npaflag);
                 adRequest = new AdRequest.Builder().build();
             }
-            this.interstitialAd = new InterstitialAd(this);
-            this.interstitialAd.setAdUnitId(AdConstants.AD_FULL);
-            this.interstitialAd.loadAd(adRequest);
-            this.Ad_Show = true;
-            this.interstitialAd.setAdListener(new C08862());
+//            this.interstitialAd = new InterstitialAd(this);
+//            this.interstitialAd.setAdUnitId(AdConstants.AD_FULL);
+//            this.interstitialAd.loadAd(adRequest);
+//            this.Ad_Show = true;
+//            this.interstitialAd.setAdListener(new C08862());
         } catch (Exception unused) {
             GoToMainScreen();
         }

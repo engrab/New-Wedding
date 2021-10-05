@@ -3,7 +3,10 @@ package com.msint.weddingplanner.appBase;
 import android.app.Application;
 import android.content.Context;
 
-public class MyApp extends Application {
+import androidx.multidex.MultiDex;
+import androidx.multidex.MultiDexApplication;
+
+public class MyApp extends MultiDexApplication {
     private static Context context;
     private static MyApp mInstance;
 
@@ -19,5 +22,10 @@ public class MyApp extends Application {
             myApp = mInstance;
         }
         return myApp;
+    }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 }

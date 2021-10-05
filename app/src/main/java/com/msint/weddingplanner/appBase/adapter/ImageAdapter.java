@@ -43,12 +43,12 @@ public class ImageAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
         if (viewHolder instanceof RowHolder) {
             RowHolder rowHolder = (RowHolder) viewHolder;
-            rowHolder.binding.setRowModel(this.arrayList.get(i));
-            rowHolder.binding.executePendingBindings();
+//            rowHolder.binding.setRowModel(this.arrayList.get(i));
+//            rowHolder.binding.executePendingBindings();
         } else if (viewHolder instanceof RowHolderLarge) {
             RowHolderLarge rowHolderLarge = (RowHolderLarge) viewHolder;
-            rowHolderLarge.binding.setRowModel(this.arrayList.get(i));
-            rowHolderLarge.binding.executePendingBindings();
+//            rowHolderLarge.binding.setRowModel(this.arrayList.get(i));
+//            rowHolderLarge.binding.executePendingBindings();
         }
     }
 

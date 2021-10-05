@@ -9,6 +9,7 @@ import android.os.Environment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -78,8 +79,8 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
     public ArrayList<CategoryRowModel> categoryList;
 
 
-    /* renamed from: db */
-    public AppDataBase f541db;
+
+    public AppDataBase db;
 
     public Dialog dialogCategoryList;
     private AlertDialogRecyclerListBinding dialogCategoryListBinding;
@@ -119,10 +120,12 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
 
 
     public void setBinding() {
-        this.binding = (ActivityCostAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_cost_add_edit);
-        this.f541db = AppDataBase.getAppDatabase(this);
+        binding = ActivityCostAddEditBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+        this.db = AppDataBase.getAppDatabase(this);
         setModelDetail();
-        this.binding.setRowModel(this.model);
+//        this.binding.setRowModel(this.model);
     }
 
     private void setModelDetail() {
@@ -148,7 +151,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         this.toolbarModel.setOtherMenu(true);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
         this.toolbarModel.setShare(this.isEdit);
-        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -172,12 +175,12 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
 
             public void onOk() {
                 try {
-                    AddEditCostActivity.this.f541db.paymentDao().deleteAll(AddEditCostActivity.this.model.getId());
+                    AddEditCostActivity.this.db.paymentDao().deleteAll(AddEditCostActivity.this.model.getId());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 try {
-                    AddEditCostActivity.this.f541db.costDao().delete(AddEditCostActivity.this.model);
+                    AddEditCostActivity.this.db.costDao().delete(AddEditCostActivity.this.model);
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }
@@ -291,7 +294,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
     private void fillCategoryList() {
         this.categoryList = new ArrayList<>();
         try {
-            this.categoryList.addAll(this.f541db.categoryDao().getAll());
+            this.categoryList.addAll(this.db.categoryDao().getAll());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -313,7 +316,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
     }
 
     public void setCategoryListDialog() {
-        this.dialogCategoryListBinding = (AlertDialogRecyclerListBinding) DataBindingUtil.inflate(LayoutInflater.from(this.context), R.layout.alert_dialog_recycler_list, (ViewGroup) null, false);
+        this.dialogCategoryListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context),  (ViewGroup) null, false);
         this.dialogCategoryList = new Dialog(this.context);
         this.dialogCategoryList.setContentView(this.dialogCategoryListBinding.getRoot());
         this.dialogCategoryList.setCancelable(false);
@@ -429,14 +432,14 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
     }
 
     public void setNewCatDialog() {
-        this.dialogNewCatBinding = (AlertDialogNewCategoryBinding) DataBindingUtil.inflate(LayoutInflater.from(this.context), R.layout.alert_dialog_new_category, (ViewGroup) null, false);
+        this.dialogNewCatBinding = AlertDialogNewCategoryBinding.inflate(LayoutInflater.from(this.context), (ViewGroup) null, false);
         this.dialogNewCat = new Dialog(this.context);
         this.dialogNewCat.setContentView(this.dialogNewCatBinding.getRoot());
         this.dialogNewCat.setCancelable(false);
         this.dialogNewCat.getWindow().setBackgroundDrawableResource(17170445);
         this.dialogNewCat.getWindow().setLayout(-1, -2);
         this.dialogNewCatBinding.txtTitle.setText(R.string.add_new_category);
-        this.dialogNewCatBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context, 0, false));
+        this.dialogNewCatBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false));
         this.dialogNewCatBinding.recycler.setAdapter(new ImageAdapter(true, this.context, this.imageList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
                 int unused = AddEditCostActivity.this.selectedNewCatPos = i;
@@ -458,7 +461,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
                     CategoryRowModel categoryRowModel = new CategoryRowModel(AppConstants.getUniqueId(), AddEditCostActivity.this.dialogNewCatBinding.etName.getText().toString().trim(), ((ImageRowModel) AddEditCostActivity.this.imageList.get(AddEditCostActivity.this.selectedNewCatPos)).getId());
                     try {
                         categoryRowModel.getName().trim();
-                        j = AddEditCostActivity.this.f541db.categoryDao().insert(categoryRowModel);
+                        j = AddEditCostActivity.this.db.categoryDao().insert(categoryRowModel);
                     } catch (Exception e) {
                         e.printStackTrace();
                         j = 0;
@@ -540,7 +543,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         intent.putExtra(AddEditPaymentActivity.EXTRA_IS_EDIT, z);
         intent.putExtra(AddEditPaymentActivity.EXTRA_POSITION, i);
         intent.putExtra(AddEditPaymentActivity.EXTRA_MODEL, paymentRowModel);
-        intent.setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE);
+       ;
         startActivityForResult(intent, 1002);
     }
 
@@ -568,10 +571,10 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         try {
             this.model.getName().trim();
             if (this.model.getId() != null) {
-                this.f541db.costDao().update(this.model);
+                this.db.costDao().update(this.model);
             } else {
                 this.model.setId(AppConstants.getUniqueId());
-                this.f541db.costDao().insert(this.model);
+                this.db.costDao().insert(this.model);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -609,7 +612,6 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         intent.putExtra(EXTRA_POSITION_MAIN, getIntent().getIntExtra(EXTRA_POSITION_MAIN, 0));
         intent.putExtra(EXTRA_MODEL, this.model);
         setResult(-1, intent);
-        MainActivityDashboard.BackPressedAd(this);
     }
 
 
@@ -644,12 +646,12 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
 
     public void updateTotal() {
         try {
-            this.model.setPendingAmount(this.f541db.paymentDao().getTotal(this.model.getId(), 1));
+            this.model.setPendingAmount(this.db.paymentDao().getTotal(this.model.getId(), 1));
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            this.model.setPaidAmount(this.f541db.paymentDao().getTotal(this.model.getId(), 0));
+            this.model.setPaidAmount(this.db.paymentDao().getTotal(this.model.getId(), 0));
         } catch (Exception e2) {
             e2.printStackTrace();
         }
@@ -660,7 +662,6 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         if (this.isUpdateList) {
             openItemList(false);
         } else if (this.isEdit) {
-            MainActivityDashboard.BackPressedAd(this);
         } else {
             super.onBackPressed();
         }
@@ -705,7 +706,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
 
 
     public void initDoc() {
-        this.document = new Document(PageSize.f191A4, 16.0f, 16.0f, 16.0f, 16.0f);
+        this.document = new Document(PageSize.A4, 16.0f, 16.0f, 16.0f, 16.0f);
         this.dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Constants.REPORT_DIRECTORY);
         if (!this.dir.exists()) {
             this.dir.mkdirs();
@@ -848,7 +849,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
 
 
     public void openReportList() {
-        startActivity(new Intent(this, ReportsListActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
+        startActivity(new Intent(this, ReportsListActivity.class));
     }
 
     public class FooterPageEvent extends PdfPageEventHelper {
