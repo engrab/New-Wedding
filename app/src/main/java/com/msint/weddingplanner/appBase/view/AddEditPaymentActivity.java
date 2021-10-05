@@ -19,7 +19,6 @@ import com.msint.weddingplanner.appBase.roomsDB.payment.PaymentRowModel;
 import com.msint.weddingplanner.appBase.utils.AppConstants;
 import com.msint.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.msint.weddingplanner.databinding.ActivityPaymentAddEditBinding;
-import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
 
 import java.util.Calendar;
 
@@ -33,7 +32,7 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
     
 
     /* renamed from: db */
-    public AppDataBase f543db;
+    public AppDataBase db;
     private boolean isEdit = false;
     
     public PaymentRowModel model;
@@ -44,7 +43,7 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
         binding = ActivityPaymentAddEditBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        this.f543db = AppDataBase.getAppDatabase(this);
+        this.db = AppDataBase.getAppDatabase(this);
         setModelDetail();
 //        this.binding.setRowModel(this.model);
     }
@@ -93,7 +92,7 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
 
             public void onOk() {
                 try {
-                    AddEditPaymentActivity.this.f543db.paymentDao().delete(AddEditPaymentActivity.this.model);
+                    AddEditPaymentActivity.this.db.paymentDao().delete(AddEditPaymentActivity.this.model);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -199,9 +198,9 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
             try {
                 this.model.getName().trim();
                 if (this.isEdit) {
-                    this.f543db.paymentDao().update(this.model);
+                    this.db.paymentDao().update(this.model);
                 } else {
-                    this.f543db.paymentDao().insert(this.model);
+                    this.db.paymentDao().insert(this.model);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

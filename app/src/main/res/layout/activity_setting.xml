@@ -1,92 +1,376 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/linMain" android:tag="layout/activity_setting_0" android:layout_width="match_parent" android:layout_height="match_parent">
-    <include android:id="@+id/includedToolbar" layout="@layout/toolbar_binding"/>
-    <androidx.core.widget.NestedScrollView android:id="@+id/scrollRoot" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="wrap_content" android:fillViewport="true" android:layout_weight="1">
-        <LinearLayout android:orientation="vertical" android:id="@+id/linRoot" android:layout_width="match_parent" android:layout_height="wrap_content">
-            <androidx.cardview.widget.CardView android:id="@+id/cardProfile" style="@style/CardViewCommon">
-                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8dp">
-                        <TextView android:textColor="@color/actionbar" android:layout_width="match_parent" android:text="@string/manage_marriages" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                        <TextView android:text="@string/manage_marriages_like_add_or_update_marriage" style="@style/TextViewLightCommon"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:tag="layout/activity_setting_0">
+
+    <include
+        android:id="@+id/includedToolbar"
+        layout="@layout/toolbar_binding" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/linRoot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardProfile"
+                style="@style/CardViewCommon">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextViewTitleCommon"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/manage_marriages"
+                            android:textColor="@color/actionbar" />
+
+                        <TextView
+                            style="@style/TextViewLightCommon"
+                            android:text="@string/manage_marriages_like_add_or_update_marriage" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView android:id="@+id/cardCategory" style="@style/CardViewCommon">
-                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8dp">
-                        <TextView android:textColor="@color/actionbar" android:layout_width="match_parent" android:text="@string/manage_category" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                        <TextView android:text="@string/manage_categories_like_add_or_update_category" style="@style/TextViewLightCommon"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardCategory"
+                style="@style/CardViewCommon">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextViewTitleCommon"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/manage_category"
+                            android:textColor="@color/actionbar" />
+
+                        <TextView
+                            style="@style/TextViewLightCommon"
+                            android:text="@string/manage_categories_like_add_or_update_category" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView android:id="@+id/cardPdfReport" style="@style/CardViewCommon">
-                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8dp">
-                        <TextView android:textColor="@color/actionbar" android:layout_width="match_parent" android:text="Pdf Reports" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                        <TextView android:text="@string/view_your_pdf_reports_and_share_or_delete" style="@style/TextViewLightCommon"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardPdfReport"
+                style="@style/CardViewCommon">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextViewTitleCommon"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:text="Pdf Reports"
+                            android:textColor="@color/actionbar" />
+
+                        <TextView
+                            style="@style/TextViewLightCommon"
+                            android:text="@string/view_your_pdf_reports_and_share_or_delete" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView android:id="@+id/cardLocalBackup" style="@style/CardViewCommon">
-                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8dp">
-                        <TextView android:textColor="@color/actionbar" android:layout_width="match_parent" android:text="@string/local_backup" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                        <TextView android:text="@string/take_local_backup_of_your_data" style="@style/TextViewLightCommon"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardLocalBackup"
+                style="@style/CardViewCommon">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextViewTitleCommon"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/local_backup"
+                            android:textColor="@color/actionbar" />
+
+                        <TextView
+                            style="@style/TextViewLightCommon"
+                            android:text="@string/take_local_backup_of_your_data" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView android:id="@+id/cardRestoreBackups" style="@style/CardViewCommon">
-                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8dp">
-                        <TextView android:textColor="@color/actionbar" android:layout_width="match_parent" android:text="@string/restore_backups" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                        <TextView android:text="@string/restore_data_from_your_backups" style="@style/TextViewLightCommon"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardRestoreBackups"
+                style="@style/CardViewCommon">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextViewTitleCommon"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/restore_backups"
+                            android:textColor="@color/actionbar" />
+
+                        <TextView
+                            style="@style/TextViewLightCommon"
+                            android:text="@string/restore_data_from_your_backups" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView android:id="@+id/cardBackupTransferGuid" style="@style/CardViewCommon">
-                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8dp">
-                        <TextView android:textColor="@color/actionbar" android:layout_width="match_parent" android:text="@string/backup_transfer_guid" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                        <TextView android:text="@string/steps_for_transfer_backup_to_any_destinations" style="@style/TextViewLightCommon"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardBackupTransferGuid"
+                style="@style/CardViewCommon">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextViewTitleCommon"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/backup_transfer_guid"
+                            android:textColor="@color/actionbar" />
+
+                        <TextView
+                            style="@style/TextViewLightCommon"
+                            android:text="@string/steps_for_transfer_backup_to_any_destinations" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView android:id="@+id/cardAdSettings" style="@style/CardViewCommon">
-                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8dp">
-                        <TextView android:textColor="@color/actionbar" android:layout_width="match_parent" android:text="Ads Privacy Policy" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                        <TextView android:text="Change your ads privacy policy" style="@style/TextViewLightCommon"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardAdSettings"
+                style="@style/CardViewCommon">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextViewTitleCommon"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:text="Ads Privacy Policy"
+                            android:textColor="@color/actionbar" />
+
+                        <TextView
+                            style="@style/TextViewLightCommon"
+                            android:text="Change your ads privacy policy" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView android:visibility="gone" style="@style/CardViewCommon">
-                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp">
-                        <TextView android:textColor="@color/actionbar" android:layout_width="match_parent" android:text="Notification Setting" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                        <ImageView android:layout_gravity="right" android:id="@+id/imgEdit" android:visibility="invisible" app:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+
+            <androidx.cardview.widget.CardView
+                style="@style/CardViewCommon"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp">
+
+                        <TextView
+                            style="@style/TextViewTitleCommon"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:text="Notification Setting"
+                            android:textColor="@color/actionbar" />
+
+                        <ImageView
+                            android:id="@+id/imgEdit"
+                            style="@style/ImageViewButtonCommon"
+                            android:layout_gravity="right"
+                            android:visibility="invisible"
+                            app:tint="@color/actionbar" />
                     </LinearLayout>
-                    <View android:background="@color/actionbar" android:layout_width="match_parent" android:layout_height="1dp"/>
-                    <LinearLayout android:orientation="vertical" android:id="@+id/linEdit" android:layout_width="match_parent" android:layout_height="wrap_content">
-                        <LinearLayout android:orientation="horizontal" android:id="@+id/linTask" android:paddingLeft="8dp" android:paddingTop="8dp" android:paddingRight="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-                            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
-                                <TextView android:layout_width="match_parent" android:text="@string/tasks" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                                <TextView android:layout_width="match_parent" android:text="@string/notification_about_pending_tasks" android:layout_weight="1" style="@style/TextViewDescCommon"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/actionbar" />
+
+                    <LinearLayout
+                        android:id="@+id/linEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/linTask"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingRight="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/TextViewTitleCommon"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/tasks" />
+
+                                <TextView
+                                    style="@style/TextViewDescCommon"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/notification_about_pending_tasks" />
                             </LinearLayout>
-                            <ImageView android:layout_gravity="right" android:id="@+id/imgTask" style="@style/ImageViewSwitchCommon"/>
+
+                            <ImageView
+                                android:id="@+id/imgTask"
+                                style="@style/ImageViewSwitchCommon"
+                                android:layout_gravity="right" />
                         </LinearLayout>
-                        <LinearLayout android:orientation="horizontal" android:id="@+id/linInvitation" android:paddingLeft="8dp" android:paddingTop="8dp" android:paddingRight="8dp" android:paddingBottom="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-                            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
-                                <TextView android:layout_width="match_parent" android:text="@string/invitation" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                                <TextView android:layout_width="match_parent" android:text="@string/notification_about_pending_sending_invitation" android:layout_weight="1" style="@style/TextViewDescCommon"/>
+
+                        <LinearLayout
+                            android:id="@+id/linInvitation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingRight="8dp"
+                            android:paddingBottom="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/TextViewTitleCommon"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/invitation" />
+
+                                <TextView
+                                    style="@style/TextViewDescCommon"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/notification_about_pending_sending_invitation" />
                             </LinearLayout>
-                            <ImageView android:layout_gravity="right" android:id="@+id/imgInvitation" style="@style/ImageViewSwitchCommon"/>
+
+                            <ImageView
+                                android:id="@+id/imgInvitation"
+                                style="@style/ImageViewSwitchCommon"
+                                android:layout_gravity="right" />
                         </LinearLayout>
-                        <LinearLayout android:orientation="horizontal" android:id="@+id/linPayment" android:paddingLeft="8dp" android:paddingTop="8dp" android:paddingRight="8dp" android:paddingBottom="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-                            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
-                                <TextView android:layout_width="match_parent" android:text="@string/payment" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                                <TextView android:layout_width="match_parent" android:text="@string/notification_about_pending_payment" android:layout_weight="1" style="@style/TextViewDescCommon"/>
+
+                        <LinearLayout
+                            android:id="@+id/linPayment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingRight="8dp"
+                            android:paddingBottom="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/TextViewTitleCommon"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/payment" />
+
+                                <TextView
+                                    style="@style/TextViewDescCommon"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/notification_about_pending_payment" />
                             </LinearLayout>
-                            <ImageView android:layout_gravity="right" android:id="@+id/imgPayment" style="@style/ImageViewSwitchCommon"/>
+
+                            <ImageView
+                                android:id="@+id/imgPayment"
+                                style="@style/ImageViewSwitchCommon"
+                                android:layout_gravity="right" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

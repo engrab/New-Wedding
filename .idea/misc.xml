@@ -8,11 +8,14 @@
         <entry key="app/src/main/res/drawable/ic_arrow_drop_down_black.xml" value="0.184375" />
         <entry key="app/src/main/res/layout/activity_backup_transfer_guid.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_cost_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_guest_add_edit.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_guest_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main_dashboard.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_profile_add_edit.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_profile_add_edit.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_profile_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_restore.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_task_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_task_summary.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_vendor_add_edit.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_vendor_list.xml" value="0.1" />
