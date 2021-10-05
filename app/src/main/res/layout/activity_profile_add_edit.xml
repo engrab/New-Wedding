@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/linMain" android:tag="layout/activity_profile_add_edit_0" android:layout_width="match_parent" android:layout_height="match_parent">
+    <include android:id="@+id/includedToolbar" layout="@layout/toolbar_binding"/>
+    <android.support.p001v4.widget.NestedScrollView android:id="@+id/scrollRoot" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="wrap_content" android:fillViewport="true" android:layout_weight="1">
+        <LinearLayout android:orientation="vertical" android:id="@+id/linRoot" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <androidx.cardview.widget.CardView style="@style/CardViewCommon">
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp">
+                        <TextView android:textColor="@color/actionbar" android:layout_width="match_parent" android:text="@string/your_detail" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
+                        <ImageView android:layout_gravity="right" android:id="@+id/imgPickOwn" android:src="@drawable/phone_book" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                    </LinearLayout>
+                    <View android:background="@color/actionbar" android:layout_width="match_parent" android:layout_height="1dp"/>
+                    <LinearLayout android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                            <TextView android:layout_width="match_parent" android:text="@string/name" android:layout_weight="1" style="@style/TextViewLightCommon"/>
+                            <EditText android:id="@+id/etName" android:tag="binding_1" android:layout_marginBottom="4dp" android:hint="@string/name" android:singleLine="true" style="@style/EditTextCommon"/>
+                        </LinearLayout>
+                        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp">
+                            <TextView android:gravity="center" android:id="@+id/txtMale" android:tag="binding_2" android:text="@string/male" android:layout_weight="1" style="@style/TextViewLightSquareCommon"/>
+                            <TextView android:gravity="center" android:id="@+id/txtFemale" android:tag="binding_3" android:text="@string/female" android:layout_weight="1" style="@style/TextViewLightSquareCommon"/>
+                        </LinearLayout>
+                        <LinearLayout android:orientation="vertical" android:paddingTop="8dp" android:paddingBottom="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
+                                    <TextView android:layout_width="match_parent" android:text="@string/phone_number" android:layout_weight="1" style="@style/TextViewLightCommon"/>
+                                    <EditText android:id="@+id/etPhoneNumber" android:tag="binding_4" android:layout_marginBottom="4dp" android:hint="@string/phone_number" android:singleLine="true" android:inputType="phone" style="@style/EditTextCommon"/>
+                                </LinearLayout>
+                                <ImageView android:layout_gravity="bottom|right|center_vertical|center_horizontal|center" android:id="@+id/imgPhone" android:src="@drawable/call" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                            </LinearLayout>
+                            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
+                                    <TextView android:layout_width="match_parent" android:text="@string/email_id" android:layout_weight="1" style="@style/TextViewLightCommon"/>
+                                    <EditText android:id="@+id/etEmailId" android:tag="binding_5" android:layout_marginBottom="4dp" android:hint="@string/email_id" android:singleLine="true" android:inputType="textEmailAddress" style="@style/EditTextCommon"/>
+                                </LinearLayout>
+                                <ImageView android:layout_gravity="bottom|right|center_vertical|center_horizontal|center" android:id="@+id/imgEmail" android:src="@drawable/email" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                            </LinearLayout>
+                            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
+                                    <TextView android:layout_width="match_parent" android:text="@string/address" android:layout_weight="1" style="@style/TextViewLightCommon"/>
+                                    <EditText android:id="@+id/etAddress" android:tag="binding_6" android:layout_marginBottom="4dp" android:hint="@string/address" android:minLines="2" android:inputType="textMultiLine" style="@style/EditTextCommon"/>
+                                </LinearLayout>
+                                <ImageView android:layout_gravity="bottom|right|center_vertical|center_horizontal|center" android:id="@+id/imgAddress" android:src="@drawable/address" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView style="@style/CardViewCommon">
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp">
+                        <TextView android:textColor="@color/actionbar" android:layout_width="match_parent" android:text="@string/partner_detail" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
+                        <ImageView android:layout_gravity="right" android:id="@+id/imgPickPartner" android:src="@drawable/phone_book" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                    </LinearLayout>
+                    <View android:background="@color/actionbar" android:layout_width="match_parent" android:layout_height="1dp"/>
+                    <LinearLayout android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                            <TextView android:layout_width="match_parent" android:text="@string/name" android:layout_weight="1" style="@style/TextViewLightCommon"/>
+                            <EditText android:id="@+id/etNamePartner" android:tag="binding_7" android:layout_marginBottom="4dp" android:hint="@string/name" android:singleLine="true" style="@style/EditTextCommon"/>
+                        </LinearLayout>
+                        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp">
+                            <TextView android:gravity="center" android:id="@+id/txtMalePartner" android:tag="binding_8" android:text="@string/male" android:layout_weight="1" style="@style/TextViewLightSquareCommon"/>
+                            <TextView android:gravity="center" android:id="@+id/txtFemalePartner" android:tag="binding_9" android:text="@string/female" android:layout_weight="1" style="@style/TextViewLightSquareCommon"/>
+                        </LinearLayout>
+                        <LinearLayout android:orientation="vertical" android:id="@+id/linEditContactPartner" android:paddingTop="8dp" android:paddingBottom="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
+                                    <TextView android:layout_width="match_parent" android:text="@string/phone_number" android:layout_weight="1" style="@style/TextViewLightCommon"/>
+                                    <EditText android:id="@+id/etPhoneNumberPartner" android:tag="binding_10" android:layout_marginBottom="4dp" android:hint="@string/phone_number" android:singleLine="true" android:inputType="phone" style="@style/EditTextCommon"/>
+                                </LinearLayout>
+                                <ImageView android:layout_gravity="bottom|right|center_vertical|center_horizontal|center" android:id="@+id/imgPhonePartner" android:src="@drawable/call" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                            </LinearLayout>
+                            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
+                                    <TextView android:layout_width="match_parent" android:text="@string/email_id" android:layout_weight="1" style="@style/TextViewLightCommon"/>
+                                    <EditText android:id="@+id/etEmailIdPartner" android:tag="binding_11" android:layout_marginBottom="4dp" android:hint="@string/email_id" android:singleLine="true" android:inputType="textEmailAddress" style="@style/EditTextCommon"/>
+                                </LinearLayout>
+                                <ImageView android:layout_gravity="bottom|right|center_vertical|center_horizontal|center" android:id="@+id/imgEmailPartner" android:src="@drawable/email" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                            </LinearLayout>
+                            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
+                                    <TextView android:layout_width="match_parent" android:text="@string/address" android:layout_weight="1" style="@style/TextViewLightCommon"/>
+                                    <EditText android:id="@+id/etAddressPartner" android:tag="binding_12" android:layout_marginBottom="4dp" android:hint="@string/address" android:minLines="2" android:inputType="textMultiLine" style="@style/EditTextCommon"/>
+                                </LinearLayout>
+                                <ImageView android:layout_gravity="bottom|right|center_vertical|center_horizontal|center" android:id="@+id/imgAddressPartner" android:src="@drawable/address" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView android:layout_marginBottom="16dp" style="@style/CardViewCommon">
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp">
+                        <TextView android:textColor="@color/actionbar" android:layout_width="match_parent" android:text="@string/wedding_detail" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
+                        <ImageView android:layout_gravity="right" android:visibility="invisible" android:src="@drawable/phone_book" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                    </LinearLayout>
+                    <View android:background="@color/actionbar" android:layout_width="match_parent" android:layout_height="1dp"/>
+                    <LinearLayout android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                            <TextView android:layout_width="match_parent" android:text="@string/name" android:layout_weight="1" style="@style/TextViewLightCommon"/>
+                            <EditText android:id="@+id/etNameWedding" android:tag="binding_13" android:layout_marginBottom="4dp" android:hint="@string/name" android:singleLine="true" style="@style/EditTextCommon"/>
+                        </LinearLayout>
+                        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4dp">
+                            <TextView android:layout_width="match_parent" android:text="@string/ceremony_date" android:layout_weight="1" style="@style/TextViewLightCommon"/>
+                            <TextView android:id="@+id/txtDate" android:tag="binding_14" android:hint="@string/select_date" style="@style/TextViewLightSquareCommon"/>
+                        </LinearLayout>
+                        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4dp">
+                            <TextView android:layout_width="match_parent" android:text="@string/ceremony_time" android:layout_weight="1" style="@style/TextViewLightCommon"/>
+                            <TextView android:id="@+id/txtTime" android:tag="binding_15" android:hint="@string/ceremony_time" style="@style/TextViewLightSquareCommon"/>
+                        </LinearLayout>
+                        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4dp">
+                            <TextView android:layout_width="match_parent" android:text="@string/budget" android:layout_weight="1" style="@style/TextViewLightCommon"/>
+                            <EditText android:id="@+id/etBudget" android:maxWidth="64dp" android:minWidth="24dp" android:hint="@string/budget" android:maxLength="10" android:inputType="numberDecimal" style="@style/EditTextCommon"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <Button android:id="@+id/btnAddEdit" android:visibility="gone" android:text="Save" style="@style/ButtonCommon"/>
+        </LinearLayout>
+    </android.support.p001v4.widget.NestedScrollView>
+</LinearLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:tag="layout/row_selection_item_0" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:layout_marginRight="8dp">
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@+id/linMain" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1">
+        <TextView android:textSize="16dp" android:textStyle="bold" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:tag="binding_1" android:padding="12dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:fontFamily="@font/regular"/>
+        <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1dp"/>
+    </LinearLayout>
+</LinearLayout>

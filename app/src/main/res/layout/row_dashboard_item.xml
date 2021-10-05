@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:tag="layout/row_dashboard_item_0" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
+    <androidx.cardview.widget.CardView android:id="@+id/cardTasks" app:cardCornerRadius="12dp" style="@style/CardViewCommon">
+        <LinearLayout android:id="@+id/linSub" style="@style/LinearLayoutDashCard">
+            <ImageView android:tag="binding_1" style="@style/ImageViewDashCard"/>
+            <TextView android:tag="binding_2" style="@style/TextViewDashCard"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

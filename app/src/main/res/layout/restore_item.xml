@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:layout_marginBottom="4dp">
+        <ImageView android:padding="4dp" android:src="@drawable/database" style="@style/ImageViewButtonSmall"/>
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
+            <TextView android:ellipsize="end" android:layout_gravity="left" android:id="@+id/txtName" android:text="txtName" android:singleLine="true" style="@style/TextViewTitleCommon"/>
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:ellipsize="end" android:id="@+id/txtDate" android:layout_marginRight="16dp" android:text="txtDate" android:singleLine="true" style="@style/TextViewDescCommon"/>
+                <TextView android:textColor="@color/textColorBold" android:ellipsize="end" android:id="@+id/txtSize" android:text="txtSize" android:singleLine="true" android:fontFamily="@font/semibold" style="@style/TextViewDescCommon"/>
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:id="@+id/imgRestore" android:padding="4dp" android:visibility="gone" android:src="@drawable/restore" android:tint="@color/blue" style="@style/ImageViewButtonSmall"/>
+        <ImageView android:id="@+id/imgDelete" android:padding="4dp" android:src="@drawable/delete" android:tint="@color/red" style="@style/ImageViewButtonSmall"/>
+    </LinearLayout>
+    <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginBottom="4dp"/>
+</LinearLayout>

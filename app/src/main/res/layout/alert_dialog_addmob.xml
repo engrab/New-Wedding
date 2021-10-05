@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="4dp" app:cardCornerRadius="8dp">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8dp">
+        <TextView android:textSize="18dp" android:textStyle="bold" android:textColor="@color/addMobTextColor" android:id="@+id/txtTitle" android:padding="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/app_name"/>
+        <TextView android:id="@+id/txtDesc1" android:padding="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/regular"/>
+        <TextView android:textSize="18dp" android:textStyle="bold" android:textColor="@color/addMobTextColor" android:id="@+id/txtDesc2" android:padding="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/txtDesc3" android:padding="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/regular"/>
+        <RadioGroup android:id="@+id/radioGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:checkedButton="@+id/radioPersonalized">
+            <RadioButton android:theme="@style/AppTheme.Dialog.Alert.AddMob" android:textColor="@color/addMobTextColor" android:id="@+id/radioPersonalized" android:background="@drawable/admob_rounded_line" android:padding="12dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="4dp" android:text="@string/personalized"/>
+            <RadioButton android:theme="@style/AppTheme.Dialog.Alert.AddMob" android:textColor="@color/addMobTextColor" android:id="@+id/radioNonPersonalized" android:background="@drawable/admob_rounded_line" android:padding="12dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="4dp" android:checked="false" android:text="@string/non_personalized"/>
+        </RadioGroup>
+        <RelativeLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:layout_marginBottom="10dp">
+            <Button android:textColor="@color/white" android:id="@+id/btnCancel" android:background="@drawable/admob_btn_selector_rounded_actionbar" android:paddingLeft="16dp" android:paddingRight="16dp" android:layout_width="wrap_content" android:layout_height="42dp" android:layout_marginLeft="16dp" android:text="@string/cancel" android:layout_alignParentLeft="true"/>
+            <Button android:textColor="@color/white" android:id="@+id/btnOk" android:background="@drawable/admob_btn_selector_rounded_actionbar" android:paddingLeft="16dp" android:paddingRight="16dp" android:layout_width="wrap_content" android:layout_height="42dp" android:layout_marginRight="16dp" android:text="@string/ok" android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
