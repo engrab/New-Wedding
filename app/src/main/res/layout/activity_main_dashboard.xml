@@ -78,7 +78,7 @@
             <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="6dp" android:layout_marginRight="6dp" android:layout_marginBottom="6dp">
                 <androidx.cardview.widget.CardView android:id="@+id/cardDashboard" android:clickable="true" android:foreground="?android:attr/selectableItemBackground" app:cardElevation="2dp" style="@style/CardViewDash">
                     <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:clickable="false" android:layout_width="wrap_content" style="@style/LinearLayoutDashCard">
-                        <ImageView android:layout_gravity="center" android:layout_width="32dp" android:layout_height="32dp" android:layout_marginRight="8dp" android:src="@drawable/drawer_dashboard" android:tint="@color/actionbar"/>
+                        <ImageView android:layout_gravity="center" android:layout_width="32dp" android:layout_height="32dp" android:layout_marginRight="8dp" android:src="@drawable/drawer_dashboard" app:tint="@color/actionbar"/>
                         <TextView android:textColor="@color/actionbar" android:text="@string/drawerTitleHome" style="@style/TextViewDashCard"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

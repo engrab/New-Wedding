@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../.gradle/caches/transforms-3/e759884e8e1539e68246ec4d8729cc98/transformed/core-1.5.0/res/layout-v21/notification_action.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_arrow_drop_down_black.xml" value="0.184375" />
         <entry key="app/src/main/res/layout/activity_backup_transfer_guid.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/alert_dialog_addmob.xml" value="0.67" />
         <entry key="app/src/main/res/layout/design_bottom_navigation_item.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/notification_action.xml" value="0.1" />
         <entry key="app/src/main/res/layout/notification_action_tombstone.xml" value="0.1" />
@@ -14,7 +16,7 @@
         <entry key="app/src/main/res/layout/select_dialog_multichoice_material.xml" value="0.1" />
         <entry key="app/src/main/res/layout/select_dialog_singlechoice_material.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/support_simple_spinner_dropdown_item.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/toolbar_binding.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/toolbar_binding.xml" value="0.1" />
         <entry key="app/src/main/res/layout/zip_list_dialog.xml" value="0.1" />
         <entry key="app/src/main/res/menu/backup_menu.xml" value="0.1640625" />
         <entry key="app/src/main/res/menu/menu_add_edit.xml" value="0.1640625" />

@@ -32,11 +32,11 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
     public SubTaskRowModel model;
     public ToolbarModel toolbarModel;
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
     }
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
         this.binding = (ActivitySubTaskAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_sub_task_add_edit);
         this.f545db = AppDataBase.getAppDatabase(this);
@@ -57,7 +57,7 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(this.isEdit ? "Edit Subtask" : "Add Subtask");
@@ -97,7 +97,7 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
         });
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgDelete.setOnClickListener(this);

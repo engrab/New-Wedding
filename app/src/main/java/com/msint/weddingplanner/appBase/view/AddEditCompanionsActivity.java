@@ -8,8 +8,8 @@ import android.database.Cursor;
 
 import android.net.Uri;
 import android.provider.ContactsContract;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,15 +44,15 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
     public GuestRowModel model;
     public ToolbarModel toolbarModel;
 
-    /* access modifiers changed from: protected */
+
     public void callApi() {
     }
 
-    /* access modifiers changed from: protected */
+
     public void fillData() {
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
     }
 
@@ -62,11 +62,11 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
     public void onRationaleDenied(int i) {
     }
 
-    /* access modifiers changed from: protected */
+
     public void setRecycler() {
     }
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
         this.binding = (ActivityGuestAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_guest_add_edit);
         this.f540db = AppDataBase.getAppDatabase(this);
@@ -87,7 +87,7 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(this.isEdit ? "Edit Companion" : "Add Companion");
@@ -133,7 +133,7 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
         });
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgDelete.setOnClickListener(this);
@@ -310,7 +310,7 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void onActivityResult(int i, int i2, @Nullable Intent intent) {
         super.onActivityResult(i, i2, intent);
         if (i2 == -1 && i == 1101) {

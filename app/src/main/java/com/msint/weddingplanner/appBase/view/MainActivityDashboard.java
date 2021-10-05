@@ -7,7 +7,7 @@ import android.content.Intent;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,14 +36,14 @@ public class MainActivityDashboard extends BaseActivityBinding {
     public ActivityMainDashboardBinding binding;
     private Timer timer;
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
         maincontext = this;
         this.binding = (ActivityMainDashboardBinding) DataBindingUtil.setContentView(this, R.layout.activity_main_dashboard);
         LoadAd();
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         setSupportActionBar(this.binding.toolbar);
     }
@@ -91,7 +91,7 @@ public class MainActivityDashboard extends BaseActivityBinding {
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.cardTasks.setOnClickListener(this);
         this.binding.cardGuests.setOnClickListener(this);
@@ -122,7 +122,7 @@ public class MainActivityDashboard extends BaseActivityBinding {
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
         setProfile();
     }
@@ -164,7 +164,7 @@ public class MainActivityDashboard extends BaseActivityBinding {
         });
     }
 
-    /* access modifiers changed from: protected */
+
     public void onActivityResult(int i, int i2, @Nullable Intent intent) {
         super.onActivityResult(i, i2, intent);
         if (i2 == -1 && i == 1002) {

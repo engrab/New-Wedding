@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/linMain" android:tag="layout/row_drawer_item_0" android:layout_width="match_parent" android:layout_height="wrap_content">
     <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@+id/linSub" android:padding="4dp" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="4dp" android:layout_weight="1">
-        <ImageView android:gravity="center" android:layout_gravity="center" android:id="@+id/imgIcon" android:tag="binding_1" android:padding="4dp" android:layout_width="32dp" android:layout_height="32dp" android:layout_margin="4dp" android:tint="@color/actionbar"/>
+        <ImageView android:gravity="center" android:layout_gravity="center" android:id="@+id/imgIcon" android:tag="binding_1" android:padding="4dp" android:layout_width="32dp" android:layout_height="32dp" android:layout_margin="4dp" app:tint="@color/actionbar"/>
         <TextView android:textSize="16dp" android:textStyle="bold" android:textColor="@color/actionbar" android:ellipsize="end" android:gravity="left|center_vertical|center_horizontal|center" android:layout_gravity="center" android:tag="binding_2" android:padding="4dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="4dp" android:layout_weight="1" android:fontFamily="@font/semibold"/>
     </LinearLayout>
 </LinearLayout>

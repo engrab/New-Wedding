@@ -7,7 +7,7 @@
                 <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp">
                         <TextView android:textColor="@color/actionbar" android:layout_width="match_parent" android:text="@string/task_details" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                        <ImageView android:layout_gravity="right" android:id="@+id/imgEdit" android:tag="binding_1" android:visibility="invisible" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                        <ImageView android:layout_gravity="right" android:id="@+id/imgEdit" android:tag="binding_1" android:visibility="invisible" app:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
                     </LinearLayout>
                     <View android:background="@color/actionbar" android:layout_width="match_parent" android:layout_height="1dp"/>
                     <LinearLayout android:orientation="vertical" android:id="@+id/linEdit" android:tag="binding_2" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
@@ -18,7 +18,7 @@
                         <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4dp">
                             <TextView android:layout_width="match_parent" android:text="@string/category" android:layout_weight="1" style="@style/TextViewLightCommon"/>
                             <LinearLayout android:id="@+id/linCategory" android:tag="binding_4" android:background="@drawable/et_rounded_square_normal" android:saveEnabled="false" android:layout_width="match_parent" android:layout_height="wrap_content">
-                                <ImageView android:id="@+id/imgIcon" android:tag="binding_5" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                                <ImageView android:id="@+id/imgIcon" android:tag="binding_5" app:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
                                 <TextView android:ellipsize="end" android:tag="binding_6" android:layout_width="match_parent" android:singleLine="true" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
                                 <ImageView android:padding="12dp" android:src="@drawable/down" style="@style/ImageViewButtonCommon"/>
                             </LinearLayout>
@@ -45,13 +45,13 @@
                 <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp">
                         <TextView android:textColor="@color/actionbar" android:layout_width="match_parent" android:text="@string/subtasks" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                        <ImageView android:layout_gravity="right" android:id="@+id/imgAdd" android:src="@drawable/add" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                        <ImageView android:layout_gravity="right" android:id="@+id/imgAdd" android:src="@drawable/add" app:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
                     </LinearLayout>
                     <View android:background="@color/actionbar" android:layout_width="match_parent" android:layout_height="1dp"/>
                     <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
                         <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
                             <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/linNoData" android:padding="8dp" android:layout_width="match_parent" android:layout_height="match_parent">
-                                <ImageView android:id="@+id/imgAddNoData" android:padding="8dp" android:layout_width="64dp" android:layout_height="64dp" android:src="@drawable/add" android:tint="@color/actionbar"/>
+                                <ImageView android:id="@+id/imgAddNoData" android:padding="8dp" android:layout_width="64dp" android:layout_height="64dp" android:src="@drawable/add" app:tint="@color/actionbar"/>
                                 <TextView android:layout_marginBottom="8dp" android:text="@string/no_subtask_found" style="@style/TextViewDescCommon"/>
                             </LinearLayout>
                             <LinearLayout android:id="@+id/linData" android:layout_width="match_parent" android:layout_height="wrap_content">

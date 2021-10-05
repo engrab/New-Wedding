@@ -11,14 +11,14 @@
                             <LinearLayout android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
                                     <TextView android:textColor="@color/red" android:id="@+id/txtTaskPending" android:text="500000000" style="@style/TextViewTitleCountDash"/>
-                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_tasks" android:tint="@color/red" style="@style/ImageViewButtonSmall"/>
+                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_tasks" app:tint="@color/red" style="@style/ImageViewButtonSmall"/>
                                 </LinearLayout>
                                 <TextView android:textColor="@color/red" android:layout_width="match_parent" android:text="Pending" android:layout_weight="1" style="@style/TextViewTitleStatusDash"/>
                             </LinearLayout>
                             <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1dp"/>
                             <LinearLayout android:paddingLeft="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <TextView android:textColor="@color/textColorLight" android:layout_width="match_parent" android:text="View" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                                <ImageView android:layout_gravity="right" android:src="@drawable/right" android:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
+                                <ImageView android:layout_gravity="right" android:src="@drawable/right" app:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
                             </LinearLayout>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -27,14 +27,14 @@
                             <LinearLayout android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
                                     <TextView android:textColor="@color/green" android:id="@+id/txtTaskCompleted" android:text="500000000" style="@style/TextViewTitleCountDash"/>
-                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_tasks" android:tint="@color/green" style="@style/ImageViewButtonSmall"/>
+                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_tasks" app:tint="@color/green" style="@style/ImageViewButtonSmall"/>
                                 </LinearLayout>
                                 <TextView android:textColor="@color/green" android:layout_width="match_parent" android:text="Completed" android:layout_weight="1" style="@style/TextViewTitleStatusDash"/>
                             </LinearLayout>
                             <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1dp"/>
                             <LinearLayout android:paddingLeft="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <TextView android:textColor="@color/textColorLight" android:layout_width="match_parent" android:text="View" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                                <ImageView android:layout_gravity="right" android:src="@drawable/right" android:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
+                                <ImageView android:layout_gravity="right" android:src="@drawable/right" app:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
                             </LinearLayout>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -48,14 +48,14 @@
                             <LinearLayout android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
                                     <TextView android:textColor="@color/red" android:id="@+id/txtGuestPending" android:text="500000000" style="@style/TextViewTitleCountDash"/>
-                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_guests" android:tint="@color/red" style="@style/ImageViewButtonSmall"/>
+                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_guests" app:tint="@color/red" style="@style/ImageViewButtonSmall"/>
                                 </LinearLayout>
                                 <TextView android:textColor="@color/red" android:layout_width="match_parent" android:text="Not send" android:layout_weight="1" style="@style/TextViewTitleStatusDash"/>
                             </LinearLayout>
                             <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1dp"/>
                             <LinearLayout android:paddingLeft="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <TextView android:textColor="@color/textColorLight" android:layout_width="match_parent" android:text="View" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                                <ImageView android:layout_gravity="right" android:src="@drawable/right" android:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
+                                <ImageView android:layout_gravity="right" android:src="@drawable/right" app:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
                             </LinearLayout>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -64,14 +64,14 @@
                             <LinearLayout android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
                                     <TextView android:textColor="@color/green" android:id="@+id/txtGuestCompleted" android:text="500000000" style="@style/TextViewTitleCountDash"/>
-                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_guests" android:tint="@color/green" style="@style/ImageViewButtonSmall"/>
+                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_guests" app:tint="@color/green" style="@style/ImageViewButtonSmall"/>
                                 </LinearLayout>
                                 <TextView android:textColor="@color/green" android:layout_width="match_parent" android:text="Sent" android:layout_weight="1" style="@style/TextViewTitleStatusDash"/>
                             </LinearLayout>
                             <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1dp"/>
                             <LinearLayout android:paddingLeft="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <TextView android:textColor="@color/textColorLight" android:layout_width="match_parent" android:text="View" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                                <ImageView android:layout_gravity="right" android:src="@drawable/right" android:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
+                                <ImageView android:layout_gravity="right" android:src="@drawable/right" app:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
                             </LinearLayout>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -85,14 +85,14 @@
                             <LinearLayout android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
                                     <TextView android:textColor="@color/red" android:id="@+id/txtCostPending" android:text="500000000" style="@style/TextViewTitleCountDash"/>
-                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_budgets" android:tint="@color/red" style="@style/ImageViewButtonSmall"/>
+                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_budgets" app:tint="@color/red" style="@style/ImageViewButtonSmall"/>
                                 </LinearLayout>
                                 <TextView android:textColor="@color/red" android:layout_width="match_parent" android:text="Pending" android:layout_weight="1" style="@style/TextViewTitleStatusDash"/>
                             </LinearLayout>
                             <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1dp"/>
                             <LinearLayout android:paddingLeft="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <TextView android:textColor="@color/textColorLight" android:layout_width="match_parent" android:text="View" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                                <ImageView android:layout_gravity="right" android:src="@drawable/right" android:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
+                                <ImageView android:layout_gravity="right" android:src="@drawable/right" app:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
                             </LinearLayout>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -101,14 +101,14 @@
                             <LinearLayout android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
                                     <TextView android:textColor="@color/green" android:id="@+id/txtCostCompleted" android:text="500000000" style="@style/TextViewTitleCountDash"/>
-                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_budgets" android:tint="@color/green" style="@style/ImageViewButtonSmall"/>
+                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_budgets" app:tint="@color/green" style="@style/ImageViewButtonSmall"/>
                                 </LinearLayout>
                                 <TextView android:textColor="@color/green" android:layout_width="match_parent" android:text="Paid" android:layout_weight="1" style="@style/TextViewTitleStatusDash"/>
                             </LinearLayout>
                             <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1dp"/>
                             <LinearLayout android:paddingLeft="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <TextView android:textColor="@color/textColorLight" android:layout_width="match_parent" android:text="View" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                                <ImageView android:layout_gravity="right" android:src="@drawable/right" android:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
+                                <ImageView android:layout_gravity="right" android:src="@drawable/right" app:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
                             </LinearLayout>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -122,14 +122,14 @@
                             <LinearLayout android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
                                     <TextView android:textColor="@color/red" android:id="@+id/txtVendorPending" android:text="500000000" style="@style/TextViewTitleCountDash"/>
-                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_vendors" android:tint="@color/red" style="@style/ImageViewButtonSmall"/>
+                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_vendors" app:tint="@color/red" style="@style/ImageViewButtonSmall"/>
                                 </LinearLayout>
                                 <TextView android:textColor="@color/red" android:layout_width="match_parent" android:text="Pending" android:layout_weight="1" style="@style/TextViewTitleStatusDash"/>
                             </LinearLayout>
                             <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1dp"/>
                             <LinearLayout android:paddingLeft="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <TextView android:textColor="@color/textColorLight" android:layout_width="match_parent" android:text="View" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                                <ImageView android:layout_gravity="right" android:src="@drawable/right" android:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
+                                <ImageView android:layout_gravity="right" android:src="@drawable/right" app:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
                             </LinearLayout>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -138,14 +138,14 @@
                             <LinearLayout android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
                                     <TextView android:textColor="@color/green" android:id="@+id/txtVendorCompleted" android:text="500000000" style="@style/TextViewTitleCountDash"/>
-                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_vendors" android:tint="@color/green" style="@style/ImageViewButtonSmall"/>
+                                    <ImageView android:padding="4dp" android:src="@drawable/drawer_vendors" app:tint="@color/green" style="@style/ImageViewButtonSmall"/>
                                 </LinearLayout>
                                 <TextView android:textColor="@color/green" android:layout_width="match_parent" android:text="Paid" android:layout_weight="1" style="@style/TextViewTitleStatusDash"/>
                             </LinearLayout>
                             <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1dp"/>
                             <LinearLayout android:paddingLeft="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <TextView android:textColor="@color/textColorLight" android:layout_width="match_parent" android:text="View" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                                <ImageView android:layout_gravity="right" android:src="@drawable/right" android:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
+                                <ImageView android:layout_gravity="right" android:src="@drawable/right" app:tint="@color/textColorLight" style="@style/ImageViewButtonSmall"/>
                             </LinearLayout>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>

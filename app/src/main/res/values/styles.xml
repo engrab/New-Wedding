@@ -244,5 +244,9 @@
         <item name="android:singleLine">true</item>
         <item name="android:fontFamily">@font/regular</item>
     </style>
-
+    <style name="AppTheme.AddMob">
+        <item name="colorAccent">@color/addMobTextColor</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+    </style>
 </resources>

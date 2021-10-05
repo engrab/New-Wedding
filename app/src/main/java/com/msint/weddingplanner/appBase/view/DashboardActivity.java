@@ -2,7 +2,7 @@ package com.msint.weddingplanner.appBase.view;
 
 import android.content.Intent;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 import com.msint.weddingplanner.R;
@@ -19,20 +19,20 @@ public class DashboardActivity extends BaseActivityBinding {
     private AppDataBase f551db;
     private ToolbarModel toolbarModel;
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
         this.binding = (ActivityDashboardBinding) DataBindingUtil.setContentView(this, R.layout.activity_dashboard);
         this.f551db = AppDataBase.getAppDatabase(this);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.drawerTitleHome));
         this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.cardTaskPending.setOnClickListener(this);
@@ -79,7 +79,7 @@ public class DashboardActivity extends BaseActivityBinding {
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
         setTotals();
     }
@@ -175,7 +175,7 @@ public class DashboardActivity extends BaseActivityBinding {
         startActivityForResult(intent, 1002);
     }
 
-    /* access modifiers changed from: protected */
+
     public void onActivityResult(int i, int i2, @Nullable Intent intent) {
         super.onActivityResult(i, i2, intent);
         if (i2 == -1 && i == 1002) {

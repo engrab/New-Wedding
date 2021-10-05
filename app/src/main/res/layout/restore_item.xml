@@ -9,8 +9,8 @@
                 <TextView android:textColor="@color/textColorBold" android:ellipsize="end" android:id="@+id/txtSize" android:text="txtSize" android:singleLine="true" android:fontFamily="@font/semibold" style="@style/TextViewDescCommon"/>
             </LinearLayout>
         </LinearLayout>
-        <ImageView android:id="@+id/imgRestore" android:padding="4dp" android:visibility="gone" android:src="@drawable/restore" android:tint="@color/blue" style="@style/ImageViewButtonSmall"/>
-        <ImageView android:id="@+id/imgDelete" android:padding="4dp" android:src="@drawable/delete" android:tint="@color/red" style="@style/ImageViewButtonSmall"/>
+        <ImageView android:id="@+id/imgRestore" android:padding="4dp" android:visibility="gone" android:src="@drawable/restore" app:tint="@color/blue" style="@style/ImageViewButtonSmall"/>
+        <ImageView android:id="@+id/imgDelete" android:padding="4dp" android:src="@drawable/delete" app:tint="@color/red" style="@style/ImageViewButtonSmall"/>
     </LinearLayout>
     <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginBottom="4dp"/>
 </LinearLayout>

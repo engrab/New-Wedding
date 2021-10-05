@@ -20,7 +20,7 @@ public class BackgroundAsync extends AsyncTask {
         this.dialog = new ProgressDialog(context2);
     }
 
-    /* access modifiers changed from: protected */
+
     public void onPreExecute() {
         if (this.isProgress) {
             try {
@@ -41,13 +41,13 @@ public class BackgroundAsync extends AsyncTask {
         super.onPreExecute();
     }
 
-    /* access modifiers changed from: protected */
+
     public Object doInBackground(Object[] objArr) {
         this.onAsyncBackground.doInBackground();
         return 0;
     }
 
-    /* access modifiers changed from: protected */
+
     public void onPostExecute(Object obj) {
         try {
             if (this.dialog != null && this.dialog.isShowing()) {

@@ -107,7 +107,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
     public ToolbarModel toolbarModel;
     private PdfWriter writer = null;
 
-    /* access modifiers changed from: protected */
+
     public void callApi() {
     }
 
@@ -117,7 +117,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
     public void onRationaleDenied(int i) {
     }
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
         this.binding = (ActivityCostAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_cost_add_edit);
         this.f541db = AppDataBase.getAppDatabase(this);
@@ -140,7 +140,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         this.model.setArrayList(new ArrayList());
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(this.isEdit ? "Edit Budget" : "Add Budget");
@@ -186,7 +186,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         });
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgDelete.setOnClickListener(this);
@@ -245,7 +245,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
         setEditTextValue();
         setEditTextChange();
@@ -504,12 +504,12 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void fillData() {
         setViewVisibility();
     }
 
-    /* access modifiers changed from: protected */
+
     public void setRecycler() {
         this.binding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.binding.recycler.setAdapter(new PaymentAdapter(this.context, this.model.getArrayList(), new RecyclerItemClick() {
@@ -612,7 +612,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         MainActivityDashboard.BackPressedAd(this);
     }
 
-    /* access modifiers changed from: protected */
+
     public void onActivityResult(int i, int i2, @Nullable Intent intent) {
         super.onActivityResult(i, i2, intent);
         if (i2 == -1 && i == 1002) {

@@ -6,7 +6,7 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 @Entity(tableName = "subTaskList")
 public class SubTaskRowModel extends BaseObservable implements Parcelable {
@@ -22,8 +22,8 @@ public class SubTaskRowModel extends BaseObservable implements Parcelable {
     @PrimaryKey
     @NonNull
 
-    /* renamed from: id */
-    private String f537id;
+
+    private String id;
     private boolean isPending;
     private String name;
     private String note;
@@ -41,11 +41,11 @@ public class SubTaskRowModel extends BaseObservable implements Parcelable {
 
     @NonNull
     public String getId() {
-        return this.f537id;
+        return this.id;
     }
 
     public void setId(@NonNull String str) {
-        this.f537id = str;
+        this.id = str;
     }
 
     public String getTaskId() {
@@ -95,7 +95,7 @@ public class SubTaskRowModel extends BaseObservable implements Parcelable {
         this.note = "";
         boolean z = true;
         this.isPending = true;
-        this.f537id = parcel.readString();
+        this.id = parcel.readString();
         this.taskId = parcel.readString();
         this.name = parcel.readString();
         this.note = parcel.readString();
@@ -103,7 +103,7 @@ public class SubTaskRowModel extends BaseObservable implements Parcelable {
     }
 
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(this.f537id);
+        parcel.writeString(this.id);
         parcel.writeString(this.taskId);
         parcel.writeString(this.name);
         parcel.writeString(this.note);

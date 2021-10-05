@@ -19,7 +19,7 @@ public class BackupTransferGuidActivity extends AppCompatActivity implements Vie
     private String strUrl = "file:///android_asset/info.html";
     public ToolbarModel toolbarModel;
 
-    /* access modifiers changed from: protected */
+
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.binding = (ActivityBackupTransferGuidBinding) DataBindingUtil.setContentView(this, R.layout.activity_backup_transfer_guid);
@@ -28,7 +28,7 @@ public class BackupTransferGuidActivity extends AppCompatActivity implements Vie
         initMethods();
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.backup_transfer_guid));

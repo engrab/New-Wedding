@@ -6,7 +6,7 @@ import com.msint.weddingplanner.appBase.utils.AppConstants;
 
 public class SelectionRowModel extends BaseObservable {
 
-    /* renamed from: id */
+
     private String f531id;
     private String imageUrl;
     private boolean isSelected;

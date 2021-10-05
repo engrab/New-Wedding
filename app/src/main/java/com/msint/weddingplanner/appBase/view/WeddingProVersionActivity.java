@@ -4,14 +4,17 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 
-import android.support.annotation.Nullable;
-import android.support.p004v7.app.AlertDialog;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.BillingClientStateListener;
 import com.android.billingclient.api.BillingFlowParams;
+import com.android.billingclient.api.BillingResult;
 import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.android.billingclient.api.SkuDetails;
@@ -21,6 +24,7 @@ import com.msint.weddingplanner.R;
 import com.msint.weddingplanner.appBase.appPref.AppPref;
 import com.msint.weddingplanner.appBase.baseClass.BaseActivityBinding;
 import com.msint.weddingplanner.appBase.models.toolbar.ToolbarModel;
+import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.msint.weddingplanner.databinding.ActivityWeddingProVersionBinding;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,26 +41,28 @@ public class WeddingProVersionActivity extends BaseActivityBinding implements Pu
     String skuID = "wedding_planner_adsfree";
     public ToolbarModel toolbarModel;
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
-        this.binding = (ActivityWeddingProVersionBinding) DataBindingUtil.setContentView(this, R.layout.activity_wedding_pro_version);
+        binding = ActivityWeddingProVersionBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.mactivity = this;
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.drawerTitleProVersion));
         this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.cardBuyPlan.setOnClickListener(this);
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
         try {
             if (this.mactivity != null) {
@@ -93,8 +99,9 @@ public class WeddingProVersionActivity extends BaseActivityBinding implements Pu
 
     public void setUpBilling() {
         this.mBillingClient.startConnection(new BillingClientStateListener() {
-            public void onBillingSetupFinished(int i) {
-                if (i == 0) {
+            @Override
+            public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
+                if (billingResult.getResponseCode() == 0) {
                     WeddingProVersionActivity.this.isServiceConnected = true;
                     Log.e(WeddingProVersionActivity.TAG, "isServiceConnected == " + WeddingProVersionActivity.this.isServiceConnected);
                     WeddingProVersionActivity.this.OkBillingProcess();
@@ -105,6 +112,9 @@ public class WeddingProVersionActivity extends BaseActivityBinding implements Pu
                 Log.e(WeddingProVersionActivity.TAG, "isServiceConnected == " + WeddingProVersionActivity.this.isServiceConnected);
                 WeddingProVersionActivity.this.isServiceConnected = false;
             }
+
+
+
         });
     }
 
@@ -114,8 +124,9 @@ public class WeddingProVersionActivity extends BaseActivityBinding implements Pu
         SkuDetailsParams.Builder newBuilder = SkuDetailsParams.newBuilder();
         newBuilder.setSkusList(arrayList).setType(BillingClient.SkuType.INAPP);
         this.mBillingClient.querySkuDetailsAsync(newBuilder.build(), new SkuDetailsResponseListener() {
-            public void onSkuDetailsResponse(int i, List<SkuDetails> list) {
-                if (i == 0 && list != null) {
+            @Override
+            public void onSkuDetailsResponse(@NonNull BillingResult billingResult, @Nullable List<SkuDetails> list) {
+                if (billingResult.getResponseCode() == 0 && list != null) {
                     for (SkuDetails next : list) {
                         String sku = next.getSku();
                         String price = next.getPrice();
@@ -137,18 +148,18 @@ public class WeddingProVersionActivity extends BaseActivityBinding implements Pu
         if (this.isServiceConnected) {
             try {
                 if (this.skuDetail != null) {
-                    int launchBillingFlow = this.mBillingClient.launchBillingFlow(this.mactivity, BillingFlowParams.newBuilder().setSkuDetails(this.skuDetail).build());
+                    int launchBillingFlow = this.mBillingClient.launchBillingFlow(this.mactivity, BillingFlowParams.newBuilder().setSkuDetails(this.skuDetail).build()).getResponseCode();
                     Log.e("responseCode", launchBillingFlow + "==========>");
                     return;
                 }
                 setUpBilling();
-                Toast.makeText(this.mactivity, "Server Error try once again..", 0).show();
+                Toast.makeText(this.mactivity, "Server Error try once again..", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
             setUpBilling();
-            Toast.makeText(this.mactivity, "Server Error try once again..", 0).show();
+            Toast.makeText(this.mactivity, "Server Error try once again..", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -186,5 +197,10 @@ public class WeddingProVersionActivity extends BaseActivityBinding implements Pu
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onPurchasesUpdated(@NonNull BillingResult billingResult, @Nullable List<Purchase> list) {
+
     }
 }

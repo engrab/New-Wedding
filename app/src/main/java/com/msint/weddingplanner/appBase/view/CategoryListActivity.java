@@ -49,11 +49,11 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
     public int selectedNewCatPos = 0;
     private ToolbarModel toolbarModel;
 
-    /* access modifiers changed from: protected */
+
     public void callApi() {
     }
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
         this.binding = (ActivityCategoryListBinding) DataBindingUtil.setContentView(this, R.layout.activity_category_list);
         this.model = new CategoryListModel();
@@ -65,14 +65,14 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
         this.f549db = AppDataBase.getAppDatabase(this.context);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle("Manage Category");
         this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.fabAdd.setOnClickListener(this);
@@ -87,7 +87,7 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void fillData() {
         new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
@@ -112,7 +112,7 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void setRecycler() {
         this.binding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.binding.recycler.setAdapter(new CategoryAdapter(this.context, true, this.model.getArrayList(), new RecyclerItemClick() {
@@ -154,7 +154,7 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
         linearLayout.setVisibility(i);
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
         newCatDialogSetup();
     }

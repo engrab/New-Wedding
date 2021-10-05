@@ -12,7 +12,7 @@ import java.util.List;
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.model.FileHeader;
 import net.lingala.zip4j.model.ZipParameters;
-import org.apache.commons.p008io.FilenameUtils;
+import org.apache.commons.io.FilenameUtils;
 
 public class ZipUnZipAsyncTask extends AsyncTask<Object, Object, Boolean> {
     Context context;
@@ -42,13 +42,13 @@ public class ZipUnZipAsyncTask extends AsyncTask<Object, Object, Boolean> {
         this.getCompleteResponse = getCompleteResponse2;
     }
 
-    /* access modifiers changed from: protected */
+
     public void onPreExecute() {
         super.onPreExecute();
         this.dialog.showDialog();
     }
 
-    /* access modifiers changed from: protected */
+
     public Boolean doInBackground(Object... objArr) {
         if (this.isZip) {
             return Boolean.valueOf(encryptedZip(this.fileListForZip, this.tempZipFilePath));
@@ -56,7 +56,7 @@ public class ZipUnZipAsyncTask extends AsyncTask<Object, Object, Boolean> {
         return Boolean.valueOf(decryptedZip(this.fileToRestore));
     }
 
-    /* access modifiers changed from: protected */
+
     public void onPostExecute(Boolean bool) {
         super.onPostExecute(bool);
         this.getCompleteResponse.getResponse(bool.booleanValue());

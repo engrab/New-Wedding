@@ -7,7 +7,7 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import com.msint.weddingplanner.R;
 import com.msint.weddingplanner.appBase.MyApp;
 import com.msint.weddingplanner.appBase.appPref.AppPref;
@@ -36,8 +36,8 @@ public class GuestRowModel extends BaseObservable implements Parcelable {
     @PrimaryKey
     @NonNull
 
-    /* renamed from: id */
-    private String f535id;
+
+    private String id;
     private boolean isCompanion;
     @Ignore
     private boolean isEdit;
@@ -74,11 +74,11 @@ public class GuestRowModel extends BaseObservable implements Parcelable {
 
     @NonNull
     public String getId() {
-        return this.f535id;
+        return this.id;
     }
 
     public void setId(@NonNull String str) {
-        this.f535id = str;
+        this.id = str;
     }
 
     public String getEventId() {
@@ -258,7 +258,7 @@ public class GuestRowModel extends BaseObservable implements Parcelable {
         this.emailId = "";
         this.address = "";
         this.guestId = "";
-        this.f535id = parcel.readString();
+        this.id = parcel.readString();
         this.name = parcel.readString();
         this.genderType = parcel.readInt();
         this.stageType = parcel.readInt();
@@ -277,7 +277,7 @@ public class GuestRowModel extends BaseObservable implements Parcelable {
     }
 
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(this.f535id);
+        parcel.writeString(this.id);
         parcel.writeString(this.name);
         parcel.writeInt(this.genderType);
         parcel.writeInt(this.stageType);

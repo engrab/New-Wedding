@@ -24,7 +24,7 @@
                 android:id="@+id/imgIcon"
                 style="@style/ImageViewButtonCommon"
                 android:tag="binding_1"
-                android:tint="@color/actionbar" />
+                app:tint="@color/actionbar" />
 
             <TextView
                 style="@style/TextViewTitleCommon"
@@ -40,14 +40,14 @@
                     android:id="@+id/imgEdit"
                     style="@style/ImageViewButtonCommon"
                     android:src="@drawable/edit"
-                    android:tint="@color/actionbar" />
+                    app:tint="@color/actionbar" />
 
                 <ImageView
                     android:id="@+id/imgDelete"
                     style="@style/ImageViewButtonCommon"
                     android:src="@drawable/delete"
                     android:tag="binding_3"
-                    android:tint="@color/actionbar" />
+                    app:tint="@color/actionbar" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -17,12 +17,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.codemybrainsout.ratingdialog.RatingDialog;
 import com.msint.weddingplanner.R;
 import com.msint.weddingplanner.appBase.appPref.AppPref;
 import com.msint.weddingplanner.databinding.AlertDialogPdfReportBinding;
 import com.msint.weddingplanner.databinding.AlertDialogRestoreBinding;
 import com.msint.weddingplanner.databinding.AlertDialogTwoButtonBinding;
+
 import java.io.File;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -32,6 +34,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.UUID;
+
 import net.lingala.zip4j.util.InternalZipConstants;
 
 public class AppConstants {
@@ -50,7 +53,7 @@ public class AppConstants {
     }
 
     public static void toastShort(Context context, String str) {
-        Toast.makeText(context, str, 0).show();
+        Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
     }
 
     public static String getVersion(Context context) {
@@ -146,7 +149,7 @@ public class AppConstants {
     }
 
     public static void hideKeyboard(Context context, View view) {
-        ((InputMethodManager) context.getSystemService("input_method")).hideSoftInputFromWindow(view.getWindowToken(), 0);
+        ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     public static String getFormattedPrice(double d) {
@@ -358,7 +361,7 @@ public class AppConstants {
 
     public static void showTwoButtonDialog(Context context, String str, String str2, boolean z, boolean z2, String str3, String str4, final TwoButtonDialogListener twoButtonDialogListener) {
         int i = 0;
-        AlertDialogTwoButtonBinding alertDialogTwoButtonBinding = (AlertDialogTwoButtonBinding) DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.alert_dialog_two_button, (ViewGroup) null, false);
+        AlertDialogTwoButtonBinding alertDialogTwoButtonBinding = AlertDialogTwoButtonBinding.inflate(LayoutInflater.from(context), (ViewGroup) null, false);
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(alertDialogTwoButtonBinding.getRoot());
         dialog.setCancelable(z);
@@ -403,7 +406,7 @@ public class AppConstants {
 
     public static void showRestoreDialog(Context context, String str, String str2, boolean z, boolean z2, String str3, String str4, final TwoButtonDialogListener twoButtonDialogListener) {
         int i = 0;
-        AlertDialogRestoreBinding alertDialogRestoreBinding = (AlertDialogRestoreBinding) DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.alert_dialog_restore, (ViewGroup) null, false);
+        AlertDialogRestoreBinding alertDialogRestoreBinding = AlertDialogRestoreBinding.inflate(LayoutInflater.from(context),  (ViewGroup) null, false);
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(alertDialogRestoreBinding.getRoot());
         dialog.setCancelable(z);
@@ -454,7 +457,7 @@ public class AppConstants {
     }
 
     public static void pdfReportDialog(Context context, final TwoButtonDialogListener twoButtonDialogListener) {
-        AlertDialogPdfReportBinding alertDialogPdfReportBinding = (AlertDialogPdfReportBinding) DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.alert_dialog_pdf_report, (ViewGroup) null, false);
+        AlertDialogPdfReportBinding alertDialogPdfReportBinding = AlertDialogPdfReportBinding.inflate(LayoutInflater.from(context),  (ViewGroup) null, false);
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(alertDialogPdfReportBinding.getRoot());
         dialog.setCancelable(true);

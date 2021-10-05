@@ -9,9 +9,9 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.ContactsContract;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.p004v7.widget.LinearLayoutManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,6 +45,8 @@ import com.msint.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.msint.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.msint.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.msint.weddingplanner.databinding.ActivityGuestAddEditBinding;
+import com.msint.weddingplanner.databinding.ActivityGuestListBinding;
+import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.msint.weddingplanner.pdfRepo.ReportRowModel;
 import com.msint.weddingplanner.pdfRepo.ReportsListActivity;
 import java.io.File;
@@ -84,11 +86,11 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
     public ToolbarModel toolbarModel;
     private PdfWriter writer = null;
 
-    /* access modifiers changed from: protected */
+
     public void callApi() {
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
     }
 
@@ -98,9 +100,11 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
     public void onRationaleDenied(int i) {
     }
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
-        this.binding = (ActivityGuestAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_guest_add_edit);
+        binding = ActivityGuestAddEditBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.f542db = AppDataBase.getAppDatabase(this);
         setModelDetail();
         this.binding.setRowModel(this.model);
@@ -122,7 +126,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         this.model.setArrayList(new ArrayList());
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(this.isEdit ? "Edit Guest" : "Add Guest");
@@ -169,7 +173,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         });
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgDelete.setOnClickListener(this);
@@ -278,12 +282,12 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         startActivityForResult(new Intent("android.intent.action.PICK", ContactsContract.Contacts.CONTENT_URI), Constants.REQUEST_PICK_CONTACT);
     }
 
-    /* access modifiers changed from: protected */
+
     public void fillData() {
         setViewVisibility();
     }
 
-    /* access modifiers changed from: protected */
+
     public void setRecycler() {
         this.binding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.binding.recycler.setAdapter(new CompanionAdapter(this.context, this.model.getArrayList(), new RecyclerItemClick() {
@@ -418,7 +422,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void onActivityResult(int i, int i2, @Nullable Intent intent) {
         super.onActivityResult(i, i2, intent);
         if (i2 != -1) {

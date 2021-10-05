@@ -7,14 +7,14 @@
                 <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp">
                         <TextView android:textColor="@color/actionbar" android:tag="binding_1" android:layout_width="match_parent" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                        <ImageView android:layout_gravity="right" android:id="@+id/imgEdit" android:visibility="invisible" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                        <ImageView android:layout_gravity="right" android:id="@+id/imgEdit" android:visibility="invisible" app:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
                     </LinearLayout>
                     <View android:background="@color/actionbar" android:layout_width="match_parent" android:layout_height="1dp"/>
                     <LinearLayout android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                         <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp">
                             <TextView android:layout_width="match_parent" android:text="@string/category" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
                             <LinearLayout android:id="@+id/linCategory" android:background="@drawable/et_rounded_square_normal" android:saveEnabled="false" android:layout_width="match_parent" android:layout_height="wrap_content">
-                                <ImageView android:id="@+id/imgIcon" android:tag="binding_2" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                                <ImageView android:id="@+id/imgIcon" android:tag="binding_2" app:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
                                 <TextView android:ellipsize="end" android:tag="binding_3" android:layout_width="match_parent" android:singleLine="true" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
                                 <ImageView android:padding="12dp" android:src="@drawable/down" style="@style/ImageViewButtonCommon"/>
                             </LinearLayout>

@@ -15,19 +15,19 @@ public abstract class BaseFragmentBinding extends Fragment implements View.OnCli
     public Context context;
     private OnFragmentInteractionListener mListener;
 
-    /* access modifiers changed from: protected */
+
     public abstract View getViewBinding();
 
-    /* access modifiers changed from: protected */
+
     public abstract void initMethods();
 
-    /* access modifiers changed from: protected */
+
     public abstract void setBinding(LayoutInflater layoutInflater, ViewGroup viewGroup);
 
-    /* access modifiers changed from: protected */
+
     public abstract void setOnClicks();
 
-    /* access modifiers changed from: protected */
+
     public abstract void setToolbar();
 
     public void onCreate(Bundle bundle) {

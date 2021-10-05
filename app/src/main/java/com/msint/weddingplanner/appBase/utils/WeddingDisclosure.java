@@ -17,7 +17,7 @@ public class WeddingDisclosure extends AppCompatActivity implements View.OnClick
     public static String strPrivacyUri = "http://appworldinfotech.hol.es/terms/msterms/index.html";
     public static String strTermsUri = "http://appworldinfotech.hol.es/terms/msterms/termsofservices.html";
 
-    /* access modifiers changed from: protected */
+
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView((int) R.layout.activity_disclosure);

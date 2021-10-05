@@ -6,9 +6,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "dbVersionList")
 public class DbVersionRowModel {
     @PrimaryKey(autoGenerate = true)
-
-    /* renamed from: id */
-    private int f534id;
+    private int id;
     private String versionDesc = "";
     private int versionNumber;
 
@@ -17,11 +15,11 @@ public class DbVersionRowModel {
     }
 
     public int getId() {
-        return this.f534id;
+        return this.id;
     }
 
     public void setId(int i) {
-        this.f534id = i;
+        this.id = i;
     }
 
     public int getVersionNumber() {

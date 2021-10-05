@@ -2,7 +2,7 @@ package com.msint.weddingplanner.appBase.view;
 
 import android.app.Dialog;
 
-import android.support.p004v7.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +36,7 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
     public int selectedCategoryPos = 0;
     public ToolbarModel toolbarModel;
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
         this.binding = (ActivityBudgetSummaryBinding) DataBindingUtil.setContentView(this, R.layout.activity_budget_summary);
         this.f548db = AppDataBase.getAppDatabase(this);
@@ -49,14 +49,14 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
         this.model.setCategoryRowModel(new CategoryRowModel());
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle("Budget Summary");
         this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.linCategory.setOnClickListener(this);
@@ -75,7 +75,7 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
         MainActivityDashboard.BackPressedAd(this);
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
         categoryDialogSetup();
         setTotals();

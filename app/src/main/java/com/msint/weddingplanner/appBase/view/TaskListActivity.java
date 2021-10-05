@@ -110,7 +110,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
     public void onRationaleDenied(int i) {
     }
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
         this.binding = (ActivityTaskListBinding) DataBindingUtil.setContentView(this, R.layout.activity_task_list);
         this.model = new TaskListModel();
@@ -123,7 +123,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         this.f556db = AppDataBase.getAppDatabase(this.context);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.drawerTitleCheckList));
@@ -158,7 +158,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         startActivity(new Intent(this.context, TaskSummaryActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgOther.setOnClickListener(this);
@@ -189,12 +189,12 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void callApi() {
         setupFilter();
     }
 
-    /* access modifiers changed from: protected */
+
     public void fillData() {
         new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
@@ -240,7 +240,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void setRecycler() {
         this.binding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.binding.recycler.setAdapter(new TaskAdapter(this.context, this.model.getArrayList(), new RecyclerItemClick() {
@@ -292,7 +292,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         linearLayout.setVisibility(i);
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
         orderTyDialogSetup();
         setSearch();
@@ -692,7 +692,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void onActivityResult(int i, int i2, @Nullable Intent intent) {
         super.onActivityResult(i, i2, intent);
         if (i2 == -1 && i == 1002) {

@@ -2,8 +2,8 @@ package com.msint.weddingplanner.appBase.view;
 
 import android.content.Intent;
 
-import android.support.annotation.Nullable;
-import android.support.p004v7.widget.LinearLayoutManager;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -34,15 +34,15 @@ public class ProfileListActivity extends BaseActivityRecyclerBinding {
     public ProfileListModel model;
     private ToolbarModel toolbarModel;
 
-    /* access modifiers changed from: protected */
+
     public void callApi() {
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
     }
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
         this.binding = (ActivityProfileListBinding) DataBindingUtil.setContentView(this, R.layout.activity_profile_list);
         this.model = new ProfileListModel();
@@ -54,14 +54,14 @@ public class ProfileListActivity extends BaseActivityRecyclerBinding {
         this.f554db = AppDataBase.getAppDatabase(this.context);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.manage_marriages));
         this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.fabAdd.setOnClickListener(this);
@@ -76,7 +76,7 @@ public class ProfileListActivity extends BaseActivityRecyclerBinding {
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void fillData() {
         try {
             this.model.getArrayList().addAll(this.f554db.profileDao().getAll());
@@ -98,7 +98,7 @@ public class ProfileListActivity extends BaseActivityRecyclerBinding {
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void setRecycler() {
         this.binding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.binding.recycler.setAdapter(new ProfileAdapter(this.context, this.model.getArrayList(), new RecyclerItemClick() {
@@ -161,7 +161,7 @@ public class ProfileListActivity extends BaseActivityRecyclerBinding {
         linearLayout.setVisibility(i);
     }
 
-    /* access modifiers changed from: protected */
+
     public void onActivityResult(int i, int i2, @Nullable Intent intent) {
         super.onActivityResult(i, i2, intent);
         if (i2 == -1 && i == 1002) {

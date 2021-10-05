@@ -7,7 +7,7 @@
                 <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp">
                         <TextView android:textColor="@color/actionbar" android:tag="binding_1" android:layout_width="match_parent" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                        <ImageView android:layout_gravity="right" android:id="@+id/imgEdit" android:tag="binding_2" android:visibility="invisible" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                        <ImageView android:layout_gravity="right" android:id="@+id/imgEdit" android:tag="binding_2" android:visibility="invisible" app:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
                     </LinearLayout>
                     <View android:background="@color/actionbar" android:layout_width="match_parent" android:layout_height="1dp"/>
                     <LinearLayout android:orientation="vertical" android:id="@+id/linEdit" android:tag="binding_3" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
@@ -39,7 +39,7 @@
                 <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp">
                         <TextView android:textColor="@color/actionbar" android:layout_width="match_parent" android:text="@string/contact_details" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                        <ImageView android:layout_gravity="right" android:id="@+id/imgExpandContact" android:tag="binding_14" android:tint="@color/black" style="@style/ImageViewButtonCommon"/>
+                        <ImageView android:layout_gravity="right" android:id="@+id/imgExpandContact" android:tag="binding_14" app:tint="@color/black" style="@style/ImageViewButtonCommon"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="vertical" android:tag="binding_15" android:layout_width="match_parent" android:layout_height="wrap_content">
                         <View android:background="@color/actionbar" android:layout_width="match_parent" android:layout_height="1dp"/>
@@ -49,21 +49,21 @@
                                     <TextView android:layout_width="match_parent" android:text="@string/phone_number" android:layout_weight="1" style="@style/TextViewLightCommon"/>
                                     <EditText android:id="@+id/etPhoneNumber" android:tag="binding_17" android:layout_marginBottom="4dp" android:hint="@string/phone_number" android:singleLine="true" android:inputType="phone" style="@style/EditTextCommon"/>
                                 </LinearLayout>
-                                <ImageView android:layout_gravity="bottom|right|center_vertical|center_horizontal|center" android:id="@+id/imgPhone" android:src="@drawable/call" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                                <ImageView android:layout_gravity="bottom|right|center_vertical|center_horizontal|center" android:id="@+id/imgPhone" android:src="@drawable/call" app:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
                             </LinearLayout>
                             <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
                                     <TextView android:layout_width="match_parent" android:text="@string/email_id" android:layout_weight="1" style="@style/TextViewLightCommon"/>
                                     <EditText android:id="@+id/etEmailId" android:tag="binding_18" android:layout_marginBottom="4dp" android:hint="@string/email_id" android:singleLine="true" android:inputType="textEmailAddress" style="@style/EditTextCommon"/>
                                 </LinearLayout>
-                                <ImageView android:layout_gravity="bottom|right|center_vertical|center_horizontal|center" android:id="@+id/imgEmail" android:src="@drawable/email" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                                <ImageView android:layout_gravity="bottom|right|center_vertical|center_horizontal|center" android:id="@+id/imgEmail" android:src="@drawable/email" app:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
                             </LinearLayout>
                             <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
                                 <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
                                     <TextView android:layout_width="match_parent" android:text="@string/address" android:layout_weight="1" style="@style/TextViewLightCommon"/>
                                     <EditText android:id="@+id/etAddress" android:tag="binding_19" android:layout_marginBottom="4dp" android:hint="@string/address" android:minLines="2" android:inputType="textMultiLine" style="@style/EditTextCommon"/>
                                 </LinearLayout>
-                                <ImageView android:layout_gravity="bottom|right|center_vertical|center_horizontal|center" android:id="@+id/imgAddress" android:src="@drawable/address" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                                <ImageView android:layout_gravity="bottom|right|center_vertical|center_horizontal|center" android:id="@+id/imgAddress" android:src="@drawable/address" app:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -73,13 +73,13 @@
                 <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp">
                         <TextView android:textColor="@color/actionbar" android:layout_width="match_parent" android:text="@string/companions" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                        <ImageView android:layout_gravity="right" android:id="@+id/imgAdd" android:src="@drawable/add" android:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+                        <ImageView android:layout_gravity="right" android:id="@+id/imgAdd" android:src="@drawable/add" app:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
                     </LinearLayout>
                     <View android:background="@color/actionbar" android:layout_width="match_parent" android:layout_height="1dp"/>
                     <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
                         <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
                             <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/linNoData" android:padding="8dp" android:layout_width="match_parent" android:layout_height="match_parent">
-                                <ImageView android:id="@+id/imgAddNoData" android:padding="8dp" android:layout_width="64dp" android:layout_height="64dp" android:src="@drawable/add" android:tint="@color/actionbar"/>
+                                <ImageView android:id="@+id/imgAddNoData" android:padding="8dp" android:layout_width="64dp" android:layout_height="64dp" android:src="@drawable/add" app:tint="@color/actionbar"/>
                                 <TextView android:layout_marginBottom="8dp" android:text="@string/no_companions_found" style="@style/TextViewDescCommon"/>
                             </LinearLayout>
                             <LinearLayout android:id="@+id/linData" android:layout_width="match_parent" android:layout_height="wrap_content">

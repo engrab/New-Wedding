@@ -19,7 +19,7 @@ public class PrivacyPolicyActivity extends AppCompatActivity implements View.OnC
     private String strUrl = "";
     public ToolbarModel toolbarModel;
 
-    /* access modifiers changed from: protected */
+
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.binding = (ActivityPrivacyPolicyBinding) DataBindingUtil.setContentView(this, R.layout.activity_privacy_policy);
@@ -28,7 +28,7 @@ public class PrivacyPolicyActivity extends AppCompatActivity implements View.OnC
         initMethods();
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.drawerTitlePrivacyPolicy));

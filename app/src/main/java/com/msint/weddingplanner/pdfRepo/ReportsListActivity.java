@@ -37,11 +37,11 @@ public class ReportsListActivity extends BaseActivityRecyclerBinding implements 
     public ArrayList<File> list;
     private ToolbarModel toolbarModel;
 
-    /* access modifiers changed from: protected */
+
     public void callApi() {
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
     }
 
@@ -51,13 +51,13 @@ public class ReportsListActivity extends BaseActivityRecyclerBinding implements 
     public void onRationaleDenied(int i) {
     }
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
         this.binding = (ActivityReportsListBinding) DataBindingUtil.setContentView(this, R.layout.activity_reports_list);
         this.list = new ArrayList<>();
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.pdf_reports));
@@ -65,7 +65,7 @@ public class ReportsListActivity extends BaseActivityRecyclerBinding implements 
         this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
-    /* access modifiers changed from: protected */
+
     public void fillData() {
         checkPermAndFill();
     }
@@ -104,7 +104,7 @@ public class ReportsListActivity extends BaseActivityRecyclerBinding implements 
         }).execute(new Object[0]);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setRecycler() {
         this.binding.recycler.setLayoutManager(new LinearLayoutManager(this));
         this.binding.recycler.setAdapter(new ReportPdfAdapter(this.context, this.list, new RecyclerItemClick() {
@@ -132,7 +132,7 @@ public class ReportsListActivity extends BaseActivityRecyclerBinding implements 
         linearLayout.setVisibility(i);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgAdd.setOnClickListener(this);

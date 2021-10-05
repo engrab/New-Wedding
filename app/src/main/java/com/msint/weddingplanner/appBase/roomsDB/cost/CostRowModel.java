@@ -7,7 +7,7 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import com.msint.weddingplanner.R;
 import com.msint.weddingplanner.appBase.MyApp;
 import com.msint.weddingplanner.appBase.appPref.AppPref;
@@ -37,9 +37,7 @@ public class CostRowModel extends BaseObservable implements Parcelable {
     private double expectedAmount = 0.0d;
     @PrimaryKey
     @NonNull
-
-    /* renamed from: id */
-    private String f533id;
+    private String id;
     @Ignore
     private boolean isEdit;
     @Ignore
@@ -65,11 +63,11 @@ public class CostRowModel extends BaseObservable implements Parcelable {
 
     @NonNull
     public String getId() {
-        return this.f533id;
+        return this.id;
     }
 
     public void setId(@NonNull String str) {
-        this.f533id = str;
+        this.id = str;
     }
 
     public String getEventId() {
@@ -241,7 +239,7 @@ public class CostRowModel extends BaseObservable implements Parcelable {
     }
 
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(this.f533id);
+        parcel.writeString(this.id);
         parcel.writeString(this.categoryId);
         parcel.writeString(this.name);
         parcel.writeString(this.note);
@@ -255,7 +253,7 @@ public class CostRowModel extends BaseObservable implements Parcelable {
     }
 
     protected CostRowModel(Parcel parcel) {
-        this.f533id = parcel.readString();
+        this.id = parcel.readString();
         this.categoryId = parcel.readString();
         this.name = parcel.readString();
         this.note = parcel.readString();

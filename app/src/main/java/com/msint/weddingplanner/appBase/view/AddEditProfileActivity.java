@@ -11,8 +11,8 @@ import android.database.Cursor;
 
 import android.net.Uri;
 import android.provider.ContactsContract;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -56,11 +56,11 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
     public ProfileRowModel model;
     public ToolbarModel toolbarModel;
 
-    /* access modifiers changed from: protected */
+
     public void callApi() {
     }
 
-    /* access modifiers changed from: protected */
+
     public void fillData() {
     }
 
@@ -70,11 +70,11 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
     public void onRationaleDenied(int i) {
     }
 
-    /* access modifiers changed from: protected */
+
     public void setRecycler() {
     }
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
         this.binding = (ActivityProfileAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_profile_add_edit);
         this.f544db = AppDataBase.getAppDatabase(this.context);
@@ -102,7 +102,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
         this.calendar.set(14, 0);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle("Profile Details");
@@ -221,7 +221,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
         }).execute(new Object[0]);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgDelete.setOnClickListener(this);
@@ -323,7 +323,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
         startActivityForResult(new Intent("android.intent.action.PICK", ContactsContract.Contacts.CONTENT_URI), z ? Constants.REQUEST_PICK_CONTACT_PARTNER : Constants.REQUEST_PICK_CONTACT);
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
         setWeddingName();
         setEditTextValue();
@@ -538,7 +538,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void onActivityResult(int i, int i2, @Nullable Intent intent) {
         super.onActivityResult(i, i2, intent);
         if (i2 == -1) {

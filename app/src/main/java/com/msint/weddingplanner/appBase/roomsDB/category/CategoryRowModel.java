@@ -26,8 +26,8 @@ public class CategoryRowModel extends BaseObservable implements Parcelable {
     @PrimaryKey
     @NonNull
 
-    /* renamed from: id */
-    private String f532id;
+
+    private String id;
     private boolean isDefault;
     @Ignore
     private boolean isSelected;
@@ -41,13 +41,13 @@ public class CategoryRowModel extends BaseObservable implements Parcelable {
     }
 
     public CategoryRowModel(@NonNull String str, String str2, String str3) {
-        this.f532id = str;
+        this.id = str;
         this.name = str2;
         this.iconType = str3;
     }
 
     public CategoryRowModel(@NonNull String str, String str2, String str3, boolean z) {
-        this.f532id = str;
+        this.id = str;
         this.name = str2;
         this.iconType = str3;
         this.isDefault = z;
@@ -55,11 +55,11 @@ public class CategoryRowModel extends BaseObservable implements Parcelable {
 
     @NonNull
     public String getId() {
-        return this.f532id;
+        return this.id;
     }
 
     public void setId(@NonNull String str) {
-        this.f532id = str;
+        this.id = str;
     }
 
     @Bindable
@@ -109,7 +109,7 @@ public class CategoryRowModel extends BaseObservable implements Parcelable {
     }
 
     protected CategoryRowModel(Parcel parcel) {
-        this.f532id = parcel.readString();
+        this.id = parcel.readString();
         this.name = parcel.readString();
         this.iconType = parcel.readString();
         boolean z = false;
@@ -118,7 +118,7 @@ public class CategoryRowModel extends BaseObservable implements Parcelable {
     }
 
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(this.f532id);
+        parcel.writeString(this.id);
         parcel.writeString(this.name);
         parcel.writeString(this.iconType);
         parcel.writeByte(this.isDefault ? (byte) 1 : 0);

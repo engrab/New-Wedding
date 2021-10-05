@@ -4,12 +4,14 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 
-import android.support.annotation.NonNull;
-import android.support.p004v7.widget.LinearLayoutManager;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
 import com.msint.weddingplanner.R;
 import com.msint.weddingplanner.appBase.baseClass.BaseActivityRecyclerBinding;
 import com.msint.weddingplanner.appBase.models.toolbar.ToolbarModel;
@@ -20,13 +22,16 @@ import com.msint.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.msint.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.msint.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.msint.weddingplanner.databinding.ActivityRestoreListBinding;
+
 import java.io.File;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import org.apache.commons.p008io.FilenameUtils;
+
+import org.apache.commons.io.FilenameUtils;
+
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -45,11 +50,11 @@ public class RestoreListActivity extends BaseActivityRecyclerBinding implements 
     public BackupRestoreProgress progressDialog;
     private ToolbarModel toolbarModel;
 
-    /* access modifiers changed from: protected */
+
     public void callApi() {
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
     }
 
@@ -59,9 +64,11 @@ public class RestoreListActivity extends BaseActivityRecyclerBinding implements 
     public void onRationaleDenied(int i) {
     }
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
-        this.binding = (ActivityRestoreListBinding) DataBindingUtil.setContentView(this, R.layout.activity_restore_list);
+        binding = ActivityRestoreListBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.model = new RestoreListModel();
         this.model.setArrayList(new ArrayList());
         this.model.setNoDataIcon(R.drawable.dummy_empty);
@@ -72,7 +79,7 @@ public class RestoreListActivity extends BaseActivityRecyclerBinding implements 
         this.progressDialog = new BackupRestoreProgress(this);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle("Restore");
@@ -80,7 +87,7 @@ public class RestoreListActivity extends BaseActivityRecyclerBinding implements 
         this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgAdd.setOnClickListener(this);
@@ -96,7 +103,7 @@ public class RestoreListActivity extends BaseActivityRecyclerBinding implements 
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void fillData() {
         checkPermAndFill();
     }
@@ -156,7 +163,7 @@ public class RestoreListActivity extends BaseActivityRecyclerBinding implements 
         notifyAdapter();
     }
 
-    /* access modifiers changed from: protected */
+
     public void setRecycler() {
         this.binding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.binding.recycler.setAdapter(new RestoreAdapter(this.context, this.model.getArrayList(), new RecyclerItemClick() {
@@ -189,7 +196,7 @@ public class RestoreListActivity extends BaseActivityRecyclerBinding implements 
 
     private void setViewVisibility() {
         int i = 8;
-        this.binding.linData.setVisibility(this.model.isListData() ? 0 : 8);
+        this.binding.linData.setVisibility(this.model.isListData() ? View.VISIBLE : View.GONE);
         LinearLayout linearLayout = this.binding.linNoData;
         if (!this.model.isListData()) {
             i = 0;
@@ -216,9 +223,9 @@ public class RestoreListActivity extends BaseActivityRecyclerBinding implements 
                 if (file.delete()) {
                     this.model.getArrayList().remove(i);
                     this.binding.recycler.getAdapter().notifyItemRemoved(i);
-                    Toast.makeText(this.context, "File deleted.", 0).show();
+                    Toast.makeText(this.context, "File deleted.", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this.context, "File can't be deleted.", 0).show();
+                    Toast.makeText(this.context, "File can't be deleted.", Toast.LENGTH_SHORT).show();
                 }
             }
         } catch (Exception e) {

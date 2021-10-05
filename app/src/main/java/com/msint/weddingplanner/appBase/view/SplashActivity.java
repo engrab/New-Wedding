@@ -100,7 +100,7 @@ public class SplashActivity extends AppCompatActivity {
         AdConstants.isAdShown = false;
     }
 
-    /* access modifiers changed from: protected */
+
     public void onCreate(Bundle bundle) {
         this.context = this;
         this.db = AppDataBase.getAppDatabase(this.context);

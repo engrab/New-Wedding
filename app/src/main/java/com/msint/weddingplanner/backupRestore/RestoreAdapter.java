@@ -1,7 +1,7 @@
 package com.msint.weddingplanner.backupRestore;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +12,7 @@ import com.msint.weddingplanner.R;
 import com.msint.weddingplanner.appBase.utils.RecyclerItemClick;
 import java.util.ArrayList;
 
-public class RestoreAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class RestoreAdapter extends RecyclerView.Adapter<RestoreAdapter.ViewHolder> {
     private ArrayList<RestoreRowModel> arrayList;
     Context context;
 
@@ -53,16 +53,8 @@ public class RestoreAdapter extends RecyclerView.Adapter<ViewHolder> {
             this.txtFileSize = (TextView) view.findViewById(R.id.txtSize);
             this.imgRestore = (ImageView) view.findViewById(R.id.imgRestore);
             this.imgDelete = (ImageView) view.findViewById(R.id.imgDelete);
-            view.setOnClickListener(new View.OnClickListener(RestoreAdapter.this) {
-                public void onClick(View view) {
-                    RestoreAdapter.this.itemClick.onClick(ViewHolder.this.getAdapterPosition(), 1);
-                }
-            });
-            this.imgDelete.setOnClickListener(new View.OnClickListener(RestoreAdapter.this) {
-                public void onClick(View view) {
-                    RestoreAdapter.this.itemClick.onClick(ViewHolder.this.getAdapterPosition(), 2);
-                }
-            });
+            view.setOnClickListener(view1 -> RestoreAdapter.this.itemClick.onClick(ViewHolder.this.getAdapterPosition(), 1));
+            this.imgDelete.setOnClickListener(view12 -> RestoreAdapter.this.itemClick.onClick(ViewHolder.this.getAdapterPosition(), 2));
         }
     }
 }

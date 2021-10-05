@@ -7,9 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 
 import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.p004v7.widget.LinearLayoutManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -106,7 +106,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
     public ToolbarModel toolbarModel;
     private PdfWriter writer = null;
 
-    /* access modifiers changed from: protected */
+
     public void callApi() {
     }
 
@@ -116,7 +116,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
     public void onRationaleDenied(int i) {
     }
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
         this.binding = (ActivityTaskAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_task_add_edit);
         this.f546db = AppDataBase.getAppDatabase(this);
@@ -140,7 +140,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         this.model.setArrayList(new ArrayList());
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(this.isEdit ? "Edit Task" : "Add Task");
@@ -186,7 +186,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         });
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgDelete.setOnClickListener(this);
@@ -270,7 +270,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
         categoryDialogSetup();
         newCatDialogSetup();
@@ -497,12 +497,12 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void fillData() {
         setViewVisibility();
     }
 
-    /* access modifiers changed from: protected */
+
     public void setRecycler() {
         this.binding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.binding.recycler.setAdapter(new SubTaskAdapter(this.context, this.model.getArrayList(), new RecyclerItemClick() {
@@ -597,7 +597,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         MainActivityDashboard.BackPressedAd(this);
     }
 
-    /* access modifiers changed from: protected */
+
     public void onActivityResult(int i, int i2, @Nullable Intent intent) {
         super.onActivityResult(i, i2, intent);
         if (i2 == -1 && i == 1002) {

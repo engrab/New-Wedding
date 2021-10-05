@@ -6,11 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 
 import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.p004v7.widget.LinearLayoutManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.support.p004v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -48,6 +48,7 @@ import com.msint.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.msint.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.msint.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.msint.weddingplanner.databinding.ActivityGuestListBinding;
+import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.msint.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.msint.weddingplanner.pdfRepo.ReportRowModel;
 import com.msint.weddingplanner.pdfRepo.ReportsListActivity;
@@ -110,9 +111,11 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
     public void onRationaleDenied(int i) {
     }
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
-        this.binding = (ActivityGuestListBinding) DataBindingUtil.setContentView(this, R.layout.activity_guest_list);
+        binding = ActivityGuestListBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.model = new GuestListModel();
         this.model.setArrayList(new ArrayList());
         this.listMain = new ArrayList<>();
@@ -123,7 +126,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         this.f552db = AppDataBase.getAppDatabase(this.context);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.drawerTitleGuests));
@@ -158,7 +161,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         startActivity(new Intent(this.context, GuestSummaryActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgOther.setOnClickListener(this);
@@ -189,12 +192,12 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void callApi() {
         setupFilter();
     }
 
-    /* access modifiers changed from: protected */
+
     public void fillData() {
         new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
@@ -234,7 +237,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void setRecycler() {
         this.binding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.binding.recycler.setAdapter(new GuestAdapter(this.context, this.model.getArrayList(), new RecyclerItemClick() {
@@ -280,7 +283,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
 
     private void setViewVisibility() {
         int i = 8;
-        this.binding.linData.setVisibility(this.model.isListData() ? 0 : 8);
+        this.binding.linData.setVisibility(this.model.isListData() ? View.VISIBLE : View.GONE);
         LinearLayout linearLayout = this.binding.linNoData;
         if (!this.model.isListData()) {
             i = 0;
@@ -288,7 +291,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         linearLayout.setVisibility(i);
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
         orderTyDialogSetup();
         setSearch();
@@ -319,7 +322,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
     }
 
     public void setOrderTypeListDialog() {
-        this.dialogOrderTypeListBinding = (AlertDialogRecyclerListBinding) DataBindingUtil.inflate(LayoutInflater.from(this.context), R.layout.alert_dialog_recycler_list, (ViewGroup) null, false);
+        this.dialogOrderTypeListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context), (ViewGroup) null, false);
         this.dialogOrderTypeList = new Dialog(this.context);
         this.dialogOrderTypeList.setContentView(this.dialogOrderTypeListBinding.getRoot());
         this.dialogOrderTypeList.getWindow().setBackgroundDrawableResource(17170445);
@@ -553,7 +556,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
     }
 
     public void setFilterTypeListDialog() {
-        this.dialogFilterTypeListBinding = (AlertDialogRecyclerListBinding) DataBindingUtil.inflate(LayoutInflater.from(this.context), R.layout.alert_dialog_recycler_list, (ViewGroup) null, false);
+        this.dialogFilterTypeListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context), (ViewGroup) null, false);
         this.dialogFilterTypeList = new Dialog(this.context);
         this.dialogFilterTypeList.setContentView(this.dialogFilterTypeListBinding.getRoot());
         this.dialogFilterTypeList.getWindow().setBackgroundDrawableResource(17170445);
@@ -688,7 +691,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void onActivityResult(int i, int i2, @Nullable Intent intent) {
         super.onActivityResult(i, i2, intent);
         if (i2 == -1 && i == 1002) {
@@ -818,13 +821,13 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         }
         try {
             this.fileName = this.repoType + "_" + this.repoTitle + "_" + getCurrentDateTime() + ".pdf";
-            this.writer = PdfWriter.getInstance(this.document, new FileOutputStream(new File(this.dir, this.fileName)));
-        } catch (FileNotFoundException e) {
             try {
+                this.writer = PdfWriter.getInstance(this.document, new FileOutputStream(new File(this.dir, this.fileName)));
+            } catch (DocumentException e) {
                 e.printStackTrace();
-            } catch (DocumentException e2) {
-                e2.printStackTrace();
             }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
         this.document.open();
     }

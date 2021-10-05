@@ -37,7 +37,7 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
     public PaymentRowModel model;
     public ToolbarModel toolbarModel;
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
         this.binding = (ActivityPaymentAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_payment_add_edit);
         this.f543db = AppDataBase.getAppDatabase(this);
@@ -58,7 +58,7 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(this.isEdit ? "Edit Payment" : "Add Payment");
@@ -98,7 +98,7 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
         });
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgDelete.setOnClickListener(this);
@@ -154,7 +154,7 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
         setEditTextValue();
         setEditTextChange();

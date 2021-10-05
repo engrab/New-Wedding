@@ -6,7 +6,7 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import com.msint.weddingplanner.appBase.utils.AppConstants;
 import com.msint.weddingplanner.appBase.utils.Constants;
 
@@ -26,8 +26,8 @@ public class PaymentRowModel extends BaseObservable implements Parcelable {
     @PrimaryKey
     @NonNull
 
-    /* renamed from: id */
-    private String f536id;
+
+    private String id;
     private boolean isPending = true;
     private String name = "";
     private String parentId;
@@ -42,11 +42,11 @@ public class PaymentRowModel extends BaseObservable implements Parcelable {
 
     @NonNull
     public String getId() {
-        return this.f536id;
+        return this.id;
     }
 
     public void setId(@NonNull String str) {
-        this.f536id = str;
+        this.id = str;
     }
 
     public String getParentId() {
@@ -117,7 +117,7 @@ public class PaymentRowModel extends BaseObservable implements Parcelable {
 
     protected PaymentRowModel(Parcel parcel) {
         boolean z = true;
-        this.f536id = parcel.readString();
+        this.id = parcel.readString();
         this.parentId = parcel.readString();
         this.type = parcel.readInt();
         this.name = parcel.readString();
@@ -127,7 +127,7 @@ public class PaymentRowModel extends BaseObservable implements Parcelable {
     }
 
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(this.f536id);
+        parcel.writeString(this.id);
         parcel.writeString(this.parentId);
         parcel.writeInt(this.type);
         parcel.writeString(this.name);

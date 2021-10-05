@@ -7,11 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 
 import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.p004v7.widget.LinearLayoutManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.support.p004v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -51,6 +50,7 @@ import com.msint.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.msint.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.msint.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.msint.weddingplanner.databinding.ActivityCostListBinding;
+import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.msint.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.msint.weddingplanner.pdfRepo.ReportRowModel;
 import com.msint.weddingplanner.pdfRepo.ReportsListActivity;
@@ -115,9 +115,11 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
     public void onRationaleDenied(int i) {
     }
 
-    /* access modifiers changed from: protected */
+
     public void setBinding() {
-        this.binding = (ActivityCostListBinding) DataBindingUtil.setContentView(this, R.layout.activity_cost_list);
+        binding = ActivityCostListBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         this.model = new CostListModel();
         this.model.setArrayList(new ArrayList());
         this.listMain = new ArrayList<>();
@@ -128,7 +130,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         this.f550db = AppDataBase.getAppDatabase(this.context);
     }
 
-    /* access modifiers changed from: protected */
+
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.drawerTitleBudget));
@@ -163,7 +165,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         startActivity(new Intent(this.context, BudgetSummaryActivity.class).setFlags(PagedChannelRandomAccessSource.DEFAULT_TOTAL_BUFSIZE));
     }
 
-    /* access modifiers changed from: protected */
+
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgOther.setOnClickListener(this);
@@ -194,12 +196,12 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void callApi() {
         setupFilter();
     }
 
-    /* access modifiers changed from: protected */
+
     public void fillData() {
         new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
@@ -255,7 +257,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void setRecycler() {
         this.binding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.binding.recycler.setAdapter(new CostAdapter(this.context, this.model.getArrayList(), new RecyclerItemClick() {
@@ -307,7 +309,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         linearLayout.setVisibility(i);
     }
 
-    /* access modifiers changed from: protected */
+
     public void initMethods() {
         orderTyDialogSetup();
         setSearch();
@@ -678,7 +680,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         }
     }
 
-    /* access modifiers changed from: protected */
+
     public void onActivityResult(int i, int i2, @Nullable Intent intent) {
         super.onActivityResult(i, i2, intent);
         if (i2 == -1 && i == 1002) {

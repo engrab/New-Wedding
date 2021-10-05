@@ -30,8 +30,8 @@ public class ProfileRowModel extends BaseObservable implements Parcelable {
     @PrimaryKey
     @NonNull
 
-    /* renamed from: id */
-    private String f530id;
+
+    private String id;
     private boolean isSelected;
     private String name;
     private String partnerAddress;
@@ -93,11 +93,11 @@ public class ProfileRowModel extends BaseObservable implements Parcelable {
 
     @NonNull
     public String getId() {
-        return this.f530id;
+        return this.id;
     }
 
     public void setId(@NonNull String str) {
-        this.f530id = str;
+        this.id = str;
     }
 
     @Bindable
@@ -235,7 +235,7 @@ public class ProfileRowModel extends BaseObservable implements Parcelable {
     }
 
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(this.f530id);
+        parcel.writeString(this.id);
         parcel.writeString(this.name);
         parcel.writeString(this.phoneNo);
         parcel.writeString(this.address);
@@ -267,7 +267,7 @@ public class ProfileRowModel extends BaseObservable implements Parcelable {
         this.partnerGenderType = 2;
         this.dateTimeInMillis = 0;
         this.budget = 0.0d;
-        this.f530id = parcel.readString();
+        this.id = parcel.readString();
         this.name = parcel.readString();
         this.phoneNo = parcel.readString();
         this.address = parcel.readString();
