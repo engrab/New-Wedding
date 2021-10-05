@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
-    <item android:id="@+id/drawer_proversion" android:title="@string/drawerTitleProVersion"/>
-    <item android:id="@+id/drawer_setting" android:title="@string/drawerTitleSetting"/>
-    <item android:id="@+id/drawer_ratting" android:title="@string/drawerTitleRatting"/>
-    <item android:id="@+id/drawer_feedback" android:title="@string/drawerTitleFeedback"/>
-    <item android:id="@+id/drawer_share" android:title="@string/drawerTitleShare"/>
-    <item android:id="@+id/drawer_privacy_policy" android:title="@string/drawerTitlePrivacyPolicy"/>
-    <item android:id="@+id/drawer_terms_of_service" android:title="@string/drawerTitleTermsOfService"/>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/drawer_proversion"
+        android:title="@string/drawerTitleProVersion" />
+    <item
+        android:id="@+id/drawer_setting"
+        android:title="@string/drawerTitleSetting" />
+    <item
+        android:id="@+id/drawer_ratting"
+        android:title="@string/drawerTitleRatting" />
+    <item
+        android:id="@+id/drawer_feedback"
+        android:title="@string/drawerTitleFeedback" />
+    <item
+        android:id="@+id/drawer_share"
+        android:title="@string/drawerTitleShare" />
+    <item
+        android:id="@+id/drawer_privacy_policy"
+        android:title="@string/drawerTitlePrivacyPolicy" />
+    <item
+        android:id="@+id/drawer_terms_of_service"
+        android:title="@string/drawerTitleTermsOfService" />
 </menu>

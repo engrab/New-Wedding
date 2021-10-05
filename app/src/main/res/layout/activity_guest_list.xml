@@ -59,6 +59,7 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAdd"
+            android:layout_gravity="bottom|end"
             style="@style/FloatingActionButtonCommon" />
     </FrameLayout>
 </LinearLayout>

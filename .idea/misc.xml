@@ -6,36 +6,77 @@
         <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="../../../.gradle/caches/transforms-3/e759884e8e1539e68246ec4d8729cc98/transformed/core-1.5.0/res/layout-v21/notification_action.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_arrow_drop_down_black.xml" value="0.184375" />
+        <entry key="app/src/main/res/drawable/mtrl_snackbar_background.xml" value="0.16111111111111112" />
+        <entry key="app/src/main/res/drawable/mtrl_tabs_default_indicator.xml" value="0.16111111111111112" />
         <entry key="app/src/main/res/layout/activity_backup_transfer_guid.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/activity_cost_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_budget_summary.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/activity_category_list.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/activity_cost_add_edit.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/activity_cost_list.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_disclosure.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_guest_add_edit.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_guest_list.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main_dashboard.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_guest_summary.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/activity_main_dashboard.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_payment_add_edit.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/activity_privacy_policy.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_profile_add_edit.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_profile_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_reports_list.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_restore.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_restore_list.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/activity_sub_task_add_edit.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/activity_task_add_edit.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_task_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_task_summary.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_vendor_add_edit.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_vendor_list.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/alert_dialog_addmob.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/activity_vendor_summary.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/activity_wedding_pro_version.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/alert_dialog_addmob.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/alert_dialog_new_category.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/alert_dialog_pdf_report.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/alert_dialog_recycler_list.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/alert_dialog_restore.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/alert_dialog_two_button.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/design_bottom_navigation_item.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/dialog_rating.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/notification_action.xml" value="0.1" />
         <entry key="app/src/main/res/layout/notification_action_tombstone.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/progress_dialog.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/report_pdf_item.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/restore_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/row_category.xml" value="0.25" />
         <entry key="app/src/main/res/layout/row_category_manage.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_companion.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_cost.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_custom_tab.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_dashboard_item.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_drawer_item.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_guest.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_image_icon.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_image_large.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_payment.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_profile.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_selection_item.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_sub_task.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_task.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_vendor.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/select_dialog_item_material.xml" value="0.1" />
         <entry key="app/src/main/res/layout/select_dialog_multichoice_material.xml" value="0.1" />
         <entry key="app/src/main/res/layout/select_dialog_singlechoice_material.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/support_simple_spinner_dropdown_item.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/toolbar_binding.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/zip_list_dialog.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/zip_list_dialog.xml" value="0.67" />
         <entry key="app/src/main/res/menu/backup_menu.xml" value="0.1640625" />
-        <entry key="app/src/main/res/menu/menu_add_edit.xml" value="0.1640625" />
-        <entry key="app/src/main/res/menu/menu_dashboard.xml" value="0.1640625" />
+        <entry key="app/src/main/res/menu/menu_add_edit.xml" value="0.4573643410852713" />
+        <entry key="app/src/main/res/menu/menu_dashboard.xml" value="0.33" />
         <entry key="app/src/main/res/menu/menu_list.xml" value="0.1640625" />
         <entry key="app/src/main/res/menu/menu_report.xml" value="0.1640625" />
+        <entry key="app/src/main/res/menu/report_options_menu.xml" value="0.1640625" />
       </map>
     </option>
   </component>

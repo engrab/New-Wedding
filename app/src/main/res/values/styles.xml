@@ -20,6 +20,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     </style>
+
     <style name="AppThemeDialogActionBar">
         <item name="android:textColorSecondary">@color/actionbar</item>
         <item name="colorAccent">@color/actionbar</item>
@@ -41,14 +42,17 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:fontFamily">@font/semibold</item>
     </style>
-    <style name="CardView">
-    </style>
+
+    <style name="CardView"></style>
+
     <style name="CardView.Dark">
         <item name="cardBackgroundColor">@color/cardview_dark_background</item>
     </style>
+
     <style name="CardView.Light">
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
     </style>
+
     <style name="CardViewCommon">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -59,6 +63,7 @@
         <item name="cardCornerRadius">8dp</item>
         <item name="cardElevation">0dp</item>
     </style>
+
     <style name="CardViewCommonDash">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -69,6 +74,7 @@
         <item name="cardCornerRadius">8dp</item>
         <item name="cardElevation">0dp</item>
     </style>
+
     <style name="CardViewDash">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -76,17 +82,20 @@
         <item name="cardCornerRadius">32dp</item>
         <item name="cardElevation">4dp</item>
     </style>
+
     <style name="CustomActivityAnimation">
         <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
         <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
         <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
         <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
     </style>
+
     <style name="EasyPermissions">
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     </style>
+
     <style name="EasyPermissions.Transparent">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
@@ -95,6 +104,7 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
+
     <style name="EditTextCommon">
         <item name="android:textSize">16dp</item>
         <item name="android:textColor">@color/textColorRegular</item>
@@ -102,38 +112,47 @@
         <item name="android:padding">4dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:inputType">none|text|textEmailAddress|textPassword|textWebEditText</item>
+        <item name="android:inputType">none|text|textEmailAddress|textPassword|textWebEditText
+        </item>
         <item name="android:fontFamily">@font/semibold</item>
     </style>
+
     <style name="FloatingActionButtonCommon">
-        <item name="android:layout_gravity">top|left|right|center_vertical|center_horizontal|fill_horizontal|center</item>
+        <item name="android:layout_gravity">
+            top|left|right|center_vertical|center_horizontal|fill_horizontal|center
+        </item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">16dp</item>
         <item name="android:src">@drawable/add_fab</item>
         <item name="elevation">4dp</item>
-        <item name="fabSize">@null</item>
+        <item name="fabSize">normal</item>
     </style>
+
     <style name="ImageViewButtonCommon">
         <item name="android:layout_gravity">left|center_horizontal|clip_horizontal</item>
         <item name="android:padding">8dp</item>
         <item name="android:layout_width">42dp</item>
         <item name="android:layout_height">42dp</item>
     </style>
+
     <style name="ImageViewButtonSmall">
         <item name="android:layout_gravity">left|center_horizontal|clip_horizontal</item>
         <item name="android:padding">8dp</item>
         <item name="android:layout_width">32dp</item>
         <item name="android:layout_height">32dp</item>
     </style>
+
     <style name="ImageViewDashCard">
         <item name="android:layout_width">72dp</item>
         <item name="android:layout_height">72dp</item>
     </style>
+
     <style name="ImageViewLargeCommon">
         <item name="android:layout_width">120dp</item>
         <item name="android:layout_height">120dp</item>
     </style>
+
     <style name="ImageViewMediumCommon">
         <item name="android:gravity">left|center_horizontal|clip_horizontal</item>
         <item name="android:layout_gravity">left|center_horizontal|clip_horizontal</item>
@@ -141,17 +160,20 @@
         <item name="android:layout_width">60dp</item>
         <item name="android:layout_height">60dp</item>
     </style>
+
     <style name="ImageViewNoDataCommon">
         <item name="android:tint">@color/colorRipple</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
     <style name="ImageViewSwitchCommon">
         <item name="android:layout_gravity">left|center_horizontal|clip_horizontal</item>
         <item name="android:padding">4dp</item>
         <item name="android:layout_width">40dp</item>
         <item name="android:layout_height">36dp</item>
     </style>
+
     <style name="LinearLayoutDashCard">
         <item name="android:gravity">left|center_horizontal|clip_horizontal</item>
         <item name="android:orientation">vertical</item>
@@ -170,6 +192,7 @@
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:fontFamily">@font/regular</item>
     </style>
+
     <style name="TextViewDescCommon">
         <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/textColorRegular</item>
@@ -178,6 +201,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/regular</item>
     </style>
+
     <style name="TextViewLightCommon">
         <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/textColorLight</item>
@@ -186,6 +210,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/regular</item>
     </style>
+
     <style name="TextViewLightSquareCommon">
         <item name="android:textSize">16dp</item>
         <item name="android:textColor">@color/textColorRegular</item>
@@ -195,6 +220,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/semibold</item>
     </style>
+
     <style name="TextViewTitleCommon">
         <item name="android:textSize">18dp</item>
         <item name="android:textColor">@color/textColorBold</item>
@@ -205,6 +231,7 @@
         <item name="android:singleLine">true</item>
         <item name="android:fontFamily">@font/semibold</item>
     </style>
+
     <style name="TextViewTitleCountDash">
         <item name="android:textSize">32dp</item>
         <item name="android:textColor">@color/actionbar</item>
@@ -215,6 +242,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:fontFamily">@font/regular</item>
     </style>
+
     <style name="TextViewTitleDash">
         <item name="android:textSize">22dp</item>
         <item name="android:textColor">@color/textColorRegular</item>
@@ -226,6 +254,7 @@
         <item name="android:singleLine">true</item>
         <item name="android:fontFamily">@font/semibold</item>
     </style>
+
     <style name="TextViewTitleLightCommon">
         <item name="android:textSize">16dp</item>
         <item name="android:textColor">@color/textColorRegular</item>
@@ -236,6 +265,7 @@
         <item name="android:singleLine">true</item>
         <item name="android:fontFamily">@font/regular</item>
     </style>
+
     <style name="TextViewTitleStatusDash">
         <item name="android:textSize">20dp</item>
         <item name="android:textColor">@color/textColorBold</item>
@@ -246,6 +276,7 @@
         <item name="android:singleLine">true</item>
         <item name="android:fontFamily">@font/regular</item>
     </style>
+
     <style name="AppTheme.AddMob">
         <item name="colorAccent">@color/addMobTextColor</item>
         <item name="colorPrimary">@color/colorPrimary</item>

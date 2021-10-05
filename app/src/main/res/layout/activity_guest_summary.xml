@@ -1,29 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/linMain" android:tag="layout/activity_guest_summary_0" android:layout_width="match_parent" android:layout_height="match_parent">
-    <include android:id="@+id/includedToolbar" layout="@layout/toolbar_binding"/>
-    <androidx.core.widget.NestedScrollView android:id="@+id/scrollRoot" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="wrap_content" android:fillViewport="true" android:layout_weight="1">
-        <LinearLayout android:orientation="vertical" android:id="@+id/linRoot" android:focusableInTouchMode="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:tag="layout/activity_guest_summary_0">
+
+    <include
+        android:id="@+id/includedToolbar"
+        layout="@layout/toolbar_binding" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollRoot"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/linRoot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
             <androidx.cardview.widget.CardView style="@style/CardViewCommon">
-                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp">
-                        <TextView android:textColor="@color/actionbar" android:tag="binding_1" android:layout_width="match_parent" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                        <ImageView android:layout_gravity="right" android:id="@+id/imgEdit" android:visibility="invisible" app:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp">
+
+                        <TextView
+                            style="@style/TextViewTitleCommon"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:tag="binding_1"
+                            android:textColor="@color/actionbar" />
+
+                        <ImageView
+                            android:id="@+id/imgEdit"
+                            style="@style/ImageViewButtonCommon"
+                            android:layout_gravity="right"
+                            android:visibility="invisible"
+                            app:tint="@color/actionbar" />
                     </LinearLayout>
-                    <View android:background="@color/actionbar" android:layout_width="match_parent" android:layout_height="1dp"/>
-                    <LinearLayout android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-                        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp">
-                            <TextView android:tag="binding_2" android:layout_width="match_parent" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                            <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="0.5dp"/>
-                            <TextView android:textColor="@color/textColorRegular" android:tag="binding_3" android:visibility="gone" android:layout_width="match_parent" android:layout_marginTop="4dp" android:layout_weight="1" style="@style/TextViewTitleLightCommon"/>
-                            <TextView android:textColor="@color/green" android:tag="binding_4" android:layout_width="match_parent" android:layout_marginTop="4dp" android:layout_weight="1" style="@style/TextViewTitleLightCommon"/>
-                            <TextView android:textColor="@color/red" android:tag="binding_5" android:layout_width="match_parent" android:layout_marginTop="4dp" android:layout_weight="1" style="@style/TextViewTitleLightCommon"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/actionbar" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/TextViewTitleCommon"
+                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:tag="binding_2" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="@color/divider" />
+
+                            <TextView
+                                style="@style/TextViewTitleLightCommon"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:tag="binding_3"
+                                android:textColor="@color/textColorRegular"
+                                android:visibility="gone" />
+
+                            <TextView
+                                style="@style/TextViewTitleLightCommon"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:tag="binding_4"
+                                android:textColor="@color/green" />
+
+                            <TextView
+                                style="@style/TextViewTitleLightCommon"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:tag="binding_5"
+                                android:textColor="@color/red" />
                         </LinearLayout>
-                        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp">
-                            <TextView android:tag="binding_6" android:layout_width="match_parent" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                            <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="0.5dp"/>
-                            <TextView android:textColor="@color/textColorRegular" android:tag="binding_7" android:layout_width="match_parent" android:layout_marginTop="4dp" android:layout_weight="1" style="@style/TextViewTitleLightCommon"/>
-                            <TextView android:textColor="@color/textColorRegular" android:tag="binding_8" android:layout_width="match_parent" android:layout_marginTop="4dp" android:layout_weight="1" style="@style/TextViewTitleLightCommon"/>
-                            <TextView android:textColor="@color/textColorRegular" android:tag="binding_9" android:layout_width="match_parent" android:layout_marginTop="4dp" android:layout_weight="1" style="@style/TextViewTitleLightCommon"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/TextViewTitleCommon"
+                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:tag="binding_6" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="@color/divider" />
+
+                            <TextView
+                                style="@style/TextViewTitleLightCommon"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:tag="binding_7"
+                                android:textColor="@color/textColorRegular" />
+
+                            <TextView
+                                style="@style/TextViewTitleLightCommon"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:tag="binding_8"
+                                android:textColor="@color/textColorRegular" />
+
+                            <TextView
+                                style="@style/TextViewTitleLightCommon"
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:tag="binding_9"
+                                android:textColor="@color/textColorRegular" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

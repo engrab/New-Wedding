@@ -14,13 +14,13 @@ import com.msint.weddingplanner.appBase.view.AddEditProfileActivity;
 import com.msint.weddingplanner.appBase.view.MainActivityDashboard;
 
 public class WeddingDisclosure extends AppCompatActivity implements View.OnClickListener {
-    public static String strPrivacyUri = "http://appworldinfotech.hol.es/terms/msterms/index.html";
-    public static String strTermsUri = "http://appworldinfotech.hol.es/terms/msterms/termsofservices.html";
+    public static String strPrivacyUri = "https://www.google.com/";
+    public static String strTermsUri = "https://www.google.com/";
 
 
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView((int) R.layout.activity_disclosure);
+        setContentView(R.layout.activity_disclosure);
     }
 
     public void agreeAndContinueDialog() {

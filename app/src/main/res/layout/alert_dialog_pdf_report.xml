@@ -8,8 +8,18 @@
             </LinearLayout>
             <View android:background="@color/actionbar" android:layout_width="match_parent" android:layout_height="1dp"/>
             <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:layout_marginBottom="16dp">
-                <Button android:id="@+id/btnExport" android:text="@string/export_to_pdf" style="@style/ButtonCommon"/>
-                <Button android:id="@+id/btnReports" android:text="@string/view_reports" style="@style/ButtonCommon"/>
+
+                <Button
+                    android:id="@+id/btnExport"
+                    style="@style/ButtonCommon"
+                    android:layout_height="48dp"
+                    android:text="@string/export_to_pdf" />
+
+                <Button
+                    android:id="@+id/btnReports"
+                    style="@style/ButtonCommon"
+                    android:layout_height="48dp"
+                    android:text="@string/view_reports" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

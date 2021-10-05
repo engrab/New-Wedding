@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
-    <item android:icon="@drawable/sort_up" android:id="@+id/sortUp" app:showAsAction="always"/>
-    <item android:icon="@drawable/sort_down" android:id="@+id/sortDown" android:visible="false" app:showAsAction="always"/>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/sortUp"
+        android:icon="@drawable/sort_up"
+        android:title="SortUp"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/sortDown"
+        android:icon="@drawable/sort_down"
+        android:visible="false"
+        app:showAsAction="always" />
 </menu>

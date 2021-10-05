@@ -7,11 +7,27 @@
                 <LinearLayout android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                     <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4dp">
                         <TextView android:layout_width="match_parent" android:text="@string/name" android:layout_weight="1" style="@style/TextViewLightCommon"/>
-                        <EditText android:id="@+id/etName" android:tag="binding_1" android:hint="@string/name" android:singleLine="true" style="@style/EditTextCommon"/>
+
+                        <EditText
+                            android:id="@+id/etName"
+                            style="@style/EditTextCommon"
+                            android:hint="@string/name"
+                            android:minHeight="48dp"
+                            android:singleLine="true"
+                            android:tag="binding_1" />
                     </LinearLayout>
                     <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4dp">
                         <TextView android:layout_width="match_parent" android:text="@string/amount" android:layout_weight="1" style="@style/TextViewLightCommon"/>
-                        <EditText android:id="@+id/etAmount" android:maxWidth="64dp" android:minWidth="24dp" android:hint="@string/amount" android:maxLength="10" android:inputType="numberDecimal" style="@style/EditTextCommon"/>
+
+                        <EditText
+                            android:id="@+id/etAmount"
+                            style="@style/EditTextCommon"
+                            android:hint="@string/amount"
+                            android:inputType="numberDecimal"
+                            android:maxWidth="64dp"
+                            android:maxLength="10"
+                            android:minWidth="24dp"
+                            android:minHeight="48dp" />
                     </LinearLayout>
                     <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4dp">
                         <TextView android:layout_width="match_parent" android:text="@string/payment_status" android:layout_weight="1" style="@style/TextViewLightCommon"/>

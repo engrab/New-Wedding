@@ -184,7 +184,7 @@ public class WeddingProVersionActivity extends BaseActivityBinding implements Pu
     public void restartapp(String str) {
         try {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage((CharSequence) str + " Restart Application for Pro Version!").setCancelable(false).setPositiveButton((CharSequence) "OK", (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+            builder.setMessage(str + " Restart Application for Pro Version!").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialogInterface, int i) {
                     Intent launchIntentForPackage = WeddingProVersionActivity.this.getBaseContext().getPackageManager().getLaunchIntentForPackage(WeddingProVersionActivity.this.getBaseContext().getPackageName());
                     launchIntentForPackage.addFlags(335577088);
