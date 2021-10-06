@@ -14,7 +14,25 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
+    <style name="MyDialogTheme" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="fontFamily">@font/firasans_regular</item>
+    </style>
+    <style name="DialogCustomTheme" parent="@android:style/Theme.Holo.Dialog.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+    <style name="common_edittextview_gaust">
+        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:textColor">@color/fontColor</item>
+        <item name="android:textColorHint">@color/light_silver</item>
+        <item name="android:gravity">left</item>
+        <item name="android:background">@drawable/square_white</item>
+        <item name="android:padding">@dimen/_10sdp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/firasans_regular</item>
+    </style>
     <style name="AppTheme.SearchView">
         <item name="colorAccent">@color/white</item>
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -282,4 +300,5 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
     </style>
+
 </resources>

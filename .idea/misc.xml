@@ -5,14 +5,29 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="../../../.gradle/caches/transforms-3/e759884e8e1539e68246ec4d8729cc98/transformed/core-1.5.0/res/layout-v21/notification_action.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/et_rounded_square_normal.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_add_budget.xml" value="0.15092592592592594" />
         <entry key="app/src/main/res/drawable/ic_arrow_drop_down_black.xml" value="0.184375" />
+        <entry key="app/src/main/res/drawable/ic_back_svg.xml" value="0.15092592592592594" />
+        <entry key="app/src/main/res/drawable/ic_done_svg.xml" value="0.15092592592592594" />
+        <entry key="app/src/main/res/drawable/ic_draggable_svg.xml" value="0.15092592592592594" />
+        <entry key="app/src/main/res/drawable/ic_pdf_black.xml" value="0.15092592592592594" />
+        <entry key="app/src/main/res/drawable/ic_refresh.xml" value="0.15092592592592594" />
+        <entry key="app/src/main/res/drawable/ic_statistics.xml" value="0.15092592592592594" />
         <entry key="app/src/main/res/drawable/mtrl_snackbar_background.xml" value="0.16111111111111112" />
         <entry key="app/src/main/res/drawable/mtrl_tabs_default_indicator.xml" value="0.16111111111111112" />
+        <entry key="app/src/main/res/drawable/progress_drawable.xml" value="0.1787037037037037" />
+        <entry key="app/src/main/res/drawable/squar_pista.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/square_batli.xml" value="0.1807967313585291" />
+        <entry key="app/src/main/res/drawable/square_white.xml" value="0.1787037037037037" />
+        <entry key="app/src/main/res/drawable/square_white_selection_gender.xml" value="0.1807967313585291" />
         <entry key="app/src/main/res/layout/activity_backup_transfer_guid.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_budget_summary.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_category_list.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_cost_add_edit.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_cost_list.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/activity_create_user_form.xml" value="0.21890201528839473" />
+        <entry key="app/src/main/res/layout/activity_currency.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_disclosure.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_guest_add_edit.xml" value="0.1640625" />
@@ -21,17 +36,18 @@
         <entry key="app/src/main/res/layout/activity_main_dashboard.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_payment_add_edit.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_privacy_policy.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/activity_profile_add_edit.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_profile_add_edit.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_profile_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_reports_list.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_restore.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_restore_list.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_sub_task_add_edit.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_task_add_edit.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_task_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_task_summary.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_term_and_service.xml" value="0.14" />
         <entry key="app/src/main/res/layout/activity_vendor_add_edit.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_vendor_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_vendor_summary.xml" value="0.1640625" />
@@ -43,7 +59,9 @@
         <entry key="app/src/main/res/layout/alert_dialog_restore.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/alert_dialog_two_button.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/design_bottom_navigation_item.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/dialog_progress.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/dialog_rating.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/layout_updateapp_dialog.xml" value="0.25" />
         <entry key="app/src/main/res/layout/notification_action.xml" value="0.1" />
         <entry key="app/src/main/res/layout/notification_action_tombstone.xml" value="0.1" />
         <entry key="app/src/main/res/layout/progress_dialog.xml" value="0.1640625" />
@@ -69,7 +87,9 @@
         <entry key="app/src/main/res/layout/select_dialog_multichoice_material.xml" value="0.1" />
         <entry key="app/src/main/res/layout/select_dialog_singlechoice_material.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/support_simple_spinner_dropdown_item.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/toolbar_binding.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/toolbar.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/toolbar_binding.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/view_currencyadapter.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/zip_list_dialog.xml" value="0.67" />
         <entry key="app/src/main/res/menu/backup_menu.xml" value="0.1640625" />
         <entry key="app/src/main/res/menu/menu_add_edit.xml" value="0.4573643410852713" />

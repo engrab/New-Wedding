@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.msint.weddingplanner">
-
+    package="com.example.weddingplanner">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -13,7 +12,7 @@
     <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
-        android:name="com.msint.weddingplanner.appBase.MyApp"
+        android:name=".appBase.MyApp"
         android:allowBackup="true"
         android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
         android:icon="@mipmap/ic_launcher"
@@ -22,16 +21,24 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory">
+        <activity
+            android:name=".ui.CurrencyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.CreateUserFormActivity"
+            android:exported="true" />
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/strAdmobAppId" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.msint.weddingplanner.provider"
+            android:authorities="com.example.weddingplanner.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -39,199 +46,196 @@
                 android:resource="@xml/main_provider_paths" />
         </provider>
 
-
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.SplashActivity"
+            android:name=".ui.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.msint.weddingplanner.appBase.utils.TermAndServiceActivity"
+            android:name=".appBase.utils.TermAndServiceActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.MainActivityDashboard"
+            android:name=".ui.MainActivityDashboard"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.DashboardActivity"
+            android:name=".ui.DashboardActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.CostListActivity"
+            android:name=".appBase.view.CostListActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.AddEditCostActivity"
+            android:name=".appBase.view.AddEditCostActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.AddEditPaymentActivity"
+            android:name=".appBase.view.AddEditPaymentActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.VendorListActivity"
+            android:name=".appBase.view.VendorListActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.AddEditVendorActivity"
+            android:name=".appBase.view.AddEditVendorActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.GuestListActivity"
+            android:name=".appBase.view.GuestListActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.AddEditGuestActivity"
+            android:name=".appBase.view.AddEditGuestActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.AddEditCompanionsActivity"
+            android:name=".appBase.view.AddEditCompanionsActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.TaskListActivity"
+            android:name=".appBase.view.TaskListActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.AddEditTaskActivity"
+            android:name=".appBase.view.AddEditTaskActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.AddEditSubTaskActivity"
+            android:name=".appBase.view.AddEditSubTaskActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.AddEditProfileActivity"
+            android:name=".appBase.view.AddEditProfileActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.TaskSummaryActivity"
+            android:name=".appBase.view.TaskSummaryActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.GuestSummaryActivity"
+            android:name=".appBase.view.GuestSummaryActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.BudgetSummaryActivity"
+            android:name=".appBase.view.BudgetSummaryActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.VendorSummaryActivity"
+            android:name=".appBase.view.VendorSummaryActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.SettingActivity"
+            android:name=".ui.SettingActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.CategoryListActivity"
+            android:name=".appBase.view.CategoryListActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.PrivacyPolicyActivity"
+            android:name=".appBase.view.PrivacyPolicyActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.pdfRepo.ReportsListActivity"
+            android:name=".pdfRepo.ReportsListActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.ProfileListActivity"
+            android:name=".appBase.view.ProfileListActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.backupRestore.RestoreListActivity"
+            android:name=".backupRestore.RestoreListActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.backupRestore.BackupTransferGuidActivity"
+            android:name=".backupRestore.BackupTransferGuidActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.msint.weddingplanner.appBase.view.WeddingProVersionActivity"
+            android:name=".appBase.view.WeddingProVersionActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name="pub.devrel.easypermissions.AppSettingsDialogHolderActivity"
             android:exported="false"
             android:label=""
-            android:theme="@style/EasyPermissions.Transparent" />
-<!--        <activity-->
-<!--            android:name="com.google.android.gms.ads.AdActivity"-->
-<!--            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"-->
-<!--            android:exported="false"-->
-<!--            android:theme="@style/Theme.Translucent" />-->
-
+            android:theme="@style/EasyPermissions.Transparent" /> <!-- <activity -->
+        <!-- android:name="com.google.android.gms.ads.AdActivity" -->
+        <!-- android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" -->
+        <!-- android:exported="false" -->
+        <!-- android:theme="@style/Theme.Translucent" /> -->
         <provider
             android:name="com.google.android.gms.ads.MobileAdsInitProvider"
-            android:authorities="com.msint.weddingplanner.mobileadsinitprovider"
+            android:authorities="com.example.weddingplanner.mobileadsinitprovider"
             android:exported="false"
             android:initOrder="100"
             tools:replace="android:authorities" />
+
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-<!--        <activity-->
-<!--            android:name="com.android.billingclient.api.ProxyBillingActivity"-->
-<!--            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize"-->
-<!--            android:theme="@style/Theme.Translucent.NoTitleBar" />-->
-
+            android:value="@integer/google_play_services_version" /> <!-- <activity -->
+        <!-- android:name="com.android.billingclient.api.ProxyBillingActivity" -->
+        <!-- android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" -->
+        <!-- android:theme="@style/Theme.Translucent.NoTitleBar" /> -->
         <meta-data
             android:name="android.support.VERSION"
             android:value="26.1.0" />
@@ -239,4 +243,5 @@
             android:name="com.android.vending.derived.apk.id"
             android:value="1" />
     </application>
+
 </manifest>

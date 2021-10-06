@@ -193,4 +193,20 @@
     <string name="website">Website</string>
     <string name="wedding_detail">Wedding detail</string>
     <string name="your_detail">Your Detail</string>
+    <string name="menu_terms">Terms of Service</string>
+    <string name="no_internet_available">No Internet Available</string>
+    <string name="partner_name">Partner Name</string>
+    <string name="partner_email">Partner Email</string>
+    <string name="create_wedding">Create Wedding</string>
+    <string name="todo">Tod</string>
+    <string name="search">Search</string>
+    <string name="currency_title">Currency</string>
+    <string name="email_pattern">Email</string>
+    <string name="picture_your_picture">Your Picutre</string>
+    <string name="your_name">Your Name</string>
+    <string name="wedding_name">Wedding Name</string>
+    <string name="address_of_the_ceremony">Address Of Cermony</string>
+    <string name="total_budget">Total Budget</string>
+    <string name="currency">Currency</string>
+    <string name="collabrationcode">Collabration Code</string>
 </resources>
