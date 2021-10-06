@@ -13,7 +13,7 @@ import com.msint.weddingplanner.appBase.appPref.AppPref;
 import com.msint.weddingplanner.appBase.view.AddEditProfileActivity;
 import com.msint.weddingplanner.appBase.view.MainActivityDashboard;
 
-public class WeddingDisclosure extends AppCompatActivity implements View.OnClickListener {
+public class TermAndServiceActivity extends AppCompatActivity implements View.OnClickListener {
     public static String strPrivacyUri = "https://www.google.com/";
     public static String strTermsUri = "https://www.google.com/";
 

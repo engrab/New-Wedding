@@ -13,12 +13,10 @@ import com.google.ads.consent.ConsentInfoUpdateListener;
 import com.google.ads.consent.ConsentInformation;
 import com.google.ads.consent.ConsentStatus;
 import com.google.ads.mediation.admob.AdMobAdapter;
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.msint.weddingplanner.R;
 import com.msint.weddingplanner.appBase.appPref.AppPref;
 import com.msint.weddingplanner.appBase.roomsDB.AppDataBase;
@@ -29,7 +27,7 @@ import com.msint.weddingplanner.appBase.utils.AppConstants;
 import com.msint.weddingplanner.appBase.utils.BackgroundAsync;
 import com.msint.weddingplanner.appBase.utils.Constants;
 import com.msint.weddingplanner.appBase.utils.OnAsyncBackground;
-import com.msint.weddingplanner.appBase.utils.WeddingDisclosure;
+import com.msint.weddingplanner.appBase.utils.TermAndServiceActivity;
 import java.lang.ref.WeakReference;
 
 public class SplashActivity extends AppCompatActivity {
@@ -40,7 +38,6 @@ public class SplashActivity extends AppCompatActivity {
     /* renamed from: db */
     private AppDataBase db;
 
-    public InterstitialAd interstitialAd;
     SplashActivity splash_activity;
 
     public WeakReference<SplashActivity> splash_activityWeakReference;
@@ -56,21 +53,21 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
-    class C08862 extends AdListener {
-
-        class C08851 implements Runnable {
-            C08851() {
-            }
-
-            public void run() {
-                if (SplashActivity.this.Ad_Show) {
-                    SplashActivity.this.GoToMainScreen();
-                }
-            }
-        }
-
-        C08862() {
-        }
+//    class C08862 extends AdListener {
+//
+//        class C08851 implements Runnable {
+//            C08851() {
+//            }
+//
+//            public void run() {
+//                if (SplashActivity.this.Ad_Show) {
+//                    SplashActivity.this.GoToMainScreen();
+//                }
+//            }
+//        }
+//
+//        C08862() {
+//        }
 
 //        public void onAdLoaded() {
 //            if (SplashActivity.this.interstitialAd.isLoaded() && SplashActivity.this.Ad_Show) {
@@ -83,26 +80,26 @@ public class SplashActivity extends AppCompatActivity {
 //            }
 //        }
 
-        public void onAdFailedToLoad(int i) {
-            new Handler().postDelayed(new C08851(), 3000);
-        }
-
-        public void onAdClosed() {
-            SplashActivity.this.GoToMainScreen();
-        }
-
-        public void onAdOpened() {
-            super.onAdOpened();
-        }
+//        public void onAdFailedToLoad(int i) {
+//            new Handler().postDelayed(new C08851(), 3000);
+//        }
+//
+//        public void onAdClosed() {
+//            SplashActivity.this.GoToMainScreen();
+//        }
+//
+//        public void onAdOpened() {
+//            super.onAdOpened();
+//        }
 
 //        public void onAdLeftApplication() {
 //            super.onAdLeftApplication();
 //        }
-    }
+//    }
 
-    public SplashActivity() {
-        AdConstants.isAdShown = false;
-    }
+//    public SplashActivity() {
+//        AdConstants.isAdShown = false;
+//    }
 
 
     public void onCreate(Bundle bundle) {
@@ -110,7 +107,7 @@ public class SplashActivity extends AppCompatActivity {
         this.db = AppDataBase.getAppDatabase(this.context);
         try {
             super.onCreate(bundle);
-            setContentView((int) R.layout.activity_splash);
+            setContentView(R.layout.activity_splash);
             ((TextView) findViewById(R.id.versionApp)).setText(AppConstants.getVersion(this.context));
         } catch (Exception e) {
             e.printStackTrace();
@@ -154,7 +151,7 @@ public class SplashActivity extends AppCompatActivity {
                 AppPref.setDefaultInserted(SplashActivity.this.context, true);
                 SplashActivity.this.openMainActivity();
             }
-        }).execute(new Object[0]);
+        }).execute();
     }
 
 
@@ -185,7 +182,7 @@ public class SplashActivity extends AppCompatActivity {
     public void openMainActivity() {
         try {
             if (!AppPref.IsTermsAccept(this.context)) {
-                startActivity(new Intent(this, WeddingDisclosure.class));
+                startActivity(new Intent(this, TermAndServiceActivity.class));
             } else if (!AppPref.isFirstLaunch(this.context)) {
                 startActivity(new Intent(this.context, MainActivityDashboard.class));
             } else {
@@ -214,7 +211,7 @@ public class SplashActivity extends AppCompatActivity {
                     if (ConsentInformation.getInstance(SplashActivity.this.context).getConsentStatus() == ConsentStatus.UNKNOWN) {
                         SplashActivity.this.Ad_Show = false;
                         try {
-                            if (SplashActivity.this.splash_activityWeakReference.get() != null && !((SplashActivity) SplashActivity.this.splash_activityWeakReference.get()).isFinishing()) {
+                            if (SplashActivity.this.splash_activityWeakReference.get() != null && !SplashActivity.this.splash_activityWeakReference.get().isFinishing()) {
                                 SplashActivity.this.showDialog();
                             }
                         } catch (Exception e) {

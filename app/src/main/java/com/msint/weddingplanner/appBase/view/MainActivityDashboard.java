@@ -8,19 +8,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import com.google.ads.mediation.admob.AdMobAdapter;
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.OnPaidEventListener;
-import com.google.android.gms.ads.ResponseInfo;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.msint.weddingplanner.R;
 import com.msint.weddingplanner.appBase.appPref.AppPref;
 import com.msint.weddingplanner.appBase.baseClass.BaseActivityBinding;
@@ -28,9 +22,8 @@ import com.msint.weddingplanner.appBase.roomsDB.AppDataBase;
 import com.msint.weddingplanner.appBase.utils.AdConstants;
 import com.msint.weddingplanner.appBase.utils.AppConstants;
 import com.msint.weddingplanner.appBase.utils.Constants;
-import com.msint.weddingplanner.appBase.utils.WeddingDisclosure;
+import com.msint.weddingplanner.appBase.utils.TermAndServiceActivity;
 import com.msint.weddingplanner.databinding.ActivityMainDashboardBinding;
-import com.msint.weddingplanner.databinding.ActivityTaskSummaryBinding;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -67,7 +60,7 @@ public class MainActivityDashboard extends BaseActivityBinding {
                 AppConstants.emailUs(this.context);
                 return true;
             case R.id.drawer_privacy_policy:
-                uriparse(WeddingDisclosure.strPrivacyUri);
+                uriparse(TermAndServiceActivity.strPrivacyUri);
                 return true;
             case R.id.drawer_proversion:
                 startActivity(new Intent(this.context, WeddingProVersionActivity.class));
@@ -82,7 +75,7 @@ public class MainActivityDashboard extends BaseActivityBinding {
                 AppConstants.shareApp(this.context);
                 return true;
             case R.id.drawer_terms_of_service:
-                uriparse(WeddingDisclosure.strTermsUri);
+                uriparse(TermAndServiceActivity.strTermsUri);
                 return true;
             default:
                 return super.onOptionsItemSelected(menuItem);

@@ -49,7 +49,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.msint.weddingplanner.appBase.utils.WeddingDisclosure"
+            android:name="com.msint.weddingplanner.appBase.utils.TermAndServiceActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
