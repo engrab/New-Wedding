@@ -218,28 +218,4 @@ public class MainActivityDashboard extends BaseActivityBinding {
         }
     }
 
-//    public static void BackScreen() {
-//        if (!AdConstants.isAdShown && (interstitialAd_admob == null || !interstitialAd_admob.isLoaded())) {
-//            LoadAd();
-//        }
-//        if (adActivity != null) {
-//            adActivity.finish();
-//        }
-//    }
-
-//    public static void BackPressedAd(Activity activity) {
-//        adActivity = activity;
-//        if (interstitialAd_admob == null) {
-//            BackScreen();
-//        } else if (!interstitialAd_admob.isLoaded() || AdConstants.isAdShown) {
-//            BackScreen();
-//        } else {
-//            try {
-//                interstitialAd_admob.show();
-//            } catch (Exception unused) {
-//                BackScreen();
-//            }
-//            AdConstants.isAdShown = true;
-//        }
-//    }
 }

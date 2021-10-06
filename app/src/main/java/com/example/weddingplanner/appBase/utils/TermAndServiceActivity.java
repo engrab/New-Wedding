@@ -69,7 +69,7 @@ public class TermAndServiceActivity extends AppCompatActivity implements View.On
             if (!AppPref.isFirstLaunch(this)) {
                 startActivity(new Intent(this, MainActivityDashboard.class));
             } else {
-                startActivity(new Intent(this, CreateUserFormActivity.class));
+                startActivity(new Intent(this, AddEditProfileActivity.class));
             }
             finish();
         } catch (Exception e) {
