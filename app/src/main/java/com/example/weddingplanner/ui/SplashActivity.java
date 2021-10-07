@@ -1,33 +1,31 @@
-package com.msint.weddingplanner.appBase.view;
+package com.example.weddingplanner.ui;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.TextView;
+
+import com.example.weddingplanner.R;
+import com.example.weddingplanner.appBase.appPref.AppPref;
+import com.example.weddingplanner.appBase.roomsDB.AppDataBase;
+import com.example.weddingplanner.appBase.roomsDB.category.CategoryRowModel;
+import com.example.weddingplanner.appBase.utils.AdConstants;
+import com.example.weddingplanner.appBase.utils.AdMobTwoButtonDialogListener;
+import com.example.weddingplanner.appBase.utils.BackgroundAsync;
+import com.example.weddingplanner.appBase.utils.Constants;
+import com.example.weddingplanner.appBase.utils.OnAsyncBackground;
+import com.example.weddingplanner.appBase.utils.TermAndServiceActivity;
+import com.example.weddingplanner.appBase.view.AddEditProfileActivity;
 import com.google.ads.consent.ConsentInfoUpdateListener;
 import com.google.ads.consent.ConsentInformation;
 import com.google.ads.consent.ConsentStatus;
 import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.msint.weddingplanner.R;
-import com.msint.weddingplanner.appBase.appPref.AppPref;
-import com.msint.weddingplanner.appBase.roomsDB.AppDataBase;
-import com.msint.weddingplanner.appBase.roomsDB.category.CategoryRowModel;
-import com.msint.weddingplanner.appBase.utils.AdConstants;
-import com.msint.weddingplanner.appBase.utils.AdMobTwoButtonDialogListener;
-import com.msint.weddingplanner.appBase.utils.AppConstants;
-import com.msint.weddingplanner.appBase.utils.BackgroundAsync;
-import com.msint.weddingplanner.appBase.utils.Constants;
-import com.msint.weddingplanner.appBase.utils.OnAsyncBackground;
-import com.msint.weddingplanner.appBase.utils.TermAndServiceActivity;
+
 import java.lang.ref.WeakReference;
 
 public class SplashActivity extends AppCompatActivity {
@@ -35,94 +33,45 @@ public class SplashActivity extends AppCompatActivity {
 
     public Context context;
 
-    /* renamed from: db */
+
     private AppDataBase db;
 
     SplashActivity splash_activity;
 
     public WeakReference<SplashActivity> splash_activityWeakReference;
 
-    class C08841 implements Runnable {
-        C08841() {
-        }
 
-        public void run() {
-            if (SplashActivity.this.Ad_Show) {
-                SplashActivity.this.GoToMainScreen();
-            }
-        }
-    }
 
-//    class C08862 extends AdListener {
-//
-//        class C08851 implements Runnable {
-//            C08851() {
-//            }
-//
-//            public void run() {
-//                if (SplashActivity.this.Ad_Show) {
-//                    SplashActivity.this.GoToMainScreen();
-//                }
-//            }
-//        }
-//
-//        C08862() {
-//        }
-
-//        public void onAdLoaded() {
-//            if (SplashActivity.this.interstitialAd.isLoaded() && SplashActivity.this.Ad_Show) {
-//                SplashActivity.this.Ad_Show = false;
-//                try {
-//                    SplashActivity.this.interstitialAd.show();
-//                } catch (Exception unused) {
-//                    SplashActivity.this.GoToMainScreen();
-//                }
-//            }
-//        }
-
-//        public void onAdFailedToLoad(int i) {
-//            new Handler().postDelayed(new C08851(), 3000);
-//        }
-//
-//        public void onAdClosed() {
-//            SplashActivity.this.GoToMainScreen();
-//        }
-//
-//        public void onAdOpened() {
-//            super.onAdOpened();
-//        }
-
-//        public void onAdLeftApplication() {
-//            super.onAdLeftApplication();
-//        }
-//    }
-
-//    public SplashActivity() {
-//        AdConstants.isAdShown = false;
-//    }
 
 
     public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        setContentView(R.layout.activity_splash);
         this.context = this;
         this.db = AppDataBase.getAppDatabase(this.context);
-        try {
-            super.onCreate(bundle);
-            setContentView(R.layout.activity_splash);
-            ((TextView) findViewById(R.id.versionApp)).setText(AppConstants.getVersion(this.context));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         if (AppPref.getIsAdfree(this.context)) {
-            new Handler().postDelayed(new C08841(), 1000);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (SplashActivity.this.Ad_Show) {
+                        SplashActivity.this.GoToMainScreen();
+                    }
+                }
+            }, 1000);
             return;
         }
-        MobileAds.initialize(this.context, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+        MobileAds.initialize(this.context, initializationStatus -> {
 
-            }
         });
-        new Handler().postDelayed(new C08841(), 2000);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (SplashActivity.this.Ad_Show) {
+                    SplashActivity.this.GoToMainScreen();
+                }
+            }
+        }, 2000);
         this.splash_activity = this;
         this.splash_activityWeakReference = new WeakReference<>(this.splash_activity);
         fornpa();
@@ -252,6 +201,7 @@ public class SplashActivity extends AppCompatActivity {
             GoToMainScreen();
         }
     }
+
 
 
     public void showDialog() {
