@@ -42,10 +42,12 @@ public class ImageAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
         if (viewHolder instanceof RowHolder) {
             RowHolder rowHolder = (RowHolder) viewHolder;
+            rowHolder.binding.imgFolder.setImageResource(arrayList.get(i).getImgResId());
 //            rowHolder.binding.setRowModel(this.arrayList.get(i));
 //            rowHolder.binding.executePendingBindings();
         } else if (viewHolder instanceof RowHolderLarge) {
             RowHolderLarge rowHolderLarge = (RowHolderLarge) viewHolder;
+            rowHolderLarge.binding.imageViewLarge.setImageResource(arrayList.get(i).getImgResId());
 //            rowHolderLarge.binding.setRowModel(this.arrayList.get(i));
 //            rowHolderLarge.binding.executePendingBindings();
         }

@@ -21,12 +21,14 @@
             app:tint="@color/actionbar" />
 
         <TextView
+            android:id="@+id/title"
             style="@style/TextViewTitleCommon"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:tag="binding_2" />
 
         <ImageView
+            android:id="@+id/image"
             style="@style/ImageViewButtonCommon"
             android:tag="binding_3" />
     </LinearLayout>

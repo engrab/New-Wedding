@@ -40,38 +40,36 @@ public class SplashActivity extends AppCompatActivity {
 
     public WeakReference<SplashActivity> splash_activityWeakReference;
 
-
-
-
-
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_splash);
         this.context = this;
         this.db = AppDataBase.getAppDatabase(this.context);
 
-        if (AppPref.getIsAdfree(this.context)) {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (SplashActivity.this.Ad_Show) {
-                        SplashActivity.this.GoToMainScreen();
-                    }
-                }
-            }, 1000);
-            return;
-        }
+//        if (AppPref.getIsAdfree(this.context)) {
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    if (SplashActivity.this.Ad_Show) {
+//                        SplashActivity.this.GoToMainScreen();
+//                    }
+//                }
+//            }, 1000);
+//            return;
+//        }
         MobileAds.initialize(this.context, initializationStatus -> {
 
         });
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (SplashActivity.this.Ad_Show) {
-                    SplashActivity.this.GoToMainScreen();
-                }
-            }
-        }, 2000);
+        startActivity(new Intent(this.context, MainActivityDashboard.class));
+//        SplashActivity.this.GoToMainScreen();
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (SplashActivity.this.Ad_Show) {
+//                    SplashActivity.this.GoToMainScreen();
+//                }
+//            }
+//        }, 2000);
         this.splash_activity = this;
         this.splash_activityWeakReference = new WeakReference<>(this.splash_activity);
         fornpa();
@@ -81,9 +79,20 @@ public class SplashActivity extends AppCompatActivity {
     public void GoToMainScreen() {
         this.Ad_Show = false;
         if (!AppPref.isFirstLaunch(this.context) || AppPref.isDefaultInserted(this.context)) {
-            openMainActivity();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    openMainActivity();
+                }
+            },5000);
+
         } else {
-            insertDefaultDataList();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    insertDefaultList();
+                }
+            },100);
         }
     }
 

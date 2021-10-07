@@ -44,7 +44,7 @@
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.16" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_sub_task_add_edit.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/activity_task_add_edit.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/activity_task_add_edit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_task_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_task_summary.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_term_and_service.xml" value="0.14" />
@@ -55,7 +55,7 @@
         <entry key="app/src/main/res/layout/alert_dialog_addmob.xml" value="0.25" />
         <entry key="app/src/main/res/layout/alert_dialog_new_category.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/alert_dialog_pdf_report.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/alert_dialog_recycler_list.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/alert_dialog_recycler_list.xml" value="0.5" />
         <entry key="app/src/main/res/layout/alert_dialog_restore.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/alert_dialog_two_button.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/design_bottom_navigation_item.xml" value="0.1640625" />

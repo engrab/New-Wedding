@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,7 +53,6 @@ import com.example.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.example.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.example.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.example.weddingplanner.databinding.ActivityTaskAddEditBinding;
-import com.example.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.example.weddingplanner.databinding.AlertDialogNewCategoryBinding;
 import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.example.weddingplanner.pdfRepo.ReportRowModel;
@@ -69,6 +69,7 @@ import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements EasyPermissions.PermissionCallbacks, EasyPermissions.RationaleCallbacks {
+    private static final String TAG = "AddEditTaskActivity";
     public static String EXTRA_ID = "id";
     public static String EXTRA_IS_DELETED = "isDeleted";
     public static String EXTRA_IS_EDIT = "isEdit";
@@ -81,7 +82,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
 
 
 
-    public AppDataBase f546db;
+    public AppDataBase db;
 
     public Dialog dialogCategoryList;
     private AlertDialogRecyclerListBinding dialogCategoryListBinding;
@@ -124,7 +125,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         binding = ActivityTaskAddEditBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        this.f546db = AppDataBase.getAppDatabase(this);
+        this.db = AppDataBase.getAppDatabase(this);
         setModelDetail();
 //        this.binding.setRowModel(this.model);
     }
@@ -177,16 +178,16 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
 
             public void onOk() {
                 try {
-                    AddEditTaskActivity.this.f546db.subTaskDao().deleteAll(AddEditTaskActivity.this.model.getId());
+                    db.subTaskDao().deleteAll(model.getId());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 try {
-                    AddEditTaskActivity.this.f546db.taskDao().delete(AddEditTaskActivity.this.model);
+                    db.taskDao().delete(model);
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }
-                AddEditTaskActivity.this.openItemList(true);
+                openItemList(true);
             }
         });
     }
@@ -267,7 +268,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
                     instance.set(1, i);
                     instance.set(2, i2);
                     instance.set(5, i3);
-                    AddEditTaskActivity.this.model.setDateInMillis(instance.getTimeInMillis());
+                    model.setDateInMillis(instance.getTimeInMillis());
                 }
             }, instance.get(1), instance.get(2), instance.get(5)).show();
         } catch (Exception e) {
@@ -289,7 +290,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
     private void fillCategoryList() {
         this.categoryList = new ArrayList<>();
         try {
-            this.categoryList.addAll(this.f546db.categoryDao().getAll());
+            this.categoryList.addAll(this.db.categoryDao().getAll());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -299,6 +300,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
             this.model.setCategoryId(this.categoryList.get(this.selectedCategoryPos).getId());
             this.model.setCategoryRowModel(this.categoryList.get(this.selectedCategoryPos));
         }
+        Log.d(TAG, "fillCategoryList: "+categoryList.size());
     }
 
     private int getSelectedPosById() {
@@ -322,23 +324,23 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         this.dialogCategoryListBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.dialogCategoryListBinding.recycler.setAdapter(new CategoryAdapter(this.context, false, this.categoryList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = AddEditTaskActivity.this.selectedCategoryPos = i;
+                int unused = selectedCategoryPos = i;
             }
         }));
         this.dialogCategoryListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    AddEditTaskActivity.this.dialogCategoryList.dismiss();
+                    dialogCategoryList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                AddEditTaskActivity.this.showNewCatList();
+                showNewCatList();
             }
         });
         this.dialogCategoryListBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    AddEditTaskActivity.this.dialogCategoryList.dismiss();
+                    dialogCategoryList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -346,10 +348,10 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         });
         this.dialogCategoryListBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                AddEditTaskActivity.this.model.setCategoryId(((CategoryRowModel) AddEditTaskActivity.this.categoryList.get(AddEditTaskActivity.this.selectedCategoryPos)).getId());
-                AddEditTaskActivity.this.model.setCategoryRowModel((CategoryRowModel) AddEditTaskActivity.this.categoryList.get(AddEditTaskActivity.this.selectedCategoryPos));
+                model.setCategoryId(((CategoryRowModel) categoryList.get(selectedCategoryPos)).getId());
+                model.setCategoryRowModel((CategoryRowModel) categoryList.get(selectedCategoryPos));
                 try {
-                    AddEditTaskActivity.this.dialogCategoryList.dismiss();
+                    dialogCategoryList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -437,13 +439,13 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         this.dialogNewCatBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false));
         this.dialogNewCatBinding.recycler.setAdapter(new ImageAdapter(true, this.context, this.imageList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = AddEditTaskActivity.this.selectedNewCatPos = i;
+                int unused = selectedNewCatPos = i;
             }
         }));
         this.dialogNewCatBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    AddEditTaskActivity.this.dialogNewCat.dismiss();
+                    dialogNewCat.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -452,26 +454,26 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         this.dialogNewCatBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 long j;
-                if (AddEditTaskActivity.this.isValidNewCat(AddEditTaskActivity.this.dialogNewCatBinding)) {
-                    CategoryRowModel categoryRowModel = new CategoryRowModel(AppConstants.getUniqueId(), AddEditTaskActivity.this.dialogNewCatBinding.etName.getText().toString().trim(), ((ImageRowModel) AddEditTaskActivity.this.imageList.get(AddEditTaskActivity.this.selectedNewCatPos)).getId());
+                if (isValidNewCat(dialogNewCatBinding)) {
+                    CategoryRowModel categoryRowModel = new CategoryRowModel(AppConstants.getUniqueId(), dialogNewCatBinding.etName.getText().toString().trim(), ((ImageRowModel) imageList.get(selectedNewCatPos)).getId());
                     try {
                         categoryRowModel.getName().trim();
-                        j = AddEditTaskActivity.this.f546db.categoryDao().insert(categoryRowModel);
+                        j = db.categoryDao().insert(categoryRowModel);
                     } catch (Exception e) {
                         e.printStackTrace();
                         j = 0;
                     }
                     if (j > 0) {
-                        AddEditTaskActivity.this.selectionAllCategory(false);
+                        selectionAllCategory(false);
                         categoryRowModel.setSelected(true);
-                        AddEditTaskActivity.this.categoryList.add(categoryRowModel);
-                        int unused = AddEditTaskActivity.this.selectedCategoryPos = AddEditTaskActivity.this.categoryList.size() - 1;
-                        AddEditTaskActivity.this.showDialogCategoryList();
+                        categoryList.add(categoryRowModel);
+                        selectedCategoryPos = categoryList.size() - 1;
+                        showDialogCategoryList();
                     }
-                    AddEditTaskActivity.this.dialogNewCatBinding.etName.setText("");
+                    dialogNewCatBinding.etName.setText("");
                 }
                 try {
-                    AddEditTaskActivity.this.dialogNewCat.dismiss();
+                    dialogNewCat.dismiss();
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }
@@ -513,9 +515,9 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         this.binding.recycler.setAdapter(new SubTaskAdapter(this.context, this.model.getArrayList(), new RecyclerItemClick() {
             public void onClick(int i, int i2) {
                 if (i2 == 2) {
-                    AddEditTaskActivity.this.updateTotal();
+                    updateTotal();
                 } else {
-                    AddEditTaskActivity.this.openItemDetail(i, AddEditTaskActivity.this.model.getArrayList().get(i), true);
+                    openItemDetail(i, model.getArrayList().get(i), true);
                 }
             }
         }));
@@ -564,10 +566,10 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         try {
             this.model.getName().trim();
             if (this.model.getId() != null) {
-                this.f546db.taskDao().update(this.model);
+                this.db.taskDao().update(this.model);
             } else {
                 this.model.setId(AppConstants.getUniqueId());
-                this.f546db.taskDao().insert(this.model);
+                this.db.taskDao().insert(this.model);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -649,11 +651,11 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
     private void showPdfDialog() {
         AppConstants.pdfReportDialog(this.context, new TwoButtonDialogListener() {
             public void onOk() {
-                AddEditTaskActivity.this.savePdf();
+                savePdf();
             }
 
             public void onCancel() {
-                AddEditTaskActivity.this.openReportList();
+                openReportList();
             }
         });
     }
@@ -670,15 +672,15 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
     private void saveDoc() {
         new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
-                AddEditTaskActivity.this.initDoc();
+                initDoc();
             }
 
             public void doInBackground() {
-                AddEditTaskActivity.this.fillDocData();
+                fillDocData();
             }
 
             public void onPostExecute() {
-                AddEditTaskActivity.this.addingDocFooter();
+                addingDocFooter();
             }
         }).execute(new Object[0]);
     }
@@ -826,7 +828,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         public void onEndPage(PdfWriter pdfWriter, Document document) {
             try {
                 PdfContentByte directContent = pdfWriter.getDirectContent();
-                ColumnText.showTextAligned(directContent, 1, new Phrase("Created by : " + AddEditTaskActivity.this.getString(R.string.app_name), new Font(Font.FontFamily.TIMES_ROMAN, 16.0f, 1)), document.leftMargin() + ((document.right() - document.left()) / 2.0f), document.bottom() + 10.0f, 0.0f);
+                ColumnText.showTextAligned(directContent, 1, new Phrase("Created by : " + getString(R.string.app_name), new Font(Font.FontFamily.TIMES_ROMAN, 16.0f, 1)), document.leftMargin() + ((document.right() - document.left()) / 2.0f), document.bottom() + 10.0f, 0.0f);
             } catch (Exception e) {
                 e.printStackTrace();
             }
