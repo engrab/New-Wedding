@@ -37,8 +37,6 @@ public class TaskRowModel extends BaseObservable implements Parcelable {
     private String eventId;
     @PrimaryKey
     @NonNull
-
-
     private String id;
     @Ignore
     private boolean isEdit;

@@ -142,6 +142,15 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         this.toolbarModel.setShare(true);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
         setSupportActionBar(this.binding.includedToolbar.toolbar);
+
+        binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
+        binding.includedToolbar.imageHome.setVisibility(View.GONE);
+        binding.includedToolbar.progressbar.setVisibility(View.GONE);
+        binding.includedToolbar.imgShare.setVisibility(View.GONE);
+        binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+        binding.includedToolbar.etOther.setVisibility(View.GONE);
+        binding.includedToolbar.search.setVisibility(View.GONE);
+        binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

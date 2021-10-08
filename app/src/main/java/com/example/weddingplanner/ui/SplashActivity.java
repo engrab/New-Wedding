@@ -60,16 +60,15 @@ public class SplashActivity extends AppCompatActivity {
         MobileAds.initialize(this.context, initializationStatus -> {
 
         });
-        startActivity(new Intent(this.context, MainActivityDashboard.class));
-//        SplashActivity.this.GoToMainScreen();
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                if (SplashActivity.this.Ad_Show) {
-//                    SplashActivity.this.GoToMainScreen();
-//                }
-//            }
-//        }, 2000);
+        insertDefaultDataList();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (SplashActivity.this.Ad_Show) {
+                    SplashActivity.this.GoToMainScreen();
+                }
+            }
+        }, 5000);
         this.splash_activity = this;
         this.splash_activityWeakReference = new WeakReference<>(this.splash_activity);
         fornpa();
@@ -87,12 +86,7 @@ public class SplashActivity extends AppCompatActivity {
             },5000);
 
         } else {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    insertDefaultList();
-                }
-            },100);
+
         }
     }
 

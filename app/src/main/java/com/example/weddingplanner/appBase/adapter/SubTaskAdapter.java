@@ -34,6 +34,9 @@ public class SubTaskAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
         if (viewHolder instanceof RowHolder) {
             RowHolder rowHolder = (RowHolder) viewHolder;
+            rowHolder.binding.imgCheck.setImageResource(arrayList.get(i).describeContents());
+            rowHolder.binding.title.setText(arrayList.get(i).getName());
+            rowHolder.binding.desc.setText(arrayList.get(i).getNote());
 //            rowHolder.binding.setRowModel(this.arrayList.get(i));
 //            rowHolder.binding.executePendingBindings();
         }

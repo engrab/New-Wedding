@@ -1,16 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:gravity="center" android:tag="layout/row_guest_0" android:layout_width="match_parent" android:layout_height="wrap_content">
-    <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="0dp">
-        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8dp">
-            <ImageView android:id="@+id/imgIcon" android:tag="binding_1" android:padding="0dp" android:layout_marginRight="4dp" app:tint="@color/actionbar" style="@style/ImageViewButtonCommon"/>
-            <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
-                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
-                    <TextView android:tag="binding_2" android:padding="0dp" android:layout_width="match_parent" android:layout_weight="1" style="@style/TextViewTitleCommon"/>
-                    <TextView android:tag="binding_3" android:padding="0dp" android:layout_width="match_parent" android:layout_weight="1" style="@style/TextViewTitleLightCommon"/>
-                    <TextView android:tag="binding_4" android:padding="0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_weight="1" style="@style/TextViewDescCommon"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:tag="layout/row_guest_0">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imgIcon"
+                style="@style/ImageViewButtonCommon"
+                android:layout_marginRight="4dp"
+                android:padding="0dp"
+                android:tag="binding_1"
+                app:tint="@color/actionbar" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextViewTitleCommon"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:padding="0dp"
+                        android:tag="binding_2" />
+
+                    <TextView
+                        style="@style/TextViewTitleLightCommon"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:padding="0dp"
+                        android:tag="binding_3" />
+
+                    <TextView
+                        style="@style/TextViewDescCommon"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:padding="0dp"
+                        android:tag="binding_4"
+                        android:visibility="gone" />
                 </LinearLayout>
-                <ImageView android:id="@+id/imgCheck" android:tag="binding_5" android:visibility="gone" style="@style/ImageViewButtonCommon"/>
-                <TextView android:tag="binding_6" android:layout_width="wrap_content" style="@style/TextViewTitleLightCommon"/>
+
+                <ImageView
+                    android:id="@+id/imgCheck"
+                    style="@style/ImageViewButtonCommon"
+                    android:tag="binding_5"
+                    android:visibility="gone" />
+
+                <TextView
+                    style="@style/TextViewTitleLightCommon"
+                    android:layout_width="wrap_content"
+                    android:tag="binding_6" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

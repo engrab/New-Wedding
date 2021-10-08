@@ -43,11 +43,12 @@ public class CategoryAdapter extends RecyclerView.Adapter {
             RowHolder rowHolder = (RowHolder) viewHolder;
             rowHolder.binding.imgIcon.setImageResource(arrayList.get(i).getImgResId());
             rowHolder.binding.title.setText(arrayList.get(i).getName());
-            rowHolder.binding.image.setImageResource(arrayList.get(i).get);
+
 
         } else if (viewHolder instanceof RowManageHolder) {
             RowManageHolder rowManageHolder = (RowManageHolder) viewHolder;
             rowManageHolder.binding.imgIcon.setImageResource(arrayList.get(i).getImgResId());
+            rowManageHolder.binding.title.setText(arrayList.get(i).getName());
 //            rowManageHolder.binding.setRowModel(this.arrayList.get(i));
 //            rowManageHolder.binding.executePendingBindings();
         }

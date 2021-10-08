@@ -30,6 +30,7 @@
         <ImageView
             android:id="@+id/image"
             style="@style/ImageViewButtonCommon"
+            android:src="@drawable/circle_red"
             android:tag="binding_3" />
     </LinearLayout>
 

@@ -27,6 +27,7 @@
                 app:tint="@color/actionbar" />
 
             <TextView
+                android:id="@+id/title"
                 style="@style/TextViewTitleCommon"
                 android:layout_width="match_parent"
                 android:layout_weight="1"

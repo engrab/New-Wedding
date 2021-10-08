@@ -25,8 +25,6 @@ public class CategoryRowModel extends BaseObservable implements Parcelable {
     private String iconType;
     @PrimaryKey
     @NonNull
-
-
     private String id;
     private boolean isDefault;
     @Ignore

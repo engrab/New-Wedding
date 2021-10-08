@@ -481,7 +481,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
                 if (i > 0) {
                     AppConstants.hideKeyboard(this.context, this.binding.getRoot());
                     AppConstants.toastShort(this.context, "Name is all ready exist");
-                    return;
+//                    return;
                 }
                 try {
                     this.db.profileDao().setDeselectAll();
@@ -495,7 +495,7 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
                     return;
                 }
                 if (AppPref.isFirstLaunch(this.context)) {
-//                    AppPref.setFirstLaunch(this.context, false);
+                    AppPref.setFirstLaunch(this.context, false);
                     openMainActivity();
                     return;
                 }

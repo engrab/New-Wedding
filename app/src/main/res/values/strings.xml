@@ -209,4 +209,15 @@
     <string name="total_budget">Total Budget</string>
     <string name="currency">Currency</string>
     <string name="collabrationcode">Collabration Code</string>
+    <string name="menu_checllist">Check List</string>
+    <string name="menu_budget">Budget</string>
+    <string name="menu_guest">Guest</string>
+    <string name="menu_vendors">Vendors</string>
+    <string name="menu_settings">Setting</string>
+    <string name="menu_subscription">Subscription</string>
+    <string name="menu_logout">logout</string>
+    <string name="menu_rate_us">Rate Us</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_feedback">Feedback</string>
+    <string name="menu_privacy_policy">Privacy Policy</string>
 </resources>
