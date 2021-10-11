@@ -6,12 +6,6 @@
     android:background="@color/white"
     android:tag="layout/nav_header_main_0">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_budget"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -198,38 +192,6 @@
                             android:textSize="@dimen/_12sdp" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/ll_mywedding"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
-
-                        <ImageView
-                            android:id="@+id/imgMywedding"
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginLeft="@dimen/_10sdp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:text="My Weddings"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ll_collaborators"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:orientation="horizontal">
-
-                    </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/ll_settings"
@@ -256,55 +218,7 @@
                             android:textSize="@dimen/_12sdp" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/ll_subscription"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
 
-                        <ImageView
-                            android:id="@+id/imgSubscription"
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginLeft="@dimen/_10sdp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:text="@string/menu_subscription"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ll_signout"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
-
-                        <ImageView
-                            android:id="@+id/imgSignout"
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginLeft="@dimen/_10sdp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:text="@string/menu_logout"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp" />
-                    </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
@@ -369,30 +283,6 @@
                             android:textSize="@dimen/_12sdp" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/ll_feedback"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
-
-                        <ImageView
-                            android:id="@+id/imgFeedback"
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginLeft="@dimen/_10sdp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:text="@string/menu_feedback"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp"
-                            android:layout_marginLeft="@dimen/_10sdp" />
-                    </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/ll_privacy_policy"

@@ -23,6 +23,7 @@ import com.example.weddingplanner.appBase.view.GuestListActivity;
 import com.example.weddingplanner.appBase.view.TaskListActivity;
 import com.example.weddingplanner.appBase.view.VendorListActivity;
 import com.example.weddingplanner.appBase.view.WeddingProVersionActivity;
+import com.example.weddingplanner.databinding.ActivityBudgetSummaryBinding;
 import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.example.weddingplanner.R;
@@ -41,7 +42,8 @@ import java.util.TimerTask;
 public class MainActivityDashboard extends BaseActivityBinding {
     public static Activity adActivity;
     private static Context maincontext;
-
+    public static String strPrivacyUri = "https://www.google.com/";
+    public static String strTermsUri = "https://www.google.com/";
     public ActivityMainDashboardBinding binding;
     private Timer timer;
 
@@ -56,148 +58,127 @@ public class MainActivityDashboard extends BaseActivityBinding {
     }
 
     private void initGlid() {
-        ((RequestBuilder) Glide.with(this).load(Integer.valueOf(R.drawable.drawer_dashboard)).centerCrop()).into(this.binding.navDrawer.imgHome);
-        ((RequestBuilder) Glide.with(this).load(Integer.valueOf(R.drawable.drawer_tasks)).centerCrop()).into(this.binding.navDrawer.imgChecklist);
-        ((RequestBuilder) Glide.with(this).load(Integer.valueOf(R.drawable.drawer_budgets)).centerCrop()).into(this.binding.navDrawer.imgBudget);
-        ((RequestBuilder) Glide.with(this).load(Integer.valueOf(R.drawable.drawer_guests)).centerCrop()).into(this.binding.navDrawer.imgGuest);
-        ((RequestBuilder) Glide.with(this).load(Integer.valueOf(R.drawable.drawer_vendors)).centerCrop()).into(this.binding.navDrawer.imgVendor);
-        ((RequestBuilder) Glide.with(this).load(Integer.valueOf(R.drawable.drawer_vendors)).centerCrop()).into(this.binding.navDrawer.imgMywedding);
-        ((RequestBuilder) Glide.with(this).load(Integer.valueOf(R.drawable.drawer_setting)).centerCrop()).into(this.binding.navDrawer.imgSettings);
-        ((RequestBuilder) Glide.with(this).load(Integer.valueOf(R.drawable.drawer_setting)).centerCrop()).into(this.binding.navDrawer.imgSubscription);
-        ((RequestBuilder) Glide.with(this).load(Integer.valueOf(R.drawable.settings)).centerCrop()).into(this.binding.navDrawer.imgSignout);
-        ((RequestBuilder) Glide.with(this).load(Integer.valueOf(R.drawable.rate_us)).centerCrop()).into(this.binding.navDrawer.imgRateus);
-        ((RequestBuilder) Glide.with(this).load(Integer.valueOf(R.drawable.drawer_share)).centerCrop()).into(this.binding.navDrawer.imgShare);
-        ((RequestBuilder) Glide.with(this).load(Integer.valueOf(R.drawable.drawer_feedback)).centerCrop()).into(this.binding.navDrawer.imgFeedback);
-        ((RequestBuilder) Glide.with(this).load(Integer.valueOf(R.drawable.drawer_privacy_policy)).centerCrop()).into(this.binding.navDrawer.imgPrivacypolicy);
-        ((RequestBuilder) Glide.with(this).load(Integer.valueOf(R.drawable.drawer_terms_of_service)).centerCrop()).into(this.binding.navDrawer.imgTerms);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_dashboard).centerCrop()).into(this.binding.navDrawer.imgHome);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_tasks).centerCrop()).into(this.binding.navDrawer.imgChecklist);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_budgets).centerCrop()).into(this.binding.navDrawer.imgBudget);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_guests).centerCrop()).into(this.binding.navDrawer.imgGuest);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_vendors).centerCrop()).into(this.binding.navDrawer.imgVendor);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_setting).centerCrop()).into(this.binding.navDrawer.imgSettings);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.rate_us).centerCrop()).into(this.binding.navDrawer.imgRateus);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_share).centerCrop()).into(this.binding.navDrawer.imgShare);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_privacy_policy).centerCrop()).into(this.binding.navDrawer.imgPrivacypolicy);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_term_service).centerCrop()).into(this.binding.navDrawer.imgTerms);
 
         
 
-        binding.navDrawer.imgHome.setOnClickListener(new View.OnClickListener() {
-            /* class com.selfmentor.myweddingplanner.activity.HomeActivity.AnonymousClass21 */
+        binding.navDrawer.llHome.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                hamMenu();
+            }
+        });
+        binding.navDrawer.llChecklist.setOnClickListener(new View.OnClickListener() {
+
 
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-               
+                startActivity(new Intent(MainActivityDashboard.this, TaskListActivity.class));
+                finish();
+
             }
         });
-        binding.navDrawer.imgChecklist.setOnClickListener(new View.OnClickListener() {
-            /* class com.selfmentor.myweddingplanner.activity.HomeActivity.AnonymousClass21 */
+        binding.navDrawer.llBudget.setOnClickListener(new View.OnClickListener() {
+
 
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-               
+                startActivity(new Intent(MainActivityDashboard.this, CostListActivity.class));
+                finish();
             }
         });
-        binding.navDrawer.imgBudget.setOnClickListener(new View.OnClickListener() {
-            /* class com.selfmentor.myweddingplanner.activity.HomeActivity.AnonymousClass21 */
+        binding.navDrawer.llGuest.setOnClickListener(new View.OnClickListener() {
+
 
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-               
+                startActivity(new Intent(MainActivityDashboard.this, GuestListActivity.class));
+                finish();
             }
         });
-        binding.navDrawer.imgGuest.setOnClickListener(new View.OnClickListener() {
-            /* class com.selfmentor.myweddingplanner.activity.HomeActivity.AnonymousClass21 */
+        binding.navDrawer.llVendor.setOnClickListener(new View.OnClickListener() {
+
 
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-               
+                startActivity(new Intent(MainActivityDashboard.this, VendorListActivity.class));
+                finish();
             }
         });
-        binding.navDrawer.imgVendor.setOnClickListener(new View.OnClickListener() {
-            /* class com.selfmentor.myweddingplanner.activity.HomeActivity.AnonymousClass21 */
 
-            public void onClick(View view) {
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
-               
-            }
-        });
-        binding.navDrawer.imgMywedding.setOnClickListener(new View.OnClickListener() {
-            /* class com.selfmentor.myweddingplanner.activity.HomeActivity.AnonymousClass21 */
-
-            public void onClick(View view) {
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
-               
-            }
-        });
         binding.navDrawer.imgSettings.setOnClickListener(new View.OnClickListener() {
-            /* class com.selfmentor.myweddingplanner.activity.HomeActivity.AnonymousClass21 */
 
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-               
+                startActivity(new Intent(MainActivityDashboard.this, SettingActivity.class));
+                finish();
             }
         });
-        binding.navDrawer.imgSubscription.setOnClickListener(new View.OnClickListener() {
-            /* class com.selfmentor.myweddingplanner.activity.HomeActivity.AnonymousClass21 */
+
+
+        binding.navDrawer.llRateus.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-               
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("market://details?id=" + MainActivityDashboard.this.getPackageName())));
+                } catch (android.content.ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + MainActivityDashboard.this.getPackageName())));
+                }
             }
         });
-        binding.navDrawer.imgSignout.setOnClickListener(new View.OnClickListener() {
-            /* class com.selfmentor.myweddingplanner.activity.HomeActivity.AnonymousClass21 */
+        binding.navDrawer.llShare.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-               
+                try {
+                    Intent intent = new Intent("android.intent.action.SEND");
+                    intent.setType("text/plain");
+                    intent.putExtra("android.intent.extra.SUBJECT", getResources().getString(R.string.app_name));
+                    intent.putExtra("android.intent.extra.TEXT", "Wedding Planner\n\nPlan your Wedding Day – Tasks, Budget, Guests, Vendors, Payments\n\n-  Create your wedding, or Join your closed ones’ wedding\n-  Dashboard for summary of Tasks, Budget, Guests and Vendors\n-  Show and Share Wedding Countdown\n-  Export data in PDF format\n\nhttps://play.google.com/store/apps/details?id=" + getPackageName());
+                    startActivity(Intent.createChooser(intent, "Share via"));
+                } catch (Exception unused) {
+                }
             }
         });
-        binding.navDrawer.imgRateus.setOnClickListener(new View.OnClickListener() {
-            /* class com.selfmentor.myweddingplanner.activity.HomeActivity.AnonymousClass21 */
+
+        binding.navDrawer.llPrivacyPolicy.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-               
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(strPrivacyUri));
+                intent.addFlags(1208483840);
+                try {
+                    startActivity(intent);
+                } catch (ActivityNotFoundException unused) {
+                    startActivity(new Intent("android.intent.action.VIEW", Uri.parse(strPrivacyUri)));
+                }
             }
         });
-        binding.navDrawer.imgShare.setOnClickListener(new View.OnClickListener() {
-            /* class com.selfmentor.myweddingplanner.activity.HomeActivity.AnonymousClass21 */
+        binding.navDrawer.llTerms.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-               
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(strPrivacyUri));
+                intent.addFlags(1208483840);
+                try {
+                    startActivity(intent);
+                } catch (ActivityNotFoundException unused) {
+                    startActivity(new Intent("android.intent.action.VIEW", Uri.parse(strPrivacyUri)));
+                }
             }
         });
-        binding.navDrawer.imgFeedback.setOnClickListener(new View.OnClickListener() {
-            /* class com.selfmentor.myweddingplanner.activity.HomeActivity.AnonymousClass21 */
-
-            public void onClick(View view) {
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
-               
-            }
-        });
-        binding.navDrawer.imgPrivacypolicy.setOnClickListener(new View.OnClickListener() {
-            /* class com.selfmentor.myweddingplanner.activity.HomeActivity.AnonymousClass21 */
-
-            public void onClick(View view) {
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
-               
-            }
-        });
-        binding.navDrawer.imgTerms.setOnClickListener(new View.OnClickListener() {
-            /* class com.selfmentor.myweddingplanner.activity.HomeActivity.AnonymousClass21 */
-
-            public void onClick(View view) {
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
-               
-            }
-        });
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
 
     public void hamMenu() {

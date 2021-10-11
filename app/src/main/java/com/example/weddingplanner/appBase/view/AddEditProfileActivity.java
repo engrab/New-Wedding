@@ -400,11 +400,12 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
 
     private void showDatePickerDialog() {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this.context, R.style.AppThemeDialogActionBar, new DatePickerDialog.OnDateSetListener() {
-            public void onDateSet(DatePicker datePicker, int i, int i2, int i3) {
-                AddEditProfileActivity.this.calendar.set(1, i);
-                AddEditProfileActivity.this.calendar.set(2, i2);
-                AddEditProfileActivity.this.calendar.set(5, i3);
+            public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                AddEditProfileActivity.this.calendar.set(1, year);
+                AddEditProfileActivity.this.calendar.set(2, month);
+                AddEditProfileActivity.this.calendar.set(5, dayOfMonth);
                 AddEditProfileActivity.this.model.setDateTimeInMillis(AddEditProfileActivity.this.calendar.getTimeInMillis());
+                binding.txtDate.setText(""+year+", "+month+", "+dayOfMonth);
             }
         }, this.calendar.get(1), this.calendar.get(2), this.calendar.get(5));
         Calendar instance = Calendar.getInstance();
@@ -420,10 +421,11 @@ public class AddEditProfileActivity extends BaseActivityRecyclerBinding implemen
     private void showTimePickerDialog() {
         new TimePickerDialog(this.context, R.style.AppThemeDialogActionBar, new TimePickerDialog.OnTimeSetListener() {
             @SuppressLint({"NewApi"})
-            public void onTimeSet(TimePicker timePicker, int i, int i2) {
-                AddEditProfileActivity.this.calendar.set(11, i);
-                AddEditProfileActivity.this.calendar.set(12, i2);
+            public void onTimeSet(TimePicker timePicker, int hourOfDay, int minuteOfDay) {
+                AddEditProfileActivity.this.calendar.set(11, hourOfDay);
+                AddEditProfileActivity.this.calendar.set(12, minuteOfDay);
                 AddEditProfileActivity.this.model.setDateTimeInMillis(AddEditProfileActivity.this.calendar.getTimeInMillis());
+                binding.txtTime.setText(" "+hourOfDay+", "+minuteOfDay);
             }
         }, this.calendar.get(11), this.calendar.get(12), false).show();
     }

@@ -19,60 +19,60 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:padding="0dp"
+                android:theme="@style/AppTheme"
+                app:contentInsetEnd="0dp"
+                app:contentInsetStart="0dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:padding="0dp"
-                    android:theme="@style/AppTheme"
-                    app:contentInsetEnd="0dp"
-                    app:contentInsetStart="0dp">
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="horizontal">
+                            android:layout_marginLeft="8dp"
+                            android:layout_weight="1">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <ImageView
+                                android:id="@+id/img_menu"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="8dp"
-                                android:layout_weight="1">
+                                android:layout_alignParentLeft="true"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:foreground="?android:attr/selectableItemBackground"
 
-                                <ImageView
-                                    android:id="@+id/img_menu"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentLeft="true"
-                                    android:layout_marginTop="@dimen/_5sdp"
-                                    android:foreground="?android:attr/selectableItemBackground"
+                                android:padding="@dimen/_10sdp"
+                                android:src="@drawable/ic_menu" />
 
-                                    android:padding="@dimen/_10sdp"
-                                    android:src="@drawable/ic_menu" />
-
-                                <TextView
-                                    android:id="@+id/textTitle"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="4dp"
-                                    android:ellipsize="end"
-                                    android:fontFamily="@font/regular"
-                                    android:singleLine="true"
-                                    android:text="@string/appTitle"
-                                    android:textColor="@color/black"
-                                    android:textSize="20dp" />
-                            </LinearLayout>
+                            <TextView
+                                android:id="@+id/textTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/regular"
+                                android:singleLine="true"
+                                android:text="@string/appTitle"
+                                android:textColor="@color/black"
+                                android:textSize="20dp" />
                         </LinearLayout>
                     </LinearLayout>
-                </androidx.appcompat.widget.Toolbar>
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
 
 
         </LinearLayout>
@@ -80,7 +80,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <LinearLayout
             android:id="@+id/linTop"
@@ -280,9 +280,9 @@
                         android:foreground="?android:attr/selectableItemBackground">
 
                         <ImageView
-                            android:layout_gravity="center"
                             android:layout_width="@dimen/_100sdp"
                             android:layout_height="@dimen/_100sdp"
+                            android:layout_gravity="center"
                             android:src="@drawable/tasklist">
 
                         </ImageView>
@@ -301,27 +301,31 @@
                         android:foreground="?android:attr/selectableItemBackground">
 
                         <ImageView
-                            android:layout_gravity="center"
                             android:layout_width="@dimen/_100sdp"
                             android:layout_height="@dimen/_100sdp"
-                            android:src="@drawable/guests"/>
+                            android:layout_gravity="center"
+                            android:src="@drawable/guests" />
 
                     </androidx.cardview.widget.CardView>
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="6dp"
                     android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
+
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardBudget"
                         style="@style/CardViewDash"
@@ -330,16 +334,18 @@
                         android:foreground="?android:attr/selectableItemBackground">
 
                         <ImageView
-                            android:layout_gravity="center"
                             android:layout_width="@dimen/_100sdp"
                             android:layout_height="@dimen/_100sdp"
-                            android:src="@drawable/budget"/>
+                            android:layout_gravity="center"
+                            android:src="@drawable/budget" />
 
                     </androidx.cardview.widget.CardView>
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
+
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardVendor"
                         style="@style/CardViewDash"
@@ -348,12 +354,13 @@
                         android:foreground="?android:attr/selectableItemBackground">
 
                         <ImageView
-                            android:layout_gravity="center"
                             android:layout_width="@dimen/_100sdp"
                             android:layout_height="@dimen/_100sdp"
-                            android:src="@drawable/vendors"/>
+                            android:layout_gravity="center"
+                            android:src="@drawable/vendors" />
 
                     </androidx.cardview.widget.CardView>
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -373,10 +380,10 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardDashboard"
+                        style="@style/CardViewDash"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="true"
-                        style="@style/CardViewDash"
                         android:foreground="?android:attr/selectableItemBackground"
                         app:cardElevation="2dp">
 

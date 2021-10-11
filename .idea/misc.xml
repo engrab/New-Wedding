@@ -6,6 +6,7 @@
         <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="../../../.gradle/caches/transforms-3/e759884e8e1539e68246ec4d8729cc98/transformed/core-1.5.0/res/layout-v21/notification_action.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/dashboard_bg_gradient.xml" value="0.1984375" />
+        <entry key="app/src/main/res/drawable/drawer_term_service.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/drawable/et_rounded_square_normal.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_add_budget.xml" value="0.15092592592592594" />
         <entry key="app/src/main/res/drawable/ic_arrow_drop_down_black.xml" value="0.184375" />
@@ -19,12 +20,16 @@
         <entry key="app/src/main/res/drawable/mtrl_snackbar_background.xml" value="0.16111111111111112" />
         <entry key="app/src/main/res/drawable/mtrl_tabs_default_indicator.xml" value="0.16111111111111112" />
         <entry key="app/src/main/res/drawable/progress_drawable.xml" value="0.1787037037037037" />
+        <entry key="app/src/main/res/drawable/selection_color.xml" value="0.34014300306435136" />
+        <entry key="app/src/main/res/drawable/selection_text_color.xml" value="0.34014300306435136" />
+        <entry key="app/src/main/res/drawable/selector_button.xml" value="0.34014300306435136" />
         <entry key="app/src/main/res/drawable/squar_pista.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/square_batli.xml" value="0.1807967313585291" />
         <entry key="app/src/main/res/drawable/square_drawer_color.xml" value="0.1527777777777778" />
         <entry key="app/src/main/res/drawable/square_white.xml" value="0.1787037037037037" />
         <entry key="app/src/main/res/drawable/square_white_selection_gender.xml" value="0.1807967313585291" />
         <entry key="app/src/main/res/drawable/task_list_bg_gradient.xml" value="0.1984375" />
+        <entry key="app/src/main/res/drawable/unselection_color.xml" value="0.34014300306435136" />
         <entry key="app/src/main/res/layout/activity_backup_transfer_guid.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_budget_summary.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_category_list.xml" value="0.1640625" />
@@ -40,7 +45,7 @@
         <entry key="app/src/main/res/layout/activity_main_dashboard.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_payment_add_edit.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_privacy_policy.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/activity_profile_add_edit.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_profile_add_edit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_profile_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_reports_list.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_restore.xml" value="0.1" />
@@ -66,7 +71,7 @@
         <entry key="app/src/main/res/layout/dialog_progress.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/dialog_rating.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/layout_updateapp_dialog.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.178125" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.5" />
         <entry key="app/src/main/res/layout/notification_action.xml" value="0.1" />
         <entry key="app/src/main/res/layout/notification_action_tombstone.xml" value="0.1" />
         <entry key="app/src/main/res/layout/progress_dialog.xml" value="0.1640625" />
