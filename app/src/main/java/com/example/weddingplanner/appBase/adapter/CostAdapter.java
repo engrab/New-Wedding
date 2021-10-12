@@ -40,6 +40,7 @@ public class CostAdapter extends RecyclerView.Adapter {
             rowHolder.binding.tvAmount.setText(arrayList.get(i).getExpectedAmount()+"");
             rowHolder.binding.tvPending.setText(arrayList.get(i).getStatusText());
             rowHolder.binding.tvStatus.setText(arrayList.get(i).getId());
+            rowHolder.binding.imgIcon.setImageResource(arrayList.get(i).getCategoryRowModel().getImgResId());
 
 //            rowHolder.binding.setRowModel(this.arrayList.get(i));
 //            rowHolder.binding.executePendingBindings();

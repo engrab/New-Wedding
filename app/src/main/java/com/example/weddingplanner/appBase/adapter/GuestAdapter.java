@@ -45,6 +45,11 @@ public class GuestAdapter extends RecyclerView.Adapter {
             rowHolder.binding.tvName.setText(arrayList.get(i).getName());
             rowHolder.binding.tvInvitStatus.setText(arrayList.get(i).getInvitationText());
             rowHolder.binding.tvNumbers.setText(arrayList.get(i).getId());
+            if (arrayList.get(i).getGenderType() == 1){
+                rowHolder.binding.imgIcon.setImageResource(R.drawable.male);
+            }else {
+                rowHolder.binding.imgIcon.setImageResource(R.drawable.female);
+            }
 //            rowHolder.binding.setRowModel(this.arrayList.get(i));
 //            rowHolder.binding.executePendingBindings();
         }

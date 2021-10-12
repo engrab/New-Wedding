@@ -17,8 +17,8 @@ import java.util.ArrayList;
 public class CategoryAdapter extends RecyclerView.Adapter {
 
     public ArrayList<CategoryRowModel> arrayList;
-    private Context context;
-    private boolean isManage;
+    private final Context context;
+    private final boolean isManage;
 
     public RecyclerItemClick recyclerItemClick;
 
@@ -38,17 +38,19 @@ public class CategoryAdapter extends RecyclerView.Adapter {
 
     }
 
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         if (viewHolder instanceof RowHolder) {
             RowHolder rowHolder = (RowHolder) viewHolder;
-            rowHolder.binding.imgIcon.setImageResource(arrayList.get(i).getImgResId());
-            rowHolder.binding.title.setText(arrayList.get(i).getName());
+            rowHolder.binding.imgIcon.setImageResource(arrayList.get(position).getImgResId());
+            rowHolder.binding.title.setText(arrayList.get(position).getName());
+
+
 
 
         } else if (viewHolder instanceof RowManageHolder) {
             RowManageHolder rowManageHolder = (RowManageHolder) viewHolder;
-            rowManageHolder.binding.imgIcon.setImageResource(arrayList.get(i).getImgResId());
-            rowManageHolder.binding.title.setText(arrayList.get(i).getName());
+            rowManageHolder.binding.imgIcon.setImageResource(arrayList.get(position).getImgResId());
+            rowManageHolder.binding.title.setText(arrayList.get(position).getName());
 //            rowManageHolder.binding.setRowModel(this.arrayList.get(i));
 //            rowManageHolder.binding.executePendingBindings();
         }
@@ -69,9 +71,10 @@ public class CategoryAdapter extends RecyclerView.Adapter {
         }
 
         public void onClick(View view) {
-            CategoryAdapter.this.selectionAll(false);
-            ((CategoryRowModel) CategoryAdapter.this.arrayList.get(getAdapterPosition())).setSelected(!((CategoryRowModel) CategoryAdapter.this.arrayList.get(getAdapterPosition())).isSelected());
-            CategoryAdapter.this.recyclerItemClick.onClick(getAdapterPosition(), 1);
+            selectionAll(false);
+            arrayList.get(getAdapterPosition()).setSelected(!arrayList.get(getAdapterPosition()).isSelected());
+            recyclerItemClick.onClick(getAdapterPosition(), 1);
+
         }
     }
 
@@ -97,9 +100,9 @@ public class CategoryAdapter extends RecyclerView.Adapter {
         public void onClick(View view) {
             int id = view.getId();
             if (id == R.id.imgDelete) {
-                CategoryAdapter.this.recyclerItemClick.onClick(getAdapterPosition(), 2);
+                recyclerItemClick.onClick(getAdapterPosition(), 2);
             } else if (id == R.id.imgEdit) {
-                CategoryAdapter.this.recyclerItemClick.onClick(getAdapterPosition(), 1);
+                recyclerItemClick.onClick(getAdapterPosition(), 1);
             }
         }
     }

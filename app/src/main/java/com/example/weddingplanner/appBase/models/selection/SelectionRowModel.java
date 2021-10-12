@@ -7,7 +7,7 @@ import com.example.weddingplanner.appBase.utils.AppConstants;
 public class SelectionRowModel extends BaseObservable {
 
 
-    private String f531id;
+    private String id;
     private String imageUrl;
     private boolean isSelected;
     private String label;
@@ -19,16 +19,16 @@ public class SelectionRowModel extends BaseObservable {
     }
 
     public SelectionRowModel(String str, String str2) {
-        this.f531id = str;
+        this.id = str;
         this.label = str2;
     }
 
     public String getId() {
-        return this.f531id;
+        return this.id;
     }
 
     public void setId(String str) {
-        this.f531id = str;
+        this.id = str;
     }
 
     public String getLabel() {

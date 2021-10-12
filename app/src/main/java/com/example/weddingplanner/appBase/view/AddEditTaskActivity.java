@@ -129,8 +129,11 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         setContentView(view);
         this.db = AppDataBase.getAppDatabase(this);
         setModelDetail();
+
 //        this.binding.setRowModel(this.model);
     }
+
+
 
     private void setModelDetail() {
         boolean z = false;
@@ -170,6 +173,12 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         binding.includedToolbar.search.setVisibility(View.GONE);
         binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
         binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initView();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -339,7 +348,8 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         this.dialogCategoryListBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.dialogCategoryListBinding.recycler.setAdapter(new CategoryAdapter(this.context, false, this.categoryList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = selectedCategoryPos = i;
+                selectedCategoryPos = i;
+                initView();
             }
         }));
         this.dialogCategoryListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
@@ -372,6 +382,11 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
                 }
             }
         });
+    }
+
+    private void initView() {
+        binding.imgIcon.setImageResource(categoryList.get(selectedCategoryPos).getImgResId());
+        binding.tvName.setText(categoryList.get(selectedCategoryPos).getName());
     }
 
 

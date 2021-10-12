@@ -27,10 +27,10 @@
             android:layout_weight="1"
             android:tag="binding_2" />
 
-        <ImageView
+        <RadioButton
             android:id="@+id/image"
             style="@style/ImageViewButtonCommon"
-            android:src="@drawable/circle_red"
+            android:src="@drawable/ring_cirlcle_shape"
             android:tag="binding_3" />
     </LinearLayout>
 

@@ -137,18 +137,16 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         this.toolbarModel.setOtherMenu(true);
         this.toolbarModel.setSearchMenu(true);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.order_list);
-        this.binding.includedToolbar.imgAdd.setImageResource(R.drawable.summary);
         this.toolbarModel.setShare(true);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
         setSupportActionBar(this.binding.includedToolbar.toolbar);
 
-        binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
+        binding.includedToolbar.textTitle.setText("Task List");
+        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
         binding.includedToolbar.imageHome.setVisibility(View.GONE);
         binding.includedToolbar.progressbar.setVisibility(View.GONE);
-        binding.includedToolbar.imgShare.setVisibility(View.GONE);
         binding.includedToolbar.imgDelete.setVisibility(View.GONE);
         binding.includedToolbar.etOther.setVisibility(View.GONE);
-        binding.includedToolbar.search.setVisibility(View.GONE);
         binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
     }
 
