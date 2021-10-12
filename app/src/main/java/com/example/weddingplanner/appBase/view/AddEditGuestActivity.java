@@ -45,8 +45,6 @@ import com.example.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.example.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.example.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.example.weddingplanner.databinding.ActivityGuestAddEditBinding;
-import com.example.weddingplanner.databinding.ActivityGuestListBinding;
-import com.example.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.example.weddingplanner.pdfRepo.ReportRowModel;
 import com.example.weddingplanner.pdfRepo.ReportsListActivity;
 import java.io.File;
@@ -71,7 +69,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
 
 
 
-    public AppDataBase f542db;
+    public AppDataBase db;
     private File dir;
     private Document document;
     private String fileName = null;
@@ -105,7 +103,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         binding = ActivityGuestAddEditBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        this.f542db = AppDataBase.getAppDatabase(this);
+        this.db = AppDataBase.getAppDatabase(this);
         setModelDetail();
 //        this.binding.setRowModel(this.model);
     }
@@ -134,8 +132,17 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         this.binding.includedToolbar.imgDelete.setImageResource(this.isEdit ? R.drawable.delete : R.drawable.phone_book);
         this.toolbarModel.setOtherMenu(true);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
+        binding.includedToolbar.textTitle.setText("Add Guest");
         this.toolbarModel.setShare(this.isEdit);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
+
+        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
+        binding.includedToolbar.search.setVisibility(View.GONE);
+        binding.includedToolbar.progressbar.setVisibility(View.GONE);
+        binding.includedToolbar.etOther.setVisibility(View.GONE);
+        binding.includedToolbar.spinner.setVisibility(View.GONE);
+        binding.includedToolbar.imageHome.setVisibility(View.GONE);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -159,12 +166,12 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
 
             public void onOk() {
                 try {
-                    AddEditGuestActivity.this.f542db.guestDao().deleteAllComp(AppPref.getCurrentEvenId(AddEditGuestActivity.this.context), AddEditGuestActivity.this.model.getId());
+                    AddEditGuestActivity.this.db.guestDao().deleteAllComp(AppPref.getCurrentEvenId(AddEditGuestActivity.this.context), AddEditGuestActivity.this.model.getId());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 try {
-                    AddEditGuestActivity.this.f542db.guestDao().delete(AddEditGuestActivity.this.model);
+                    AddEditGuestActivity.this.db.guestDao().delete(AddEditGuestActivity.this.model);
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }
@@ -340,6 +347,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
     }
 
     private boolean isAddUpdate(boolean z) {
+        model.setName(binding.etName.getText().toString());
         if (!isValid()) {
             return false;
         }
@@ -348,10 +356,10 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
             this.model.getPhoneNo().trim();
             this.model.getEmailId().trim();
             if (this.model.getId() != null) {
-                this.f542db.guestDao().update(this.model);
+                this.db.guestDao().update(this.model);
             } else {
                 this.model.setId(AppConstants.getUniqueId());
-                this.f542db.guestDao().insert(this.model);
+                this.db.guestDao().insert(this.model);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -49,7 +49,6 @@ import com.example.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.example.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.example.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.example.weddingplanner.databinding.ActivityGuestListBinding;
-import com.example.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.example.weddingplanner.pdfRepo.ReportRowModel;
 import com.example.weddingplanner.pdfRepo.ReportsListActivity;
@@ -73,7 +72,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
     public ActivityGuestListBinding binding;
 
 
-    private AppDataBase f552db;
+    private AppDataBase db;
 
     public Dialog dialogFilterTypeList;
     private AlertDialogRecyclerListBinding dialogFilterTypeListBinding;
@@ -126,7 +125,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         this.model.setNoDataText(getString(R.string.noDataTitleGuests));
         this.model.setNoDataDetail(getString(R.string.noDataDescGuests));
 //        this.binding.setModel(this.model);
-        this.f552db = AppDataBase.getAppDatabase(this.context);
+        this.db = AppDataBase.getAppDatabase(this.context);
     }
 
 
@@ -136,10 +135,10 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         this.toolbarModel.setOtherMenu(true);
         this.toolbarModel.setSearchMenu(true);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.order_list);
-        this.binding.includedToolbar.imgAdd.setImageResource(R.drawable.summary);
         this.toolbarModel.setShare(true);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
         setSupportActionBar(this.binding.includedToolbar.toolbar);
+        this.binding.includedToolbar.imgAdd.setVisibility(View.GONE);
 
         binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
         binding.includedToolbar.imageHome.setVisibility(View.GONE);
@@ -227,7 +226,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
     public void fillFromDB() {
         List arrayList = new ArrayList();
         try {
-            arrayList = this.f552db.guestDao().getAllGuest(AppPref.getCurrentEvenId(this.context));
+            arrayList = this.db.guestDao().getAllGuest(AppPref.getCurrentEvenId(this.context));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -236,7 +235,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
                 GuestRowModel guestRowModel = (GuestRowModel) arrayList.get(i);
                 try {
                     guestRowModel.setArrayList(new ArrayList());
-                    guestRowModel.getArrayList().addAll(this.f552db.guestDao().getAllComp(AppPref.getCurrentEvenId(this.context), guestRowModel.getId()));
+                    guestRowModel.getArrayList().addAll(this.db.guestDao().getAllComp(AppPref.getCurrentEvenId(this.context), guestRowModel.getId()));
                     guestRowModel.setCompanions((long) guestRowModel.getArrayList().size());
                 } catch (Exception e2) {
                     e2.printStackTrace();

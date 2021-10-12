@@ -11,10 +11,13 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
@@ -46,6 +49,7 @@ public class MainActivityDashboard extends BaseActivityBinding {
     public static String strTermsUri = "https://www.google.com/";
     public ActivityMainDashboardBinding binding;
     private Timer timer;
+    boolean doubleBackToExitPressedOnce = false;
 
 
     public void setBinding() {
@@ -74,7 +78,7 @@ public class MainActivityDashboard extends BaseActivityBinding {
         binding.navDrawer.llHome.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                hamMenu();
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
             }
         });
         binding.navDrawer.llChecklist.setOnClickListener(new View.OnClickListener() {
@@ -331,12 +335,22 @@ public class MainActivityDashboard extends BaseActivityBinding {
     }
 
     public void onBackPressed() {
-        if (!AppPref.IsRateUS(this)) {
-            AppPref.setRateUS(this, true);
-            AppConstants.showRattingDialog(this.context, Constants.RATTING_BAR_TITLE, Constants.APP_PLAY_STORE_URL);
-            return;
-        }
-        super.onBackPressed();
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
+                return;
+            }
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce=false;
+                }
+            }, 2000);
+
     }
 
     public static void LoadAd() {

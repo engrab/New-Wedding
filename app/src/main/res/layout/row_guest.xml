@@ -42,6 +42,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_name"
                         style="@style/TextViewTitleCommon"
                         android:layout_width="match_parent"
                         android:layout_weight="1"
@@ -49,6 +50,7 @@
                         android:tag="binding_2" />
 
                     <TextView
+                        android:id="@+id/tv_invit_status"
                         style="@style/TextViewTitleLightCommon"
                         android:layout_width="match_parent"
                         android:layout_weight="1"
@@ -71,6 +73,7 @@
                     android:visibility="gone" />
 
                 <TextView
+                    android:id="@+id/tv_numbers"
                     style="@style/TextViewTitleLightCommon"
                     android:layout_width="wrap_content"
                     android:tag="binding_6" />

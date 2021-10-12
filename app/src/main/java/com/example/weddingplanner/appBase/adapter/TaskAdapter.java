@@ -2,6 +2,7 @@ package com.example.weddingplanner.appBase.adapter;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -26,14 +27,19 @@ public class TaskAdapter extends RecyclerView.Adapter {
         this.recyclerItemClick = recyclerItemClick2;
     }
 
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         return new RowHolder(RowTaskBinding.inflate(LayoutInflater.from(viewGroup.getContext()), viewGroup, false));
     }
 
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         if (viewHolder instanceof RowHolder) {
             RowHolder rowHolder = (RowHolder) viewHolder;
-            rowHolder.binding.imgIcon.setImageResource(arrayList.get(i).getStatusColor());
+//            rowHolder.binding.imgIcon.setImageResource(arrayList.get(i).getStatusColor());
+            rowHolder.binding.tvDate.setText(arrayList.get(i).getDateFormatted());
+            rowHolder.binding.tvStatus.setText(arrayList.get(i).getStatusText());
+            rowHolder.binding.tvTitle.setText(arrayList.get(i).getName());
+            rowHolder.binding.tvSubtask.setText(arrayList.get(i).getSubTaskText());
+
 //            rowHolder.binding.setRowModel(this.arrayList.get(i));
 //            rowHolder.binding.executePendingBindings();
         }

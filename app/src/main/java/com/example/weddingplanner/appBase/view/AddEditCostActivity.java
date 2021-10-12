@@ -152,6 +152,12 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
         this.toolbarModel.setShare(this.isEdit);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
+
+        binding.includedToolbar.textTitle.setText("Add Budget");
+        binding.includedToolbar.imageHome.setVisibility(View.GONE);
+        binding.includedToolbar.progressbar.setVisibility(View.GONE);
+        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        binding.includedToolbar.spinner.setVisibility(View.GONE);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -565,6 +571,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
     }
 
     private boolean isAddUpdate(boolean z) {
+        model.setName(binding.etName.getText().toString());
         if (!isValid()) {
             return false;
         }

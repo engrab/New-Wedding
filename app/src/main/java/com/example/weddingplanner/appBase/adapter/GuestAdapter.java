@@ -2,6 +2,7 @@ package com.example.weddingplanner.appBase.adapter;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -31,15 +32,19 @@ public class GuestAdapter extends RecyclerView.Adapter {
         this.recyclerItemClick = recyclerItemClick2;
     }
 
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    @NonNull
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
         return new RowHolder(RowGuestBinding.inflate(LayoutInflater.from(viewGroup.getContext()), viewGroup, false));
     }
 
 
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         if (viewHolder instanceof RowHolder) {
             RowHolder rowHolder = (RowHolder) viewHolder;
+            rowHolder.binding.tvName.setText(arrayList.get(i).getName());
+            rowHolder.binding.tvInvitStatus.setText(arrayList.get(i).getInvitationText());
+            rowHolder.binding.tvNumbers.setText(arrayList.get(i).getId());
 //            rowHolder.binding.setRowModel(this.arrayList.get(i));
 //            rowHolder.binding.executePendingBindings();
         }

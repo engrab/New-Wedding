@@ -51,7 +51,6 @@ import com.example.weddingplanner.appBase.utils.Constants;
 import com.example.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.example.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.example.weddingplanner.appBase.utils.TwoButtonDialogListener;
-import com.example.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.example.weddingplanner.databinding.ActivityVendorListBinding;
 import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.example.weddingplanner.pdfRepo.ReportRowModel;
@@ -76,7 +75,7 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
     public ActivityVendorListBinding binding;
 
 
-    private AppDataBase f558db;
+    private AppDataBase db;
 
     public Dialog dialogFilterTypeList;
     private AlertDialogRecyclerListBinding dialogFilterTypeListBinding;
@@ -129,7 +128,7 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         this.model.setNoDataText(getString(R.string.noDataTitleVendors));
         this.model.setNoDataDetail(getString(R.string.noDataDescVendors));
 //        this.binding.setModel(this.model);
-        this.f558db = AppDataBase.getAppDatabase(this.context);
+        this.db = AppDataBase.getAppDatabase(this.context);
     }
 
 
@@ -138,11 +137,12 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         this.toolbarModel.setTitle(getString(R.string.drawerTitleVendors));
         this.toolbarModel.setOtherMenu(true);
         this.toolbarModel.setSearchMenu(true);
-        this.binding.includedToolbar.imgOther.setImageResource(R.drawable.order_list);
+        this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
         this.binding.includedToolbar.imgAdd.setImageResource(R.drawable.summary);
         this.toolbarModel.setShare(true);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
         setSupportActionBar(this.binding.includedToolbar.toolbar);
+        binding.includedToolbar.textTitle.setText("Add Vendor");
 
         binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
         binding.includedToolbar.imageHome.setVisibility(View.GONE);
@@ -231,7 +231,7 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
     public void fillFromDB() {
         List arrayList = new ArrayList();
         try {
-            arrayList = this.f558db.vendorDao().getAll(AppPref.getCurrentEvenId(this.context));
+            arrayList = this.db.vendorDao().getAll(AppPref.getCurrentEvenId(this.context));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -241,24 +241,24 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
                 for (int i = 0; i < arrayList.size(); i++) {
                     VendorRowModel vendorRowModel = (VendorRowModel) arrayList.get(i);
                     try {
-                        categoryRowModel = this.f558db.categoryDao().getDetail(vendorRowModel.getCategoryId());
+                        categoryRowModel = this.db.categoryDao().getDetail(vendorRowModel.getCategoryId());
                     } catch (Exception e2) {
                         e2.printStackTrace();
                     }
                     vendorRowModel.setCategoryRowModel(categoryRowModel);
                     try {
-                        vendorRowModel.setPendingAmount(this.f558db.paymentDao().getTotal(vendorRowModel.getId(), 1));
+                        vendorRowModel.setPendingAmount(this.db.paymentDao().getTotal(vendorRowModel.getId(), 1));
                     } catch (Exception e3) {
                         e3.printStackTrace();
                     }
                     try {
-                        vendorRowModel.setPaidAmount(this.f558db.paymentDao().getTotal(vendorRowModel.getId(), 0));
+                        vendorRowModel.setPaidAmount(this.db.paymentDao().getTotal(vendorRowModel.getId(), 0));
                     } catch (Exception e4) {
                         e4.printStackTrace();
                     }
                     vendorRowModel.setArrayList(new ArrayList());
                     try {
-                        vendorRowModel.getArrayList().addAll(this.f558db.paymentDao().getAll(vendorRowModel.getId()));
+                        vendorRowModel.getArrayList().addAll(this.db.paymentDao().getAll(vendorRowModel.getId()));
                     } catch (Exception e5) {
                         e5.printStackTrace();
                     }

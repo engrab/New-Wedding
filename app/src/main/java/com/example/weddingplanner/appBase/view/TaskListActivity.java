@@ -51,7 +51,6 @@ import com.example.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.example.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.example.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.example.weddingplanner.databinding.ActivityTaskListBinding;
-import com.example.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.example.weddingplanner.pdfRepo.ReportRowModel;
 import com.example.weddingplanner.pdfRepo.ReportsListActivity;
@@ -75,7 +74,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
     public ActivityTaskListBinding binding;
 
 
-    private AppDataBase f556db;
+    private AppDataBase db;
     
     public Dialog dialogFilterTypeList;
     private AlertDialogRecyclerListBinding dialogFilterTypeListBinding;
@@ -128,7 +127,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         this.model.setNoDataText(getString(R.string.noDataTitleTasks));
         this.model.setNoDataDetail(getString(R.string.noDataDescTasks));
 //        this.binding.setModel(this.model);
-        this.f556db = AppDataBase.getAppDatabase(this.context);
+        this.db = AppDataBase.getAppDatabase(this.context);
     }
 
 
@@ -231,7 +230,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
     public void fillFromDB() {
         List arrayList = new ArrayList();
         try {
-            arrayList = this.f556db.taskDao().getAll(AppPref.getCurrentEvenId(this.context));
+            arrayList = this.db.taskDao().getAll(AppPref.getCurrentEvenId(this.context));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -240,14 +239,14 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
             for (int i = 0; i < arrayList.size(); i++) {
                 TaskRowModel taskRowModel = (TaskRowModel) arrayList.get(i);
                 try {
-                    categoryRowModel = this.f556db.categoryDao().getDetail(taskRowModel.getCategoryId());
+                    categoryRowModel = this.db.categoryDao().getDetail(taskRowModel.getCategoryId());
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }
                 taskRowModel.setCategoryRowModel(categoryRowModel);
                 try {
                     taskRowModel.setArrayList(new ArrayList());
-                    taskRowModel.getArrayList().addAll(this.f556db.subTaskDao().getAll(taskRowModel.getId()));
+                    taskRowModel.getArrayList().addAll(this.db.subTaskDao().getAll(taskRowModel.getId()));
                 } catch (Exception e3) {
                     e3.printStackTrace();
                 }

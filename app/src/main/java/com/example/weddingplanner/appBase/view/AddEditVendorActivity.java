@@ -56,7 +56,6 @@ import com.example.weddingplanner.appBase.utils.Constants;
 import com.example.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.example.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.example.weddingplanner.appBase.utils.TwoButtonDialogListener;
-import com.example.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.example.weddingplanner.databinding.ActivityVendorAddEditBinding;
 import com.example.weddingplanner.databinding.AlertDialogNewCategoryBinding;
 import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
@@ -86,7 +85,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
 
 
-    public AppDataBase f547db;
+    public AppDataBase db;
 
     public Dialog dialogCategoryList;
     private AlertDialogRecyclerListBinding dialogCategoryListBinding;
@@ -129,7 +128,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         binding = ActivityVendorAddEditBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        this.f547db = AppDataBase.getAppDatabase(this);
+        this.db = AppDataBase.getAppDatabase(this);
         setModelDetail();
 //        this.binding.setRowModel(this.model);
     }
@@ -183,12 +182,12 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
             public void onOk() {
                 try {
-                    AddEditVendorActivity.this.f547db.paymentDao().deleteAll(AddEditVendorActivity.this.model.getId());
+                    AddEditVendorActivity.this.db.paymentDao().deleteAll(AddEditVendorActivity.this.model.getId());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 try {
-                    AddEditVendorActivity.this.f547db.vendorDao().delete(AddEditVendorActivity.this.model);
+                    AddEditVendorActivity.this.db.vendorDao().delete(AddEditVendorActivity.this.model);
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }
@@ -333,7 +332,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     private void fillCategoryList() {
         this.categoryList = new ArrayList<>();
         try {
-            this.categoryList.addAll(this.f547db.categoryDao().getAll());
+            this.categoryList.addAll(this.db.categoryDao().getAll());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -496,11 +495,12 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         this.dialogNewCatBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 long j;
+                model.setName(binding.etName.getText().toString());
                 if (AddEditVendorActivity.this.isValidNewCat(AddEditVendorActivity.this.dialogNewCatBinding)) {
                     CategoryRowModel categoryRowModel = new CategoryRowModel(AppConstants.getUniqueId(), AddEditVendorActivity.this.dialogNewCatBinding.etName.getText().toString().trim(), ((ImageRowModel) AddEditVendorActivity.this.imageList.get(AddEditVendorActivity.this.selectedNewCatPos)).getId());
                     try {
                         categoryRowModel.getName().trim();
-                        j = AddEditVendorActivity.this.f547db.categoryDao().insert(categoryRowModel);
+                        j = AddEditVendorActivity.this.db.categoryDao().insert(categoryRowModel);
                     } catch (Exception e) {
                         e.printStackTrace();
                         j = 0;
@@ -612,10 +612,10 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
             this.model.getEmailId().trim();
             this.model.getWebSite().trim();
             if (this.model.getId() != null) {
-                this.f547db.vendorDao().update(this.model);
+                this.db.vendorDao().update(this.model);
             } else {
                 this.model.setId(AppConstants.getUniqueId());
-                this.f547db.vendorDao().insert(this.model);
+                this.db.vendorDao().insert(this.model);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -944,12 +944,12 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
     public void updateTotal() {
         try {
-            this.model.setPendingAmount(this.f547db.paymentDao().getTotal(this.model.getId(), 1));
+            this.model.setPendingAmount(this.db.paymentDao().getTotal(this.model.getId(), 1));
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            this.model.setPaidAmount(this.f547db.paymentDao().getTotal(this.model.getId(), 0));
+            this.model.setPaidAmount(this.db.paymentDao().getTotal(this.model.getId(), 0));
         } catch (Exception e2) {
             e2.printStackTrace();
         }

@@ -51,7 +51,6 @@ import com.example.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.example.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.example.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.example.weddingplanner.databinding.ActivityCostListBinding;
-import com.example.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.example.weddingplanner.pdfRepo.ReportRowModel;
 import com.example.weddingplanner.pdfRepo.ReportsListActivity;
@@ -75,7 +74,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
     public ActivityCostListBinding binding;
 
 
-    private AppDataBase f550db;
+    private AppDataBase db;
     
     public Dialog dialogFilterTypeList;
     private AlertDialogRecyclerListBinding dialogFilterTypeListBinding;
@@ -128,7 +127,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         this.model.setNoDataText(getString(R.string.noDataTitleCosts));
         this.model.setNoDataDetail(getString(R.string.noDataDescCosts));
 //        this.binding.setModel(this.model);
-        this.f550db = AppDataBase.getAppDatabase(this.context);
+        this.db = AppDataBase.getAppDatabase(this.context);
     }
 
 
@@ -137,15 +136,16 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         this.toolbarModel.setTitle(getString(R.string.drawerTitleBudget));
         this.toolbarModel.setOtherMenu(true);
         this.toolbarModel.setSearchMenu(true);
-        this.binding.includedToolbar.imgOther.setImageResource(R.drawable.order_list);
+        this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
         this.binding.includedToolbar.imgAdd.setImageResource(R.drawable.summary);
         this.toolbarModel.setShare(true);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
         setSupportActionBar(this.binding.includedToolbar.toolbar);
 
+        this.binding.includedToolbar.textTitle.setText("Budget");
+
         binding.includedToolbar.imageHome.setVisibility(View.GONE);
         binding.includedToolbar.progressbar.setVisibility(View.GONE);
-        binding.includedToolbar.imgShare.setVisibility(View.GONE);
         binding.includedToolbar.imgDelete.setVisibility(View.GONE);
         binding.includedToolbar.etOther.setVisibility(View.GONE);
         binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
@@ -229,7 +229,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
     public void fillFromDB() {
         List arrayList = new ArrayList();
         try {
-            arrayList = this.f550db.costDao().getAll(AppPref.getCurrentEvenId(this.context));
+            arrayList = this.db.costDao().getAll(AppPref.getCurrentEvenId(this.context));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -238,24 +238,24 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
             for (int i = 0; i < arrayList.size(); i++) {
                 CostRowModel costRowModel = (CostRowModel) arrayList.get(i);
                 try {
-                    categoryRowModel = this.f550db.categoryDao().getDetail(costRowModel.getCategoryId());
+                    categoryRowModel = this.db.categoryDao().getDetail(costRowModel.getCategoryId());
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }
                 costRowModel.setCategoryRowModel(categoryRowModel);
                 try {
-                    costRowModel.setPendingAmount(this.f550db.paymentDao().getTotal(costRowModel.getId(), 1));
+                    costRowModel.setPendingAmount(this.db.paymentDao().getTotal(costRowModel.getId(), 1));
                 } catch (Exception e3) {
                     e3.printStackTrace();
                 }
                 try {
-                    costRowModel.setPaidAmount(this.f550db.paymentDao().getTotal(costRowModel.getId(), 0));
+                    costRowModel.setPaidAmount(this.db.paymentDao().getTotal(costRowModel.getId(), 0));
                 } catch (Exception e4) {
                     e4.printStackTrace();
                 }
                 costRowModel.setArrayList(new ArrayList());
                 try {
-                    costRowModel.getArrayList().addAll(this.f550db.paymentDao().getAll(costRowModel.getId()));
+                    costRowModel.getArrayList().addAll(this.db.paymentDao().getAll(costRowModel.getId()));
                 } catch (Exception e5) {
                     e5.printStackTrace();
                 }

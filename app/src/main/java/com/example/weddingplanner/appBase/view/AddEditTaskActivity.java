@@ -65,6 +65,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -141,6 +143,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
             return;
         }
         this.model = new TaskRowModel();
+
         this.model.setEdit(true);
         this.model.setDateInMillis(Calendar.getInstance().getTimeInMillis());
         this.model.setArrayList(new ArrayList());
@@ -155,6 +158,18 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
         this.toolbarModel.setShare(this.isEdit);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
+        setSupportActionBar(binding.includedToolbar.toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Profile Details");
+        this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
+        binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
+        binding.includedToolbar.imageHome.setVisibility(View.GONE);
+        binding.includedToolbar.progressbar.setVisibility(View.GONE);
+        binding.includedToolbar.imgShare.setVisibility(View.GONE);
+        binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+        binding.includedToolbar.etOther.setVisibility(View.GONE);
+        binding.includedToolbar.search.setVisibility(View.GONE);
+        binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
+        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -560,6 +575,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
     }
 
     private boolean isAddUpdate(boolean z) {
+        model.setName(binding.etName.getText().toString());
         if (!isValid()) {
             return false;
         }

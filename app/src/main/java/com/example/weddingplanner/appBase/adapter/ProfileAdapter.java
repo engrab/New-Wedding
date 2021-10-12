@@ -38,6 +38,7 @@ public class ProfileAdapter extends RecyclerView.Adapter {
             rowHolder.binding.title.setText(arrayList.get(i).getName());
             rowHolder.binding.desc.setText(arrayList.get(i).getEmailId());
 
+
 //            rowHolder.binding.setRowModel(this.arrayList.get(i));
 //            rowHolder.binding.executePendingBindings();
         }

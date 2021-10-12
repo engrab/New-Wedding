@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/dashboard_bg_gradient.xml" value="0.1984375" />
         <entry key="app/src/main/res/drawable/drawer_term_service.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/drawable/et_rounded_square_normal.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/et_selector_rounded_square.xml" value="0.346875" />
         <entry key="app/src/main/res/drawable/ic_add_budget.xml" value="0.15092592592592594" />
         <entry key="app/src/main/res/drawable/ic_arrow_drop_down_black.xml" value="0.184375" />
         <entry key="app/src/main/res/drawable/ic_back_svg.xml" value="0.15092592592592594" />
@@ -39,7 +40,7 @@
         <entry key="app/src/main/res/layout/activity_currency.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_disclosure.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_guest_add_edit.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/activity_guest_add_edit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_guest_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_guest_summary.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_main_dashboard.xml" value="0.22" />
@@ -57,7 +58,7 @@
         <entry key="app/src/main/res/layout/activity_task_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_task_summary.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_term_and_service.xml" value="0.14" />
-        <entry key="app/src/main/res/layout/activity_vendor_add_edit.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_vendor_add_edit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_vendor_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_vendor_summary.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_wedding_pro_version.xml" value="0.1640625" />
@@ -71,7 +72,7 @@
         <entry key="app/src/main/res/layout/dialog_progress.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/dialog_rating.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/layout_updateapp_dialog.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/notification_action.xml" value="0.1" />
         <entry key="app/src/main/res/layout/notification_action_tombstone.xml" value="0.1" />
         <entry key="app/src/main/res/layout/progress_dialog.xml" value="0.1640625" />
@@ -80,7 +81,7 @@
         <entry key="app/src/main/res/layout/row_category.xml" value="0.25" />
         <entry key="app/src/main/res/layout/row_category_manage.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/row_companion.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/row_cost.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_cost.xml" value="0.33" />
         <entry key="app/src/main/res/layout/row_custom_tab.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/row_dashboard_item.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/row_drawer_item.xml" value="0.1640625" />

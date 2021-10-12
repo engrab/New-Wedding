@@ -16,6 +16,8 @@ import com.example.weddingplanner.appBase.view.TaskListActivity;
 import com.example.weddingplanner.appBase.view.VendorListActivity;
 import com.example.weddingplanner.databinding.ActivityDashboardBinding;
 
+import java.util.Objects;
+
 public class DashboardActivity extends BaseActivityBinding {
     private ActivityDashboardBinding binding;
 
@@ -36,6 +38,20 @@ public class DashboardActivity extends BaseActivityBinding {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.drawerTitleHome));
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
+
+        setSupportActionBar(binding.includedToolbar.toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Dashboard");
+        binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
+        this.binding.includedToolbar.imgOther.setVisibility(View.GONE);
+        binding.includedToolbar.imageHome.setVisibility(View.GONE);
+        binding.includedToolbar.progressbar.setVisibility(View.GONE);
+        binding.includedToolbar.imgShare.setVisibility(View.GONE);
+        binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+        binding.includedToolbar.etOther.setVisibility(View.GONE);
+        binding.includedToolbar.search.setVisibility(View.GONE);
+        binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
+        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
     }
 
 
