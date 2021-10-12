@@ -344,6 +344,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         }
     }
 
+
     private int getSelectedPosById() {
         for (int i = 0; i < this.categoryList.size(); i++) {
             if (this.categoryList.get(i).getId().equalsIgnoreCase(this.model.getCategoryId())) {
@@ -365,7 +366,8 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         this.dialogCategoryListBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.dialogCategoryListBinding.recycler.setAdapter(new CategoryAdapter(this.context, false, this.categoryList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = AddEditVendorActivity.this.selectedCategoryPos = i;
+                selectedCategoryPos = i;
+                initView();
             }
         }));
         this.dialogCategoryListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
@@ -400,6 +402,16 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         });
     }
 
+    private void initView() {
+        binding.imgIcon.setImageResource(categoryList.get(selectedCategoryPos).getImgResId());
+        binding.tvName.setText(categoryList.get(selectedCategoryPos).getName());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initView();
+    }
 
     public void showDialogCategoryList() {
         try {
@@ -480,7 +492,8 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         this.dialogNewCatBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false));
         this.dialogNewCatBinding.recycler.setAdapter(new ImageAdapter(true, this.context, this.imageList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = AddEditVendorActivity.this.selectedNewCatPos = i;
+                selectedNewCatPos = i;
+                initView();
             }
         }));
         this.dialogNewCatBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -629,6 +642,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     }
 
     private boolean isValid() {
+        model.setName(binding.etName.getText().toString());
         if (this.model.getName().trim().isEmpty()) {
             Context context = this.context;
             EditText editText = this.binding.etName;

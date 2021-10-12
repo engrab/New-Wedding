@@ -38,6 +38,7 @@ public class VendorAdapter extends RecyclerView.Adapter {
             rowHolder.binding.tvName.setText(arrayList.get(i).getName());
             rowHolder.binding.tvAmount.setText(arrayList.get(i).getExpectedAmount()+"");
             rowHolder.binding.tvPending.setText(arrayList.get(i).getStatusText());
+            rowHolder.binding.imgIcon.setImageResource(arrayList.get(i).getCategoryRowModel().getImgResId());
 //            rowHolder.binding.setRowModel(this.arrayList.get(i));
 //            rowHolder.binding.executePendingBindings();
         }
