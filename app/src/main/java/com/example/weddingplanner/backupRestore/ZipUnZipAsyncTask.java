@@ -21,15 +21,15 @@ public class ZipUnZipAsyncTask extends AsyncTask<Object, Object, Boolean> {
     String fileToRestore;
     GetCompleteResponse getCompleteResponse;
     boolean isZip;
-    String pass = stringSystemFile();
+    String pass = "1234";
     String tempZipFilePath;
     WeakReference<Activity> weakReference;
 
     public static native String stringSystemFile();
 
-    static {
-        System.loadLibrary("native-lib");
-    }
+//    static {
+//        System.loadLibrary("native-lib");
+//    }
 
     public ZipUnZipAsyncTask(BackupRestoreProgress backupRestoreProgress, Activity activity, boolean z, ArrayList<File> arrayList, String str, String str2, GetCompleteResponse getCompleteResponse2) {
         this.weakReference = new WeakReference<>(activity);

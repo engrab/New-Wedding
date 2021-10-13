@@ -41,8 +41,17 @@
 
                         <TextView
                             style="@style/TextViewTitleCommon"
-                            android:layout_width="match_parent"
-                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:tag="binding_1"
+                            android:text="Total Tasks : "
+                            android:textColor="@color/actionbar" />
+
+                        <TextView
+                            android:id="@+id/tvTotalTask"
+                            style="@style/TextViewTitleCommon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:tag="binding_1"
                             android:textColor="@color/actionbar" />
 
@@ -91,6 +100,7 @@
                                     app:tint="@color/actionbar" />
 
                                 <TextView
+                                    android:id="@+id/tvName"
                                     style="@style/TextViewTitleCommon"
                                     android:layout_width="match_parent"
                                     android:layout_weight="1"
@@ -111,40 +121,113 @@
                             android:layout_marginTop="8dp"
                             android:orientation="vertical">
 
-                            <TextView
-                                style="@style/TextViewTitleCommon"
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_weight="1"
-                                android:tag="binding_4" />
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/TextViewTitleCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:tag="binding_4"
+                                    android:text="Task : " />
+
+                                <TextView
+                                    android:id="@+id/tvTask"
+                                    style="@style/TextViewTitleCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:tag="binding_4"
+                                    android:text="0" />
+
+
+                            </LinearLayout>
+
 
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="0.5dp"
                                 android:background="@color/divider" />
 
-                            <TextView
-                                style="@style/TextViewTitleLightCommon"
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_marginTop="4dp"
-                                android:layout_weight="1"
-                                android:tag="binding_5"
-                                android:textColor="@color/textColorRegular" />
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                            <TextView
-                                style="@style/TextViewTitleLightCommon"
-                                android:layout_width="match_parent"
-                                android:layout_marginTop="4dp"
-                                android:layout_weight="1"
-                                android:tag="binding_6"
-                                android:textColor="@color/green" />
+                                <TextView
+                                    style="@style/TextViewTitleLightCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:tag="binding_5"
+                                    android:text="Total : "
+                                    android:textColor="@color/textColorRegular" />
 
-                            <TextView
-                                style="@style/TextViewTitleLightCommon"
+                                <TextView
+                                    android:id="@+id/total"
+                                    style="@style/TextViewTitleLightCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:tag="binding_5"
+                                    android:text="0"
+                                    android:textColor="@color/textColorRegular" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_marginTop="4dp"
-                                android:layout_weight="1"
-                                android:tag="binding_7"
-                                android:textColor="@color/red" />
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/TextViewTitleLightCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:tag="binding_5"
+                                    android:text="Completed : "
+                                    android:textColor="@color/textColorRegular" />
+
+                                <TextView
+                                    android:id="@+id/completed"
+                                    style="@style/TextViewTitleLightCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:tag="binding_5"
+                                    android:text="0"
+                                    android:textColor="@color/textColorRegular" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/TextViewTitleLightCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:tag="binding_5"
+                                    android:text="Pending : "
+                                    android:textColor="@color/textColorRegular" />
+
+                                <TextView
+                                    android:id="@+id/pending"
+                                    style="@style/TextViewTitleLightCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:tag="binding_5"
+                                    android:text="0"
+                                    android:textColor="@color/textColorRegular" />
+
+                            </LinearLayout>
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -153,40 +236,112 @@
                             android:layout_marginTop="8dp"
                             android:orientation="vertical">
 
-                            <TextView
-                                style="@style/TextViewTitleCommon"
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_weight="1"
-                                android:tag="binding_8" />
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/TextViewTitleCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:tag="binding_4"
+                                    android:text="Subtasks : " />
+
+                                <TextView
+                                    android:id="@+id/tvSubTask"
+                                    style="@style/TextViewTitleCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:tag="binding_4"
+                                    android:text="0" />
+
+
+
+                            </LinearLayout>
 
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="0.5dp"
                                 android:background="@color/divider" />
 
-                            <TextView
-                                style="@style/TextViewTitleLightCommon"
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_marginTop="4dp"
-                                android:layout_weight="1"
-                                android:tag="binding_9"
-                                android:textColor="@color/textColorRegular" />
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                            <TextView
-                                style="@style/TextViewTitleLightCommon"
-                                android:layout_width="match_parent"
-                                android:layout_marginTop="4dp"
-                                android:layout_weight="1"
-                                android:tag="binding_10"
-                                android:textColor="@color/green" />
+                                <TextView
+                                    style="@style/TextViewTitleLightCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:tag="binding_5"
+                                    android:text="Total : "
+                                    android:textColor="@color/textColorRegular" />
 
-                            <TextView
-                                style="@style/TextViewTitleLightCommon"
+                                <TextView
+                                    android:id="@+id/subTotal"
+                                    style="@style/TextViewTitleLightCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:tag="binding_5"
+                                    android:text="0"
+                                    android:textColor="@color/textColorRegular" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_marginTop="4dp"
-                                android:layout_weight="1"
-                                android:tag="binding_11"
-                                android:textColor="@color/red" />
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/TextViewTitleLightCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:tag="binding_5"
+                                    android:text="Completed : "
+                                    android:textColor="@color/textColorRegular" />
+
+                                <TextView
+                                    android:id="@+id/subCompleted"
+                                    style="@style/TextViewTitleLightCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:tag="binding_5"
+                                    android:text="0"
+                                    android:textColor="@color/textColorRegular" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/TextViewTitleLightCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:tag="binding_5"
+                                    android:text="Pending : "
+                                    android:textColor="@color/textColorRegular" />
+
+                                <TextView
+                                    android:id="@+id/subPending"
+                                    style="@style/TextViewTitleLightCommon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:tag="binding_5"
+                                    android:text="0"
+                                    android:textColor="@color/textColorRegular" />
+
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

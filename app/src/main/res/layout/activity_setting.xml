@@ -115,6 +115,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardLocalBackup"
+                android:visibility="gone"
                 style="@style/CardViewCommon">
 
                 <LinearLayout
@@ -144,6 +145,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardRestoreBackups"
+                android:visibility="gone"
                 style="@style/CardViewCommon">
 
                 <LinearLayout
@@ -173,6 +175,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardBackupTransferGuid"
+                android:visibility="gone"
                 style="@style/CardViewCommon">
 
                 <LinearLayout

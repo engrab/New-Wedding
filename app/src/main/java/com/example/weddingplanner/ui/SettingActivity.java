@@ -50,11 +50,11 @@ public class SettingActivity extends BaseActivityBinding implements EasyPermissi
         setContentView(view);
         this.backupRestore = new LocalBackupRestore(this);
         this.progressDialog = new BackupRestoreProgress(this);
-        if (!ConsentInformation.getInstance(this.context).isRequestLocationInEeaOrUnknown() || AppPref.getIsAdfree(this.context)) {
-            this.binding.cardAdSettings.setVisibility(View.GONE);
-        } else {
-            this.binding.cardAdSettings.setVisibility(View.VISIBLE);
-        }
+//        if (!ConsentInformation.getInstance(this.context).isRequestLocationInEeaOrUnknown() || AppPref.getIsAdfree(this.context)) {
+//            this.binding.cardAdSettings.setVisibility(View.GONE);
+//        } else {
+//            this.binding.cardAdSettings.setVisibility(View.VISIBLE);
+//        }
     }
 
 
@@ -62,6 +62,16 @@ public class SettingActivity extends BaseActivityBinding implements EasyPermissi
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(getString(R.string.drawerTitleSetting));
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
+        this.binding.includedToolbar.textTitle.setText("Setting");
+        binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        binding.includedToolbar.imageHome.setVisibility(View.GONE);
+        binding.includedToolbar.imgOther.setVisibility(View.GONE);
+        binding.includedToolbar.spinner.setVisibility(View.GONE);
+        binding.includedToolbar.progressbar.setVisibility(View.GONE);
+        binding.includedToolbar.etOther.setVisibility(View.GONE);
+        binding.includedToolbar.search.setVisibility(View.GONE);
+        binding.includedToolbar.imgShare.setVisibility(View.GONE);
     }
 
 

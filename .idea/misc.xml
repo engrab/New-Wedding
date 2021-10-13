@@ -52,12 +52,12 @@
         <entry key="app/src/main/res/layout/activity_reports_list.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_restore.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_restore_list.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_sub_task_add_edit.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_task_add_edit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_task_list.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_task_summary.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_task_summary.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_term_and_service.xml" value="0.14" />
         <entry key="app/src/main/res/layout/activity_vendor_add_edit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_vendor_list.xml" value="0.1" />

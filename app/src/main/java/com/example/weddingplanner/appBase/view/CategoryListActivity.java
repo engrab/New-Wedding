@@ -76,6 +76,16 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle("Manage Category");
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
+        this.binding.includedToolbar.textTitle.setText("Manage Category");
+        binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        binding.includedToolbar.imageHome.setVisibility(View.GONE);
+        binding.includedToolbar.imgOther.setVisibility(View.GONE);
+        binding.includedToolbar.spinner.setVisibility(View.GONE);
+        binding.includedToolbar.progressbar.setVisibility(View.GONE);
+        binding.includedToolbar.etOther.setVisibility(View.GONE);
+        binding.includedToolbar.search.setVisibility(View.GONE);
+        binding.includedToolbar.imgShare.setVisibility(View.GONE);
     }
 
 
@@ -305,9 +315,11 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
         this.dialogNewCat.getWindow().setLayout(-1, -2);
         this.dialogNewCatBinding.txtTitle.setText(R.string.add_new_category);
         this.dialogNewCatBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false));
-        this.dialogNewCatBinding.recycler.setAdapter(new ImageAdapter(true, this.context, this.imageList, new RecyclerItemClick() {
+        this.dialogNewCatBinding.recycler.setAdapter(new ImageAdapter(true, this.context, imageList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = CategoryListActivity.this.selectedNewCatPos = i;
+                selectedNewCatPos = i;
+                showNewCatList(selectedCatPos);
+
             }
         }));
         this.dialogNewCatBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -396,6 +408,7 @@ public class CategoryListActivity extends BaseActivityRecyclerBinding {
         }
         selectionAllCategory(false);
         this.imageList.get(this.selectedNewCatPos).setSelected(true);
+
         try {
             this.dialogNewCatBinding.recycler.scrollToPosition(this.selectedNewCatPos);
         } catch (Exception e) {

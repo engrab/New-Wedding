@@ -2,12 +2,15 @@ package com.example.weddingplanner.appBase.adapter;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.weddingplanner.R;
 import com.example.weddingplanner.appBase.models.image.ImageRowModel;
 import com.example.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.example.weddingplanner.databinding.RowCompanionBinding;
@@ -21,6 +24,7 @@ public class ImageAdapter extends RecyclerView.Adapter {
     public ArrayList<ImageRowModel> arrayList;
     private final Context context;
     private final boolean isIcon;
+    private int isSelectedP;
 
     public RecyclerItemClick recyclerItemClick;
 
@@ -39,15 +43,28 @@ public class ImageAdapter extends RecyclerView.Adapter {
 
     }
 
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         if (viewHolder instanceof RowHolder) {
             RowHolder rowHolder = (RowHolder) viewHolder;
-            rowHolder.binding.imgFolder.setImageResource(arrayList.get(i).getImgResId());
+            if (arrayList.get(i).isSelected()){
+                rowHolder.binding.llImage.setBackgroundColor(Color.parseColor("#1976D2"));
+                rowHolder.binding.imgFolder.setImageResource(arrayList.get(i).getImgResId());
+            } else {
+
+                rowHolder.binding.imgFolder.setImageResource(arrayList.get(i).getImgResId());
+            }
+
 //            rowHolder.binding.setRowModel(this.arrayList.get(i));
 //            rowHolder.binding.executePendingBindings();
         } else if (viewHolder instanceof RowHolderLarge) {
             RowHolderLarge rowHolderLarge = (RowHolderLarge) viewHolder;
-            rowHolderLarge.binding.imageViewLarge.setImageResource(arrayList.get(i).getImgResId());
+            if (arrayList.get(i).isSelected()){
+                rowHolderLarge.binding.llImage.setBackgroundColor(Color.parseColor("#1976D2"));
+                rowHolderLarge.binding.imageViewLarge.setImageResource(arrayList.get(i).getImgResId());
+            } else {
+
+                rowHolderLarge.binding.imageViewLarge.setImageResource(arrayList.get(i).getImgResId());
+            }
 //            rowHolderLarge.binding.setRowModel(this.arrayList.get(i));
 //            rowHolderLarge.binding.executePendingBindings();
         }
@@ -71,6 +88,7 @@ public class ImageAdapter extends RecyclerView.Adapter {
             ImageAdapter.this.selectionAll(false);
             ImageAdapter.this.arrayList.get(getAdapterPosition()).setSelected(!ImageAdapter.this.arrayList.get(getAdapterPosition()).isSelected());
             ImageAdapter.this.recyclerItemClick.onClick(getAdapterPosition(), 1);
+
         }
     }
 
@@ -86,8 +104,9 @@ public class ImageAdapter extends RecyclerView.Adapter {
 
         public void onClick(View view) {
             ImageAdapter.this.selectionAll(false);
-            ImageAdapter.this.arrayList.get(getAdapterPosition()).setSelected(!ImageAdapter.this.arrayList.get(getAdapterPosition()).isSelected());
+            ImageAdapter.this.arrayList.get(getAdapterPosition()).setSelected(!arrayList.get(getAdapterPosition()).isSelected());
             ImageAdapter.this.recyclerItemClick.onClick(getAdapterPosition(), 1);
+
         }
     }
 

@@ -1,6 +1,7 @@
 package com.example.weddingplanner.appBase.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +75,7 @@ public class CategoryAdapter extends RecyclerView.Adapter {
             selectionAll(false);
             arrayList.get(getAdapterPosition()).setSelected(!arrayList.get(getAdapterPosition()).isSelected());
             recyclerItemClick.onClick(getAdapterPosition(), 1);
+            binding.imgIcon.setBackgroundColor(Color.parseColor("#567845"));
 
         }
     }

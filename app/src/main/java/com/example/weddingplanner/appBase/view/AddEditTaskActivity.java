@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import android.os.Environment;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -57,6 +59,7 @@ import com.example.weddingplanner.databinding.AlertDialogNewCategoryBinding;
 import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.example.weddingplanner.pdfRepo.ReportRowModel;
 import com.example.weddingplanner.pdfRepo.ReportsListActivity;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -81,7 +84,6 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
     private ActivityTaskAddEditBinding binding;
 
     public ArrayList<CategoryRowModel> categoryList;
-
 
 
     public AppDataBase db;
@@ -134,18 +136,19 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
     }
 
 
-
     private void setModelDetail() {
         boolean z = false;
-        if (getIntent().hasExtra(EXTRA_IS_EDIT) && getIntent().getBooleanExtra(EXTRA_IS_EDIT, false)) {
+        this.model = new TaskRowModel();
+        if (getIntent().getBooleanExtra(EXTRA_IS_EDIT, false)) {
             z = true;
         }
         this.isEdit = z;
         if (this.isEdit) {
             this.model = (TaskRowModel) getIntent().getParcelableExtra(EXTRA_MODEL);
+            binding.tvName.setText();
             return;
         }
-        this.model = new TaskRowModel();
+
 
         this.model.setEdit(true);
         this.model.setDateInMillis(Calendar.getInstance().getTimeInMillis());
@@ -155,14 +158,15 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
 
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
-        this.toolbarModel.setTitle(this.isEdit ? "Edit Task" : "Add Task");
+        this.toolbarModel.setTitle(isEdit ? "Edit Task" : "Add Task");
         this.toolbarModel.setDelete(this.isEdit);
         this.toolbarModel.setOtherMenu(true);
-        this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
         this.toolbarModel.setShare(this.isEdit);
+        if (getIntent().getBooleanExtra(EXTRA_IS_EDIT, false)) {
+            isEdit = true;
+        }
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
-        setSupportActionBar(binding.includedToolbar.toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Profile Details");
+        binding.includedToolbar.textTitle.setText(isEdit ? "Edit Task" : "Add Task");
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
         binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
         binding.includedToolbar.imageHome.setVisibility(View.GONE);
@@ -256,6 +260,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
                 }
             case R.id.imgOther:
                 isAddUpdate(true);
+                onBackPressed();
                 return;
             case R.id.imgShare:
                 showPdfDialog();
@@ -324,7 +329,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
             this.model.setCategoryId(this.categoryList.get(this.selectedCategoryPos).getId());
             this.model.setCategoryRowModel(this.categoryList.get(this.selectedCategoryPos));
         }
-        Log.d(TAG, "fillCategoryList: "+categoryList.size());
+        Log.d(TAG, "fillCategoryList: " + categoryList.size());
     }
 
     private int getSelectedPosById() {
@@ -459,7 +464,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
     }
 
     public void setNewCatDialog() {
-        this.dialogNewCatBinding = AlertDialogNewCategoryBinding.inflate(LayoutInflater.from(this.context),  (ViewGroup) null, false);
+        this.dialogNewCatBinding = AlertDialogNewCategoryBinding.inflate(LayoutInflater.from(this.context), (ViewGroup) null, false);
         this.dialogNewCat = new Dialog(this.context);
         this.dialogNewCat.setContentView(this.dialogNewCatBinding.getRoot());
         this.dialogNewCat.setCancelable(false);
@@ -677,6 +682,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         } else {
             super.onBackPressed();
         }
+        super.onBackPressed();
     }
 
     private void showPdfDialog() {

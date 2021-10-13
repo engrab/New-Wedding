@@ -34,7 +34,6 @@ public class ProfileAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
         if (viewHolder instanceof RowHolder) {
             RowHolder rowHolder = (RowHolder) viewHolder;
-            rowHolder.binding.imgIcon.setImageResource(arrayList.get(i).getGenderType());
             rowHolder.binding.title.setText(arrayList.get(i).getName());
             rowHolder.binding.desc.setText(arrayList.get(i).getEmailId());
 

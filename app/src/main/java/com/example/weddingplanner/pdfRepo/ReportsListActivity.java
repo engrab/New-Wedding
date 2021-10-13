@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -66,6 +67,16 @@ public class ReportsListActivity extends BaseActivityRecyclerBinding implements 
         this.toolbarModel.setTitle(getString(R.string.pdf_reports));
         this.toolbarModel.setAdd(true);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
+
+        this.binding.includedToolbar.textTitle.setText(getString(R.string.pdf_reports));
+        binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+        binding.includedToolbar.imageHome.setVisibility(View.GONE);
+        binding.includedToolbar.imgOther.setVisibility(View.GONE);
+        binding.includedToolbar.spinner.setVisibility(View.GONE);
+        binding.includedToolbar.progressbar.setVisibility(View.GONE);
+        binding.includedToolbar.etOther.setVisibility(View.GONE);
+        binding.includedToolbar.search.setVisibility(View.GONE);
+        binding.includedToolbar.imgShare.setVisibility(View.GONE);
     }
 
 
@@ -152,7 +163,7 @@ public class ReportsListActivity extends BaseActivityRecyclerBinding implements 
     }
 
     public void onBackPressed() {
-//        MainActivityDashboard.BackPressedAd(this);
+        super.onBackPressed();
     }
 
 

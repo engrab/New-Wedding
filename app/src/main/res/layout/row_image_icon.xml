@@ -5,12 +5,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center"
+    android:id="@+id/ll_image"
     android:tag="layout/row_image_icon_0">
 
     <ImageView
         android:id="@+id/imgFolder"
         style="@style/ImageViewMediumCommon"
         android:layout_gravity="center"
+        android:layout_margin="@dimen/_10sdp"
         android:background="@drawable/rounded_line"
         android:tag="binding_1" />
 </LinearLayout>

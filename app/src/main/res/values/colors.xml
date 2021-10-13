@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#c657a0</color>
-    <color name="colorPrimaryDark">#b63189</color>
+
+    <color name="primary_light">#BBDEFB</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+
+
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
     <color name="colorAccent">@color/colorPrimary</color>
-    <color name="accent">#ec2045</color>
+    <color name="accent">#03A9F4</color>
     <color name="splsh_bg">#568a91</color>
     <color name="fontColor">#3d3a4b</color>
     <color name="light_silver">#b5b5b5</color>
@@ -53,7 +60,7 @@
     <color name="dim_foreground_material_dark">#ffbebebe</color>
     <color name="dim_foreground_material_light">#ff323232</color>
     <color name="disableColor">#efeeee</color>
-    <color name="divider">#8a8a8a</color>
+    <color name="divider">#BDBDBD</color>
     <color name="end_color">@color/colorAccent</color>
     <color name="error_color_material_dark">#ff7043</color>
     <color name="error_color_material_light">#ff5722</color>

@@ -51,8 +51,9 @@
 
             <ImageView
                 android:id="@+id/imgSelect"
-                android:src="@drawable/btn_selector_rounded_actionbar"
+                android:src="@drawable/save"
                 style="@style/ImageViewSwitchCommon"
+                app:tint="@color/colorPrimaryDark"
                 android:tag="binding_3" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

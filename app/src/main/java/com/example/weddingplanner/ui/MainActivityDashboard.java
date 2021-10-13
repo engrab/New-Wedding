@@ -79,6 +79,7 @@ public class MainActivityDashboard extends BaseActivityBinding {
 
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
+                startActivity(new Intent(MainActivityDashboard.this, DashboardActivity.class));
             }
         });
         binding.navDrawer.llChecklist.setOnClickListener(new View.OnClickListener() {
@@ -119,12 +120,12 @@ public class MainActivityDashboard extends BaseActivityBinding {
             }
         });
 
-        binding.navDrawer.imgSettings.setOnClickListener(new View.OnClickListener() {
+        binding.navDrawer.llSettings.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-                startActivity(new Intent(MainActivityDashboard.this, SettingActivity.class));
-                finish();
+                startActivityForResult(new Intent(MainActivityDashboard.this, SettingActivity.class), 1002);
+
             }
         });
 
@@ -197,38 +198,38 @@ public class MainActivityDashboard extends BaseActivityBinding {
         setSupportActionBar(this.binding.toolbar);
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_dashboard, menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-            case R.id.drawer_feedback:
-                AppConstants.emailUs(this.context);
-                return true;
-            case R.id.drawer_privacy_policy:
-                uriparse(TermAndServiceActivity.strPrivacyUri);
-                return true;
-            case R.id.drawer_proversion:
-                startActivity(new Intent(this.context, WeddingProVersionActivity.class));
-                return true;
-            case R.id.drawer_ratting:
-                AppConstants.showRattingDialog(this.context, Constants.RATTING_BAR_TITLE, Constants.APP_PLAY_STORE_URL);
-                return true;
-            case R.id.drawer_setting:
-                startActivityForResult(new Intent(this.context, SettingActivity.class), 1002);
-                return true;
-            case R.id.drawer_share:
-                AppConstants.shareApp(this.context);
-                return true;
-            case R.id.drawer_terms_of_service:
-                uriparse(TermAndServiceActivity.strTermsUri);
-                return true;
-            default:
-                return super.onOptionsItemSelected(menuItem);
-        }
-    }
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_dashboard, menu);
+//        return true;
+//    }
+//
+//    public boolean onOptionsItemSelected(MenuItem menuItem) {
+//        switch (menuItem.getItemId()) {
+//            case R.id.drawer_feedback:
+//                AppConstants.emailUs(this.context);
+//                return true;
+//            case R.id.drawer_privacy_policy:
+//                uriparse(TermAndServiceActivity.strPrivacyUri);
+//                return true;
+//            case R.id.drawer_proversion:
+//                startActivity(new Intent(this.context, WeddingProVersionActivity.class));
+//                return true;
+//            case R.id.drawer_ratting:
+//                AppConstants.showRattingDialog(this.context, Constants.RATTING_BAR_TITLE, Constants.APP_PLAY_STORE_URL);
+//                return true;
+//            case R.id.drawer_setting:
+//                startActivityForResult(new Intent(this.context, SettingActivity.class), 1002);
+//                return true;
+//            case R.id.drawer_share:
+//                AppConstants.shareApp(this.context);
+//                return true;
+//            case R.id.drawer_terms_of_service:
+//                uriparse(TermAndServiceActivity.strTermsUri);
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(menuItem);
+//        }
+//    }
 
     public void uriparse(String str) {
         Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(str));
