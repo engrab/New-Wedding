@@ -147,7 +147,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
             String name = model.getName();
             String note = model.getNote();
             binding.tvName.requestFocus();
-            binding.tvName.setText(name);
+            binding.tvName.setText("name");
             Log.d(TAG, "setModelDetail: "+model.getName());
             return;
         }
@@ -163,21 +163,35 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         this.toolbarModel.setDelete(this.isEdit);
         this.toolbarModel.setOtherMenu(true);
         this.toolbarModel.setShare(this.isEdit);
-        if (getIntent().getBooleanExtra(EXTRA_IS_EDIT, false)) {
-            isEdit = true;
-        }
-//        this.binding.includedToolbar.setModel(this.toolbarModel);
+        isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT,false);
         binding.includedToolbar.textTitle.setText(isEdit ? "Edit Task" : "Add Task");
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
         binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
-        binding.includedToolbar.imageHome.setVisibility(View.GONE);
-        binding.includedToolbar.progressbar.setVisibility(View.GONE);
-        binding.includedToolbar.imgShare.setVisibility(View.GONE);
-        binding.includedToolbar.imgDelete.setVisibility(View.GONE);
-        binding.includedToolbar.etOther.setVisibility(View.GONE);
-        binding.includedToolbar.search.setVisibility(View.GONE);
-        binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
-        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        if (isEdit){
+
+            binding.includedToolbar.imageHome.setVisibility(View.GONE);
+            binding.includedToolbar.progressbar.setVisibility(View.GONE);
+            binding.includedToolbar.imgShare.setVisibility(View.VISIBLE);
+            binding.includedToolbar.imgDelete.setVisibility(View.VISIBLE);
+            binding.includedToolbar.etOther.setVisibility(View.GONE);
+            binding.includedToolbar.search.setVisibility(View.GONE);
+            binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        }else {
+
+            binding.includedToolbar.imageHome.setVisibility(View.GONE);
+            binding.includedToolbar.progressbar.setVisibility(View.GONE);
+            binding.includedToolbar.imgShare.setVisibility(View.GONE);
+            binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+            binding.includedToolbar.etOther.setVisibility(View.GONE);
+            binding.includedToolbar.search.setVisibility(View.GONE);
+            binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        }
+//        this.binding.includedToolbar.setModel(this.toolbarModel);
+
+
+
     }
 
     @Override

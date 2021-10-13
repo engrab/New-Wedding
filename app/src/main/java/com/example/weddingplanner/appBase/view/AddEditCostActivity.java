@@ -130,6 +130,9 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
 
     private void setModelDetail() {
         boolean z = false;
+
+        this.model = new CostRowModel();
+        this.model.setEdit(true);
         if (getIntent().hasExtra(EXTRA_IS_EDIT) && getIntent().getBooleanExtra(EXTRA_IS_EDIT, false)) {
             z = true;
         }
@@ -138,8 +141,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
             this.model = (CostRowModel) getIntent().getParcelableExtra(EXTRA_MODEL);
             return;
         }
-        this.model = new CostRowModel();
-        this.model.setEdit(true);
+
         this.model.setArrayList(new ArrayList());
     }
 
@@ -153,11 +155,28 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         this.toolbarModel.setShare(this.isEdit);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
 
-        binding.includedToolbar.textTitle.setText("Add Budget");
-        binding.includedToolbar.imageHome.setVisibility(View.GONE);
-        binding.includedToolbar.progressbar.setVisibility(View.GONE);
-        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
-        binding.includedToolbar.spinner.setVisibility(View.GONE);
+        isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT, false);
+        binding.includedToolbar.textTitle.setText(this.isEdit ? "Edit Budget" : "Add Budget");
+        if (isEdit){
+            binding.includedToolbar.imgShare.setVisibility(View.VISIBLE);
+            binding.includedToolbar.etOther.setVisibility(View.GONE);
+            binding.includedToolbar.imgDelete.setVisibility(View.VISIBLE);
+            binding.includedToolbar.search.setVisibility(View.GONE);
+            binding.includedToolbar.imageHome.setVisibility(View.GONE);
+            binding.includedToolbar.progressbar.setVisibility(View.GONE);
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+            binding.includedToolbar.spinner.setVisibility(View.GONE);
+        }else {
+
+            binding.includedToolbar.imgShare.setVisibility(View.GONE);
+            binding.includedToolbar.etOther.setVisibility(View.GONE);
+            binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+            binding.includedToolbar.search.setVisibility(View.GONE);
+            binding.includedToolbar.imageHome.setVisibility(View.GONE);
+            binding.includedToolbar.progressbar.setVisibility(View.GONE);
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+            binding.includedToolbar.spinner.setVisibility(View.GONE);
+        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -463,6 +482,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         this.dialogNewCatBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 long j;
+                model.setName(binding.etName.getText().toString().trim());
                 if (AddEditCostActivity.this.isValidNewCat(AddEditCostActivity.this.dialogNewCatBinding)) {
                     CategoryRowModel categoryRowModel = new CategoryRowModel(AppConstants.getUniqueId(), AddEditCostActivity.this.dialogNewCatBinding.etName.getText().toString().trim(), ((ImageRowModel) AddEditCostActivity.this.imageList.get(AddEditCostActivity.this.selectedNewCatPos)).getId());
                     try {
@@ -619,6 +639,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         intent.putExtra(EXTRA_POSITION_MAIN, getIntent().getIntExtra(EXTRA_POSITION_MAIN, 0));
         intent.putExtra(EXTRA_MODEL, this.model);
         setResult(-1, intent);
+        onBackPressed();
     }
 
 
@@ -669,6 +690,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         if (this.isUpdateList) {
             openItemList(false);
         } else if (this.isEdit) {
+            super.onBackPressed();
         } else {
             super.onBackPressed();
         }

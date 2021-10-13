@@ -15,7 +15,6 @@ import com.example.weddingplanner.appBase.roomsDB.taskList.SubTaskRowModel;
 import com.example.weddingplanner.appBase.utils.AppConstants;
 import com.example.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.example.weddingplanner.databinding.ActivitySubTaskAddEditBinding;
-import com.example.weddingplanner.databinding.ActivityTaskSummaryBinding;
 
 public class AddEditSubTaskActivity extends BaseActivityBinding {
     public static String EXTRA_ID = "id";
@@ -27,7 +26,7 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
 
 
 
-    public AppDataBase f545db;
+    public AppDataBase db;
     private boolean isEdit = false;
 
     public SubTaskRowModel model;
@@ -42,8 +41,7 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
         binding = ActivitySubTaskAddEditBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-//        this.binding = (ActivitySubTaskAddEditBinding) DataBindingUtil.setContentView(this, R.layout.activity_sub_task_add_edit);
-        this.f545db = AppDataBase.getAppDatabase(this);
+        this.db = AppDataBase.getAppDatabase(this);
         setModelDetail();
 //        this.binding.setRowModel(this.model);
     }
@@ -69,6 +67,18 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
         this.toolbarModel.setOtherMenu(true);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
+
+        isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT,false);
+        binding.includedToolbar.textTitle.setText(this.isEdit ? "Edit Subtask" : "Add Subtask");
+        binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+        binding.includedToolbar.imgShare.setVisibility(View.GONE);
+        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
+        binding.includedToolbar.search.setVisibility(View.GONE);
+        binding.includedToolbar.progressbar.setVisibility(View.GONE);
+        binding.includedToolbar.etOther.setVisibility(View.GONE);
+        binding.includedToolbar.spinner.setVisibility(View.GONE);
+        binding.includedToolbar.imageHome.setVisibility(View.GONE);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -92,7 +102,7 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
 
             public void onOk() {
                 try {
-                    AddEditSubTaskActivity.this.f545db.subTaskDao().delete(AddEditSubTaskActivity.this.model);
+                    AddEditSubTaskActivity.this.db.subTaskDao().delete(AddEditSubTaskActivity.this.model);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -117,7 +127,7 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
                 addUpdate();
                 return;
             case R.id.imgBack:
-                onBackPressed();
+                super.onBackPressed();
                 return;
             case R.id.imgDelete:
                 deleteItem();
@@ -137,13 +147,14 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
     }
 
     private void addUpdate() {
+        model.setName(binding.etName.getText().toString().trim());
         if (isValid()) {
             try {
                 this.model.getName().trim();
                 if (this.isEdit) {
-                    this.f545db.subTaskDao().update(this.model);
+                    this.db.subTaskDao().update(this.model);
                 } else {
-                    this.f545db.subTaskDao().insert(this.model);
+                    this.db.subTaskDao().insert(this.model);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -170,6 +181,6 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
         intent.putExtra(EXTRA_POSITION, getIntent().getIntExtra(EXTRA_POSITION, 0));
         intent.putExtra(EXTRA_MODEL, this.model);
         setResult(-1, intent);
-        finish();
+        super.onBackPressed();
     }
 }

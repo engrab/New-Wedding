@@ -67,8 +67,36 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
         this.toolbarModel.setTitle(this.isEdit ? "Edit Payment" : "Add Payment");
         this.toolbarModel.setDelete(this.isEdit);
         this.toolbarModel.setOtherMenu(true);
+
+        isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT, false);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
+        binding.includedToolbar.textTitle.setText(this.isEdit ? "Edit Payment" : "Add Payment");
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
+
+        if (isEdit){
+            binding.includedToolbar.imgShare.setVisibility(View.GONE);
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+            binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
+            binding.includedToolbar.search.setVisibility(View.GONE);
+            binding.includedToolbar.progressbar.setVisibility(View.GONE);
+            binding.includedToolbar.etOther.setVisibility(View.GONE);
+            binding.includedToolbar.spinner.setVisibility(View.GONE);
+            binding.includedToolbar.imageHome.setVisibility(View.GONE);
+            binding.includedToolbar.imgDelete.setVisibility(View.VISIBLE);
+        }else {
+
+            binding.includedToolbar.imgShare.setVisibility(View.GONE);
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+            binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
+            binding.includedToolbar.search.setVisibility(View.GONE);
+            binding.includedToolbar.progressbar.setVisibility(View.GONE);
+            binding.includedToolbar.etOther.setVisibility(View.GONE);
+            binding.includedToolbar.spinner.setVisibility(View.GONE);
+            binding.includedToolbar.imageHome.setVisibility(View.GONE);
+            binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+        }
+
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -118,7 +146,7 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
                 addUpdate();
                 return;
             case R.id.imgBack:
-                onBackPressed();
+                super.onBackPressed();
                 return;
             case R.id.imgDelete:
                 deleteItem();
@@ -210,6 +238,7 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
     }
 
     private boolean isValid() {
+        model.setName(binding.etName.getText().toString().trim());
         if (this.model.getName().trim().isEmpty()) {
             Context context = this.context;
             EditText editText = this.binding.etName;
@@ -233,6 +262,6 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
         intent.putExtra(EXTRA_POSITION, getIntent().getIntExtra(EXTRA_POSITION, 0));
         intent.putExtra(EXTRA_MODEL, this.model);
         setResult(-1, intent);
-        finish();
+        super.onBackPressed();
     }
 }

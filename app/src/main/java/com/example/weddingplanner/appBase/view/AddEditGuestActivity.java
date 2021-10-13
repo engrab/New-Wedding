@@ -110,6 +110,8 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
 
     private void setModelDetail() {
         boolean z = false;
+        this.model = new GuestRowModel();
+        this.model.setEdit(true);
         if (getIntent().hasExtra(EXTRA_IS_EDIT) && getIntent().getBooleanExtra(EXTRA_IS_EDIT, false)) {
             z = true;
         }
@@ -118,8 +120,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
             this.model = (GuestRowModel) getIntent().getParcelableExtra(EXTRA_MODEL);
             return;
         }
-        this.model = new GuestRowModel();
-        this.model.setEdit(true);
+
         this.model.setExpandedContact(true);
         this.model.setArrayList(new ArrayList());
     }
@@ -132,7 +133,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         this.binding.includedToolbar.imgDelete.setImageResource(this.isEdit ? R.drawable.delete : R.drawable.phone_book);
         this.toolbarModel.setOtherMenu(true);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
-        binding.includedToolbar.textTitle.setText("Add Guest");
+        binding.includedToolbar.textTitle.setText(this.isEdit ? "Edit Guest" : "Add Guest");
         this.toolbarModel.setShare(this.isEdit);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
 
@@ -391,6 +392,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         intent.putExtra(EXTRA_POSITION_MAIN, getIntent().getIntExtra(EXTRA_POSITION_MAIN, 0));
         intent.putExtra(EXTRA_MODEL, this.model);
         setResult(-1, intent);
+        onBackPressed();
     }
 
     public void pickContactPerm() {
@@ -661,6 +663,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         if (this.isUpdateList) {
             openItemList(false);
         } else if (this.isEdit) {
+            super.onBackPressed();
         } else {
             super.onBackPressed();
         }

@@ -35,7 +35,7 @@
         <entry key="app/src/main/res/layout/activity_backup_transfer_guid.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_budget_summary.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_category_list.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/activity_cost_add_edit.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/activity_cost_add_edit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_cost_list.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_create_user_form.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_currency.xml" value="0.1640625" />
@@ -45,7 +45,7 @@
         <entry key="app/src/main/res/layout/activity_guest_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_guest_summary.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_main_dashboard.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_payment_add_edit.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/activity_payment_add_edit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_privacy_policy.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_profile_add_edit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_profile_list.xml" value="0.1" />
@@ -81,7 +81,7 @@
         <entry key="app/src/main/res/layout/restore_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/row_category.xml" value="0.25" />
         <entry key="app/src/main/res/layout/row_category_manage.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/row_companion.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_companion.xml" value="0.33" />
         <entry key="app/src/main/res/layout/row_cost.xml" value="0.33" />
         <entry key="app/src/main/res/layout/row_custom_tab.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/row_dashboard_item.xml" value="0.1640625" />

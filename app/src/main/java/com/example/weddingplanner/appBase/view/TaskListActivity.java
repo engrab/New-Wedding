@@ -143,6 +143,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
 
         binding.includedToolbar.textTitle.setText("Task List");
         binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        binding.includedToolbar.imgOther.setVisibility(View.GONE);
         binding.includedToolbar.imageHome.setVisibility(View.GONE);
         binding.includedToolbar.progressbar.setVisibility(View.GONE);
         binding.includedToolbar.imgDelete.setVisibility(View.GONE);

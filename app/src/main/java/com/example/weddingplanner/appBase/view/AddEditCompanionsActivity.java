@@ -8,12 +8,15 @@ import android.database.Cursor;
 
 import android.net.Uri;
 import android.provider.ContactsContract;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+
 import com.example.weddingplanner.R;
 import com.example.weddingplanner.appBase.baseClass.BaseActivityRecyclerBinding;
 import com.example.weddingplanner.appBase.models.toolbar.ToolbarModel;
@@ -23,7 +26,9 @@ import com.example.weddingplanner.appBase.utils.AppConstants;
 import com.example.weddingplanner.appBase.utils.Constants;
 import com.example.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.example.weddingplanner.databinding.ActivityGuestAddEditBinding;
+
 import java.util.List;
+
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -34,7 +39,6 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
     public static String EXTRA_MODEL = "model";
     public static String EXTRA_POSITION = "position";
     private ActivityGuestAddEditBinding binding;
-
 
 
     public AppDataBase db;
@@ -98,6 +102,28 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
         this.toolbarModel.setOtherMenu(true);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
+        isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT, false);
+        binding.includedToolbar.textTitle.setText(isEdit ? "Edit Companion" : "Add Companion");
+        if (isEdit){
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+            binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
+            binding.includedToolbar.search.setVisibility(View.GONE);
+            binding.includedToolbar.progressbar.setVisibility(View.GONE);
+            binding.includedToolbar.etOther.setVisibility(View.GONE);
+            binding.includedToolbar.spinner.setVisibility(View.GONE);
+            binding.includedToolbar.imageHome.setVisibility(View.GONE);
+            binding.includedToolbar.imgDelete.setVisibility(View.VISIBLE);
+        }else {
+            binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+            binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
+            binding.includedToolbar.search.setVisibility(View.GONE);
+            binding.includedToolbar.progressbar.setVisibility(View.GONE);
+            binding.includedToolbar.etOther.setVisibility(View.GONE);
+            binding.includedToolbar.spinner.setVisibility(View.GONE);
+            binding.includedToolbar.imageHome.setVisibility(View.GONE);
+        }
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -259,6 +285,7 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
     }
 
     private boolean isValid() {
+        model.setName(binding.etName.getText().toString().trim());
         if (!this.model.getName().trim().isEmpty()) {
             return true;
         }

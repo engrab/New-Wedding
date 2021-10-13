@@ -154,10 +154,33 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle(this.isEdit ? "Edit Vendor" : "Add Vendor");
         this.toolbarModel.setDelete(true);
-        this.binding.includedToolbar.imgDelete.setImageResource(this.isEdit ? R.drawable.delete : R.drawable.phone_book);
         this.toolbarModel.setOtherMenu(true);
+
+        isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT,false);
+
+
+        this.binding.includedToolbar.imgDelete.setImageResource(this.isEdit ? R.drawable.delete : R.drawable.phone_book);
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
         this.toolbarModel.setShare(this.isEdit);
+        if (isEdit){
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+            binding.includedToolbar.imgShare.setVisibility(View.GONE);
+            binding.includedToolbar.etOther.setVisibility(View.GONE);
+            binding.includedToolbar.search.setVisibility(View.GONE);
+            binding.includedToolbar.imageHome.setVisibility(View.GONE);
+            binding.includedToolbar.progressbar.setVisibility(View.GONE);
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+            binding.includedToolbar.spinner.setVisibility(View.GONE);
+        }else {
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+            binding.includedToolbar.imgShare.setVisibility(View.GONE);
+            binding.includedToolbar.etOther.setVisibility(View.GONE);
+            binding.includedToolbar.search.setVisibility(View.GONE);
+            binding.includedToolbar.imageHome.setVisibility(View.GONE);
+            binding.includedToolbar.progressbar.setVisibility(View.GONE);
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+            binding.includedToolbar.spinner.setVisibility(View.GONE);
+        }
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
@@ -667,6 +690,8 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         intent.putExtra(EXTRA_POSITION_MAIN, getIntent().getIntExtra(EXTRA_POSITION_MAIN, 0));
         intent.putExtra(EXTRA_MODEL, this.model);
         setResult(-1, intent);
+
+        onBackPressed();
     }
 
     public void pickContactPerm() {
@@ -974,6 +999,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         if (this.isUpdateList) {
             openItemList(false);
         } else if (this.isEdit) {
+            super.onBackPressed();
         } else {
             super.onBackPressed();
         }

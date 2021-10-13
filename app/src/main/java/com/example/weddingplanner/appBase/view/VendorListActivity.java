@@ -137,14 +137,17 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         this.toolbarModel.setTitle(getString(R.string.drawerTitleVendors));
         this.toolbarModel.setOtherMenu(true);
         this.toolbarModel.setSearchMenu(true);
-        this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
-        this.binding.includedToolbar.imgAdd.setImageResource(R.drawable.summary);
+        this.binding.includedToolbar.imgOther.setImageResource(R.drawable.filter_empty);
         this.toolbarModel.setShare(true);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
+
         setSupportActionBar(this.binding.includedToolbar.toolbar);
         binding.includedToolbar.textTitle.setText("Add Vendor");
 
+
+
         binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
+        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
         binding.includedToolbar.imageHome.setVisibility(View.GONE);
         binding.includedToolbar.progressbar.setVisibility(View.GONE);
         binding.includedToolbar.imgShare.setVisibility(View.GONE);

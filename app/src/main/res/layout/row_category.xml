@@ -31,6 +31,7 @@
             android:id="@+id/image"
             style="@style/ImageViewButtonCommon"
             android:src="@drawable/ring_cirlcle_shape"
+            app:tint="@color/colorPrimaryDark"
             android:tag="binding_3" />
     </LinearLayout>
 

@@ -136,14 +136,15 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         this.toolbarModel.setTitle(getString(R.string.drawerTitleBudget));
         this.toolbarModel.setOtherMenu(true);
         this.toolbarModel.setSearchMenu(true);
-        this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
-        this.binding.includedToolbar.imgAdd.setImageResource(R.drawable.summary);
+        this.binding.includedToolbar.imgOther.setImageResource(R.drawable.filter_empty);
         this.toolbarModel.setShare(true);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
         setSupportActionBar(this.binding.includedToolbar.toolbar);
 
         this.binding.includedToolbar.textTitle.setText("Budget");
 
+        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        binding.includedToolbar.imgShare.setVisibility(View.GONE);
         binding.includedToolbar.imageHome.setVisibility(View.GONE);
         binding.includedToolbar.progressbar.setVisibility(View.GONE);
         binding.includedToolbar.imgDelete.setVisibility(View.GONE);
