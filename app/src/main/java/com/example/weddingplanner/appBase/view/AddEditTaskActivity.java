@@ -137,20 +137,21 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
 
 
     private void setModelDetail() {
-        boolean z = false;
         this.model = new TaskRowModel();
-        if (getIntent().getBooleanExtra(EXTRA_IS_EDIT, false)) {
-            z = true;
-        }
-        this.isEdit = z;
-        if (this.isEdit) {
+        this.model.setEdit(true);
+
+        this.isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT, false);
+        if (isEdit) {
             this.model = (TaskRowModel) getIntent().getParcelableExtra(EXTRA_MODEL);
-            binding.tvName.setText();
+            binding.etNote.setText(model.getNote());
+            String name = model.getName();
+            String note = model.getNote();
+            binding.tvName.requestFocus();
+            binding.tvName.setText(name);
+            Log.d(TAG, "setModelDetail: "+model.getName());
             return;
         }
 
-
-        this.model.setEdit(true);
         this.model.setDateInMillis(Calendar.getInstance().getTimeInMillis());
         this.model.setArrayList(new ArrayList());
     }
@@ -260,7 +261,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
                 }
             case R.id.imgOther:
                 isAddUpdate(true);
-                onBackPressed();
+
                 return;
             case R.id.imgShare:
                 showPdfDialog();
@@ -610,6 +611,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         this.model.setEdit(false);
         if (!z) {
             return true;
@@ -637,6 +639,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         intent.putExtra(EXTRA_POSITION_MAIN, getIntent().getIntExtra(EXTRA_POSITION_MAIN, 0));
         intent.putExtra(EXTRA_MODEL, this.model);
         setResult(-1, intent);
+        onBackPressed();
     }
 
 
@@ -678,11 +681,12 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
     public void onBackPressed() {
         if (this.isUpdateList) {
             openItemList(false);
-        } else if (this.isEdit) {
+        } else if (isEdit) {
+            super.onBackPressed();
         } else {
             super.onBackPressed();
         }
-        super.onBackPressed();
+
     }
 
     private void showPdfDialog() {

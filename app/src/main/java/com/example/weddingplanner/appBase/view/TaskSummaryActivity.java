@@ -214,8 +214,7 @@ public class TaskSummaryActivity extends BaseActivityBinding {
 
         // tasks
         binding.tvTotalTask.setText(model.getTotalTask()+"");
-        binding.tvTask.setText(model.getPendingTask()+" / "+model.getCompletedTask());
-        binding.total.setText(model.getCompletedTask()+"");
+        binding.tvTask.setText(model.getCompletedTask()+" / "+model.getTotalTask());
         binding.total.setText(model.getTotalTask()+"");
         binding.completed.setText(model.getCompletedTask()+"");
         binding.pending.setText(model.getPendingTask()+"");

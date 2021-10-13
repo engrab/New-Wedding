@@ -275,10 +275,10 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
     }
 
     
-    public void openItemDetail(int i, int i2, TaskRowModel taskRowModel, boolean z) {
+    public void openItemDetail(int position, int i2, TaskRowModel taskRowModel, boolean z) {
         Intent intent = new Intent(this.context, AddEditTaskActivity.class);
         intent.putExtra(AddEditTaskActivity.EXTRA_IS_EDIT, z);
-        intent.putExtra(AddEditTaskActivity.EXTRA_POSITION, i);
+        intent.putExtra(AddEditTaskActivity.EXTRA_POSITION, position);
         intent.putExtra(AddEditTaskActivity.EXTRA_POSITION_MAIN, i2);
         intent.putExtra(AddEditTaskActivity.EXTRA_MODEL, taskRowModel);
         startActivityForResult(intent, 1002);
