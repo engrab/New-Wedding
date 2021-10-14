@@ -17,7 +17,6 @@ import com.example.weddingplanner.appBase.roomsDB.category.CategoryRowModel;
 import com.example.weddingplanner.appBase.utils.Constants;
 import com.example.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.example.weddingplanner.databinding.ActivityBudgetSummaryBinding;
-import com.example.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import java.util.ArrayList;
 
@@ -27,7 +26,7 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
     public ArrayList<CategoryRowModel> categoryList;
 
 
-    private AppDataBase f548db;
+    private AppDataBase db;
     
     public Dialog dialogCategoryList;
     private AlertDialogRecyclerListBinding dialogCategoryListBinding;
@@ -42,7 +41,7 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
         binding = ActivityBudgetSummaryBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        this.f548db = AppDataBase.getAppDatabase(this);
+        this.db = AppDataBase.getAppDatabase(this);
         setModelDetail();
 //        this.binding.setRowModel(this.model);
     }
@@ -96,7 +95,7 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
         this.model.setCategoryId(categoryRowModel.getId());
         this.categoryList.add(categoryRowModel);
         try {
-            this.categoryList.addAll(this.f548db.categoryDao().getAll());
+            this.categoryList.addAll(this.db.categoryDao().getAll());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -179,7 +178,7 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
     
     public void setTotals() {
         try {
-            this.model.setTotalBudget(this.f548db.profileDao().getDetail(AppPref.getCurrentEvenId(this.context)).getBudget());
+            this.model.setTotalBudget(this.db.profileDao().getDetail(AppPref.getCurrentEvenId(this.context)).getBudget());
         } catch (Exception e) {
             try {
                 e.printStackTrace();
@@ -189,17 +188,17 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
             }
         }
         if (this.model.getCategoryId().equalsIgnoreCase(Constants.COST_CAT_TYPE_ALL_CATEGORY)) {
-            this.model.setTotalCost(this.f548db.costDao().getAllTotal(AppPref.getCurrentEvenId(this.context)));
-            this.model.setCompletedCost(this.f548db.costDao().getTotal(AppPref.getCurrentEvenId(this.context), 0));
-            this.model.setPendingCost(this.f548db.costDao().getTotal(AppPref.getCurrentEvenId(this.context), 1));
-            this.model.setTotalPayment(this.f548db.paymentDao().getAllCountCostType(AppPref.getCurrentEvenId(this.context), 1));
-            this.model.setCompletedPayment(this.f548db.paymentDao().getAllCountPaidCostType(AppPref.getCurrentEvenId(this.context), 1));
+            this.model.setTotalCost(this.db.costDao().getAllTotal(AppPref.getCurrentEvenId(this.context)));
+            this.model.setCompletedCost(this.db.costDao().getTotal(AppPref.getCurrentEvenId(this.context), 0));
+            this.model.setPendingCost(this.db.costDao().getTotal(AppPref.getCurrentEvenId(this.context), 1));
+            this.model.setTotalPayment(this.db.paymentDao().getAllCountCostType(AppPref.getCurrentEvenId(this.context), 1));
+            this.model.setCompletedPayment(this.db.paymentDao().getAllCountPaidCostType(AppPref.getCurrentEvenId(this.context), 1));
             return;
         }
-        this.model.setTotalCost(this.f548db.costDao().getAllTotal(AppPref.getCurrentEvenId(this.context), this.model.getCategoryId()));
-        this.model.setCompletedCost(this.f548db.costDao().getTotal(AppPref.getCurrentEvenId(this.context), 0, this.model.getCategoryId()));
-        this.model.setPendingCost(this.f548db.costDao().getTotal(AppPref.getCurrentEvenId(this.context), 1, this.model.getCategoryId()));
-        this.model.setTotalPayment(this.f548db.paymentDao().getAllCountCost(AppPref.getCurrentEvenId(this.context), this.model.getCategoryId(), 1));
-        this.model.setCompletedPayment(this.f548db.paymentDao().getCompletedCountCost(AppPref.getCurrentEvenId(this.context), this.model.getCategoryId(), 1));
+        this.model.setTotalCost(this.db.costDao().getAllTotal(AppPref.getCurrentEvenId(this.context), this.model.getCategoryId()));
+        this.model.setCompletedCost(this.db.costDao().getTotal(AppPref.getCurrentEvenId(this.context), 0, this.model.getCategoryId()));
+        this.model.setPendingCost(this.db.costDao().getTotal(AppPref.getCurrentEvenId(this.context), 1, this.model.getCategoryId()));
+        this.model.setTotalPayment(this.db.paymentDao().getAllCountCost(AppPref.getCurrentEvenId(this.context), this.model.getCategoryId(), 1));
+        this.model.setCompletedPayment(this.db.paymentDao().getCompletedCountCost(AppPref.getCurrentEvenId(this.context), this.model.getCategoryId(), 1));
     }
 }

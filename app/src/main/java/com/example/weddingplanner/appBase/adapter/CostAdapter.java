@@ -37,10 +37,13 @@ public class CostAdapter extends RecyclerView.Adapter {
         if (viewHolder instanceof RowHolder) {
             RowHolder rowHolder = (RowHolder) viewHolder;
 //            rowHolder.binding.imgIcon.setImageResource((int) arrayList.get(i).getExpectedAmount());
-            rowHolder.binding.tvAmount.setText(arrayList.get(i).getExpectedAmount()+"");
-            rowHolder.binding.tvPending.setText(arrayList.get(i).getStatusText());
-            rowHolder.binding.tvStatus.setText(arrayList.get(i).getId());
             rowHolder.binding.imgIcon.setImageResource(arrayList.get(i).getCategoryRowModel().getImgResId());
+            rowHolder.binding.tvTitle.setText(arrayList.get(i).getName());
+            rowHolder.binding.tvAmount.setText(arrayList.get(i).getExpectedAmount()+"");
+            rowHolder.binding.tvStatus.setText("Pending : "+arrayList.get(i).getPendingAmount());
+            rowHolder.binding.tvStatus1.setText("Paid : "+arrayList.get(i).getPaidAmount());
+            rowHolder.binding.tvPending.setText(arrayList.get(i).getStatusText());
+            rowHolder.binding.tvPending1.setText("Payment : "+arrayList.get(i).getArrayList().get(i).getType()+" / "+arrayList.get(i).getArrayList().get(i).getType());
 
 //            rowHolder.binding.setRowModel(this.arrayList.get(i));
 //            rowHolder.binding.executePendingBindings();

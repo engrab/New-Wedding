@@ -35,10 +35,13 @@ public class VendorAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         if (viewHolder instanceof RowHolder) {
             RowHolder rowHolder = (RowHolder) viewHolder;
+            rowHolder.binding.imgIcon.setImageResource(arrayList.get(i).getCategoryRowModel().getImgResId());
             rowHolder.binding.tvName.setText(arrayList.get(i).getName());
             rowHolder.binding.tvAmount.setText(arrayList.get(i).getExpectedAmount()+"");
+            rowHolder.binding.tvStatus.setText("Pending : "+arrayList.get(i).getPendingAmount());
+            rowHolder.binding.tvStatus1.setText("Paid : "+arrayList.get(i).getPaidAmount());
             rowHolder.binding.tvPending.setText(arrayList.get(i).getStatusText());
-            rowHolder.binding.imgIcon.setImageResource(arrayList.get(i).getCategoryRowModel().getImgResId());
+
 //            rowHolder.binding.setRowModel(this.arrayList.get(i));
 //            rowHolder.binding.executePendingBindings();
         }

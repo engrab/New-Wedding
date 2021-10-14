@@ -137,7 +137,6 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         this.toolbarModel.setTitle(getString(R.string.drawerTitleVendors));
         this.toolbarModel.setOtherMenu(true);
         this.toolbarModel.setSearchMenu(true);
-        this.binding.includedToolbar.imgOther.setImageResource(R.drawable.filter_empty);
         this.toolbarModel.setShare(true);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
 
@@ -146,11 +145,12 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
 
 
 
-        binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
+        binding.includedToolbar.imgShare.setImageResource(R.drawable.filter_empty);
         binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        this.binding.includedToolbar.imgOther.setVisibility(View.GONE);
+
         binding.includedToolbar.imageHome.setVisibility(View.GONE);
         binding.includedToolbar.progressbar.setVisibility(View.GONE);
-        binding.includedToolbar.imgShare.setVisibility(View.GONE);
         binding.includedToolbar.imgDelete.setVisibility(View.GONE);
         binding.includedToolbar.etOther.setVisibility(View.GONE);
         binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
