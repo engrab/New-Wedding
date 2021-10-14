@@ -37,6 +37,16 @@ public class GuestSummaryActivity extends BaseActivityBinding {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle("Guest Summary");
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
+        binding.includedToolbar.textTitle.setText("Guest Summary");
+        binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        binding.includedToolbar.imageHome.setVisibility(View.GONE);
+        binding.includedToolbar.imgOther.setVisibility(View.GONE);
+        binding.includedToolbar.spinner.setVisibility(View.GONE);
+        binding.includedToolbar.progressbar.setVisibility(View.GONE);
+        binding.includedToolbar.etOther.setVisibility(View.GONE);
+        binding.includedToolbar.search.setVisibility(View.GONE);
+        binding.includedToolbar.imgShare.setVisibility(View.GONE);
     }
 
 
@@ -51,7 +61,8 @@ public class GuestSummaryActivity extends BaseActivityBinding {
     }
 
     public void onBackPressed() {
-//        MainActivityDashboard.BackPressedAd(this);
+
+        super.onBackPressed();
     }
 
 

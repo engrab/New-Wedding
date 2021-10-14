@@ -56,6 +56,16 @@ public class VendorSummaryActivity extends BaseActivityBinding {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle("Vendor Summary");
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
+        binding.includedToolbar.textTitle.setText("Vendor Summary");
+        binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        binding.includedToolbar.imageHome.setVisibility(View.GONE);
+        binding.includedToolbar.imgOther.setVisibility(View.GONE);
+        binding.includedToolbar.spinner.setVisibility(View.GONE);
+        binding.includedToolbar.progressbar.setVisibility(View.GONE);
+        binding.includedToolbar.etOther.setVisibility(View.GONE);
+        binding.includedToolbar.search.setVisibility(View.GONE);
+        binding.includedToolbar.imgShare.setVisibility(View.GONE);
     }
 
 
@@ -119,21 +129,21 @@ public class VendorSummaryActivity extends BaseActivityBinding {
         this.dialogCategoryListBinding.recycler.setAdapter(new CategoryAdapter(this.context, false, this.categoryList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
                 try {
-                    VendorSummaryActivity.this.dialogCategoryList.dismiss();
+                    dialogCategoryList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                int unused = VendorSummaryActivity.this.selectedCategoryPos = i;
-                VendorSummaryActivity.this.model.setCategoryId(((CategoryRowModel) VendorSummaryActivity.this.categoryList.get(VendorSummaryActivity.this.selectedCategoryPos)).getId());
-                VendorSummaryActivity.this.model.setCategoryRowModel((CategoryRowModel) VendorSummaryActivity.this.categoryList.get(VendorSummaryActivity.this.selectedCategoryPos));
-                VendorSummaryActivity.this.setTotals();
+                selectedCategoryPos = i;
+                model.setCategoryId(((CategoryRowModel) categoryList.get(selectedCategoryPos)).getId());
+                model.setCategoryRowModel((CategoryRowModel) categoryList.get(selectedCategoryPos));
+                setTotals();
             }
         }));
         this.dialogCategoryListBinding.imgAdd.setImageResource(R.drawable.close);
         this.dialogCategoryListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    VendorSummaryActivity.this.dialogCategoryList.dismiss();
+                    dialogCategoryList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -143,7 +153,7 @@ public class VendorSummaryActivity extends BaseActivityBinding {
         this.dialogCategoryListBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    VendorSummaryActivity.this.dialogCategoryList.dismiss();
+                    dialogCategoryList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -152,7 +162,7 @@ public class VendorSummaryActivity extends BaseActivityBinding {
         this.dialogCategoryListBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    VendorSummaryActivity.this.dialogCategoryList.dismiss();
+                    dialogCategoryList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

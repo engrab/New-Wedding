@@ -3,9 +3,11 @@ package com.example.weddingplanner.appBase.view;
 import android.app.Dialog;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.example.weddingplanner.R;
 import com.example.weddingplanner.appBase.adapter.CategoryAdapter;
 import com.example.weddingplanner.appBase.appPref.AppPref;
@@ -18,21 +20,22 @@ import com.example.weddingplanner.appBase.utils.Constants;
 import com.example.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.example.weddingplanner.databinding.ActivityBudgetSummaryBinding;
 import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
+
 import java.util.ArrayList;
 
 public class BudgetSummaryActivity extends BaseActivityBinding {
     private ActivityBudgetSummaryBinding binding;
-    
+
     public ArrayList<CategoryRowModel> categoryList;
 
 
     private AppDataBase db;
-    
+
     public Dialog dialogCategoryList;
     private AlertDialogRecyclerListBinding dialogCategoryListBinding;
-    
+
     public CostSummaryModel model;
-    
+
     public int selectedCategoryPos = 0;
     public ToolbarModel toolbarModel;
 
@@ -56,6 +59,17 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
         this.toolbarModel = new ToolbarModel();
         this.toolbarModel.setTitle("Budget Summary");
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
+        binding.includedToolbar.textTitle.setText("Budget Summary");
+
+        binding.includedToolbar.imgShare.setVisibility(View.GONE);
+        binding.includedToolbar.imgOther.setVisibility(View.GONE);
+        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        binding.includedToolbar.imageHome.setVisibility(View.GONE);
+        binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+        binding.includedToolbar.search.setVisibility(View.GONE);
+        binding.includedToolbar.progressbar.setVisibility(View.GONE);
+        binding.includedToolbar.spinner.setVisibility(View.GONE);
+        binding.includedToolbar.etOther.setVisibility(View.GONE);
     }
 
 
@@ -74,7 +88,7 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
     }
 
     public void onBackPressed() {
-//        MainActivityDashboard.BackPressedAd(this);
+        super.onBackPressed();
     }
 
 
@@ -107,7 +121,7 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
     }
 
     public void setCategoryListDialog() {
-        this.dialogCategoryListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context),  (ViewGroup) null, false);
+        this.dialogCategoryListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context), (ViewGroup) null, false);
         this.dialogCategoryList = new Dialog(this.context);
         this.dialogCategoryList.setContentView(this.dialogCategoryListBinding.getRoot());
         this.dialogCategoryList.setCancelable(false);
@@ -175,7 +189,7 @@ public class BudgetSummaryActivity extends BaseActivityBinding {
         }
     }
 
-    
+
     public void setTotals() {
         try {
             this.model.setTotalBudget(this.db.profileDao().getDetail(AppPref.getCurrentEvenId(this.context)).getBudget());
