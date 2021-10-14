@@ -20,7 +20,6 @@ import com.example.weddingplanner.appBase.utils.Constants;
 import com.example.weddingplanner.appBase.utils.OnAsyncBackground;
 import com.example.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.example.weddingplanner.databinding.ActivityReportsListBinding;
-import com.example.weddingplanner.databinding.ActivityTaskSummaryBinding;
 
 import java.io.File;
 import java.util.ArrayList;

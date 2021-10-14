@@ -145,8 +145,10 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         setSupportActionBar(this.binding.includedToolbar.toolbar);
         binding.includedToolbar.textTitle.setText("Guest");
         this.binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        binding.includedToolbar.imgShare.setImageResource(R.drawable.filter_empty);
 
         binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
+        binding.includedToolbar.imgOther.setVisibility(View.GONE);
         binding.includedToolbar.imageHome.setVisibility(View.GONE);
         binding.includedToolbar.progressbar.setVisibility(View.GONE);
         binding.includedToolbar.imgDelete.setVisibility(View.GONE);
@@ -154,33 +156,33 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_list, menu);
-        return true;
-    }
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_list, menu);
+//        return true;
+//    }
+//
+//    public boolean onOptionsItemSelected(MenuItem menuItem) {
+//        int itemId = menuItem.getItemId();
+//        if (itemId == R.id.shareList) {
+//            showPdfDialog();
+//            return true;
+//        } else if (itemId != R.id.summary) {
+//            return super.onOptionsItemSelected(menuItem);
+//        } else {
+//            openSummary();
+//            return true;
+//        }
+//    }
 
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
-        int itemId = menuItem.getItemId();
-        if (itemId == R.id.shareList) {
-            showPdfDialog();
-            return true;
-        } else if (itemId != R.id.summary) {
-            return super.onOptionsItemSelected(menuItem);
-        } else {
-            openSummary();
-            return true;
-        }
-    }
-
-    private void openSummary() {
-        startActivity(new Intent(this.context, GuestSummaryActivity.class));
-    }
+//    private void openSummary() {
+//        startActivity(new Intent(this.context, GuestSummaryActivity.class));
+//    }
 
 
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgOther.setOnClickListener(this);
-        this.binding.includedToolbar.imgAdd.setOnClickListener(this);
+//        this.binding.includedToolbar.imgAdd.setOnClickListener(this);
         this.binding.includedToolbar.imgShare.setOnClickListener(this);
         this.binding.fabAdd.setOnClickListener(this);
     }
@@ -190,9 +192,9 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
             case R.id.fabAdd:
                 openItemDetail(-1, -1, new GuestRowModel(), false);
                 return;
-            case R.id.imgAdd:
-                openSummary();
-                return;
+//            case R.id.imgAdd:
+//                openSummary();
+//                return;
             case R.id.imgBack:
                 onBackPressed();
                 return;

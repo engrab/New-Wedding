@@ -24,7 +24,6 @@ import com.example.weddingplanner.R;
 import com.example.weddingplanner.appBase.appPref.AppPref;
 import com.example.weddingplanner.appBase.baseClass.BaseActivityBinding;
 import com.example.weddingplanner.appBase.models.toolbar.ToolbarModel;
-import com.example.weddingplanner.databinding.ActivityTaskSummaryBinding;
 import com.example.weddingplanner.databinding.ActivityWeddingProVersionBinding;
 import java.util.ArrayList;
 import java.util.List;

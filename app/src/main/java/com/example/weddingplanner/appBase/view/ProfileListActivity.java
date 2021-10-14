@@ -18,7 +18,6 @@ import com.example.weddingplanner.appBase.roomsDB.AppDataBase;
 import com.example.weddingplanner.appBase.utils.AppConstants;
 import com.example.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.example.weddingplanner.databinding.ActivityProfileListBinding;
-import com.example.weddingplanner.databinding.ActivityTaskSummaryBinding;
 
 import java.util.ArrayList;
 import java.util.Calendar;

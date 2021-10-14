@@ -12,7 +12,6 @@ import android.webkit.WebViewClient;
 import com.example.weddingplanner.R;
 import com.example.weddingplanner.appBase.models.toolbar.ToolbarModel;
 import com.example.weddingplanner.databinding.ActivityBackupTransferGuidBinding;
-import com.example.weddingplanner.databinding.ActivityTaskSummaryBinding;
 
 public class BackupTransferGuidActivity extends AppCompatActivity implements View.OnClickListener {
 

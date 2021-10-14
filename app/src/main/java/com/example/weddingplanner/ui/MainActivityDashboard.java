@@ -26,7 +26,6 @@ import com.example.weddingplanner.appBase.view.GuestListActivity;
 import com.example.weddingplanner.appBase.view.TaskListActivity;
 import com.example.weddingplanner.appBase.view.VendorListActivity;
 import com.example.weddingplanner.appBase.view.WeddingProVersionActivity;
-import com.example.weddingplanner.databinding.ActivityBudgetSummaryBinding;
 import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.example.weddingplanner.R;

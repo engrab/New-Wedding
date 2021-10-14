@@ -152,33 +152,33 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_list, menu);
-        return true;
-    }
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_list, menu);
+//        return true;
+//    }
+//
+//    public boolean onOptionsItemSelected(MenuItem menuItem) {
+//        int itemId = menuItem.getItemId();
+//        if (itemId == R.id.shareList) {
+//            showPdfDialog();
+//            return true;
+//        } else if (itemId != R.id.summary) {
+//            return super.onOptionsItemSelected(menuItem);
+//        } else {
+//            openSummary();
+//            return true;
+//        }
+//    }
 
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
-        int itemId = menuItem.getItemId();
-        if (itemId == R.id.shareList) {
-            showPdfDialog();
-            return true;
-        } else if (itemId != R.id.summary) {
-            return super.onOptionsItemSelected(menuItem);
-        } else {
-            openSummary();
-            return true;
-        }
-    }
-
-    private void openSummary() {
-        startActivity(new Intent(this.context, BudgetSummaryActivity.class));
-    }
+//    private void openSummary() {
+//        startActivity(new Intent(this.context, BudgetSummaryActivity.class));
+//    }
 
 
     public void setOnClicks() {
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgOther.setOnClickListener(this);
-        this.binding.includedToolbar.imgAdd.setOnClickListener(this);
+//        this.binding.includedToolbar.imgAdd.setOnClickListener(this);
         this.binding.includedToolbar.imgShare.setOnClickListener(this);
         this.binding.fabAdd.setOnClickListener(this);
     }
@@ -188,9 +188,9 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
             case R.id.fabAdd:
                 openItemDetail(-1, -1, new CostRowModel(), false);
                 return;
-            case R.id.imgAdd:
-                openSummary();
-                return;
+//            case R.id.imgAdd:
+//                openSummary();
+//                return;
             case R.id.imgBack:
                 onBackPressed();
                 return;
