@@ -31,21 +31,20 @@ public class AdConstants {
 
     public static void showPersonalizeDialog(boolean z, Context context, String str, String str2, String str3, String str4, AdMobTwoButtonDialogListener adMobTwoButtonDialogListener) {
         final AdMobTwoButtonDialogListener adMobTwoButtonDialogListener2 = adMobTwoButtonDialogListener;
-        Context context2 = context;
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.alert_dialog_addmob);
         boolean z2 = false;
         dialog.setCancelable(false);
         dialog.getWindow().setBackgroundDrawableResource(17170445);
-        RadioButton radioButton = (RadioButton) dialog.findViewById(R.id.radioPersonalized);
-        RadioButton radioButton2 = (RadioButton) dialog.findViewById(R.id.radioNonPersonalized);
-        final RadioGroup radioGroup = (RadioGroup) dialog.findViewById(R.id.radioGroup);
-        Button button = (Button) dialog.findViewById(R.id.btnOk);
+        RadioButton radioButton = dialog.findViewById(R.id.radioPersonalized);
+        RadioButton radioButton2 = dialog.findViewById(R.id.radioNonPersonalized);
+        final RadioGroup radioGroup = dialog.findViewById(R.id.radioGroup);
+        Button button = dialog.findViewById(R.id.btnOk);
         ((TextView) dialog.findViewById(R.id.txtTitle)).setText(str);
         ((TextView) dialog.findViewById(R.id.txtDesc1)).setText(str2);
         ((TextView) dialog.findViewById(R.id.txtDesc2)).setText(str3);
         ((TextView) dialog.findViewById(R.id.txtDesc3)).setText(str4);
-        ((Button) dialog.findViewById(R.id.btnCancel)).setOnClickListener(new View.OnClickListener() {
+        dialog.findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 dialog.dismiss();
                 adMobTwoButtonDialogListener2.onCancel();
@@ -61,11 +60,7 @@ public class AdConstants {
         }
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if (radioGroup.getCheckedRadioButtonId() == R.id.radioPersonalized) {
-                    adMobTwoButtonDialogListener2.onOk(true);
-                } else {
-                    adMobTwoButtonDialogListener2.onOk(false);
-                }
+                adMobTwoButtonDialogListener2.onOk(radioGroup.getCheckedRadioButtonId() == R.id.radioPersonalized);
                 dialog.dismiss();
             }
         });

@@ -161,12 +161,6 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".pdfRepo.ReportsListActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
             android:name=".appBase.view.ProfileListActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -174,12 +168,6 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".backupRestore.RestoreListActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".backupRestore.BackupTransferGuidActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"

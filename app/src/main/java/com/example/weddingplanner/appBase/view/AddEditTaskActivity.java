@@ -58,18 +58,15 @@ import com.example.weddingplanner.databinding.ActivityTaskAddEditBinding;
 import com.example.weddingplanner.databinding.AlertDialogNewCategoryBinding;
 import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.example.weddingplanner.pdfRepo.ReportRowModel;
-import com.example.weddingplanner.pdfRepo.ReportsListActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.ObjectInput;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -171,7 +168,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
 
             binding.includedToolbar.imageHome.setVisibility(View.GONE);
             binding.includedToolbar.progressbar.setVisibility(View.GONE);
-            binding.includedToolbar.imgShare.setVisibility(View.VISIBLE);
+            binding.includedToolbar.imgShare.setVisibility(View.GONE);
             binding.includedToolbar.imgDelete.setVisibility(View.VISIBLE);
             binding.includedToolbar.etOther.setVisibility(View.GONE);
             binding.includedToolbar.search.setVisibility(View.GONE);
@@ -240,7 +237,6 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgDelete.setOnClickListener(this);
         this.binding.includedToolbar.imgOther.setOnClickListener(this);
-        this.binding.includedToolbar.imgShare.setOnClickListener(this);
         this.binding.linCategory.setOnClickListener(this);
         this.binding.btnAddEdit.setOnClickListener(this);
         this.binding.imgEdit.setOnClickListener(this);
@@ -277,9 +273,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
                 isAddUpdate(true);
 
                 return;
-            case R.id.imgShare:
-                showPdfDialog();
-                return;
+
             case R.id.linCategory:
                 showDialogCategoryList();
                 return;
@@ -711,17 +705,6 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
 
     }
 
-    private void showPdfDialog() {
-        AppConstants.pdfReportDialog(this.context, new TwoButtonDialogListener() {
-            public void onOk() {
-                savePdf();
-            }
-
-            public void onCancel() {
-                openReportList();
-            }
-        });
-    }
 
 
     public void savePdf() {
@@ -850,7 +833,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         new FooterPageEvent().onEndPage(this.writer, this.document);
         try {
             this.document.close();
-            openReportList();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -879,10 +862,6 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         return arrayList2;
     }
 
-
-    public void openReportList() {
-        startActivity(new Intent(this, ReportsListActivity.class));
-    }
 
     public class FooterPageEvent extends PdfPageEventHelper {
         public FooterPageEvent() {

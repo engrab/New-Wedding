@@ -60,7 +60,7 @@ import com.example.weddingplanner.databinding.ActivityVendorAddEditBinding;
 import com.example.weddingplanner.databinding.AlertDialogNewCategoryBinding;
 import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.example.weddingplanner.pdfRepo.ReportRowModel;
-import com.example.weddingplanner.pdfRepo.ReportsListActivity;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -224,7 +224,6 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgDelete.setOnClickListener(this);
         this.binding.includedToolbar.imgOther.setOnClickListener(this);
-        this.binding.includedToolbar.imgShare.setOnClickListener(this);
         this.binding.linCategory.setOnClickListener(this);
         this.binding.btnAddEdit.setOnClickListener(this);
         this.binding.imgEdit.setOnClickListener(this);
@@ -284,9 +283,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
             case R.id.imgPhone:
                 dialPhoneNumber(this.model.getPhoneNo());
                 return;
-            case R.id.imgShare:
-                showPdfDialog();
-                return;
+
             case R.id.imgWebsite:
                 openUrl(this.model.getWebSite());
                 return;
@@ -1075,17 +1072,6 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         }
     }
 
-    private void showPdfDialog() {
-        AppConstants.pdfReportDialog(this.context, new TwoButtonDialogListener() {
-            public void onOk() {
-                AddEditVendorActivity.this.savePdf();
-            }
-
-            public void onCancel() {
-                AddEditVendorActivity.this.openReportList();
-            }
-        });
-    }
 
 
     public void savePdf() {
@@ -1240,7 +1226,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         new FooterPageEvent().onEndPage(this.writer, this.document);
         try {
             this.document.close();
-            openReportList();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1276,9 +1262,6 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     }
 
 
-    public void openReportList() {
-        startActivity(new Intent(this, ReportsListActivity.class));
-    }
 
     public class FooterPageEvent extends PdfPageEventHelper {
         public FooterPageEvent() {

@@ -420,49 +420,49 @@ public class AppConstants {
         }
     }
 
-    public static void pdfReportDialog(Context context, final TwoButtonDialogListener twoButtonDialogListener) {
-        AlertDialogPdfReportBinding alertDialogPdfReportBinding = AlertDialogPdfReportBinding.inflate(LayoutInflater.from(context),  (ViewGroup) null, false);
-        final Dialog dialog = new Dialog(context);
-        dialog.setContentView(alertDialogPdfReportBinding.getRoot());
-        dialog.setCancelable(true);
-        dialog.getWindow().setBackgroundDrawableResource(17170445);
-        alertDialogPdfReportBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                try {
-                    dialog.dismiss();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        alertDialogPdfReportBinding.btnReports.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                twoButtonDialogListener.onCancel();
-                try {
-                    dialog.dismiss();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        alertDialogPdfReportBinding.btnExport.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                twoButtonDialogListener.onOk();
-                try {
-                    dialog.dismiss();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        try {
-            if (!dialog.isShowing()) {
-                dialog.show();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void pdfReportDialog(Context context, final TwoButtonDialogListener twoButtonDialogListener) {
+//        AlertDialogPdfReportBinding alertDialogPdfReportBinding = AlertDialogPdfReportBinding.inflate(LayoutInflater.from(context),  (ViewGroup) null, false);
+//        final Dialog dialog = new Dialog(context);
+//        dialog.setContentView(alertDialogPdfReportBinding.getRoot());
+//        dialog.setCancelable(true);
+//        dialog.getWindow().setBackgroundDrawableResource(17170445);
+//        alertDialogPdfReportBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
+//                try {
+//                    dialog.dismiss();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//        alertDialogPdfReportBinding.btnReports.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
+//                twoButtonDialogListener.onCancel();
+//                try {
+//                    dialog.dismiss();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//        alertDialogPdfReportBinding.btnExport.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
+//                twoButtonDialogListener.onOk();
+//                try {
+//                    dialog.dismiss();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//        try {
+//            if (!dialog.isShowing()) {
+//                dialog.show();
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public static String getFileSize(long j) {
         if (j <= 0) {

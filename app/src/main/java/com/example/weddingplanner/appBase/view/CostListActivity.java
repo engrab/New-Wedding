@@ -13,8 +13,6 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -53,7 +51,7 @@ import com.example.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.example.weddingplanner.databinding.ActivityCostListBinding;
 import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.example.weddingplanner.pdfRepo.ReportRowModel;
-import com.example.weddingplanner.pdfRepo.ReportsListActivity;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -768,17 +766,6 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         }
     }
 
-    private void showPdfDialog() {
-        AppConstants.pdfReportDialog(this.context, new TwoButtonDialogListener() {
-            public void onOk() {
-                CostListActivity.this.savePdf();
-            }
-
-            public void onCancel() {
-                CostListActivity.this.openReportList();
-            }
-        });
-    }
 
     
     public void savePdf() {
@@ -936,7 +923,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         new FooterPageEvent().onEndPage(this.writer, this.document);
         try {
             this.document.close();
-            openReportList();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -957,9 +944,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
     }
 
     
-    public void openReportList() {
-        startActivity(new Intent(this, ReportsListActivity.class));
-    }
+
 
     public String getCurrentDateTime() {
         return new SimpleDateFormat("dd_MM_yyyy_hh:mm:ss a").format(new Date(Calendar.getInstance().getTimeInMillis()));

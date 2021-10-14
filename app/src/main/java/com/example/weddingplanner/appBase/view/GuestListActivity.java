@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -54,7 +52,6 @@ import com.example.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.example.weddingplanner.databinding.ActivityGuestListBinding;
 import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.example.weddingplanner.pdfRepo.ReportRowModel;
-import com.example.weddingplanner.pdfRepo.ReportsListActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -769,17 +766,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         }
     }
 
-    private void showPdfDialog() {
-        AppConstants.pdfReportDialog(this.context, new TwoButtonDialogListener() {
-            public void onOk() {
-                savePdf();
-            }
 
-            public void onCancel() {
-                openReportList();
-            }
-        });
-    }
 
 
     public void savePdf() {
@@ -964,7 +951,6 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         new FooterPageEvent().onEndPage(this.writer, this.document);
         try {
             this.document.close();
-            openReportList();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -985,9 +971,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
     }
 
 
-    public void openReportList() {
-        startActivity(new Intent(this, ReportsListActivity.class));
-    }
+
 
     public String getCurrentDateTime() {
         return new SimpleDateFormat("dd_MM_yyyy_hh:mm:ss a").format(new Date(Calendar.getInstance().getTimeInMillis()));

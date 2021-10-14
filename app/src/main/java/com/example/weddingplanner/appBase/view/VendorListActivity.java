@@ -13,8 +13,6 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -54,7 +52,7 @@ import com.example.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.example.weddingplanner.databinding.ActivityVendorListBinding;
 import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.example.weddingplanner.pdfRepo.ReportRowModel;
-import com.example.weddingplanner.pdfRepo.ReportsListActivity;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -779,17 +777,7 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         }
     }
 
-    private void showPdfDialog() {
-        AppConstants.pdfReportDialog(this.context, new TwoButtonDialogListener() {
-            public void onOk() {
-                VendorListActivity.this.savePdf();
-            }
 
-            public void onCancel() {
-                VendorListActivity.this.openReportList();
-            }
-        });
-    }
 
 
     public void savePdf() {
@@ -994,16 +982,13 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         new FooterPageEvent().onEndPage(this.writer, this.document);
         try {
             this.document.close();
-            openReportList();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
-    public void openReportList() {
-        startActivity(new Intent(this, ReportsListActivity.class));
-    }
 
     public class FooterPageEvent extends PdfPageEventHelper {
         public FooterPageEvent() {

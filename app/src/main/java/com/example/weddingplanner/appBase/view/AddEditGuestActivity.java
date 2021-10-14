@@ -46,7 +46,7 @@ import com.example.weddingplanner.appBase.utils.RecyclerItemClick;
 import com.example.weddingplanner.appBase.utils.TwoButtonDialogListener;
 import com.example.weddingplanner.databinding.ActivityGuestAddEditBinding;
 import com.example.weddingplanner.pdfRepo.ReportRowModel;
-import com.example.weddingplanner.pdfRepo.ReportsListActivity;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -136,6 +136,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         this.toolbarModel.setShare(this.isEdit);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
 
+        binding.includedToolbar.imgShare.setVisibility(View.GONE);
         binding.includedToolbar.imgAdd.setVisibility(View.GONE);
         binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
         binding.includedToolbar.search.setVisibility(View.GONE);
@@ -185,7 +186,6 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgDelete.setOnClickListener(this);
         this.binding.includedToolbar.imgOther.setOnClickListener(this);
-        this.binding.includedToolbar.imgShare.setOnClickListener(this);
         this.binding.btnAddEdit.setOnClickListener(this);
         this.binding.imgEdit.setOnClickListener(this);
         this.binding.imgAddAnother.setOnClickListener(this);
@@ -249,9 +249,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
             case R.id.imgPhone:
                 dialPhoneNumber(this.model.getPhoneNo());
                 return;
-            case R.id.imgShare:
-                showPdfDialog();
-                return;
+
             case R.id.linEdit:
             case R.id.linEditContact:
                 if (!this.model.isEdit()) {
@@ -704,17 +702,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         }
     }
 
-    private void showPdfDialog() {
-        AppConstants.pdfReportDialog(this.context, new TwoButtonDialogListener() {
-            public void onOk() {
-                AddEditGuestActivity.this.savePdf();
-            }
 
-            public void onCancel() {
-                AddEditGuestActivity.this.openReportList();
-            }
-        });
-    }
 
 
     public void savePdf() {
@@ -866,7 +854,6 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         new FooterPageEvent().onEndPage(this.writer, this.document);
         try {
             this.document.close();
-            openReportList();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -904,9 +891,9 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
     }
 
 
-    public void openReportList() {
-        startActivity(new Intent(this, ReportsListActivity.class));
-    }
+//    public void openReportList() {
+//        startActivity(new Intent(this, ReportsListActivity.class));
+//    }
 
     public class FooterPageEvent extends PdfPageEventHelper {
         public FooterPageEvent() {

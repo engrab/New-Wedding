@@ -21,11 +21,10 @@ import com.example.weddingplanner.appBase.utils.AdConstants;
 import com.example.weddingplanner.appBase.utils.AdMobTwoButtonDialogListener;
 import com.example.weddingplanner.appBase.utils.Constants;
 import com.example.weddingplanner.backupRestore.BackupRestoreProgress;
-import com.example.weddingplanner.backupRestore.BackupTransferGuidActivity;
 import com.example.weddingplanner.backupRestore.LocalBackupRestore;
 import com.example.weddingplanner.backupRestore.RestoreListActivity;
 import com.example.weddingplanner.databinding.ActivitySettingBinding;
-import com.example.weddingplanner.pdfRepo.ReportsListActivity;
+
 import java.util.List;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -44,17 +43,18 @@ public class SettingActivity extends BaseActivityBinding implements EasyPermissi
     }
 
 
+    @Override
+    public void initMethods() {
+
+    }
+
     public void setBinding() {
         binding = ActivitySettingBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
         this.backupRestore = new LocalBackupRestore(this);
         this.progressDialog = new BackupRestoreProgress(this);
-//        if (!ConsentInformation.getInstance(this.context).isRequestLocationInEeaOrUnknown() || AppPref.getIsAdfree(this.context)) {
-//            this.binding.cardAdSettings.setVisibility(View.GONE);
-//        } else {
-//            this.binding.cardAdSettings.setVisibility(View.VISIBLE);
-//        }
+
     }
 
 
@@ -79,13 +79,6 @@ public class SettingActivity extends BaseActivityBinding implements EasyPermissi
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.cardProfile.setOnClickListener(this);
         this.binding.cardCategory.setOnClickListener(this);
-        this.binding.linTask.setOnClickListener(this);
-        this.binding.linInvitation.setOnClickListener(this);
-        this.binding.linPayment.setOnClickListener(this);
-        this.binding.cardPdfReport.setOnClickListener(this);
-        this.binding.cardLocalBackup.setOnClickListener(this);
-        this.binding.cardRestoreBackups.setOnClickListener(this);
-        this.binding.cardBackupTransferGuid.setOnClickListener(this);
         this.binding.cardAdSettings.setOnClickListener(this);
     }
 
@@ -94,38 +87,17 @@ public class SettingActivity extends BaseActivityBinding implements EasyPermissi
             case R.id.cardAdSettings:
                 showDialog();
                 return;
-            case R.id.cardBackupTransferGuid:
-                startActivity(new Intent(this.context, BackupTransferGuidActivity.class));
-                return;
+
             case R.id.cardCategory:
                 startActivity(new Intent(this.context, CategoryListActivity.class));
                 return;
-            case R.id.cardLocalBackup:
-                checkPermAndBackup();
-                return;
-            case R.id.cardPdfReport:
-                startActivity(new Intent(this, ReportsListActivity.class));
-                return;
+
             case R.id.cardProfile:
                 startActivityForResult(new Intent(this.context, ProfileListActivity.class), 1002);
                 return;
-            case R.id.cardRestoreBackups:
-                startActivityForResult(new Intent(this.context, RestoreListActivity.class), 1002);
-                return;
+
             case R.id.imgBack:
                 onBackPressed();
-                return;
-            case R.id.linInvitation:
-                AppPref.setInvitationNotification(this.context, !AppPref.isInvitationNotification(this.context));
-                setSwitchIcon(this.binding.imgInvitation, AppPref.isInvitationNotification(this.context));
-                return;
-            case R.id.linPayment:
-                AppPref.setPaymentNotification(this.context, !AppPref.isPaymentNotification(this.context));
-                setSwitchIcon(this.binding.imgPayment, AppPref.isPaymentNotification(this.context));
-                return;
-            case R.id.linTask:
-                AppPref.setTaskNotification(this.context, !AppPref.isTaskNotification(this.context));
-                setSwitchIcon(this.binding.imgTask, AppPref.isTaskNotification(this.context));
                 return;
             default:
                 return;
@@ -157,11 +129,6 @@ public class SettingActivity extends BaseActivityBinding implements EasyPermissi
     }
 
 
-    public void initMethods() {
-        setSwitchIcon(this.binding.imgTask, AppPref.isTaskNotification(this.context));
-        setSwitchIcon(this.binding.imgInvitation, AppPref.isInvitationNotification(this.context));
-        setSwitchIcon(this.binding.imgPayment, AppPref.isPaymentNotification(this.context));
-    }
 
     private void setSwitchIcon(ImageView imageView, boolean z) {
         imageView.setImageResource(z ? R.drawable.switch_on : R.drawable.switch_off);

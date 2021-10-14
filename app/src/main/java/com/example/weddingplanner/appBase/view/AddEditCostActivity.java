@@ -55,7 +55,7 @@ import com.example.weddingplanner.databinding.ActivityCostAddEditBinding;
 import com.example.weddingplanner.databinding.AlertDialogNewCategoryBinding;
 import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
 import com.example.weddingplanner.pdfRepo.ReportRowModel;
-import com.example.weddingplanner.pdfRepo.ReportsListActivity;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -158,9 +158,9 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT, false);
         binding.includedToolbar.textTitle.setText(this.isEdit ? "Edit Budget" : "Add Budget");
         if (isEdit){
-            binding.includedToolbar.imgShare.setVisibility(View.VISIBLE);
-            binding.includedToolbar.etOther.setVisibility(View.GONE);
             binding.includedToolbar.imgDelete.setVisibility(View.VISIBLE);
+            binding.includedToolbar.imgShare.setVisibility(View.GONE);
+            binding.includedToolbar.etOther.setVisibility(View.GONE);
             binding.includedToolbar.search.setVisibility(View.GONE);
             binding.includedToolbar.imageHome.setVisibility(View.GONE);
             binding.includedToolbar.progressbar.setVisibility(View.GONE);
@@ -219,7 +219,6 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgDelete.setOnClickListener(this);
         this.binding.includedToolbar.imgOther.setOnClickListener(this);
-        this.binding.includedToolbar.imgShare.setOnClickListener(this);
         this.binding.linCategory.setOnClickListener(this);
         this.binding.btnAddEdit.setOnClickListener(this);
         this.binding.imgEdit.setOnClickListener(this);
@@ -256,9 +255,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
             case R.id.imgOther:
                 isAddUpdate(true);
                 return;
-            case R.id.imgShare:
-                showPdfDialog();
-                return;
+
             case R.id.linCategory:
                 showDialogCategoryList();
                 return;
@@ -696,17 +693,6 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         }
     }
 
-    private void showPdfDialog() {
-        AppConstants.pdfReportDialog(this.context, new TwoButtonDialogListener() {
-            public void onOk() {
-                savePdf();
-            }
-
-            public void onCancel() {
-                openReportList();
-            }
-        });
-    }
 
 
     public void savePdf() {
@@ -841,7 +827,6 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         new FooterPageEvent().onEndPage(this.writer, this.document);
         try {
             this.document.close();
-            openReportList();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -877,9 +862,9 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
     }
 
 
-    public void openReportList() {
-        startActivity(new Intent(this, ReportsListActivity.class));
-    }
+//    public void openReportList() {
+//        startActivity(new Intent(this, ReportsListActivity.class));
+//    }
 
     public class FooterPageEvent extends PdfPageEventHelper {
         public FooterPageEvent() {

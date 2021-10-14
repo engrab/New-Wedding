@@ -50,8 +50,8 @@ public class SplashActivity extends AppCompatActivity {
 //            new Handler().postDelayed(new Runnable() {
 //                @Override
 //                public void run() {
-//                    if (SplashActivity.this.Ad_Show) {
-//                        SplashActivity.this.GoToMainScreen();
+//                    if (Ad_Show) {
+//                        GoToMainScreen();
 //                    }
 //                }
 //            }, 1000);
@@ -64,8 +64,8 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (SplashActivity.this.Ad_Show) {
-                    SplashActivity.this.GoToMainScreen();
+                if (Ad_Show) {
+                    GoToMainScreen();
                 }
             }
         }, 5000);
@@ -96,12 +96,12 @@ public class SplashActivity extends AppCompatActivity {
             }
 
             public void doInBackground() {
-                SplashActivity.this.insertDefaultList();
+                insertDefaultList();
             }
 
             public void onPostExecute() {
-                AppPref.setDefaultInserted(SplashActivity.this.context, true);
-                SplashActivity.this.openMainActivity();
+                AppPref.setDefaultInserted(context, true);
+                openMainActivity();
             }
         }).execute();
     }
@@ -149,22 +149,20 @@ public class SplashActivity extends AppCompatActivity {
     public void fornpa() {
         ConsentInformation.getInstance(this.context).requestConsentInfoUpdate(AdConstants.publisherIds, new ConsentInfoUpdateListener() {
             public void onConsentInfoUpdated(ConsentStatus consentStatus) {
-                Log.d("consentStatus", consentStatus.toString());
-                Log.d("conse", ConsentInformation.getInstance(SplashActivity.this.context).isRequestLocationInEeaOrUnknown() + "");
-                if (ConsentInformation.getInstance(SplashActivity.this.context).isRequestLocationInEeaOrUnknown()) {
-                    if (ConsentInformation.getInstance(SplashActivity.this.context).getConsentStatus() == ConsentStatus.PERSONALIZED) {
+                if (ConsentInformation.getInstance(context).isRequestLocationInEeaOrUnknown()) {
+                    if (ConsentInformation.getInstance(context).getConsentStatus() == ConsentStatus.PERSONALIZED) {
                         AdConstants.npaflag = false;
-                        SplashActivity.this.afternpa();
+                        afternpa();
                     }
-                    if (ConsentInformation.getInstance(SplashActivity.this.context).getConsentStatus() == ConsentStatus.NON_PERSONALIZED) {
+                    if (ConsentInformation.getInstance(context).getConsentStatus() == ConsentStatus.NON_PERSONALIZED) {
                         AdConstants.npaflag = true;
-                        SplashActivity.this.afternpa();
+                        afternpa();
                     }
-                    if (ConsentInformation.getInstance(SplashActivity.this.context).getConsentStatus() == ConsentStatus.UNKNOWN) {
-                        SplashActivity.this.Ad_Show = false;
+                    if (ConsentInformation.getInstance(context).getConsentStatus() == ConsentStatus.UNKNOWN) {
+                        Ad_Show = false;
                         try {
-                            if (SplashActivity.this.splash_activityWeakReference.get() != null && !SplashActivity.this.splash_activityWeakReference.get().isFinishing()) {
-                                SplashActivity.this.showDialog();
+                            if (splash_activityWeakReference.get() != null && !splash_activityWeakReference.get().isFinishing()) {
+                                showDialog();
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -172,13 +170,13 @@ public class SplashActivity extends AppCompatActivity {
                     }
                 } else {
                     AdConstants.npaflag = false;
-                    SplashActivity.this.afternpa();
+                    afternpa();
                 }
             }
 
             public void onFailedToUpdateConsentInfo(String str) {
                 AdConstants.setnpa(SplashActivity.this);
-                SplashActivity.this.afternpa();
+                afternpa();
             }
         });
     }
@@ -210,17 +208,17 @@ public class SplashActivity extends AppCompatActivity {
     public void showDialog() {
         AdConstants.showPersonalizeDialog(true, this, getString(R.string.app_name), getString(R.string.app_description1), getString(R.string.app_description2), getString(R.string.app_description3), new AdMobTwoButtonDialogListener() {
             public void onCancel() {
-                SplashActivity.this.finish();
+                finish();
             }
 
             public void onOk(boolean z) {
                 if (z) {
-                    ConsentInformation.getInstance(SplashActivity.this.context).setConsentStatus(ConsentStatus.PERSONALIZED);
+                    ConsentInformation.getInstance(context).setConsentStatus(ConsentStatus.PERSONALIZED);
                 } else {
-                    ConsentInformation.getInstance(SplashActivity.this.context).setConsentStatus(ConsentStatus.NON_PERSONALIZED);
+                    ConsentInformation.getInstance(context).setConsentStatus(ConsentStatus.NON_PERSONALIZED);
                 }
                 AdConstants.setnpa(SplashActivity.this);
-                SplashActivity.this.afternpa();
+                afternpa();
             }
         });
     }
