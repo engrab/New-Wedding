@@ -143,6 +143,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         this.toolbarModel.setShare(true);
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
         setSupportActionBar(this.binding.includedToolbar.toolbar);
+        binding.includedToolbar.textTitle.setText("Guest");
         this.binding.includedToolbar.imgAdd.setVisibility(View.GONE);
 
         binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);

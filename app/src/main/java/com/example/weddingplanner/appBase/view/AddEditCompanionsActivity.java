@@ -168,7 +168,7 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
         this.binding.includedToolbar.imgOther.setOnClickListener(this);
         this.binding.btnAddEdit.setOnClickListener(this);
         this.binding.imgEdit.setOnClickListener(this);
-        this.binding.imgAdd.setOnClickListener(this);
+        this.binding.imgAddAnother.setOnClickListener(this);
         this.binding.imgAddNoData.setOnClickListener(this);
         this.binding.linEdit.setOnClickListener(this);
         this.binding.linEditContact.setOnClickListener(this);
@@ -191,7 +191,7 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
                 openMap(this.model.getAddress());
                 return;
             case R.id.imgBack:
-                onBackPressed();
+                super.onBackPressed();
                 return;
             case R.id.imgDelete:
                 if (this.isEdit) {
@@ -262,6 +262,12 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
     }
 
     private boolean isAddUpdate(boolean z) {
+        model.setName(binding.etName.getText().toString().trim());
+        model.setNote(binding.etNote.getText().toString().trim());
+        model.setEmailId(binding.etEmailId.getText().toString().trim());
+        model.setPhoneNo(binding.etPhoneNumber.getText().toString().trim());
+        model.setAddress(binding.etAddress.getText().toString().trim());
+
         if (!isValid()) {
             return false;
         }
@@ -285,7 +291,7 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
     }
 
     private boolean isValid() {
-        model.setName(binding.etName.getText().toString().trim());
+
         if (!this.model.getName().trim().isEmpty()) {
             return true;
         }

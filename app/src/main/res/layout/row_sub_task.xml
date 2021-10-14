@@ -45,6 +45,8 @@
         <ImageView
             android:id="@+id/imgCheck"
             style="@style/ImageViewButtonCommon"
+            android:src="@drawable/save"
+            app:tint="@color/colorPrimary"
             android:tag="binding_3" />
     </LinearLayout>
 

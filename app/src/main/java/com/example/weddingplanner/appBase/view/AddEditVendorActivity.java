@@ -532,6 +532,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
             public void onClick(View view) {
                 long j;
                 model.setName(binding.etName.getText().toString());
+                model.setNote(binding.etNote.getText().toString());
                 if (AddEditVendorActivity.this.isValidNewCat(AddEditVendorActivity.this.dialogNewCatBinding)) {
                     CategoryRowModel categoryRowModel = new CategoryRowModel(AppConstants.getUniqueId(), AddEditVendorActivity.this.dialogNewCatBinding.etName.getText().toString().trim(), ((ImageRowModel) AddEditVendorActivity.this.imageList.get(AddEditVendorActivity.this.selectedNewCatPos)).getId());
                     try {
@@ -639,6 +640,8 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     }
 
     private boolean isAddUpdate(boolean z) {
+        model.setName(binding.etName.getText().toString());
+        model.setNote(binding.etNote.getText().toString());
         if (!isValid()) {
             return false;
         }
@@ -665,7 +668,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     }
 
     private boolean isValid() {
-        model.setName(binding.etName.getText().toString());
+
         if (this.model.getName().trim().isEmpty()) {
             Context context = this.context;
             EditText editText = this.binding.etName;
@@ -691,7 +694,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         intent.putExtra(EXTRA_MODEL, this.model);
         setResult(-1, intent);
 
-        onBackPressed();
+        super.onBackPressed();
     }
 
     public void pickContactPerm() {
@@ -998,8 +1001,6 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     public void onBackPressed() {
         if (this.isUpdateList) {
             openItemList(false);
-        } else if (this.isEdit) {
-            super.onBackPressed();
         } else {
             super.onBackPressed();
         }

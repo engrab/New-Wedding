@@ -116,6 +116,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         if (this.isEdit) {
             this.model = (GuestRowModel) getIntent().getParcelableExtra(EXTRA_MODEL);
             binding.etName.setText(model.getName());
+            binding.etNote.setText(model.getNote());
             return;
         }
 
@@ -187,7 +188,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         this.binding.includedToolbar.imgShare.setOnClickListener(this);
         this.binding.btnAddEdit.setOnClickListener(this);
         this.binding.imgEdit.setOnClickListener(this);
-        this.binding.imgAdd.setOnClickListener(this);
+        this.binding.imgAddAnother.setOnClickListener(this);
         this.binding.imgAddNoData.setOnClickListener(this);
         this.binding.linEdit.setOnClickListener(this);
         this.binding.linEditContact.setOnClickListener(this);
@@ -207,7 +208,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnAddEdit:
-            case R.id.imgAdd:
+            case R.id.imgAddAnother:
             case R.id.imgAddNoData:
                 addItem();
                 return;
@@ -347,6 +348,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
 
     private boolean isAddUpdate(boolean z) {
         model.setName(binding.etName.getText().toString());
+        model.setNote(binding.etNote.getText().toString());
         if (!isValid()) {
             return false;
         }
@@ -390,7 +392,7 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
         intent.putExtra(EXTRA_POSITION_MAIN, getIntent().getIntExtra(EXTRA_POSITION_MAIN, 0));
         intent.putExtra(EXTRA_MODEL, this.model);
         setResult(-1, intent);
-        onBackPressed();
+        super.onBackPressed();
     }
 
     public void pickContactPerm() {
@@ -660,8 +662,6 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
     public void onBackPressed() {
         if (this.isUpdateList) {
             openItemList(false);
-        } else if (this.isEdit) {
-            super.onBackPressed();
         } else {
             super.onBackPressed();
         }

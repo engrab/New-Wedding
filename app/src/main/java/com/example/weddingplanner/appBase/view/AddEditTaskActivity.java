@@ -147,6 +147,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
             binding.etName.setText(model.getName());
             binding.txtDate.setText(model.getDateFormatted());
             binding.etNote.setText(model.getNote());
+            Log.d(TAG, "setModelDetail: "+model.getNote());
 
             return;
         }
@@ -243,7 +244,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         this.binding.linCategory.setOnClickListener(this);
         this.binding.btnAddEdit.setOnClickListener(this);
         this.binding.imgEdit.setOnClickListener(this);
-        this.binding.imgAdd.setOnClickListener(this);
+        this.binding.imgAddOtherOne.setOnClickListener(this);
         this.binding.imgAddNoData.setOnClickListener(this);
         this.binding.linEdit.setOnClickListener(this);
         this.binding.txtDate.setOnClickListener(this);
@@ -254,7 +255,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnAddEdit:
-            case R.id.imgAdd:
+            case R.id.imgAddOtherOne:
             case R.id.imgAddNoData:
                 addItem();
                 return;
@@ -612,6 +613,7 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
 
     private boolean isAddUpdate(boolean z) {
         model.setName(binding.etName.getText().toString());
+        model.setNote(binding.etNote.getText().toString());
         if (!isValid()) {
             return false;
         }
@@ -654,7 +656,8 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         intent.putExtra(EXTRA_POSITION_MAIN, getIntent().getIntExtra(EXTRA_POSITION_MAIN, 0));
         intent.putExtra(EXTRA_MODEL, this.model);
         setResult(-1, intent);
-        onBackPressed();
+        super.onBackPressed();
+
     }
 
 
@@ -696,11 +699,15 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
     public void onBackPressed() {
         if (this.isUpdateList) {
             openItemList(false);
-        } else if (isEdit) {
-            super.onBackPressed();
+
         } else {
             super.onBackPressed();
         }
+//        else if (isEdit) {
+//            super.onBackPressed();
+//        } else {
+//            super.onBackPressed();
+//        }
 
     }
 

@@ -593,6 +593,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
 
     private boolean isAddUpdate(boolean z) {
         model.setName(binding.etName.getText().toString());
+        model.setNote(binding.etNote.getText().toString());
         if (!isValid()) {
             return false;
         }
@@ -640,7 +641,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         intent.putExtra(EXTRA_POSITION_MAIN, getIntent().getIntExtra(EXTRA_POSITION_MAIN, 0));
         intent.putExtra(EXTRA_MODEL, this.model);
         setResult(-1, intent);
-        onBackPressed();
+        super.onBackPressed();
     }
 
 
@@ -690,8 +691,6 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
     public void onBackPressed() {
         if (this.isUpdateList) {
             openItemList(false);
-        } else if (this.isEdit) {
-            super.onBackPressed();
         } else {
             super.onBackPressed();
         }

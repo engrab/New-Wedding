@@ -3,6 +3,7 @@ package com.example.weddingplanner.appBase.view;
 import android.content.Context;
 import android.content.Intent;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,6 +54,7 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
         if (isEdit){
             binding.etName.setText(model.getName());
             binding.etNote.setText(model.getNote());
+            Log.d("TAG", "setModelDetail: "+model.getNote());
         }
     }
 
@@ -160,6 +162,7 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
 
     private void addUpdate() {
         model.setName(binding.etName.getText().toString().trim());
+        model.setNote(binding.etNote.getText().toString().trim());
         if (isValid()) {
             try {
                 this.model.getName().trim();

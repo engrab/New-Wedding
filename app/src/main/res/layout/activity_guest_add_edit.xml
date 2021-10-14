@@ -454,7 +454,7 @@
                             android:textColor="@color/actionbar" />
 
                         <ImageView
-                            android:id="@+id/imgAdd"
+                            android:id="@+id/imgAddAnother"
                             style="@style/ImageViewButtonCommon"
                             android:layout_gravity="right"
                             android:src="@drawable/add"
