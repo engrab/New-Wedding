@@ -47,15 +47,12 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
     }
 
     private void setModelDetail() {
-        boolean z = false;
-        if (getIntent().hasExtra(EXTRA_IS_EDIT) && getIntent().getBooleanExtra(EXTRA_IS_EDIT, false)) {
-            z = true;
-        }
-        this.isEdit = z;
-        try {
-            this.model = (SubTaskRowModel) getIntent().getParcelableExtra(EXTRA_MODEL);
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        this.isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT, false);
+        this.model = (SubTaskRowModel) getIntent().getParcelableExtra(EXTRA_MODEL);
+        if (isEdit){
+            binding.etName.setText(model.getName());
+            binding.etNote.setText(model.getNote());
         }
     }
 
@@ -70,15 +67,30 @@ public class AddEditSubTaskActivity extends BaseActivityBinding {
 
         isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT,false);
         binding.includedToolbar.textTitle.setText(this.isEdit ? "Edit Subtask" : "Add Subtask");
-        binding.includedToolbar.imgDelete.setVisibility(View.GONE);
-        binding.includedToolbar.imgShare.setVisibility(View.GONE);
-        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
-        binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
-        binding.includedToolbar.search.setVisibility(View.GONE);
-        binding.includedToolbar.progressbar.setVisibility(View.GONE);
-        binding.includedToolbar.etOther.setVisibility(View.GONE);
-        binding.includedToolbar.spinner.setVisibility(View.GONE);
-        binding.includedToolbar.imageHome.setVisibility(View.GONE);
+
+        if (isEdit){
+            binding.includedToolbar.imgDelete.setVisibility(View.VISIBLE);
+            binding.includedToolbar.imgShare.setVisibility(View.GONE);
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+            binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
+            binding.includedToolbar.search.setVisibility(View.GONE);
+            binding.includedToolbar.progressbar.setVisibility(View.GONE);
+            binding.includedToolbar.etOther.setVisibility(View.GONE);
+            binding.includedToolbar.spinner.setVisibility(View.GONE);
+            binding.includedToolbar.imageHome.setVisibility(View.GONE);
+        }else {
+            binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+            binding.includedToolbar.imgShare.setVisibility(View.GONE);
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+            binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
+            binding.includedToolbar.search.setVisibility(View.GONE);
+            binding.includedToolbar.progressbar.setVisibility(View.GONE);
+            binding.includedToolbar.etOther.setVisibility(View.GONE);
+            binding.includedToolbar.spinner.setVisibility(View.GONE);
+            binding.includedToolbar.imageHome.setVisibility(View.GONE);
+        }
+
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

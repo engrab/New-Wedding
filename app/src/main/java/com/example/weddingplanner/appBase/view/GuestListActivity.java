@@ -218,11 +218,11 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
             }
 
             public void doInBackground() {
-                GuestListActivity.this.fillFromDB();
+                fillFromDB();
             }
 
             public void onPostExecute() {
-                GuestListActivity.this.notifyAdapter();
+                notifyAdapter();
             }
         }).execute(new Object[0]);
     }
@@ -257,17 +257,17 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         this.binding.recycler.setAdapter(new GuestAdapter(this.context, this.model.getArrayList(), new RecyclerItemClick() {
             public void onClick(int i, int i2) {
                 if (i2 == 1) {
-                    GuestListActivity.this.openItemDetail(i, GuestListActivity.this.listMain.indexOf(GuestListActivity.this.model.getArrayList().get(i)), GuestListActivity.this.model.getArrayList().get(i), true);
+                    openItemDetail(i, listMain.indexOf(model.getArrayList().get(i)), model.getArrayList().get(i), true);
                 }
             }
         }));
         this.binding.recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             public void onScrolled(RecyclerView recyclerView, int i, int i2) {
                 super.onScrolled(recyclerView, i, i2);
-                if (i2 > 0 && GuestListActivity.this.binding.fabAdd.getVisibility() == View.VISIBLE) {
+                if (i2 > 0 && binding.fabAdd.getVisibility() == View.VISIBLE) {
                     binding.fabAdd.hide();
-                } else if (i2 < 0 && GuestListActivity.this.binding.fabAdd.getVisibility() != View.VISIBLE) {
-                    GuestListActivity.this.binding.fabAdd.show();
+                } else if (i2 < 0 && binding.fabAdd.getVisibility() != View.VISIBLE) {
+                    binding.fabAdd.show();
                 }
             }
         });
@@ -345,11 +345,11 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         this.dialogOrderTypeListBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.dialogOrderTypeListBinding.recycler.setAdapter(new SelectionAdapter(this.context, true, this.orderTypeList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = GuestListActivity.this.selectedOrderTypePos = i;
-                AppPref.setSortTypeGuest(GuestListActivity.this.context, ((SelectionRowModel) GuestListActivity.this.orderTypeList.get(GuestListActivity.this.selectedOrderTypePos)).getLabel());
-                GuestListActivity.this.notifyAdapter();
+                int unused = selectedOrderTypePos = i;
+                AppPref.setSortTypeGuest(context, ((SelectionRowModel) orderTypeList.get(selectedOrderTypePos)).getLabel());
+                notifyAdapter();
                 try {
-                    GuestListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -359,7 +359,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         this.dialogOrderTypeListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    GuestListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -369,7 +369,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         this.dialogOrderTypeListBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    GuestListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -377,10 +377,10 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         });
         this.dialogOrderTypeListBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                AppPref.setSortTypeGuest(GuestListActivity.this.context, ((SelectionRowModel) GuestListActivity.this.orderTypeList.get(GuestListActivity.this.selectedOrderTypePos)).getLabel());
-                GuestListActivity.this.notifyAdapter();
+                AppPref.setSortTypeGuest(context, ((SelectionRowModel) orderTypeList.get(selectedOrderTypePos)).getLabel());
+                notifyAdapter();
                 try {
-                    GuestListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -488,7 +488,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
             }
 
             public boolean onQueryTextChange(String str) {
-                GuestListActivity.this.updateList(str);
+                updateList(str);
                 return false;
             }
         });
@@ -561,11 +561,11 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         this.dialogFilterTypeListBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.dialogFilterTypeListBinding.recycler.setAdapter(new SelectionAdapter(this.context, true, this.filterTypeList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = GuestListActivity.this.selectedFilterTypePos = i;
-                AppPref.setSortTypeTask(GuestListActivity.this.context, ((SelectionRowModel) GuestListActivity.this.filterTypeList.get(GuestListActivity.this.selectedFilterTypePos)).getLabel());
-                GuestListActivity.this.filterList(((SelectionRowModel) GuestListActivity.this.filterTypeList.get(GuestListActivity.this.selectedFilterTypePos)).getId());
+                int unused = selectedFilterTypePos = i;
+                AppPref.setSortTypeTask(context, ((SelectionRowModel) filterTypeList.get(selectedFilterTypePos)).getLabel());
+                filterList(((SelectionRowModel) filterTypeList.get(selectedFilterTypePos)).getId());
                 try {
-                    GuestListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -575,7 +575,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         this.dialogFilterTypeListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    GuestListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -585,7 +585,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         this.dialogFilterTypeListBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    GuestListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -593,10 +593,10 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         });
         this.dialogFilterTypeListBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                AppPref.setSortTypeTask(GuestListActivity.this.context, ((SelectionRowModel) GuestListActivity.this.filterTypeList.get(GuestListActivity.this.selectedFilterTypePos)).getLabel());
-                GuestListActivity.this.notifyAdapter();
+                AppPref.setSortTypeTask(context, ((SelectionRowModel) filterTypeList.get(selectedFilterTypePos)).getLabel());
+                notifyAdapter();
                 try {
-                    GuestListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -622,15 +622,15 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
     private void filterList() {
         new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
-                GuestListActivity.this.setupFilterIcon(GuestListActivity.this.isFilter);
+                setupFilterIcon(isFilter);
             }
 
             public void doInBackground() {
-                GuestListActivity.this.checkFilterAndFillList();
+                checkFilterAndFillList();
             }
 
             public void onPostExecute() {
-                GuestListActivity.this.notifyAdapter();
+                notifyAdapter();
             }
         }).execute(new Object[0]);
     }
@@ -769,11 +769,11 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
     private void showPdfDialog() {
         AppConstants.pdfReportDialog(this.context, new TwoButtonDialogListener() {
             public void onOk() {
-                GuestListActivity.this.savePdf();
+                savePdf();
             }
 
             public void onCancel() {
-                GuestListActivity.this.openReportList();
+                openReportList();
             }
         });
     }
@@ -794,15 +794,15 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
     private void saveDoc() {
         new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
-                GuestListActivity.this.initDoc();
+                initDoc();
             }
 
             public void doInBackground() {
-                GuestListActivity.this.fillDocData();
+                fillDocData();
             }
 
             public void onPostExecute() {
-                GuestListActivity.this.addingDocFooter();
+                addingDocFooter();
             }
         }).execute(new Object[0]);
     }
@@ -974,7 +974,7 @@ public class GuestListActivity extends BaseActivityRecyclerBinding implements Ea
         public void onEndPage(PdfWriter pdfWriter, Document document) {
             try {
                 PdfContentByte directContent = pdfWriter.getDirectContent();
-                ColumnText.showTextAligned(directContent, 1, new Phrase("Created by : " + GuestListActivity.this.getString(R.string.app_name), new Font(Font.FontFamily.TIMES_ROMAN, 16.0f, 1)), document.leftMargin() + ((document.right() - document.left()) / 2.0f), document.bottom() + 10.0f, 0.0f);
+                ColumnText.showTextAligned(directContent, 1, new Phrase("Created by : " + getString(R.string.app_name), new Font(Font.FontFamily.TIMES_ROMAN, 16.0f, 1)), document.leftMargin() + ((document.right() - document.left()) / 2.0f), document.bottom() + 10.0f, 0.0f);
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -200,16 +200,16 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
 
             public void onOk() {
                 try {
-                    AddEditCostActivity.this.db.paymentDao().deleteAll(AddEditCostActivity.this.model.getId());
+                    db.paymentDao().deleteAll(model.getId());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 try {
-                    AddEditCostActivity.this.db.costDao().delete(AddEditCostActivity.this.model);
+                    db.costDao().delete(model);
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }
-                AddEditCostActivity.this.openItemList(true);
+                openItemList(true);
             }
         });
     }
@@ -285,6 +285,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         if (this.isEdit) {
             try {
                 this.binding.etEstimatedAmount.setText(AppConstants.getFormattedPrice(this.model.getExpectedAmount()));
+                binding.etName.setText(model.getName());
             } catch (NumberFormatException e) {
                 this.binding.etEstimatedAmount.setText(0);
                 e.printStackTrace();
@@ -302,9 +303,9 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
 
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
                 try {
-                    AddEditCostActivity.this.model.setExpectedAmount(Double.valueOf(charSequence.toString().trim()).doubleValue());
+                    model.setExpectedAmount(Double.valueOf(charSequence.toString().trim()).doubleValue());
                 } catch (NumberFormatException e) {
-                    AddEditCostActivity.this.model.setExpectedAmount(0.0d);
+                    model.setExpectedAmount(0.0d);
                     e.printStackTrace();
                 }
             }
@@ -352,23 +353,23 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         this.dialogCategoryListBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.dialogCategoryListBinding.recycler.setAdapter(new CategoryAdapter(this.context, false, this.categoryList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = AddEditCostActivity.this.selectedCategoryPos = i;
+                int unused = selectedCategoryPos = i;
             }
         }));
         this.dialogCategoryListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    AddEditCostActivity.this.dialogCategoryList.dismiss();
+                    dialogCategoryList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                AddEditCostActivity.this.showNewCatList();
+                showNewCatList();
             }
         });
         this.dialogCategoryListBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    AddEditCostActivity.this.dialogCategoryList.dismiss();
+                    dialogCategoryList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -376,10 +377,10 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         });
         this.dialogCategoryListBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                AddEditCostActivity.this.model.setCategoryId(((CategoryRowModel) AddEditCostActivity.this.categoryList.get(AddEditCostActivity.this.selectedCategoryPos)).getId());
-                AddEditCostActivity.this.model.setCategoryRowModel((CategoryRowModel) AddEditCostActivity.this.categoryList.get(AddEditCostActivity.this.selectedCategoryPos));
+                model.setCategoryId(((CategoryRowModel) categoryList.get(selectedCategoryPos)).getId());
+                model.setCategoryRowModel((CategoryRowModel) categoryList.get(selectedCategoryPos));
                 try {
-                    AddEditCostActivity.this.dialogCategoryList.dismiss();
+                    dialogCategoryList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -467,13 +468,13 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         this.dialogNewCatBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false));
         this.dialogNewCatBinding.recycler.setAdapter(new ImageAdapter(true, this.context, this.imageList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = AddEditCostActivity.this.selectedNewCatPos = i;
+                int unused = selectedNewCatPos = i;
             }
         }));
         this.dialogNewCatBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    AddEditCostActivity.this.dialogNewCat.dismiss();
+                    dialogNewCat.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -483,26 +484,26 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
             public void onClick(View view) {
                 long j;
                 model.setName(binding.etName.getText().toString().trim());
-                if (AddEditCostActivity.this.isValidNewCat(AddEditCostActivity.this.dialogNewCatBinding)) {
-                    CategoryRowModel categoryRowModel = new CategoryRowModel(AppConstants.getUniqueId(), AddEditCostActivity.this.dialogNewCatBinding.etName.getText().toString().trim(), ((ImageRowModel) AddEditCostActivity.this.imageList.get(AddEditCostActivity.this.selectedNewCatPos)).getId());
+                if (isValidNewCat(dialogNewCatBinding)) {
+                    CategoryRowModel categoryRowModel = new CategoryRowModel(AppConstants.getUniqueId(), dialogNewCatBinding.etName.getText().toString().trim(), ((ImageRowModel) imageList.get(selectedNewCatPos)).getId());
                     try {
                         categoryRowModel.getName().trim();
-                        j = AddEditCostActivity.this.db.categoryDao().insert(categoryRowModel);
+                        j = db.categoryDao().insert(categoryRowModel);
                     } catch (Exception e) {
                         e.printStackTrace();
                         j = 0;
                     }
                     if (j > 0) {
-                        AddEditCostActivity.this.selectionAllCategory(false);
+                        selectionAllCategory(false);
                         categoryRowModel.setSelected(true);
-                        AddEditCostActivity.this.categoryList.add(categoryRowModel);
-                        int unused = AddEditCostActivity.this.selectedCategoryPos = AddEditCostActivity.this.categoryList.size() - 1;
-                        AddEditCostActivity.this.showDialogCategoryList();
+                        categoryList.add(categoryRowModel);
+                        int unused = selectedCategoryPos = categoryList.size() - 1;
+                        showDialogCategoryList();
                     }
-                    AddEditCostActivity.this.dialogNewCatBinding.etName.setText("");
+                    dialogNewCatBinding.etName.setText("");
                 }
                 try {
-                    AddEditCostActivity.this.dialogNewCat.dismiss();
+                    dialogNewCat.dismiss();
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }
@@ -544,9 +545,9 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         this.binding.recycler.setAdapter(new PaymentAdapter(this.context, this.model.getArrayList(), new RecyclerItemClick() {
             public void onClick(int i, int i2) {
                 if (i2 == 2) {
-                    AddEditCostActivity.this.updateTotal();
+                    updateTotal();
                 } else {
-                    AddEditCostActivity.this.openItemDetail(i, AddEditCostActivity.this.model.getArrayList().get(i), true);
+                    openItemDetail(i, model.getArrayList().get(i), true);
                 }
             }
         }));
@@ -699,11 +700,11 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
     private void showPdfDialog() {
         AppConstants.pdfReportDialog(this.context, new TwoButtonDialogListener() {
             public void onOk() {
-                AddEditCostActivity.this.savePdf();
+                savePdf();
             }
 
             public void onCancel() {
-                AddEditCostActivity.this.openReportList();
+                openReportList();
             }
         });
     }
@@ -720,15 +721,15 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
     private void saveDoc() {
         new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
-                AddEditCostActivity.this.initDoc();
+                initDoc();
             }
 
             public void doInBackground() {
-                AddEditCostActivity.this.fillDocData();
+                fillDocData();
             }
 
             public void onPostExecute() {
-                AddEditCostActivity.this.addingDocFooter();
+                addingDocFooter();
             }
         }).execute(new Object[0]);
     }
@@ -888,7 +889,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         public void onEndPage(PdfWriter pdfWriter, Document document) {
             try {
                 PdfContentByte directContent = pdfWriter.getDirectContent();
-                ColumnText.showTextAligned(directContent, 1, new Phrase("Created by : " + AddEditCostActivity.this.getString(R.string.app_name), new Font(Font.FontFamily.TIMES_ROMAN, 16.0f, 1)), document.leftMargin() + ((document.right() - document.left()) / 2.0f), document.bottom() + 10.0f, 0.0f);
+                ColumnText.showTextAligned(directContent, 1, new Phrase("Created by : " + getString(R.string.app_name), new Font(Font.FontFamily.TIMES_ROMAN, 16.0f, 1)), document.leftMargin() + ((document.right() - document.left()) / 2.0f), document.bottom() + 10.0f, 0.0f);
             } catch (Exception e) {
                 e.printStackTrace();
             }

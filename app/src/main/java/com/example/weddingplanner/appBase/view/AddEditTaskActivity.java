@@ -63,6 +63,7 @@ import com.example.weddingplanner.pdfRepo.ReportsListActivity;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.ObjectInput;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -143,12 +144,10 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         this.isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT, false);
         if (isEdit) {
             this.model = (TaskRowModel) getIntent().getParcelableExtra(EXTRA_MODEL);
+            binding.etName.setText(model.getName());
+            binding.txtDate.setText(model.getDateFormatted());
             binding.etNote.setText(model.getNote());
-            String name = model.getName();
-            String note = model.getNote();
-            binding.tvName.requestFocus();
-            binding.tvName.setText("name");
-            Log.d(TAG, "setModelDetail: "+model.getName());
+
             return;
         }
 
@@ -308,12 +307,14 @@ public class AddEditTaskActivity extends BaseActivityRecyclerBinding implements 
         instance.setTimeInMillis(this.model.getDateInMillis());
         try {
             new DatePickerDialog(this.context, R.style.AppThemeDialogActionBar, new DatePickerDialog.OnDateSetListener() {
-                public void onDateSet(DatePicker datePicker, int i, int i2, int i3) {
-                    instance.set(1, i);
-                    instance.set(2, i2);
-                    instance.set(5, i3);
+                public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                    instance.set(1, year);
+                    instance.set(2, month);
+                    instance.set(5, dayOfMonth);
                     model.setDateInMillis(instance.getTimeInMillis());
+                    binding.txtDate.setText(model.getDateFormatted());
                 }
+
             }, instance.get(1), instance.get(2), instance.get(5)).show();
         } catch (Exception e) {
             e.printStackTrace();

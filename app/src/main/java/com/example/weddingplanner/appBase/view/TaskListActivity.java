@@ -216,11 +216,11 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
             }
 
             public void doInBackground() {
-                TaskListActivity.this.fillFromDB();
+                fillFromDB();
             }
 
             public void onPostExecute() {
-                TaskListActivity.this.notifyAdapter();
+                notifyAdapter();
             }
         }).execute(new Object[0]);
     }
@@ -260,16 +260,16 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         this.binding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.binding.recycler.setAdapter(new TaskAdapter(this.context, this.model.getArrayList(), new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                TaskListActivity.this.openItemDetail(i, TaskListActivity.this.listMain.indexOf(TaskListActivity.this.model.getArrayList().get(i)), TaskListActivity.this.model.getArrayList().get(i), true);
+                openItemDetail(i, listMain.indexOf(model.getArrayList().get(i)), model.getArrayList().get(i), true);
             }
         }));
         this.binding.recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             public void onScrolled(RecyclerView recyclerView, int i, int i2) {
                 super.onScrolled(recyclerView, i, i2);
-                if (i2 > 0 && TaskListActivity.this.binding.fabAdd.getVisibility() == View.VISIBLE) {
-                    TaskListActivity.this.binding.fabAdd.hide();
-                } else if (i2 < 0 && TaskListActivity.this.binding.fabAdd.getVisibility() != View.VISIBLE) {
-                    TaskListActivity.this.binding.fabAdd.show();
+                if (i2 > 0 && binding.fabAdd.getVisibility() == View.VISIBLE) {
+                    binding.fabAdd.hide();
+                } else if (i2 < 0 && binding.fabAdd.getVisibility() != View.VISIBLE) {
+                    binding.fabAdd.show();
                 }
             }
         });
@@ -347,11 +347,11 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         this.dialogOrderTypeListBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.dialogOrderTypeListBinding.recycler.setAdapter(new SelectionAdapter(this.context, true, this.orderTypeList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = TaskListActivity.this.selectedOrderTypePos = i;
-                AppPref.setSortTypeTask(TaskListActivity.this.context, ((SelectionRowModel) TaskListActivity.this.orderTypeList.get(TaskListActivity.this.selectedOrderTypePos)).getLabel());
-                TaskListActivity.this.notifyAdapter();
+                int unused = selectedOrderTypePos = i;
+                AppPref.setSortTypeTask(context, ((SelectionRowModel) orderTypeList.get(selectedOrderTypePos)).getLabel());
+                notifyAdapter();
                 try {
-                    TaskListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -361,7 +361,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         this.dialogOrderTypeListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    TaskListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -371,7 +371,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         this.dialogOrderTypeListBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    TaskListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -379,10 +379,10 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         });
         this.dialogOrderTypeListBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                AppPref.setSortTypeTask(TaskListActivity.this.context, ((SelectionRowModel) TaskListActivity.this.orderTypeList.get(TaskListActivity.this.selectedOrderTypePos)).getLabel());
-                TaskListActivity.this.notifyAdapter();
+                AppPref.setSortTypeTask(context, ((SelectionRowModel) orderTypeList.get(selectedOrderTypePos)).getLabel());
+                notifyAdapter();
                 try {
-                    TaskListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -489,7 +489,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
             }
 
             public boolean onQueryTextChange(String str) {
-                TaskListActivity.this.updateList(str);
+                updateList(str);
                 return false;
             }
         });
@@ -562,11 +562,11 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         this.dialogFilterTypeListBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.dialogFilterTypeListBinding.recycler.setAdapter(new SelectionAdapter(this.context, true, this.filterTypeList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = TaskListActivity.this.selectedFilterTypePos = i;
-                AppPref.setSortTypeTask(TaskListActivity.this.context, ((SelectionRowModel) TaskListActivity.this.filterTypeList.get(TaskListActivity.this.selectedFilterTypePos)).getLabel());
-                TaskListActivity.this.filterList(((SelectionRowModel) TaskListActivity.this.filterTypeList.get(TaskListActivity.this.selectedFilterTypePos)).getId());
+                int unused = selectedFilterTypePos = i;
+                AppPref.setSortTypeTask(context, ((SelectionRowModel) filterTypeList.get(selectedFilterTypePos)).getLabel());
+                filterList(((SelectionRowModel) filterTypeList.get(selectedFilterTypePos)).getId());
                 try {
-                    TaskListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -576,7 +576,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         this.dialogFilterTypeListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    TaskListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -586,7 +586,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         this.dialogFilterTypeListBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    TaskListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -594,10 +594,10 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         });
         this.dialogFilterTypeListBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                AppPref.setSortTypeTask(TaskListActivity.this.context, ((SelectionRowModel) TaskListActivity.this.filterTypeList.get(TaskListActivity.this.selectedFilterTypePos)).getLabel());
-                TaskListActivity.this.notifyAdapter();
+                AppPref.setSortTypeTask(context, ((SelectionRowModel) filterTypeList.get(selectedFilterTypePos)).getLabel());
+                notifyAdapter();
                 try {
-                    TaskListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -623,15 +623,15 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
     private void filterList() {
         new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
-                TaskListActivity.this.setupFilterIcon(TaskListActivity.this.isFilter);
+                setupFilterIcon(isFilter);
             }
 
             public void doInBackground() {
-                TaskListActivity.this.checkFilterAndFillList();
+                checkFilterAndFillList();
             }
 
             public void onPostExecute() {
-                TaskListActivity.this.notifyAdapter();
+                notifyAdapter();
             }
         }).execute(new Object[0]);
     }
@@ -770,11 +770,11 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
     private void showPdfDialog() {
         AppConstants.pdfReportDialog(this.context, new TwoButtonDialogListener() {
             public void onOk() {
-                TaskListActivity.this.savePdf();
+                savePdf();
             }
 
             public void onCancel() {
-                TaskListActivity.this.openReportList();
+                openReportList();
             }
         });
     }
@@ -795,15 +795,15 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
     private void saveDoc() {
         new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
-                TaskListActivity.this.initDoc();
+                initDoc();
             }
 
             public void doInBackground() {
-                TaskListActivity.this.fillDocData();
+                fillDocData();
             }
 
             public void onPostExecute() {
-                TaskListActivity.this.addingDocFooter();
+                addingDocFooter();
             }
         }).execute(new Object[0]);
     }
@@ -945,7 +945,7 @@ public class TaskListActivity extends BaseActivityRecyclerBinding implements Eas
         public void onEndPage(PdfWriter pdfWriter, Document document) {
             try {
                 PdfContentByte directContent = pdfWriter.getDirectContent();
-                ColumnText.showTextAligned(directContent, 1, new Phrase("Created by : " + TaskListActivity.this.getString(R.string.app_name), new Font(Font.FontFamily.TIMES_ROMAN, 16.0f, 1)), document.leftMargin() + ((document.right() - document.left()) / 2.0f), document.bottom() + 10.0f, 0.0f);
+                ColumnText.showTextAligned(directContent, 1, new Phrase("Created by : " + getString(R.string.app_name), new Font(Font.FontFamily.TIMES_ROMAN, 16.0f, 1)), document.leftMargin() + ((document.right() - document.left()) / 2.0f), document.bottom() + 10.0f, 0.0f);
             } catch (Exception e) {
                 e.printStackTrace();
             }

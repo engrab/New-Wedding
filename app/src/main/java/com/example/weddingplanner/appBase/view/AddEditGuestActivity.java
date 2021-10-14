@@ -109,15 +109,13 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
     }
 
     private void setModelDetail() {
-        boolean z = false;
         this.model = new GuestRowModel();
         this.model.setEdit(true);
-        if (getIntent().hasExtra(EXTRA_IS_EDIT) && getIntent().getBooleanExtra(EXTRA_IS_EDIT, false)) {
-            z = true;
-        }
-        this.isEdit = z;
+        isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT,false);
+
         if (this.isEdit) {
             this.model = (GuestRowModel) getIntent().getParcelableExtra(EXTRA_MODEL);
+            binding.etName.setText(model.getName());
             return;
         }
 
