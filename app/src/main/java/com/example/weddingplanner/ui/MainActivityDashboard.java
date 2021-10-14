@@ -50,6 +50,7 @@ public class MainActivityDashboard extends BaseActivityBinding {
     public ActivityMainDashboardBinding binding;
     private Timer timer;
     boolean doubleBackToExitPressedOnce = false;
+    public AppDataBase db;
 
 
     public void setBinding() {
@@ -57,21 +58,22 @@ public class MainActivityDashboard extends BaseActivityBinding {
         binding = ActivityMainDashboardBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        db = AppDataBase.getAppDatabase(this);
         LoadAd();
         initGlid();
     }
 
     private void initGlid() {
-        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_dashboard).centerCrop()).into(this.binding.navDrawer.imgHome);
-        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_tasks).centerCrop()).into(this.binding.navDrawer.imgChecklist);
-        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_budgets).centerCrop()).into(this.binding.navDrawer.imgBudget);
-        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_guests).centerCrop()).into(this.binding.navDrawer.imgGuest);
-        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_vendors).centerCrop()).into(this.binding.navDrawer.imgVendor);
-        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_setting).centerCrop()).into(this.binding.navDrawer.imgSettings);
-        ((RequestBuilder) Glide.with(this).load(R.drawable.rate_us).centerCrop()).into(this.binding.navDrawer.imgRateus);
-        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_share).centerCrop()).into(this.binding.navDrawer.imgShare);
-        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_privacy_policy).centerCrop()).into(this.binding.navDrawer.imgPrivacypolicy);
-        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_term_service).centerCrop()).into(this.binding.navDrawer.imgTerms);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_dashboard).centerCrop()).into(binding.navDrawer.imgHome);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_tasks).centerCrop()).into(binding.navDrawer.imgChecklist);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_budgets).centerCrop()).into(binding.navDrawer.imgBudget);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_guests).centerCrop()).into(binding.navDrawer.imgGuest);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_vendors).centerCrop()).into(binding.navDrawer.imgVendor);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_setting).centerCrop()).into(binding.navDrawer.imgSettings);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.rate_us).centerCrop()).into(binding.navDrawer.imgRateus);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_share).centerCrop()).into(binding.navDrawer.imgShare);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_privacy_policy).centerCrop()).into(binding.navDrawer.imgPrivacypolicy);
+        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_term_service).centerCrop()).into(binding.navDrawer.imgTerms);
 
         
 
@@ -136,10 +138,10 @@ public class MainActivityDashboard extends BaseActivityBinding {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 try {
                     startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("market://details?id=" + MainActivityDashboard.this.getPackageName())));
+                            Uri.parse("market://details?id=" + getPackageName())));
                 } catch (android.content.ActivityNotFoundException e) {
                     startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("http://play.google.com/store/apps/details?id=" + MainActivityDashboard.this.getPackageName())));
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
                 }
             }
         });
@@ -187,15 +189,15 @@ public class MainActivityDashboard extends BaseActivityBinding {
     }
 
     public void hamMenu() {
-        if (!this.binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            this.binding.drawerLayout.openDrawer(GravityCompat.START);
+        if (!binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.openDrawer(GravityCompat.START);
         } else {
-            this.binding.drawerLayout.closeDrawer(GravityCompat.END);
+            binding.drawerLayout.closeDrawer(GravityCompat.END);
         }
     }
 
     public void setToolbar() {
-        setSupportActionBar(this.binding.toolbar);
+        setSupportActionBar(binding.toolbar);
     }
 
 //    public boolean onCreateOptionsMenu(Menu menu) {
@@ -206,22 +208,22 @@ public class MainActivityDashboard extends BaseActivityBinding {
 //    public boolean onOptionsItemSelected(MenuItem menuItem) {
 //        switch (menuItem.getItemId()) {
 //            case R.id.drawer_feedback:
-//                AppConstants.emailUs(this.context);
+//                AppConstants.emailUs(context);
 //                return true;
 //            case R.id.drawer_privacy_policy:
 //                uriparse(TermAndServiceActivity.strPrivacyUri);
 //                return true;
 //            case R.id.drawer_proversion:
-//                startActivity(new Intent(this.context, WeddingProVersionActivity.class));
+//                startActivity(new Intent(context, WeddingProVersionActivity.class));
 //                return true;
 //            case R.id.drawer_ratting:
-//                AppConstants.showRattingDialog(this.context, Constants.RATTING_BAR_TITLE, Constants.APP_PLAY_STORE_URL);
+//                AppConstants.showRattingDialog(context, Constants.RATTING_BAR_TITLE, Constants.APP_PLAY_STORE_URL);
 //                return true;
 //            case R.id.drawer_setting:
-//                startActivityForResult(new Intent(this.context, SettingActivity.class), 1002);
+//                startActivityForResult(new Intent(context, SettingActivity.class), 1002);
 //                return true;
 //            case R.id.drawer_share:
-//                AppConstants.shareApp(this.context);
+//                AppConstants.shareApp(context);
 //                return true;
 //            case R.id.drawer_terms_of_service:
 //                uriparse(TermAndServiceActivity.strTermsUri);
@@ -243,11 +245,11 @@ public class MainActivityDashboard extends BaseActivityBinding {
 
 
     public void setOnClicks() {
-        this.binding.cardTasks.setOnClickListener(this);
-        this.binding.cardGuests.setOnClickListener(this);
-        this.binding.cardBudget.setOnClickListener(this);
-        this.binding.cardVendor.setOnClickListener(this);
-        this.binding.cardDashboard.setOnClickListener(this);
+        binding.cardTasks.setOnClickListener(this);
+        binding.cardGuests.setOnClickListener(this);
+        binding.cardBudget.setOnClickListener(this);
+        binding.cardVendor.setOnClickListener(this);
+        binding.cardDashboard.setOnClickListener(this);
         binding.imgMenu.setOnClickListener(this);
     }
 
@@ -257,19 +259,19 @@ public class MainActivityDashboard extends BaseActivityBinding {
                 hamMenu();
                 return;
             case R.id.cardBudget:
-                startActivity(new Intent(this.context, CostListActivity.class));
+                startActivity(new Intent(context, CostListActivity.class));
                 return;
             case R.id.cardDashboard:
-                startActivity(new Intent(this.context, DashboardActivity.class));
+                startActivity(new Intent(context, DashboardActivity.class));
                 return;
             case R.id.cardGuests:
-                startActivity(new Intent(this.context, GuestListActivity.class));
+                startActivity(new Intent(context, GuestListActivity.class));
                 return;
             case R.id.cardTasks:
-                startActivity(new Intent(this.context, TaskListActivity.class));
+                startActivity(new Intent(context, TaskListActivity.class));
                 return;
             case R.id.cardVendor:
-                startActivity(new Intent(this.context, VendorListActivity.class));
+                startActivity(new Intent(context, VendorListActivity.class));
                 return;
             default:
                 return;
@@ -282,10 +284,10 @@ public class MainActivityDashboard extends BaseActivityBinding {
     }
 
     private void setRemainingTimer() {
-        this.timer = new Timer();
-        this.timer.scheduleAtFixedRate(new TimerTask() {
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
-                MainActivityDashboard.this.updateValue();
+                updateValue();
             }
         }, 0, 1000);
     }
@@ -295,7 +297,7 @@ public class MainActivityDashboard extends BaseActivityBinding {
             public void run() {
                 long j;
                 try {
-                    j = AppDataBase.getAppDatabase(MainActivityDashboard.this.context).profileDao().getDetail(AppPref.getCurrentEvenId(MainActivityDashboard.this.context)).getDateTimeInMillis() - System.currentTimeMillis();
+                    j = db.profileDao().getDetail(AppPref.getCurrentEvenId(context)).getDateTimeInMillis() - System.currentTimeMillis();
                 } catch (Exception e) {
                     e.printStackTrace();
                     j = 0;
@@ -310,10 +312,10 @@ public class MainActivityDashboard extends BaseActivityBinding {
                 long j9 = j4 / 365;
                 long j10 = (75 * j2) / 60;
                 long j11 = (j2 * 16) / 60;
-                MainActivityDashboard.this.binding.txtDays.setText(AppConstants.getFormattedLong(j4));
-                MainActivityDashboard.this.binding.txtHours.setText(AppConstants.getFormattedLong((j / 3600000) % 24));
-                MainActivityDashboard.this.binding.txtMinutes.setText(AppConstants.getFormattedLong((j / 60000) % 60));
-                MainActivityDashboard.this.binding.txtSeconds.setText(AppConstants.getFormattedLong(j3));
+                binding.txtDays.setText(AppConstants.getFormattedLong(j4));
+                binding.txtHours.setText(AppConstants.getFormattedLong((j / 3600000) % 24));
+                binding.txtMinutes.setText(AppConstants.getFormattedLong((j / 60000) % 60));
+                binding.txtSeconds.setText(AppConstants.getFormattedLong(j3));
             }
         });
     }
@@ -328,7 +330,7 @@ public class MainActivityDashboard extends BaseActivityBinding {
 
     private void setProfile() {
         try {
-            this.binding.txtMarriageName.setText(AppDataBase.getAppDatabase(this.context).profileDao().getDetail(AppPref.getCurrentEvenId(this.context)).getWeddingName());
+            binding.txtMarriageName.setText(db.profileDao().getDetail(AppPref.getCurrentEvenId(context)).getWeddingName());
             setRemainingTimer();
         } catch (Exception e) {
             e.printStackTrace();
@@ -341,7 +343,7 @@ public class MainActivityDashboard extends BaseActivityBinding {
                 return;
             }
 
-            this.doubleBackToExitPressedOnce = true;
+            doubleBackToExitPressedOnce = true;
             Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
 
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {

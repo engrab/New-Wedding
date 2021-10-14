@@ -42,6 +42,7 @@ public class DashboardActivity extends BaseActivityBinding {
         setSupportActionBar(binding.includedToolbar.toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Dashboard");
+        binding.includedToolbar.textTitle.setText("Dashboard");
         binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
         this.binding.includedToolbar.imgOther.setVisibility(View.GONE);
         binding.includedToolbar.imageHome.setVisibility(View.GONE);
