@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weddingplanner.R;
@@ -20,6 +21,7 @@ public class CategoryAdapter extends RecyclerView.Adapter {
     public ArrayList<CategoryRowModel> arrayList;
     private final Context context;
     private final boolean isManage;
+    private int checkedPosition = 0;
 
     public RecyclerItemClick recyclerItemClick;
 
@@ -42,9 +44,10 @@ public class CategoryAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         if (viewHolder instanceof RowHolder) {
             RowHolder rowHolder = (RowHolder) viewHolder;
-            rowHolder.binding.imgIcon.setImageResource(arrayList.get(position).getImgResId());
-            rowHolder.binding.title.setText(arrayList.get(position).getName());
+            rowHolder.bind(arrayList.get(position));
 
+//            rowHolder.binding.imgIcon.setImageResource(arrayList.get(position).getImgResId());
+//            rowHolder.binding.title.setText(arrayList.get(position).getName());
 
 
 
@@ -56,27 +59,66 @@ public class CategoryAdapter extends RecyclerView.Adapter {
 //            rowManageHolder.binding.executePendingBindings();
         }
     }
+    public CategoryRowModel getSelected() {
+        if (checkedPosition != -1) {
+            return arrayList.get(checkedPosition);
+        }
+        return null;
+    }
 
     public int getItemCount() {
         return this.arrayList.size();
     }
 
-    private class RowHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private class RowHolder extends RecyclerView.ViewHolder {
 
         public RowCategoryBinding binding;
 
         public RowHolder(RowCategoryBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-            binding.getRoot().setOnClickListener(this);
+//            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    selectionAll(false);
+//                    arrayList.get(getAdapterPosition()).setSelected(!arrayList.get(getAdapterPosition()).isSelected());
+//                    recyclerItemClick.onClick(getAdapterPosition(), 1);
+//
+//                }
+//            });
         }
 
-        public void onClick(View view) {
-            selectionAll(false);
-            arrayList.get(getAdapterPosition()).setSelected(!arrayList.get(getAdapterPosition()).isSelected());
-            recyclerItemClick.onClick(getAdapterPosition(), 1);
-            binding.imgIcon.setBackgroundColor(Color.parseColor("#567845"));
 
+        void bind(final CategoryRowModel categoryRowModel) {
+            if (checkedPosition == -1) {
+                binding.image.setVisibility(View.GONE);
+            } else {
+                if (checkedPosition == getAdapterPosition()) {
+                    binding.image.setVisibility(View.VISIBLE);
+                } else {
+                    binding.image.setVisibility(View.GONE);
+                }
+            }
+            binding.title.setText(categoryRowModel.getName());
+            binding.imgIcon.setImageResource(categoryRowModel.getImgResId());
+            binding.image.setImageResource(R.drawable.save);
+            binding.image.setColorFilter(ContextCompat.getColor(context, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+
+
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    binding.image.setVisibility(View.VISIBLE);
+                    if (checkedPosition != getAdapterPosition()) {
+                        notifyItemChanged(checkedPosition);
+                        checkedPosition = getAdapterPosition();
+                        selectionAll(false);
+                        arrayList.get(getAdapterPosition()).setSelected(!arrayList.get(getAdapterPosition()).isSelected());
+                        recyclerItemClick.onClick(getAdapterPosition(), 1);
+
+                    }
+                }
+            });
         }
     }
 
