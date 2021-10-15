@@ -5,11 +5,19 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center"
+    android:orientation="vertical"
     android:id="@+id/ll_image"
     android:tag="layout/row_image_icon_0">
 
     <ImageView
         android:id="@+id/imgFolder"
+        android:layout_gravity="end"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:tag="binding_1" />
+
+    <ImageView
+        android:id="@+id/imgIcon"
         style="@style/ImageViewMediumCommon"
         android:layout_gravity="center"
         android:layout_margin="@dimen/_10sdp"
