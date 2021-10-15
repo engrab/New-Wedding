@@ -43,7 +43,7 @@ public class CostAdapter extends RecyclerView.Adapter {
             rowHolder.binding.tvStatus.setText("Pending : "+arrayList.get(i).getPendingAmount());
             rowHolder.binding.tvStatus1.setText("Paid : "+arrayList.get(i).getPaidAmount());
             rowHolder.binding.tvPending.setText(arrayList.get(i).getStatusText());
-            rowHolder.binding.tvPending1.setText("Payment : "+arrayList.get(i).getArrayList().get(i).getType()+" / "+arrayList.get(i).getArrayList().get(i).getType());
+//            rowHolder.binding.tvPending1.setText("Payment : "+arrayList.get(i).getArrayList().get(i).getType()+" / "+arrayList.get(i).getArrayList().get(i).getType());
 
 //            rowHolder.binding.setRowModel(this.arrayList.get(i));
 //            rowHolder.binding.executePendingBindings();

@@ -215,11 +215,11 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
             }
 
             public void doInBackground() {
-                CostListActivity.this.fillFromDB();
+                fillFromDB();
             }
 
             public void onPostExecute() {
-                CostListActivity.this.notifyAdapter();
+                notifyAdapter();
             }
         }).execute(new Object[0]);
     }
@@ -269,16 +269,16 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         this.binding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.binding.recycler.setAdapter(new CostAdapter(this.context, this.model.getArrayList(), new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                CostListActivity.this.openItemDetail(i, CostListActivity.this.listMain.indexOf(CostListActivity.this.model.getArrayList().get(i)), CostListActivity.this.model.getArrayList().get(i), true);
+                openItemDetail(i, listMain.indexOf(model.getArrayList().get(i)), model.getArrayList().get(i), true);
             }
         }));
         this.binding.recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             public void onScrolled(RecyclerView recyclerView, int i, int i2) {
                 super.onScrolled(recyclerView, i, i2);
-                if (i2 > 0 && CostListActivity.this.binding.fabAdd.getVisibility() == View.VISIBLE) {
-                    CostListActivity.this.binding.fabAdd.hide();
-                } else if (i2 < 0 && CostListActivity.this.binding.fabAdd.getVisibility() != View.VISIBLE) {
-                    CostListActivity.this.binding.fabAdd.show();
+                if (i2 > 0 && binding.fabAdd.getVisibility() == View.VISIBLE) {
+                    binding.fabAdd.hide();
+                } else if (i2 < 0 && binding.fabAdd.getVisibility() != View.VISIBLE) {
+                    binding.fabAdd.show();
                 }
             }
         });
@@ -356,11 +356,11 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         this.dialogOrderTypeListBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.dialogOrderTypeListBinding.recycler.setAdapter(new SelectionAdapter(this.context, true, this.orderTypeList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = CostListActivity.this.selectedOrderTypePos = i;
-                AppPref.setSortTypeBudget(CostListActivity.this.context, ((SelectionRowModel) CostListActivity.this.orderTypeList.get(CostListActivity.this.selectedOrderTypePos)).getLabel());
-                CostListActivity.this.notifyAdapter();
+                int unused = selectedOrderTypePos = i;
+                AppPref.setSortTypeBudget(context, ((SelectionRowModel) orderTypeList.get(selectedOrderTypePos)).getLabel());
+                notifyAdapter();
                 try {
-                    CostListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -370,7 +370,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         this.dialogOrderTypeListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    CostListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -380,7 +380,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         this.dialogOrderTypeListBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    CostListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -388,10 +388,10 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         });
         this.dialogOrderTypeListBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                AppPref.setSortTypeBudget(CostListActivity.this.context, ((SelectionRowModel) CostListActivity.this.orderTypeList.get(CostListActivity.this.selectedOrderTypePos)).getLabel());
-                CostListActivity.this.notifyAdapter();
+                AppPref.setSortTypeBudget(context, ((SelectionRowModel) orderTypeList.get(selectedOrderTypePos)).getLabel());
+                notifyAdapter();
                 try {
-                    CostListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -488,7 +488,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
             }
 
             public boolean onQueryTextChange(String str) {
-                CostListActivity.this.updateList(str);
+                updateList(str);
                 return false;
             }
         });
@@ -561,11 +561,11 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         this.dialogFilterTypeListBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.dialogFilterTypeListBinding.recycler.setAdapter(new SelectionAdapter(this.context, true, this.filterTypeList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = CostListActivity.this.selectedFilterTypePos = i;
-                AppPref.setSortTypeTask(CostListActivity.this.context, ((SelectionRowModel) CostListActivity.this.filterTypeList.get(CostListActivity.this.selectedFilterTypePos)).getLabel());
-                CostListActivity.this.filterList(((SelectionRowModel) CostListActivity.this.filterTypeList.get(CostListActivity.this.selectedFilterTypePos)).getId());
+                int unused = selectedFilterTypePos = i;
+                AppPref.setSortTypeTask(context, ((SelectionRowModel) filterTypeList.get(selectedFilterTypePos)).getLabel());
+                filterList(((SelectionRowModel) filterTypeList.get(selectedFilterTypePos)).getId());
                 try {
-                    CostListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -575,7 +575,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         this.dialogFilterTypeListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    CostListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -585,7 +585,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         this.dialogFilterTypeListBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    CostListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -593,10 +593,10 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         });
         this.dialogFilterTypeListBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                AppPref.setSortTypeTask(CostListActivity.this.context, ((SelectionRowModel) CostListActivity.this.filterTypeList.get(CostListActivity.this.selectedFilterTypePos)).getLabel());
-                CostListActivity.this.notifyAdapter();
+                AppPref.setSortTypeTask(context, ((SelectionRowModel) filterTypeList.get(selectedFilterTypePos)).getLabel());
+                notifyAdapter();
                 try {
-                    CostListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -622,15 +622,15 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
     private void filterList() {
         new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
-                CostListActivity.this.setupFilterIcon(CostListActivity.this.isFilter);
+                setupFilterIcon(isFilter);
             }
 
             public void doInBackground() {
-                CostListActivity.this.checkFilterAndFillList();
+                checkFilterAndFillList();
             }
 
             public void onPostExecute() {
-                CostListActivity.this.notifyAdapter();
+                notifyAdapter();
             }
         }).execute(new Object[0]);
     }
@@ -783,15 +783,15 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
     private void saveDoc() {
         new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
-                CostListActivity.this.initDoc();
+                initDoc();
             }
 
             public void doInBackground() {
-                CostListActivity.this.fillDocData();
+                fillDocData();
             }
 
             public void onPostExecute() {
-                CostListActivity.this.addingDocFooter();
+                addingDocFooter();
             }
         }).execute(new Object[0]);
     }
@@ -936,7 +936,7 @@ public class CostListActivity extends BaseActivityRecyclerBinding implements Eas
         public void onEndPage(PdfWriter pdfWriter, Document document) {
             try {
                 PdfContentByte directContent = pdfWriter.getDirectContent();
-                ColumnText.showTextAligned(directContent, 1, new Phrase("Created by : " + CostListActivity.this.getString(R.string.app_name), new Font(Font.FontFamily.TIMES_ROMAN, 16.0f, 1)), document.leftMargin() + ((document.right() - document.left()) / 2.0f), document.bottom() + 10.0f, 0.0f);
+                ColumnText.showTextAligned(directContent, 1, new Phrase("Created by : " + getString(R.string.app_name), new Font(Font.FontFamily.TIMES_ROMAN, 16.0f, 1)), document.leftMargin() + ((document.right() - document.left()) / 2.0f), document.bottom() + 10.0f, 0.0f);
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -222,7 +222,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         this.binding.linCategory.setOnClickListener(this);
         this.binding.btnAddEdit.setOnClickListener(this);
         this.binding.imgEdit.setOnClickListener(this);
-        this.binding.imgAdd.setOnClickListener(this);
+        this.binding.imgAddAnother.setOnClickListener(this);
         this.binding.imgAddNoData.setOnClickListener(this);
         this.binding.linEdit.setOnClickListener(this);
         this.binding.imgExpandLin.setOnClickListener(this);
@@ -231,7 +231,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnAddEdit:
-            case R.id.imgAdd:
+            case R.id.imgAddAnother:
             case R.id.imgAddNoData:
                 addItem();
                 return;
@@ -283,6 +283,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
             try {
                 this.binding.etEstimatedAmount.setText(AppConstants.getFormattedPrice(this.model.getExpectedAmount()));
                 binding.etName.setText(model.getName());
+                binding.etNote.setText(model.getNote());
             } catch (NumberFormatException e) {
                 this.binding.etEstimatedAmount.setText(0);
                 e.printStackTrace();
@@ -338,6 +339,16 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         return 0;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initView();
+    }
+
+    private void initView() {
+        binding.imgIcon.setImageResource(categoryList.get(selectedCategoryPos).getImgResId());
+        binding.title.setText(categoryList.get(selectedCategoryPos).getName());
+    }
     public void setCategoryListDialog() {
         this.dialogCategoryListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context),  (ViewGroup) null, false);
         this.dialogCategoryList = new Dialog(this.context);
@@ -350,7 +361,8 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
         this.dialogCategoryListBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.dialogCategoryListBinding.recycler.setAdapter(new CategoryAdapter(this.context, false, this.categoryList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = selectedCategoryPos = i;
+                selectedCategoryPos = i;
+                initView();
             }
         }));
         this.dialogCategoryListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
@@ -591,6 +603,7 @@ public class AddEditCostActivity extends BaseActivityRecyclerBinding implements 
     private boolean isAddUpdate(boolean z) {
         model.setName(binding.etName.getText().toString());
         model.setNote(binding.etNote.getText().toString());
+        model.setExpectedAmount(Double.parseDouble(binding.etEstimatedAmount.getText().toString().trim()));
         if (!isValid()) {
             return false;
         }

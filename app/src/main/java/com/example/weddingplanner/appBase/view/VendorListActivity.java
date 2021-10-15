@@ -219,11 +219,11 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
             }
 
             public void doInBackground() {
-                VendorListActivity.this.fillFromDB();
+                fillFromDB();
             }
 
             public void onPostExecute() {
-                VendorListActivity.this.notifyAdapter();
+                notifyAdapter();
             }
         }).execute(new Object[0]);
     }
@@ -275,16 +275,16 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         this.binding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.binding.recycler.setAdapter(new VendorAdapter(this.context, this.model.getArrayList(), new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                VendorListActivity.this.openItemDetail(i, VendorListActivity.this.listMain.indexOf(VendorListActivity.this.model.getArrayList().get(i)), VendorListActivity.this.model.getArrayList().get(i), true);
+                openItemDetail(i, listMain.indexOf(model.getArrayList().get(i)), model.getArrayList().get(i), true);
             }
         }));
         this.binding.recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             public void onScrolled(RecyclerView recyclerView, int i, int i2) {
                 super.onScrolled(recyclerView, i, i2);
-                if (i2 > 0 && VendorListActivity.this.binding.fabAdd.getVisibility() == View.VISIBLE) {
-                    VendorListActivity.this.binding.fabAdd.hide();
-                } else if (i2 < 0 && VendorListActivity.this.binding.fabAdd.getVisibility() != View.VISIBLE) {
-                    VendorListActivity.this.binding.fabAdd.show();
+                if (i2 > 0 && binding.fabAdd.getVisibility() == View.VISIBLE) {
+                    binding.fabAdd.hide();
+                } else if (i2 < 0 && binding.fabAdd.getVisibility() != View.VISIBLE) {
+                    binding.fabAdd.show();
                 }
             }
         });
@@ -362,11 +362,11 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         this.dialogOrderTypeListBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.dialogOrderTypeListBinding.recycler.setAdapter(new SelectionAdapter(this.context, true, this.orderTypeList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = VendorListActivity.this.selectedOrderTypePos = i;
-                AppPref.setSortTypeVendor(VendorListActivity.this.context, ((SelectionRowModel) VendorListActivity.this.orderTypeList.get(VendorListActivity.this.selectedOrderTypePos)).getLabel());
-                VendorListActivity.this.notifyAdapter();
+                int unused = selectedOrderTypePos = i;
+                AppPref.setSortTypeVendor(context, ((SelectionRowModel) orderTypeList.get(selectedOrderTypePos)).getLabel());
+                notifyAdapter();
                 try {
-                    VendorListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -376,7 +376,7 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         this.dialogOrderTypeListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    VendorListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -386,7 +386,7 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         this.dialogOrderTypeListBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    VendorListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -394,10 +394,10 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         });
         this.dialogOrderTypeListBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                AppPref.setSortTypeVendor(VendorListActivity.this.context, ((SelectionRowModel) VendorListActivity.this.orderTypeList.get(VendorListActivity.this.selectedOrderTypePos)).getLabel());
-                VendorListActivity.this.notifyAdapter();
+                AppPref.setSortTypeVendor(context, ((SelectionRowModel) orderTypeList.get(selectedOrderTypePos)).getLabel());
+                notifyAdapter();
                 try {
-                    VendorListActivity.this.dialogOrderTypeList.dismiss();
+                    dialogOrderTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -499,7 +499,7 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
             }
 
             public boolean onQueryTextChange(String str) {
-                VendorListActivity.this.updateList(str);
+                updateList(str);
                 return false;
             }
         });
@@ -572,11 +572,11 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         this.dialogFilterTypeListBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
         this.dialogFilterTypeListBinding.recycler.setAdapter(new SelectionAdapter(this.context, true, this.filterTypeList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
-                int unused = VendorListActivity.this.selectedFilterTypePos = i;
-                AppPref.setSortTypeTask(VendorListActivity.this.context, ((SelectionRowModel) VendorListActivity.this.filterTypeList.get(VendorListActivity.this.selectedFilterTypePos)).getLabel());
-                VendorListActivity.this.filterList(((SelectionRowModel) VendorListActivity.this.filterTypeList.get(VendorListActivity.this.selectedFilterTypePos)).getId());
+                int unused = selectedFilterTypePos = i;
+                AppPref.setSortTypeTask(context, ((SelectionRowModel) filterTypeList.get(selectedFilterTypePos)).getLabel());
+                filterList(((SelectionRowModel) filterTypeList.get(selectedFilterTypePos)).getId());
                 try {
-                    VendorListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -586,7 +586,7 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         this.dialogFilterTypeListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    VendorListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -596,7 +596,7 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         this.dialogFilterTypeListBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    VendorListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -604,10 +604,10 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         });
         this.dialogFilterTypeListBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                AppPref.setSortTypeTask(VendorListActivity.this.context, ((SelectionRowModel) VendorListActivity.this.filterTypeList.get(VendorListActivity.this.selectedFilterTypePos)).getLabel());
-                VendorListActivity.this.notifyAdapter();
+                AppPref.setSortTypeTask(context, ((SelectionRowModel) filterTypeList.get(selectedFilterTypePos)).getLabel());
+                notifyAdapter();
                 try {
-                    VendorListActivity.this.dialogFilterTypeList.dismiss();
+                    dialogFilterTypeList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -633,15 +633,15 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
     private void filterList() {
         new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
-                VendorListActivity.this.setupFilterIcon(VendorListActivity.this.isFilter);
+                setupFilterIcon(isFilter);
             }
 
             public void doInBackground() {
-                VendorListActivity.this.checkFilterAndFillList();
+                checkFilterAndFillList();
             }
 
             public void onPostExecute() {
-                VendorListActivity.this.notifyAdapter();
+                notifyAdapter();
             }
         }).execute(new Object[0]);
     }
@@ -795,15 +795,15 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
     private void saveDoc() {
         new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
-                VendorListActivity.this.initDoc();
+                initDoc();
             }
 
             public void doInBackground() {
-                VendorListActivity.this.fillDocData();
+                fillDocData();
             }
 
             public void onPostExecute() {
-                VendorListActivity.this.addingDocFooter();
+                addingDocFooter();
             }
         }).execute(new Object[0]);
     }
@@ -997,7 +997,7 @@ public class VendorListActivity extends BaseActivityRecyclerBinding implements E
         public void onEndPage(PdfWriter pdfWriter, Document document) {
             try {
                 PdfContentByte directContent = pdfWriter.getDirectContent();
-                ColumnText.showTextAligned(directContent, 1, new Phrase("Created by : " + VendorListActivity.this.getString(R.string.app_name), new Font(Font.FontFamily.TIMES_ROMAN, 16.0f, 1)), document.leftMargin() + ((document.right() - document.left()) / 2.0f), document.bottom() + 10.0f, 0.0f);
+                ColumnText.showTextAligned(directContent, 1, new Phrase("Created by : " + getString(R.string.app_name), new Font(Font.FontFamily.TIMES_ROMAN, 16.0f, 1)), document.leftMargin() + ((document.right() - document.left()) / 2.0f), document.bottom() + 10.0f, 0.0f);
             } catch (Exception e) {
                 e.printStackTrace();
             }

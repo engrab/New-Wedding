@@ -114,9 +114,12 @@
                                     app:tint="@color/actionbar" />
 
                                 <TextView
-                                    style="@style/TextViewTitleCommon"
-                                    android:layout_width="match_parent"
+                                    android:id="@+id/title"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
                                     android:ellipsize="end"
                                     android:singleLine="true"
                                     android:tag="binding_6" />
@@ -257,7 +260,7 @@
                             android:textColor="@color/actionbar" />
 
                         <ImageView
-                            android:id="@+id/imgAdd"
+                            android:id="@+id/imgAddAnother"
                             style="@style/ImageViewButtonCommon"
                             android:layout_gravity="right"
                             android:src="@drawable/add"

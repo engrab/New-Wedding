@@ -128,9 +128,9 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         binding = ActivityVendorAddEditBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        this.db = AppDataBase.getAppDatabase(this);
+        db = AppDataBase.getAppDatabase(this);
         setModelDetail();
-//        this.binding.setRowModel(this.model);
+//        binding.setRowModel(model);
     }
 
     private void setModelDetail() {
@@ -138,30 +138,30 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         if (getIntent().hasExtra(EXTRA_IS_EDIT) && getIntent().getBooleanExtra(EXTRA_IS_EDIT, false)) {
             z = true;
         }
-        this.isEdit = z;
-        if (this.isEdit) {
-            this.model = (VendorRowModel) getIntent().getParcelableExtra(EXTRA_MODEL);
+        isEdit = z;
+        if (isEdit) {
+            model = (VendorRowModel) getIntent().getParcelableExtra(EXTRA_MODEL);
             return;
         }
-        this.model = new VendorRowModel();
-        this.model.setEdit(true);
-        this.model.setExpandedContact(true);
-        this.model.setArrayList(new ArrayList());
+        model = new VendorRowModel();
+        model.setEdit(true);
+        model.setExpandedContact(true);
+        model.setArrayList(new ArrayList());
     }
 
 
     public void setToolbar() {
-        this.toolbarModel = new ToolbarModel();
-        this.toolbarModel.setTitle(this.isEdit ? "Edit Vendor" : "Add Vendor");
-        this.toolbarModel.setDelete(true);
-        this.toolbarModel.setOtherMenu(true);
+        toolbarModel = new ToolbarModel();
+        toolbarModel.setTitle(isEdit ? "Edit Vendor" : "Add Vendor");
+        toolbarModel.setDelete(true);
+        toolbarModel.setOtherMenu(true);
 
         isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT,false);
 
 
-        this.binding.includedToolbar.imgDelete.setImageResource(this.isEdit ? R.drawable.delete : R.drawable.phone_book);
-        this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
-        this.toolbarModel.setShare(this.isEdit);
+        binding.includedToolbar.imgDelete.setImageResource(isEdit ? R.drawable.delete : R.drawable.phone_book);
+        binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
+        toolbarModel.setShare(isEdit);
         if (isEdit){
             binding.includedToolbar.imgAdd.setVisibility(View.GONE);
             binding.includedToolbar.imgShare.setVisibility(View.GONE);
@@ -181,12 +181,12 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
             binding.includedToolbar.imgAdd.setVisibility(View.GONE);
             binding.includedToolbar.spinner.setVisibility(View.GONE);
         }
-//        this.binding.includedToolbar.setModel(this.toolbarModel);
+//        binding.includedToolbar.setModel(toolbarModel);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_add_edit, menu);
-        menu.findItem(R.id.delete).setVisible(this.isEdit);
+        menu.findItem(R.id.delete).setVisible(isEdit);
         return true;
     }
 
@@ -199,61 +199,61 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     }
 
     public void deleteItem() {
-        AppConstants.showTwoButtonDialog(this.context, getString(R.string.app_name), getString(R.string.delete_msg) + "<br /> <b>" + this.model.getName() + "</b>", true, true, getString(R.string.delete), getString(R.string.cancel), new TwoButtonDialogListener() {
+        AppConstants.showTwoButtonDialog(context, getString(R.string.app_name), getString(R.string.delete_msg) + "<br /> <b>" + model.getName() + "</b>", true, true, getString(R.string.delete), getString(R.string.cancel), new TwoButtonDialogListener() {
             public void onCancel() {
             }
 
             public void onOk() {
                 try {
-                    AddEditVendorActivity.this.db.paymentDao().deleteAll(AddEditVendorActivity.this.model.getId());
+                    db.paymentDao().deleteAll(model.getId());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 try {
-                    AddEditVendorActivity.this.db.vendorDao().delete(AddEditVendorActivity.this.model);
+                    db.vendorDao().delete(model);
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }
-                AddEditVendorActivity.this.openItemList(true);
+                openItemList(true);
             }
         });
     }
 
 
     public void setOnClicks() {
-        this.binding.includedToolbar.imgBack.setOnClickListener(this);
-        this.binding.includedToolbar.imgDelete.setOnClickListener(this);
-        this.binding.includedToolbar.imgOther.setOnClickListener(this);
-        this.binding.linCategory.setOnClickListener(this);
-        this.binding.btnAddEdit.setOnClickListener(this);
-        this.binding.imgEdit.setOnClickListener(this);
-        this.binding.imgAdd.setOnClickListener(this);
-        this.binding.imgAddNoData.setOnClickListener(this);
-        this.binding.linEdit.setOnClickListener(this);
-        this.binding.linEditContact.setOnClickListener(this);
-        this.binding.imgExpandLin.setOnClickListener(this);
-        this.binding.imgExpandContact.setOnClickListener(this);
-        this.binding.imgPhone.setOnClickListener(this);
-        this.binding.imgEmail.setOnClickListener(this);
-        this.binding.imgWebsite.setOnClickListener(this);
-        this.binding.imgAddress.setOnClickListener(this);
+        binding.includedToolbar.imgBack.setOnClickListener(this);
+        binding.includedToolbar.imgDelete.setOnClickListener(this);
+        binding.includedToolbar.imgOther.setOnClickListener(this);
+        binding.linCategory.setOnClickListener(this);
+        binding.btnAddEdit.setOnClickListener(this);
+        binding.imgEdit.setOnClickListener(this);
+        binding.imgAddAnother.setOnClickListener(this);
+        binding.imgAddNoData.setOnClickListener(this);
+        binding.linEdit.setOnClickListener(this);
+        binding.linEditContact.setOnClickListener(this);
+        binding.imgExpandLin.setOnClickListener(this);
+        binding.imgExpandContact.setOnClickListener(this);
+        binding.imgPhone.setOnClickListener(this);
+        binding.imgEmail.setOnClickListener(this);
+        binding.imgWebsite.setOnClickListener(this);
+        binding.imgAddress.setOnClickListener(this);
     }
 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnAddEdit:
-            case R.id.imgAdd:
+            case R.id.imgAddAnother:
             case R.id.imgAddNoData:
                 addItem();
                 return;
             case R.id.imgAddress:
-                openMap(this.model.getAddress());
+                openMap(model.getAddress());
                 return;
             case R.id.imgBack:
                 onBackPressed();
                 return;
             case R.id.imgDelete:
-                if (this.isEdit) {
+                if (isEdit) {
                     deleteItem();
                     return;
                 } else {
@@ -261,39 +261,39 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
                     return;
                 }
             case R.id.imgEdit:
-                if (!this.model.isEdit()) {
-                    this.model.setEdit(true);
+                if (!model.isEdit()) {
+                    model.setEdit(true);
                     return;
                 } else {
                     isAddUpdate(false);
                     return;
                 }
             case R.id.imgEmail:
-                sendEmail(this.model.getEmailId());
+                sendEmail(model.getEmailId());
                 return;
             case R.id.imgExpandContact:
-                this.model.setExpandedContact(true ^ this.model.isExpandedContact());
+                model.setExpandedContact(true ^ model.isExpandedContact());
                 return;
             case R.id.imgExpandLin:
-                this.model.setExpanded(true ^ this.model.isExpanded());
+                model.setExpanded(true ^ model.isExpanded());
                 return;
             case R.id.imgOther:
                 isAddUpdate(true);
                 return;
             case R.id.imgPhone:
-                dialPhoneNumber(this.model.getPhoneNo());
+                dialPhoneNumber(model.getPhoneNo());
                 return;
 
             case R.id.imgWebsite:
-                openUrl(this.model.getWebSite());
+                openUrl(model.getWebSite());
                 return;
             case R.id.linCategory:
                 showDialogCategoryList();
                 return;
             case R.id.linEdit:
             case R.id.linEditContact:
-                if (!this.model.isEdit()) {
-                    AppConstants.toastShort(this.context, "Enable editing ...");
+                if (!model.isEdit()) {
+                    AppConstants.toastShort(context, "Enable editing ...");
                     return;
                 }
                 return;
@@ -315,18 +315,24 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     }
 
     private void setEditTextValue() {
-        if (this.isEdit) {
+        if (isEdit) {
             try {
-                this.binding.etEstimatedAmount.setText(AppConstants.getFormattedPrice(this.model.getExpectedAmount()));
+                binding.etName.setText(model.getName());
+                binding.etNote.setText(model.getNote());
+                binding.etPhoneNumber.setText(model.getPhoneNo());
+                binding.etEmailId.setText(model.getEmailId());
+                binding.etWebsite.setText(model.getWebSite());
+                binding.etAddress.setText(model.getAddress());
+                binding.etEstimatedAmount.setText(AppConstants.getFormattedPrice(model.getExpectedAmount()));
             } catch (NumberFormatException e) {
-                this.binding.etEstimatedAmount.setText(0);
+                binding.etEstimatedAmount.setText(0);
                 e.printStackTrace();
             }
         }
     }
 
     private void setEditTextChange() {
-        this.binding.etEstimatedAmount.addTextChangedListener(new TextWatcher() {
+        binding.etEstimatedAmount.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable editable) {
             }
 
@@ -335,9 +341,9 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
                 try {
-                    AddEditVendorActivity.this.model.setExpectedAmount(Double.valueOf(charSequence.toString().trim()).doubleValue());
+                    model.setExpectedAmount(Double.valueOf(charSequence.toString().trim()).doubleValue());
                 } catch (NumberFormatException e) {
-                    AddEditVendorActivity.this.model.setExpectedAmount(0.0d);
+                    model.setExpectedAmount(0.0d);
                     e.printStackTrace();
                 }
             }
@@ -350,24 +356,24 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     }
 
     private void fillCategoryList() {
-        this.categoryList = new ArrayList<>();
+        categoryList = new ArrayList<>();
         try {
-            this.categoryList.addAll(this.db.categoryDao().getAll());
+            categoryList.addAll(db.categoryDao().getAll());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        this.selectedCategoryPos = getSelectedPosById();
-        this.categoryList.get(this.selectedCategoryPos).setSelected(true);
-        if (this.model.getCategoryRowModel() == null) {
-            this.model.setCategoryId(this.categoryList.get(this.selectedCategoryPos).getId());
-            this.model.setCategoryRowModel(this.categoryList.get(this.selectedCategoryPos));
+        selectedCategoryPos = getSelectedPosById();
+        categoryList.get(selectedCategoryPos).setSelected(true);
+        if (model.getCategoryRowModel() == null) {
+            model.setCategoryId(categoryList.get(selectedCategoryPos).getId());
+            model.setCategoryRowModel(categoryList.get(selectedCategoryPos));
         }
     }
 
 
     private int getSelectedPosById() {
-        for (int i = 0; i < this.categoryList.size(); i++) {
-            if (this.categoryList.get(i).getId().equalsIgnoreCase(this.model.getCategoryId())) {
+        for (int i = 0; i < categoryList.size(); i++) {
+            if (categoryList.get(i).getId().equalsIgnoreCase(model.getCategoryId())) {
                 return i;
             }
         }
@@ -375,46 +381,46 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     }
 
     public void setCategoryListDialog() {
-        this.dialogCategoryListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context),  (ViewGroup) null, false);
-        this.dialogCategoryList = new Dialog(this.context);
-        this.dialogCategoryList.setContentView(this.dialogCategoryListBinding.getRoot());
-        this.dialogCategoryList.setCancelable(false);
-        this.dialogCategoryList.getWindow().setBackgroundDrawableResource(17170445);
-        this.dialogCategoryList.getWindow().setLayout(-1, -2);
-        this.dialogCategoryListBinding.txtTitle.setText(R.string.select_category);
-        this.dialogCategoryListBinding.btnOk.setText(R.string.set);
-        this.dialogCategoryListBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
-        this.dialogCategoryListBinding.recycler.setAdapter(new CategoryAdapter(this.context, false, this.categoryList, new RecyclerItemClick() {
+        dialogCategoryListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(context),  (ViewGroup) null, false);
+        dialogCategoryList = new Dialog(context);
+        dialogCategoryList.setContentView(dialogCategoryListBinding.getRoot());
+        dialogCategoryList.setCancelable(false);
+        dialogCategoryList.getWindow().setBackgroundDrawableResource(17170445);
+        dialogCategoryList.getWindow().setLayout(-1, -2);
+        dialogCategoryListBinding.txtTitle.setText(R.string.select_category);
+        dialogCategoryListBinding.btnOk.setText(R.string.set);
+        dialogCategoryListBinding.recycler.setLayoutManager(new LinearLayoutManager(context));
+        dialogCategoryListBinding.recycler.setAdapter(new CategoryAdapter(context, false, categoryList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
                 selectedCategoryPos = i;
                 initView();
             }
         }));
-        this.dialogCategoryListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
+        dialogCategoryListBinding.imgAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    AddEditVendorActivity.this.dialogCategoryList.dismiss();
+                    dialogCategoryList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                AddEditVendorActivity.this.showNewCatList();
+                showNewCatList();
             }
         });
-        this.dialogCategoryListBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
+        dialogCategoryListBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    AddEditVendorActivity.this.dialogCategoryList.dismiss();
+                    dialogCategoryList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
-        this.dialogCategoryListBinding.btnOk.setOnClickListener(new View.OnClickListener() {
+        dialogCategoryListBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                AddEditVendorActivity.this.model.setCategoryId(((CategoryRowModel) AddEditVendorActivity.this.categoryList.get(AddEditVendorActivity.this.selectedCategoryPos)).getId());
-                AddEditVendorActivity.this.model.setCategoryRowModel((CategoryRowModel) AddEditVendorActivity.this.categoryList.get(AddEditVendorActivity.this.selectedCategoryPos));
+                model.setCategoryId(((CategoryRowModel) categoryList.get(selectedCategoryPos)).getId());
+                model.setCategoryRowModel((CategoryRowModel) categoryList.get(selectedCategoryPos));
                 try {
-                    AddEditVendorActivity.this.dialogCategoryList.dismiss();
+                    dialogCategoryList.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -435,13 +441,13 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
     public void showDialogCategoryList() {
         try {
-            this.dialogCategoryListBinding.recycler.scrollToPosition(this.selectedCategoryPos);
+            dialogCategoryListBinding.recycler.scrollToPosition(selectedCategoryPos);
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            if (this.dialogCategoryList != null && !this.dialogCategoryList.isShowing()) {
-                this.dialogCategoryList.show();
+            if (dialogCategoryList != null && !dialogCategoryList.isShowing()) {
+                dialogCategoryList.show();
             }
         } catch (Exception e2) {
             e2.printStackTrace();
@@ -450,8 +456,8 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
 
     public void selectionAllCategory(boolean z) {
-        for (int i = 0; i < this.categoryList.size(); i++) {
-            this.categoryList.get(i).setSelected(z);
+        for (int i = 0; i < categoryList.size(); i++) {
+            categoryList.get(i).setSelected(z);
         }
     }
 
@@ -461,95 +467,95 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     }
 
     private void fillImageList() {
-        this.imageList = new ArrayList<>();
+        imageList = new ArrayList<>();
         ImageRowModel imageRowModel = new ImageRowModel();
         imageRowModel.setId(Constants.COST_CAT_TYPE_ATTIRE_ACCESSORIES);
-        this.imageList.add(imageRowModel);
+        imageList.add(imageRowModel);
         ImageRowModel imageRowModel2 = new ImageRowModel();
         imageRowModel2.setId(Constants.COST_CAT_TYPE_HEALTH_BEAUTY);
-        this.imageList.add(imageRowModel2);
+        imageList.add(imageRowModel2);
         ImageRowModel imageRowModel3 = new ImageRowModel();
         imageRowModel3.setId(Constants.COST_CAT_TYPE_MUSIC_SHOW);
-        this.imageList.add(imageRowModel3);
+        imageList.add(imageRowModel3);
         ImageRowModel imageRowModel4 = new ImageRowModel();
         imageRowModel4.setId(Constants.COST_CAT_TYPE_FLOWER_DECOR);
-        this.imageList.add(imageRowModel4);
+        imageList.add(imageRowModel4);
         ImageRowModel imageRowModel5 = new ImageRowModel();
         imageRowModel5.setId(Constants.COST_CAT_TYPE_ACCESSORIES);
-        this.imageList.add(imageRowModel5);
+        imageList.add(imageRowModel5);
         ImageRowModel imageRowModel6 = new ImageRowModel();
         imageRowModel6.setId(Constants.COST_CAT_TYPE_JEWELRY);
-        this.imageList.add(imageRowModel6);
+        imageList.add(imageRowModel6);
         ImageRowModel imageRowModel7 = new ImageRowModel();
         imageRowModel7.setId(Constants.COST_CAT_TYPE_PHOTO_VIDEO);
-        this.imageList.add(imageRowModel7);
+        imageList.add(imageRowModel7);
         ImageRowModel imageRowModel8 = new ImageRowModel();
         imageRowModel8.setId(Constants.COST_CAT_TYPE_CEREMONY);
-        this.imageList.add(imageRowModel8);
+        imageList.add(imageRowModel8);
         ImageRowModel imageRowModel9 = new ImageRowModel();
         imageRowModel9.setId(Constants.COST_CAT_TYPE_RECEPTION);
-        this.imageList.add(imageRowModel9);
+        imageList.add(imageRowModel9);
         ImageRowModel imageRowModel10 = new ImageRowModel();
         imageRowModel10.setId(Constants.COST_CAT_TYPE_TRANSPORTATION);
-        this.imageList.add(imageRowModel10);
+        imageList.add(imageRowModel10);
         ImageRowModel imageRowModel11 = new ImageRowModel();
         imageRowModel11.setId(Constants.COST_CAT_TYPE_ACCOMMODATION);
-        this.imageList.add(imageRowModel11);
+        imageList.add(imageRowModel11);
         ImageRowModel imageRowModel12 = new ImageRowModel();
         imageRowModel12.setId(Constants.COST_CAT_TYPE_MISCELLANEOUS);
-        this.imageList.add(imageRowModel12);
-        this.imageList.get(this.selectedNewCatPos).setSelected(true);
+        imageList.add(imageRowModel12);
+        imageList.get(selectedNewCatPos).setSelected(true);
     }
 
     public void setNewCatDialog() {
-        this.dialogNewCatBinding = AlertDialogNewCategoryBinding.inflate(LayoutInflater.from(this.context), (ViewGroup) null, false);
-        this.dialogNewCat = new Dialog(this.context);
-        this.dialogNewCat.setContentView(this.dialogNewCatBinding.getRoot());
-        this.dialogNewCat.setCancelable(false);
-        this.dialogNewCat.getWindow().setBackgroundDrawableResource(17170445);
-        this.dialogNewCat.getWindow().setLayout(-1, -2);
-        this.dialogNewCatBinding.txtTitle.setText(R.string.add_new_category);
-        this.dialogNewCatBinding.recycler.setLayoutManager(new LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false));
-        this.dialogNewCatBinding.recycler.setAdapter(new ImageAdapter(true, this.context, this.imageList, new RecyclerItemClick() {
+        dialogNewCatBinding = AlertDialogNewCategoryBinding.inflate(LayoutInflater.from(context), (ViewGroup) null, false);
+        dialogNewCat = new Dialog(context);
+        dialogNewCat.setContentView(dialogNewCatBinding.getRoot());
+        dialogNewCat.setCancelable(false);
+        dialogNewCat.getWindow().setBackgroundDrawableResource(17170445);
+        dialogNewCat.getWindow().setLayout(-1, -2);
+        dialogNewCatBinding.txtTitle.setText(R.string.add_new_category);
+        dialogNewCatBinding.recycler.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
+        dialogNewCatBinding.recycler.setAdapter(new ImageAdapter(true, context, imageList, new RecyclerItemClick() {
             public void onClick(int i, int i2) {
                 selectedNewCatPos = i;
                 initView();
             }
         }));
-        this.dialogNewCatBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
+        dialogNewCatBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    AddEditVendorActivity.this.dialogNewCat.dismiss();
+                    dialogNewCat.dismiss();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
-        this.dialogNewCatBinding.btnOk.setOnClickListener(new View.OnClickListener() {
+        dialogNewCatBinding.btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 long j;
                 model.setName(binding.etName.getText().toString());
                 model.setNote(binding.etNote.getText().toString());
-                if (AddEditVendorActivity.this.isValidNewCat(AddEditVendorActivity.this.dialogNewCatBinding)) {
-                    CategoryRowModel categoryRowModel = new CategoryRowModel(AppConstants.getUniqueId(), AddEditVendorActivity.this.dialogNewCatBinding.etName.getText().toString().trim(), ((ImageRowModel) AddEditVendorActivity.this.imageList.get(AddEditVendorActivity.this.selectedNewCatPos)).getId());
+                if (isValidNewCat(dialogNewCatBinding)) {
+                    CategoryRowModel categoryRowModel = new CategoryRowModel(AppConstants.getUniqueId(), dialogNewCatBinding.etName.getText().toString().trim(), ((ImageRowModel) imageList.get(selectedNewCatPos)).getId());
                     try {
                         categoryRowModel.getName().trim();
-                        j = AddEditVendorActivity.this.db.categoryDao().insert(categoryRowModel);
+                        j = db.categoryDao().insert(categoryRowModel);
                     } catch (Exception e) {
                         e.printStackTrace();
                         j = 0;
                     }
                     if (j > 0) {
-                        AddEditVendorActivity.this.selectionAllCategory(false);
+                        selectionAllCategory(false);
                         categoryRowModel.setSelected(true);
-                        AddEditVendorActivity.this.categoryList.add(categoryRowModel);
-                        int unused = AddEditVendorActivity.this.selectedCategoryPos = AddEditVendorActivity.this.categoryList.size() - 1;
-                        AddEditVendorActivity.this.showDialogCategoryList();
+                        categoryList.add(categoryRowModel);
+                        int unused = selectedCategoryPos = categoryList.size() - 1;
+                        showDialogCategoryList();
                     }
-                    AddEditVendorActivity.this.dialogNewCatBinding.etName.setText("");
+                    dialogNewCatBinding.etName.setText("");
                 }
                 try {
-                    AddEditVendorActivity.this.dialogNewCat.dismiss();
+                    dialogNewCat.dismiss();
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }
@@ -567,13 +573,13 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
     public void showNewCatList() {
         try {
-            this.dialogNewCatBinding.recycler.scrollToPosition(this.selectedNewCatPos);
+            dialogNewCatBinding.recycler.scrollToPosition(selectedNewCatPos);
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            if (this.dialogNewCat != null && !this.dialogNewCat.isShowing()) {
-                this.dialogNewCat.show();
+            if (dialogNewCat != null && !dialogNewCat.isShowing()) {
+                dialogNewCat.show();
             }
         } catch (Exception e2) {
             e2.printStackTrace();
@@ -587,13 +593,13 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
 
     public void setRecycler() {
-        this.binding.recycler.setLayoutManager(new LinearLayoutManager(this.context));
-        this.binding.recycler.setAdapter(new PaymentAdapter(this.context, this.model.getArrayList(), new RecyclerItemClick() {
+        binding.recycler.setLayoutManager(new LinearLayoutManager(context));
+        binding.recycler.setAdapter(new PaymentAdapter(context, model.getArrayList(), new RecyclerItemClick() {
             public void onClick(int i, int i2) {
                 if (i2 == 2) {
-                    AddEditVendorActivity.this.updateTotal();
+                    updateTotal();
                 } else {
-                    AddEditVendorActivity.this.openItemDetail(i, AddEditVendorActivity.this.model.getArrayList().get(i), true);
+                    openItemDetail(i, model.getArrayList().get(i), true);
                 }
             }
         }));
@@ -602,7 +608,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     private void addItem() {
         if (isAddUpdate(false)) {
             PaymentRowModel paymentRowModel = new PaymentRowModel();
-            paymentRowModel.setParentId(this.model.getId());
+            paymentRowModel.setParentId(model.getId());
             paymentRowModel.setType(2);
             paymentRowModel.setId(AppConstants.getUniqueId());
             paymentRowModel.setDateInMillis(Calendar.getInstance().getTimeInMillis());
@@ -612,7 +618,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
 
     public void openItemDetail(int i, PaymentRowModel paymentRowModel, boolean z) {
-        Intent intent = new Intent(this.context, AddEditPaymentActivity.class);
+        Intent intent = new Intent(context, AddEditPaymentActivity.class);
         intent.putExtra(AddEditPaymentActivity.EXTRA_IS_EDIT, z);
         intent.putExtra(AddEditPaymentActivity.EXTRA_POSITION, i);
         intent.putExtra(AddEditPaymentActivity.EXTRA_MODEL, paymentRowModel);
@@ -621,16 +627,16 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
     private void notifyAdapter() {
         setViewVisibility();
-        if (this.binding.recycler.getAdapter() != null) {
-            this.binding.recycler.getAdapter().notifyDataSetChanged();
+        if (binding.recycler.getAdapter() != null) {
+            binding.recycler.getAdapter().notifyDataSetChanged();
         }
     }
 
     private void setViewVisibility() {
         int i = 8;
-        this.binding.linData.setVisibility(this.model.isListData() ? View.VISIBLE : View.GONE);
-        LinearLayout linearLayout = this.binding.linNoData;
-        if (!this.model.isListData()) {
+        binding.linData.setVisibility(model.isListData() ? View.VISIBLE : View.GONE);
+        LinearLayout linearLayout = binding.linNoData;
+        if (!model.isListData()) {
             i = 0;
         }
         linearLayout.setVisibility(i);
@@ -639,24 +645,28 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     private boolean isAddUpdate(boolean z) {
         model.setName(binding.etName.getText().toString());
         model.setNote(binding.etNote.getText().toString());
+        model.setPhoneNo(binding.etPhoneNumber.getText().toString().trim());
+        model.setEmailId(binding.etEmailId.getText().toString().trim());
+        model.setWebSite(binding.etWebsite.getText().toString().trim());
+        model.setAddress(binding.etAddress.getText().toString().trim());
         if (!isValid()) {
             return false;
         }
         try {
-            this.model.getName().trim();
-            this.model.getPhoneNo().trim();
-            this.model.getEmailId().trim();
-            this.model.getWebSite().trim();
-            if (this.model.getId() != null) {
-                this.db.vendorDao().update(this.model);
+            model.getName().trim();
+            model.getPhoneNo().trim();
+            model.getEmailId().trim();
+            model.getWebSite().trim();
+            if (model.getId() != null) {
+                db.vendorDao().update(model);
             } else {
-                this.model.setId(AppConstants.getUniqueId());
-                this.db.vendorDao().insert(this.model);
+                model.setId(AppConstants.getUniqueId());
+                db.vendorDao().insert(model);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        this.model.setEdit(false);
+        model.setEdit(false);
         if (!z) {
             return true;
         }
@@ -666,16 +676,16 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
     private boolean isValid() {
 
-        if (this.model.getName().trim().isEmpty()) {
+        if (model.getName().trim().isEmpty()) {
             Context context = this.context;
-            EditText editText = this.binding.etName;
+            EditText editText = binding.etName;
             AppConstants.requestFocusAndError(context, editText, getString(R.string.please_enter) + " " + getString(R.string.name));
             return false;
-        } else if (this.model.getExpectedAmount() > 0.0d) {
+        } else if (model.getExpectedAmount() > 0.0d) {
             return true;
         } else {
-            Context context2 = this.context;
-            EditText editText2 = this.binding.etEstimatedAmount;
+            Context context2 = context;
+            EditText editText2 = binding.etEstimatedAmount;
             AppConstants.requestFocusAndError(context2, editText2, getString(R.string.please_enter) + " " + getString(R.string.estimated_amount));
             return false;
         }
@@ -688,18 +698,18 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         intent.putExtra(EXTRA_IS_EDIT, getIntent().getBooleanExtra(EXTRA_IS_EDIT, false));
         intent.putExtra(EXTRA_POSITION, getIntent().getIntExtra(EXTRA_POSITION, 0));
         intent.putExtra(EXTRA_POSITION_MAIN, getIntent().getIntExtra(EXTRA_POSITION_MAIN, 0));
-        intent.putExtra(EXTRA_MODEL, this.model);
+        intent.putExtra(EXTRA_MODEL, model);
         setResult(-1, intent);
 
         super.onBackPressed();
     }
 
     public void pickContactPerm() {
-        if (isHasPermissions(this.context, "android.permission.READ_CONTACTS")) {
+        if (isHasPermissions(context, "android.permission.READ_CONTACTS")) {
             pickContact();
             return;
         }
-        requestPermissions(this.context, getString(R.string.rationale_contact), 1051, "android.permission.READ_CONTACTS");
+        requestPermissions(context, getString(R.string.rationale_contact), 1051, "android.permission.READ_CONTACTS");
     }
 
     private boolean isHasPermissions(Context context, String... strArr) {
@@ -796,11 +806,11 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
                                     string = query.getString(query.getColumnIndex("data1"));
                                     query.close();
                                     str5 = string;
-                                    this.model.setName(str);
-                                    this.model.setPhoneNo(str2);
-                                    this.model.setEmailId(str3);
-                                    this.model.setAddress(str4);
-                                    this.model.setWebSite(str5);
+                                    model.setName(str);
+                                    model.setPhoneNo(str2);
+                                    model.setEmailId(str3);
+                                    model.setAddress(str4);
+                                    model.setWebSite(str5);
                                 }
                                 ContentResolver contentResolver32 = getContentResolver();
                                 Uri uri32 = ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_URI;
@@ -819,11 +829,11 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
                                     string = query.getString(query.getColumnIndex("data1"));
                                     query.close();
                                     str5 = string;
-                                    this.model.setName(str);
-                                    this.model.setPhoneNo(str2);
-                                    this.model.setEmailId(str3);
-                                    this.model.setAddress(str4);
-                                    this.model.setWebSite(str5);
+                                    model.setName(str);
+                                    model.setPhoneNo(str2);
+                                    model.setEmailId(str3);
+                                    model.setAddress(str4);
+                                    model.setWebSite(str5);
                                 }
                                 ContentResolver contentResolver422 = getContentResolver();
                                 Uri uri422 = ContactsContract.Data.CONTENT_URI;
@@ -836,17 +846,17 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
                                     e = e4;
                                     str5 = string;
                                     e.printStackTrace();
-                                    this.model.setName(str);
-                                    this.model.setPhoneNo(str2);
-                                    this.model.setEmailId(str3);
-                                    this.model.setAddress(str4);
-                                    this.model.setWebSite(str5);
+                                    model.setName(str);
+                                    model.setPhoneNo(str2);
+                                    model.setEmailId(str3);
+                                    model.setAddress(str4);
+                                    model.setWebSite(str5);
                                 }
-                                this.model.setName(str);
-                                this.model.setPhoneNo(str2);
-                                this.model.setEmailId(str3);
-                                this.model.setAddress(str4);
-                                this.model.setWebSite(str5);
+                                model.setName(str);
+                                model.setPhoneNo(str2);
+                                model.setEmailId(str3);
+                                model.setAddress(str4);
+                                model.setWebSite(str5);
                             } catch (Exception e5) {
                                 e5.printStackTrace();
                                 return;
@@ -874,11 +884,11 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
                 string = query.getString(query.getColumnIndex("data1"));
                 query.close();
                 str5 = string;
-                this.model.setName(str);
-                this.model.setPhoneNo(str2);
-                this.model.setEmailId(str3);
-                this.model.setAddress(str4);
-                this.model.setWebSite(str5);
+                model.setName(str);
+                model.setPhoneNo(str2);
+                model.setEmailId(str3);
+                model.setAddress(str4);
+                model.setWebSite(str5);
             }
             try {
                 ContentResolver contentResolver222 = getContentResolver();
@@ -903,11 +913,11 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
                 string = query.getString(query.getColumnIndex("data1"));
                 query.close();
                 str5 = string;
-                this.model.setName(str);
-                this.model.setPhoneNo(str2);
-                this.model.setEmailId(str3);
-                this.model.setAddress(str4);
-                this.model.setWebSite(str5);
+                model.setName(str);
+                model.setPhoneNo(str2);
+                model.setEmailId(str3);
+                model.setAddress(str4);
+                model.setWebSite(str5);
             }
             try {
                 ContentResolver contentResolver32222 = getContentResolver();
@@ -926,11 +936,11 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
                 string = query.getString(query.getColumnIndex("data1"));
                 query.close();
                 str5 = string;
-                this.model.setName(str);
-                this.model.setPhoneNo(str2);
-                this.model.setEmailId(str3);
-                this.model.setAddress(str4);
-                this.model.setWebSite(str5);
+                model.setName(str);
+                model.setPhoneNo(str2);
+                model.setEmailId(str3);
+                model.setAddress(str4);
+                model.setWebSite(str5);
             }
             try {
                 ContentResolver contentResolver4222222 = getContentResolver();
@@ -943,20 +953,20 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
                 }
             } catch (Exception e9) {
 
-                this.model.setName(str);
-                this.model.setPhoneNo(str2);
-                this.model.setEmailId(str3);
-                this.model.setAddress(str4);
-                this.model.setWebSite(str5);
+                model.setName(str);
+                model.setPhoneNo(str2);
+                model.setEmailId(str3);
+                model.setAddress(str4);
+                model.setWebSite(str5);
             }
         } else {
             str = "";
         }
-        this.model.setName(str);
-        this.model.setPhoneNo(str2);
-        this.model.setEmailId(str3);
-        this.model.setAddress(str4);
-        this.model.setWebSite(str5);
+        model.setName(str);
+        model.setPhoneNo(str2);
+        model.setEmailId(str3);
+        model.setAddress(str4);
+        model.setWebSite(str5);
     }
 
     private void updateList(Intent intent) {
@@ -965,11 +975,11 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
                 if (intent.hasExtra(EXTRA_MODEL)) {
                     PaymentRowModel paymentRowModel = (PaymentRowModel) intent.getParcelableExtra(EXTRA_MODEL);
                     if (intent.getBooleanExtra(EXTRA_IS_DELETED, false)) {
-                        this.model.getArrayList().remove(intent.getIntExtra(EXTRA_POSITION, 0));
+                        model.getArrayList().remove(intent.getIntExtra(EXTRA_POSITION, 0));
                     } else if (intent.getBooleanExtra(EXTRA_IS_EDIT, false)) {
-                        this.model.getArrayList().set(intent.getIntExtra(EXTRA_POSITION, 0), paymentRowModel);
+                        model.getArrayList().set(intent.getIntExtra(EXTRA_POSITION, 0), paymentRowModel);
                     } else {
-                        this.model.getArrayList().add(paymentRowModel);
+                        model.getArrayList().add(paymentRowModel);
                     }
                     updateTotal();
                     notifyAdapter();
@@ -983,20 +993,20 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
     public void updateTotal() {
         try {
-            this.model.setPendingAmount(this.db.paymentDao().getTotal(this.model.getId(), 1));
+            model.setPendingAmount(db.paymentDao().getTotal(model.getId(), 1));
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            this.model.setPaidAmount(this.db.paymentDao().getTotal(this.model.getId(), 0));
+            model.setPaidAmount(db.paymentDao().getTotal(model.getId(), 0));
         } catch (Exception e2) {
             e2.printStackTrace();
         }
-        this.isUpdateList = true;
+        isUpdateList = true;
     }
 
     public void onBackPressed() {
-        if (this.isUpdateList) {
+        if (isUpdateList) {
             openItemList(false);
         } else {
             super.onBackPressed();
@@ -1005,7 +1015,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
     public void dialPhoneNumber(String str) {
         if (str == null || str.trim().length() <= 0) {
-            AppConstants.toastShort(this.context, "Phone number not found");
+            AppConstants.toastShort(context, "Phone number not found");
             return;
         }
         try {
@@ -1018,7 +1028,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
     public void sendEmail(String str) {
         if (str == null || str.trim().length() <= 0) {
-            AppConstants.toastShort(this.context, "Email id not found");
+            AppConstants.toastShort(context, "Email id not found");
             return;
         }
         try {
@@ -1030,7 +1040,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
     public void openUrl(String str) {
         if (str == null || str.trim().length() <= 0) {
-            AppConstants.toastShort(this.context, "Website not found");
+            AppConstants.toastShort(context, "Website not found");
             return;
         }
         if (!str.startsWith("http://") && !str.startsWith("https://")) {
@@ -1062,7 +1072,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
     public void openMap(String str) {
         if (str == null || str.trim().length() <= 0) {
-            AppConstants.toastShort(this.context, "Address not found");
+            AppConstants.toastShort(context, "Address not found");
             return;
         }
         try {
@@ -1083,115 +1093,115 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
     }
 
     private void saveDoc() {
-        new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
+        new BackgroundAsync(context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
-                AddEditVendorActivity.this.initDoc();
+                initDoc();
             }
 
             public void doInBackground() {
-                AddEditVendorActivity.this.fillDocData();
+                fillDocData();
             }
 
             public void onPostExecute() {
-                AddEditVendorActivity.this.addingDocFooter();
+                addingDocFooter();
             }
         }).execute(new Object[0]);
     }
 
 
     public void initDoc() {
-        this.document = new Document(PageSize.A4, 16.0f, 16.0f, 16.0f, 16.0f);
-        this.dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Constants.REPORT_DIRECTORY);
-        if (!this.dir.exists()) {
-            this.dir.mkdirs();
+        document = new Document(PageSize.A4, 16.0f, 16.0f, 16.0f, 16.0f);
+        dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Constants.REPORT_DIRECTORY);
+        if (!dir.exists()) {
+            dir.mkdirs();
         }
         try {
-            this.fileName = this.repoType + "_" + this.repoTitle + "_" + getCurrentDateTime() + ".pdf";
+            fileName = repoType + "_" + repoTitle + "_" + getCurrentDateTime() + ".pdf";
             try {
-                this.writer = PdfWriter.getInstance(this.document, new FileOutputStream(new File(this.dir, this.fileName)));
+                writer = PdfWriter.getInstance(document, new FileOutputStream(new File(dir, fileName)));
             } catch (DocumentException e) {
                 e.printStackTrace();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        this.document.open();
+        document.open();
     }
 
 
     public void fillDocData() {
-        this.paragraph = new Paragraph((this.repoType + " " + this.repoTitle).toUpperCase(), new Font(Font.FontFamily.TIMES_ROMAN, 18.0f, 1));
-        this.paragraph.setAlignment(1);
-        this.paragraph.add((Element) new Paragraph(" "));
+        paragraph = new Paragraph((repoType + " " + repoTitle).toUpperCase(), new Font(Font.FontFamily.TIMES_ROMAN, 18.0f, 1));
+        paragraph.setAlignment(1);
+        paragraph.add((Element) new Paragraph(" "));
         try {
-            this.document.add(this.paragraph);
+            document.add(paragraph);
         } catch (DocumentException e) {
             e.printStackTrace();
         }
-        this.paragraph = new Paragraph("");
-        this.paragraph.add((Element) new Paragraph(" "));
+        paragraph = new Paragraph("");
+        paragraph.add((Element) new Paragraph(" "));
         try {
-            this.document.add(this.paragraph);
+            document.add(paragraph);
         } catch (DocumentException e2) {
             e2.printStackTrace();
         }
-        VendorRowModel vendorRowModel = this.model;
-        Paragraph paragraph2 = this.paragraph;
+        VendorRowModel vendorRowModel = model;
+        Paragraph paragraph2 = paragraph;
         paragraph2.add((Element) new Paragraph("Name : " + vendorRowModel.getName(), new Font(Font.FontFamily.TIMES_ROMAN, 12.0f, 1)));
-        Paragraph paragraph3 = this.paragraph;
+        Paragraph paragraph3 = paragraph;
         paragraph3.add((Element) new Paragraph("Category : " + vendorRowModel.getCategoryRowModel().getName(), new Font(Font.FontFamily.TIMES_ROMAN, 12.0f, 1)));
-        Paragraph paragraph4 = this.paragraph;
+        Paragraph paragraph4 = paragraph;
         paragraph4.add((Element) new Paragraph("Status : " + vendorRowModel.getStatusText(), new Font(Font.FontFamily.TIMES_ROMAN, 12.0f, 1)));
-        Paragraph paragraph5 = this.paragraph;
+        Paragraph paragraph5 = paragraph;
         paragraph5.add((Element) new Paragraph("Estimated amount : " + vendorRowModel.getExpectedAmountFormatted(), new Font(Font.FontFamily.TIMES_ROMAN, 12.0f, 1)));
-        Paragraph paragraph6 = this.paragraph;
+        Paragraph paragraph6 = paragraph;
         paragraph6.add((Element) new Paragraph("Balance : " + vendorRowModel.getBalanceFormatted(), new Font(Font.FontFamily.TIMES_ROMAN, 12.0f, 1)));
-        Paragraph paragraph7 = this.paragraph;
+        Paragraph paragraph7 = paragraph;
         paragraph7.add((Element) new Paragraph("Paid : " + vendorRowModel.getPaidAmountFormatted(), new Font(Font.FontFamily.TIMES_ROMAN, 12.0f, 1)));
-        Paragraph paragraph8 = this.paragraph;
+        Paragraph paragraph8 = paragraph;
         paragraph8.add((Element) new Paragraph("Pending : " + vendorRowModel.getPendingAmountFormatted(), new Font(Font.FontFamily.TIMES_ROMAN, 12.0f, 1)));
         String note = vendorRowModel.getNote();
         if (!note.isEmpty()) {
-            Paragraph paragraph9 = this.paragraph;
+            Paragraph paragraph9 = paragraph;
             paragraph9.add((Element) new Paragraph("Note : " + note, new Font(Font.FontFamily.TIMES_ROMAN, 12.0f, 1)));
         }
         String phoneNo = vendorRowModel.getPhoneNo();
         if (!phoneNo.isEmpty()) {
-            Paragraph paragraph10 = this.paragraph;
+            Paragraph paragraph10 = paragraph;
             paragraph10.add((Element) new Paragraph("Phone No : " + phoneNo, new Font(Font.FontFamily.TIMES_ROMAN, 12.0f, 1)));
         }
         String emailId = vendorRowModel.getEmailId();
         if (!emailId.isEmpty()) {
-            Paragraph paragraph11 = this.paragraph;
+            Paragraph paragraph11 = paragraph;
             paragraph11.add((Element) new Paragraph("Email Id : " + emailId, new Font(Font.FontFamily.TIMES_ROMAN, 12.0f, 1)));
         }
         String webSite = vendorRowModel.getWebSite();
         if (!webSite.isEmpty()) {
-            Paragraph paragraph12 = this.paragraph;
+            Paragraph paragraph12 = paragraph;
             paragraph12.add((Element) new Paragraph("WebSite : " + webSite, new Font(Font.FontFamily.TIMES_ROMAN, 12.0f, 1)));
         }
         String address = vendorRowModel.getAddress();
         if (!address.isEmpty()) {
-            Paragraph paragraph13 = this.paragraph;
+            Paragraph paragraph13 = paragraph;
             paragraph13.add((Element) new Paragraph("Address : " + address, new Font(Font.FontFamily.TIMES_ROMAN, 12.0f, 1)));
         }
-        this.paragraph.setAlignment(0);
+        paragraph.setAlignment(0);
         try {
-            this.document.add(this.paragraph);
+            document.add(paragraph);
         } catch (DocumentException e3) {
             e3.printStackTrace();
         }
         if (vendorRowModel.getArrayList() != null && vendorRowModel.getArrayList().size() > 0) {
-            this.paragraph = new Paragraph(this.subTitle.toUpperCase(), new Font(Font.FontFamily.TIMES_ROMAN, 14.0f, 0));
-            this.paragraph.add((Element) new Paragraph(" "));
-            this.paragraph.setAlignment(1);
+            paragraph = new Paragraph(subTitle.toUpperCase(), new Font(Font.FontFamily.TIMES_ROMAN, 14.0f, 0));
+            paragraph.add((Element) new Paragraph(" "));
+            paragraph.setAlignment(1);
             try {
-                this.document.add(this.paragraph);
+                document.add(paragraph);
             } catch (DocumentException e4) {
                 e4.printStackTrace();
             }
             try {
-                this.document.add(getTable(vendorRowModel.getArrayList()));
+                document.add(getTable(vendorRowModel.getArrayList()));
             } catch (DocumentException e5) {
                 e5.printStackTrace();
             }
@@ -1223,9 +1233,9 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
 
 
     public void addingDocFooter() {
-        new FooterPageEvent().onEndPage(this.writer, this.document);
+        new FooterPageEvent().onEndPage(writer, document);
         try {
-            this.document.close();
+            document.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -1270,7 +1280,7 @@ public class AddEditVendorActivity extends BaseActivityRecyclerBinding implement
         public void onEndPage(PdfWriter pdfWriter, Document document) {
             try {
                 PdfContentByte directContent = pdfWriter.getDirectContent();
-                ColumnText.showTextAligned(directContent, 1, new Phrase("Created by : " + AddEditVendorActivity.this.getString(R.string.app_name), new Font(Font.FontFamily.TIMES_ROMAN, 16.0f, 1)), document.leftMargin() + ((document.right() - document.left()) / 2.0f), document.bottom() + 10.0f, 0.0f);
+                ColumnText.showTextAligned(directContent, 1, new Phrase("Created by : " + getString(R.string.app_name), new Font(Font.FontFamily.TIMES_ROMAN, 16.0f, 1)), document.leftMargin() + ((document.right() - document.left()) / 2.0f), document.bottom() + 10.0f, 0.0f);
             } catch (Exception e) {
                 e.printStackTrace();
             }

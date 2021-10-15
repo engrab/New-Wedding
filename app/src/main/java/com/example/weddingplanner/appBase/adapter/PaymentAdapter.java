@@ -39,6 +39,10 @@ public class PaymentAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
         if (viewHolder instanceof RowHolder) {
             RowHolder rowHolder = (RowHolder) viewHolder;
+            rowHolder.binding.tvTitle.setText(arrayList.get(i).getName());
+            rowHolder.binding.tvAmount.setText(arrayList.get(i).getAmountFormatted());
+            rowHolder.binding.tvDate.setText(arrayList.get(i).getDateFormatted());
+
 //            rowHolder.binding.setRowModel(this.arrayList.get(i));
 //            rowHolder.binding.executePendingBindings();
         }

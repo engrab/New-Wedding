@@ -81,15 +81,20 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
     }
 
     private void setModelDetail() {
-        boolean z = false;
-        if (getIntent().hasExtra(EXTRA_IS_EDIT) && getIntent().getBooleanExtra(EXTRA_IS_EDIT, false)) {
-            z = true;
-        }
-        this.isEdit = z;
+        binding.llCompanion.setVisibility(View.GONE);
+
         try {
             this.model = (GuestRowModel) getIntent().getParcelableExtra(EXTRA_MODEL);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT, false);
+        if (isEdit){
+            binding.etName.setText(model.getName());
+            binding.etNote.setText(model.getNote());
+            binding.etPhoneNumber.setText(model.getPhoneNo());
+            binding.etEmailId.setText(model.getEmailId());
+            binding.etAddress.setText(model.getAddress());
         }
     }
 
@@ -113,6 +118,8 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
             binding.includedToolbar.spinner.setVisibility(View.GONE);
             binding.includedToolbar.imageHome.setVisibility(View.GONE);
             binding.includedToolbar.imgDelete.setVisibility(View.VISIBLE);
+            binding.includedToolbar.imgShare.setVisibility(View.GONE);
+
         }else {
             binding.includedToolbar.imgDelete.setVisibility(View.GONE);
             binding.includedToolbar.imgAdd.setVisibility(View.GONE);
@@ -122,6 +129,7 @@ public class AddEditCompanionsActivity extends BaseActivityRecyclerBinding imple
             binding.includedToolbar.etOther.setVisibility(View.GONE);
             binding.includedToolbar.spinner.setVisibility(View.GONE);
             binding.includedToolbar.imageHome.setVisibility(View.GONE);
+            binding.includedToolbar.imgShare.setVisibility(View.GONE);
         }
 
     }

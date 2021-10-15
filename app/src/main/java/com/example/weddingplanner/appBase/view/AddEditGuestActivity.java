@@ -117,6 +117,10 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
             this.model = (GuestRowModel) getIntent().getParcelableExtra(EXTRA_MODEL);
             binding.etName.setText(model.getName());
             binding.etNote.setText(model.getNote());
+            binding.etPhoneNumber.setText(model.getPhoneNo());
+            binding.etEmailId.setText(model.getEmailId());
+            binding.etAddress.setText(model.getAddress());
+
             return;
         }
 
@@ -347,6 +351,9 @@ public class AddEditGuestActivity extends BaseActivityRecyclerBinding implements
     private boolean isAddUpdate(boolean z) {
         model.setName(binding.etName.getText().toString());
         model.setNote(binding.etNote.getText().toString());
+        model.setPhoneNo(binding.etPhoneNumber.getText().toString().trim());
+        model.setEmailId(binding.etEmailId.getText().toString().trim());
+        model.setAddress(binding.etAddress.getText().toString().trim());
         if (!isValid()) {
             return false;
         }

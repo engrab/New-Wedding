@@ -120,11 +120,11 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
 
             public void onOk() {
                 try {
-                    AddEditPaymentActivity.this.db.paymentDao().delete(AddEditPaymentActivity.this.model);
+                    db.paymentDao().delete(model);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                AddEditPaymentActivity.this.openItemList(true);
+                openItemList(true);
             }
         });
     }
@@ -177,7 +177,7 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
                     instance.set(1, i);
                     instance.set(2, i2);
                     instance.set(5, i3);
-                    AddEditPaymentActivity.this.model.setDateInMillis(instance.getTimeInMillis());
+                    model.setDateInMillis(instance.getTimeInMillis());
                 }
             }, instance.get(1), instance.get(2), instance.get(5)).show();
         } catch (Exception e) {
@@ -195,6 +195,9 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
         if (this.isEdit) {
             try {
                 this.binding.etAmount.setText(AppConstants.getFormattedPrice(this.model.getAmount()));
+                binding.etName.setText(model.getName());
+                binding.txtDate.setText(model.getDateFormatted());
+
             } catch (NumberFormatException e) {
                 this.binding.etAmount.setText(0);
                 e.printStackTrace();
@@ -212,9 +215,10 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
 
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
                 try {
-                    AddEditPaymentActivity.this.model.setAmount(Double.valueOf(charSequence.toString().trim()).doubleValue());
+                    binding.txtDate.setText(model.getDateFormatted());
+                    model.setAmount(Double.valueOf(charSequence.toString().trim()).doubleValue());
                 } catch (NumberFormatException e) {
-                    AddEditPaymentActivity.this.model.setAmount(0.0d);
+                    model.setAmount(0.0d);
                     e.printStackTrace();
                 }
             }
@@ -222,6 +226,8 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
     }
 
     private void addUpdate() {
+        model.setName(binding.etName.getText().toString().trim());
+        model.setAmount(Double.parseDouble(binding.etAmount.getText().toString().trim()));
         if (isValid()) {
             try {
                 this.model.getName().trim();
@@ -238,7 +244,7 @@ public class AddEditPaymentActivity extends BaseActivityBinding {
     }
 
     private boolean isValid() {
-        model.setName(binding.etName.getText().toString().trim());
+
         if (this.model.getName().trim().isEmpty()) {
             Context context = this.context;
             EditText editText = this.binding.etName;
