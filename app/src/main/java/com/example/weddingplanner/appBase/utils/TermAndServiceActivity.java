@@ -11,7 +11,6 @@ import android.view.View;
 import com.example.weddingplanner.R;
 import com.example.weddingplanner.appBase.appPref.AppPref;
 import com.example.weddingplanner.appBase.view.AddEditProfileActivity;
-import com.example.weddingplanner.ui.CreateUserFormActivity;
 import com.example.weddingplanner.ui.MainActivityDashboard;
 
 public class TermAndServiceActivity extends AppCompatActivity implements View.OnClickListener {

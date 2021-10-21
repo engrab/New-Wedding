@@ -8,411 +8,433 @@
     android:background="@drawable/ic_main_bg"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
 
         <LinearLayout
-            android:id="@+id/includedToolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_above="@id/llAdds"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+            <LinearLayout
+                android:id="@+id/includedToolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:padding="0dp"
-                android:theme="@style/AppTheme"
-                app:contentInsetEnd="0dp"
-                app:contentInsetStart="0dp">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_height="?attr/actionBarSize"
+                    android:padding="0dp"
+                    android:theme="@style/AppTheme"
+                    app:contentInsetEnd="0dp"
+                    app:contentInsetStart="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="8dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal">
 
-                            <ImageView
-                                android:id="@+id/img_menu"
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentLeft="true"
-                                android:layout_marginTop="@dimen/_5sdp"
-                                android:foreground="?android:attr/selectableItemBackground"
+                                android:layout_marginLeft="8dp"
+                                android:layout_weight="1">
 
-                                android:padding="@dimen/_10sdp"
-                                android:src="@drawable/ic_menu" />
+                                <ImageView
+                                    android:id="@+id/img_menu"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:foreground="?android:attr/selectableItemBackground"
 
-                            <TextView
-                                android:id="@+id/textTitle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="4dp"
-                                android:ellipsize="end"
-                                android:fontFamily="@font/regular"
-                                android:singleLine="true"
-                                android:text="@string/appTitle"
-                                android:textColor="@color/black"
-                                android:textSize="20dp" />
+                                    android:padding="@dimen/_10sdp"
+                                    android:src="@drawable/ic_menu" />
+
+                                <TextView
+                                    android:id="@+id/textTitle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="4dp"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/regular"
+                                    android:singleLine="true"
+                                    android:text="@string/appTitle"
+                                    android:textColor="@color/black"
+                                    android:textSize="20dp" />
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-            </androidx.appcompat.widget.Toolbar>
+                </androidx.appcompat.widget.Toolbar>
 
 
-        </LinearLayout>
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <LinearLayout
-            android:id="@+id/linTop"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
             <LinearLayout
+                android:id="@+id/linTop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <FrameLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginRight="140dp"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txtMarriageName"
-                            style="@style/TextViewTitleCommon"
-                            android:maxLines="2"
-                            android:singleLine="false"
-                            android:text="Groom and Bride"
-                            android:textColor="@color/black"
-                            android:textSize="20dp" />
+                        android:layout_marginLeft="8dp"
+                        android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:gravity="center">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/txtDays"
-                                    style="@style/TextViewTitleCommon"
-                                    android:text="00"
-                                    android:textColor="@color/black"
-                                    android:textSize="20dp" />
-
-                                <TextView
-                                    style="@style/TextViewLightCommon"
-                                    android:layout_width="wrap_content"
-                                    android:gravity="center"
-                                    android:text="Days"
-                                    android:textColor="@color/black"
-                                    android:textSize="12dp" />
-                            </LinearLayout>
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="140dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/txtMarriageName"
                                 style="@style/TextViewTitleCommon"
-                                android:layout_gravity="top"
-                                android:text=":"
+                                android:maxLines="2"
+                                android:singleLine="false"
+                                android:text="Groom and Bride"
                                 android:textColor="@color/black"
                                 android:textSize="20dp" />
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                                android:layout_marginTop="8dp"
+                                android:gravity="center">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/txtDays"
+                                        style="@style/TextViewTitleCommon"
+                                        android:text="00"
+                                        android:textColor="@color/black"
+                                        android:textSize="20dp" />
+
+                                    <TextView
+                                        style="@style/TextViewLightCommon"
+                                        android:layout_width="wrap_content"
+                                        android:gravity="center"
+                                        android:text="Days"
+                                        android:textColor="@color/black"
+                                        android:textSize="12dp" />
+                                </LinearLayout>
 
                                 <TextView
-                                    android:id="@+id/txtHours"
                                     style="@style/TextViewTitleCommon"
-                                    android:text="00"
+                                    android:layout_gravity="top"
+                                    android:text=":"
                                     android:textColor="@color/black"
                                     android:textSize="20dp" />
 
-                                <TextView
-                                    style="@style/TextViewLightCommon"
+                                <LinearLayout
                                     android:layout_width="wrap_content"
-                                    android:gravity="center"
-                                    android:text="Hrs"
-                                    android:textColor="@color/black"
-                                    android:textSize="12dp" />
-                            </LinearLayout>
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
 
-                            <TextView
-                                style="@style/TextViewTitleCommon"
-                                android:layout_gravity="top"
-                                android:text=":"
-                                android:textColor="@color/black"
-                                android:textSize="20dp" />
+                                    <TextView
+                                        android:id="@+id/txtHours"
+                                        style="@style/TextViewTitleCommon"
+                                        android:text="00"
+                                        android:textColor="@color/black"
+                                        android:textSize="20dp" />
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                                    <TextView
+                                        style="@style/TextViewLightCommon"
+                                        android:layout_width="wrap_content"
+                                        android:gravity="center"
+                                        android:text="Hrs"
+                                        android:textColor="@color/black"
+                                        android:textSize="12dp" />
+                                </LinearLayout>
 
                                 <TextView
-                                    android:id="@+id/txtMinutes"
                                     style="@style/TextViewTitleCommon"
-                                    android:text="00"
+                                    android:layout_gravity="top"
+                                    android:text=":"
                                     android:textColor="@color/black"
                                     android:textSize="20dp" />
 
-                                <TextView
-                                    style="@style/TextViewLightCommon"
+                                <LinearLayout
                                     android:layout_width="wrap_content"
-                                    android:gravity="center"
-                                    android:text="Mins"
-                                    android:textColor="@color/black"
-                                    android:textSize="12dp" />
-                            </LinearLayout>
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
 
-                            <TextView
-                                style="@style/TextViewTitleCommon"
-                                android:layout_gravity="top"
-                                android:text=":"
-                                android:textColor="@color/black"
-                                android:textSize="20dp" />
+                                    <TextView
+                                        android:id="@+id/txtMinutes"
+                                        style="@style/TextViewTitleCommon"
+                                        android:text="00"
+                                        android:textColor="@color/black"
+                                        android:textSize="20dp" />
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                                    <TextView
+                                        style="@style/TextViewLightCommon"
+                                        android:layout_width="wrap_content"
+                                        android:gravity="center"
+                                        android:text="Mins"
+                                        android:textColor="@color/black"
+                                        android:textSize="12dp" />
+                                </LinearLayout>
 
                                 <TextView
-                                    android:id="@+id/txtSeconds"
                                     style="@style/TextViewTitleCommon"
-                                    android:text="00"
+                                    android:layout_gravity="top"
+                                    android:text=":"
                                     android:textColor="@color/black"
                                     android:textSize="20dp" />
 
-                                <TextView
-                                    style="@style/TextViewLightCommon"
+                                <LinearLayout
                                     android:layout_width="wrap_content"
-                                    android:gravity="center"
-                                    android:text="Secs"
-                                    android:textColor="@color/black"
-                                    android:textSize="12dp" />
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/txtSeconds"
+                                        style="@style/TextViewTitleCommon"
+                                        android:text="00"
+                                        android:textColor="@color/black"
+                                        android:textSize="20dp" />
+
+                                    <TextView
+                                        style="@style/TextViewLightCommon"
+                                        android:layout_width="wrap_content"
+                                        android:gravity="center"
+                                        android:text="Secs"
+                                        android:textColor="@color/black"
+                                        android:textSize="12dp" />
+                                </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
 
 
-                </FrameLayout>
+                    </FrameLayout>
 
-                <TextView
-                    android:id="@+id/remainingTime"
-                    style="@style/TextViewTitleCommon"
-                    android:layout_width="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="timer"
-                    android:textColor="@color/actionbar"
-                    android:visibility="gone" />
+                    <TextView
+                        android:id="@+id/remainingTime"
+                        style="@style/TextViewTitleCommon"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="timer"
+                        android:textColor="@color/actionbar"
+                        android:visibility="gone" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/scrollRoot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fillViewport="true"
-            android:scrollbars="vertical">
-
-            <LinearLayout
-                android:id="@+id/linRoot"
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/scrollRoot"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:orientation="vertical">
+                android:fillViewport="true"
+                android:scrollbars="vertical">
 
                 <LinearLayout
+                    android:id="@+id/linRoot"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginRight="6dp"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="8dp"
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginRight="6dp"
+                        android:orientation="horizontal">
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardTasks"
-                        style="@style/CardViewDash"
-                        android:layout_weight="1"
-                        android:clickable="true"
-                        android:foreground="?android:attr/selectableItemBackground">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
 
-                        <ImageView
-                            android:layout_width="@dimen/_100sdp"
-                            android:layout_height="@dimen/_100sdp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/tasklist">
-
-                        </ImageView>
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5" />
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardGuests"
-                        style="@style/CardViewDash"
-                        android:layout_weight="1"
-                        android:clickable="true"
-                        android:foreground="?android:attr/selectableItemBackground">
-
-                        <ImageView
-                            android:layout_width="@dimen/_100sdp"
-                            android:layout_height="@dimen/_100sdp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/guests" />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="6dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardBudget"
-                        style="@style/CardViewDash"
-                        android:layout_weight="1"
-                        android:clickable="true"
-                        android:foreground="?android:attr/selectableItemBackground">
-
-                        <ImageView
-                            android:layout_width="@dimen/_100sdp"
-                            android:layout_height="@dimen/_100sdp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/budget" />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardVendor"
-                        style="@style/CardViewDash"
-                        android:layout_weight="1"
-                        android:clickable="true"
-                        android:foreground="?android:attr/selectableItemBackground">
-
-                        <ImageView
-                            android:layout_width="@dimen/_100sdp"
-                            android:layout_height="@dimen/_100sdp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/vendors" />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginRight="6dp"
-                    android:layout_marginBottom="20dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardDashboard"
-                        style="@style/CardViewDash"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:foreground="?android:attr/selectableItemBackground"
-                        app:cardElevation="2dp">
-
-                        <LinearLayout
-                            style="@style/LinearLayoutDashCard"
-                            android:layout_width="wrap_content"
-                            android:clickable="false"
-
-                            android:orientation="horizontal">
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardTasks"
+                            style="@style/CardViewDash"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:foreground="?android:attr/selectableItemBackground">
 
                             <ImageView
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
+                                android:layout_width="@dimen/_100sdp"
+                                android:layout_height="@dimen/_100sdp"
                                 android:layout_gravity="center"
-                                android:layout_marginRight="8dp"
-                                android:src="@drawable/drawer_dashboard"
-                                app:tint="@color/actionbar" />
+                                android:src="@drawable/tasklist">
 
-                            <TextView
-                                style="@style/TextViewDashCard"
-                                android:text="@string/drawerTitleHome"
-                                android:textColor="@color/actionbar" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                            </ImageView>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardGuests"
+                            style="@style/CardViewDash"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:foreground="?android:attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="@dimen/_100sdp"
+                                android:layout_height="@dimen/_100sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/guests" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="6dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardBudget"
+                            style="@style/CardViewDash"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:foreground="?android:attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="@dimen/_100sdp"
+                                android:layout_height="@dimen/_100sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/budget" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardVendor"
+                            style="@style/CardViewDash"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:foreground="?android:attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="@dimen/_100sdp"
+                                android:layout_height="@dimen/_100sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/vendors" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginBottom="20dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardDashboard"
+                            style="@style/CardViewDash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:cardElevation="2dp">
+
+                            <LinearLayout
+                                style="@style/LinearLayoutDashCard"
+                                android:layout_width="wrap_content"
+                                android:clickable="false"
+
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginRight="8dp"
+                                    android:src="@drawable/drawer_dashboard"
+                                    app:tint="@color/actionbar" />
+
+                                <TextView
+                                    style="@style/TextViewDashCard"
+                                    android:text="@string/drawerTitleHome"
+                                    android:textColor="@color/actionbar" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+            </androidx.core.widget.NestedScrollView>
 
-    </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llAdds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <com.tapdaq.sdk.TMBannerAdView
+                android:id="@+id/adBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
 
     <include
         android:id="@+id/nav_drawer"

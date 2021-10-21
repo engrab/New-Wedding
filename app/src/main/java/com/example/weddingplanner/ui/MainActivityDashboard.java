@@ -6,42 +6,42 @@ import android.content.Context;
 import android.content.Intent;
 
 import android.net.Uri;
-import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
+import com.example.weddingplanner.adsUtils.TapdaqAdsUtils;
 import com.example.weddingplanner.appBase.view.CostListActivity;
 import com.example.weddingplanner.appBase.view.GuestListActivity;
 import com.example.weddingplanner.appBase.view.TaskListActivity;
 import com.example.weddingplanner.appBase.view.VendorListActivity;
-import com.example.weddingplanner.appBase.view.WeddingProVersionActivity;
-import com.google.ads.mediation.admob.AdMobAdapter;
-import com.google.android.gms.ads.AdRequest;
 import com.example.weddingplanner.R;
 import com.example.weddingplanner.appBase.appPref.AppPref;
 import com.example.weddingplanner.appBase.baseClass.BaseActivityBinding;
 import com.example.weddingplanner.appBase.roomsDB.AppDataBase;
-import com.example.weddingplanner.appBase.utils.AdConstants;
 import com.example.weddingplanner.appBase.utils.AppConstants;
-import com.example.weddingplanner.appBase.utils.Constants;
-import com.example.weddingplanner.appBase.utils.TermAndServiceActivity;
 import com.example.weddingplanner.databinding.ActivityMainDashboardBinding;
+import com.tapdaq.sdk.STATUS;
+import com.tapdaq.sdk.TMBannerAdView;
+import com.tapdaq.sdk.Tapdaq;
+import com.tapdaq.sdk.TapdaqConfig;
+import com.tapdaq.sdk.common.TMAdError;
+import com.tapdaq.sdk.common.TMBannerAdSizes;
+import com.tapdaq.sdk.listeners.TMAdListener;
+import com.tapdaq.sdk.listeners.TMInitListener;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivityDashboard extends BaseActivityBinding {
+    private static final int REQUEST_CODE = 1002;
     public static Activity adActivity;
     private static Context maincontext;
     public static String strPrivacyUri = "https://www.google.com/";
@@ -57,11 +57,50 @@ public class MainActivityDashboard extends BaseActivityBinding {
         binding = ActivityMainDashboardBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        TapdaqConfig config = Tapdaq.getInstance().config();
+
+        config.setUserSubjectToGdprStatus(STATUS.TRUE); //GDPR declare if user is in EU
+        config.setConsentStatus(STATUS.TRUE); //GDPR consent must be obtained from the user
+        config.setAgeRestrictedUserStatus(STATUS.FALSE); //Is user subject to COPPA or GDPR age restrictions
+
+        Tapdaq.getInstance().initialize(this, "<APP_ID>", "<CLIENT_KEY>", config, new TapdaqInitListener());
+
+        TMBannerAdView ad = new TMBannerAdView(this); // Create ad view
+        binding.adBanner.addView(ad); // Insert view into layout
+        ad.load(this, TMBannerAdSizes.STANDARD, new TMAdListener()); // Load banner with predefined size using default placement
+
         db = AppDataBase.getAppDatabase(this);
+
         LoadAd();
         initGlid();
     }
+    @Override
+    protected void onDestroy() {
 
+        if (binding.adBanner != null) {
+            binding.adBanner.destroy(this);
+        }
+        super.onDestroy();
+    }
+    public class TapdaqInitListener extends TMInitListener {
+
+        public void didInitialise() {
+            super.didInitialise();
+            // Ads may now be requested
+
+            TapdaqAdsUtils.loadInterstitial(MainActivityDashboard.this);
+            TapdaqAdsUtils.showInterstitial(MainActivityDashboard.this);
+
+
+        }
+
+        @Override
+        public void didFailToInitialise(TMAdError error) {
+            super.didFailToInitialise(error);
+            //Tapdaq failed to initialise
+        }
+    }
     private void initGlid() {
         ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_dashboard).centerCrop()).into(binding.navDrawer.imgHome);
         ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_tasks).centerCrop()).into(binding.navDrawer.imgChecklist);
@@ -81,6 +120,7 @@ public class MainActivityDashboard extends BaseActivityBinding {
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 startActivity(new Intent(MainActivityDashboard.this, DashboardActivity.class));
+
             }
         });
         binding.navDrawer.llChecklist.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +165,7 @@ public class MainActivityDashboard extends BaseActivityBinding {
 
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-                startActivityForResult(new Intent(MainActivityDashboard.this, SettingActivity.class), 1002);
+                startActivityForResult(new Intent(MainActivityDashboard.this, SettingActivity.class), REQUEST_CODE);
 
             }
         });
@@ -199,38 +239,6 @@ public class MainActivityDashboard extends BaseActivityBinding {
         setSupportActionBar(binding.toolbar);
     }
 
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_dashboard, menu);
-//        return true;
-//    }
-//
-//    public boolean onOptionsItemSelected(MenuItem menuItem) {
-//        switch (menuItem.getItemId()) {
-//            case R.id.drawer_feedback:
-//                AppConstants.emailUs(context);
-//                return true;
-//            case R.id.drawer_privacy_policy:
-//                uriparse(TermAndServiceActivity.strPrivacyUri);
-//                return true;
-//            case R.id.drawer_proversion:
-//                startActivity(new Intent(context, WeddingProVersionActivity.class));
-//                return true;
-//            case R.id.drawer_ratting:
-//                AppConstants.showRattingDialog(context, Constants.RATTING_BAR_TITLE, Constants.APP_PLAY_STORE_URL);
-//                return true;
-//            case R.id.drawer_setting:
-//                startActivityForResult(new Intent(context, SettingActivity.class), 1002);
-//                return true;
-//            case R.id.drawer_share:
-//                AppConstants.shareApp(context);
-//                return true;
-//            case R.id.drawer_terms_of_service:
-//                uriparse(TermAndServiceActivity.strTermsUri);
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(menuItem);
-//        }
-//    }
 
     public void uriparse(String str) {
         Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(str));
@@ -258,19 +266,31 @@ public class MainActivityDashboard extends BaseActivityBinding {
                 hamMenu();
                 return;
             case R.id.cardBudget:
-                startActivity(new Intent(context, CostListActivity.class));
+                TapdaqAdsUtils.showInterstitial(MainActivityDashboard.this);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(context, CostListActivity.class));
+
+                    }
+                },2000);
+
                 return;
             case R.id.cardDashboard:
+                TapdaqAdsUtils.showInterstitial(MainActivityDashboard.this);
                 startActivity(new Intent(context, DashboardActivity.class));
                 return;
             case R.id.cardGuests:
                 startActivity(new Intent(context, GuestListActivity.class));
+                TapdaqAdsUtils.showInterstitial(MainActivityDashboard.this);
                 return;
             case R.id.cardTasks:
                 startActivity(new Intent(context, TaskListActivity.class));
+                TapdaqAdsUtils.showInterstitial(MainActivityDashboard.this);
                 return;
             case R.id.cardVendor:
                 startActivity(new Intent(context, VendorListActivity.class));
+                TapdaqAdsUtils.showInterstitial(MainActivityDashboard.this);
                 return;
             default:
                 return;
@@ -320,9 +340,9 @@ public class MainActivityDashboard extends BaseActivityBinding {
     }
 
 
-    public void onActivityResult(int i, int i2, @Nullable Intent intent) {
-        super.onActivityResult(i, i2, intent);
-        if (i2 == -1 && i == 1002) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
             setProfile();
         }
     }
@@ -356,24 +376,7 @@ public class MainActivityDashboard extends BaseActivityBinding {
     }
 
     public static void LoadAd() {
-        AdRequest adRequest;
-        try {
-            if (!AppPref.getIsAdfree(maincontext)) {
-                Log.d("LoadAd", "AdMob");
-                if (AdConstants.npaflag) {
-                    Log.d("NPA", "" + AdConstants.npaflag);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("npa", "1");
-                    adRequest = new AdRequest.Builder().addNetworkExtrasBundle(AdMobAdapter.class, bundle).build();
-                } else {
-                    Log.d("NPA", "" + AdConstants.npaflag);
-                    adRequest = new AdRequest.Builder().build();
-                }
 
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
 }

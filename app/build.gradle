@@ -53,7 +53,6 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.google.android.gms/play-services-measurement-api
     implementation 'com.google.android.gms:play-services-measurement-api:19.0.0'
-    implementation 'com.google.android.gms:play-services-ads:20.4.0'
     implementation 'com.google.android.ads.consent:consent-library:1.0.8'
     // https://mvnrepository.com/artifact/com.itextpdf/itextpdf
     implementation 'com.itextpdf:itextpdf:5.5.13.2'
@@ -81,4 +80,10 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+
+    //Tapdaq
+    implementation 'com.tapdaq.sdk:Tapdaq-BaseSDK:7.9.1'
+    //Adapters - These will automatically pull ad network dependencies
+
+    implementation 'com.tapdaq.sdk:TapdaqFANAdapter:7.9.1'
 }

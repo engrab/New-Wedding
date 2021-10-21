@@ -22,9 +22,7 @@ import com.example.weddingplanner.appBase.view.AddEditProfileActivity;
 import com.google.ads.consent.ConsentInfoUpdateListener;
 import com.google.ads.consent.ConsentInformation;
 import com.google.ads.consent.ConsentStatus;
-import com.google.ads.mediation.admob.AdMobAdapter;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.MobileAds;
+
 
 import java.lang.ref.WeakReference;
 
@@ -46,20 +44,9 @@ public class SplashActivity extends AppCompatActivity {
         this.context = this;
         this.db = AppDataBase.getAppDatabase(this.context);
 
-//        if (AppPref.getIsAdfree(this.context)) {
-//            new Handler().postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    if (Ad_Show) {
-//                        GoToMainScreen();
-//                    }
-//                }
-//            }, 1000);
-//            return;
-//        }
-        MobileAds.initialize(this.context, initializationStatus -> {
 
-        });
+
+
         insertDefaultDataList();
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -182,26 +169,9 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void afternpa() {
-        AdRequest adRequest;
-        try {
-            if (AdConstants.npaflag) {
-                Log.d("NPA", "" + AdConstants.npaflag);
-                Bundle bundle = new Bundle();
-                bundle.putString("npa", "1");
-                adRequest = new AdRequest.Builder().addNetworkExtrasBundle(AdMobAdapter.class, bundle).build();
-            } else {
-                Log.d("NPA", "" + AdConstants.npaflag);
-                adRequest = new AdRequest.Builder().build();
-            }
-//            this.interstitialAd = new InterstitialAd(this);
-//            this.interstitialAd.setAdUnitId(AdConstants.AD_FULL);
-//            this.interstitialAd.loadAd(adRequest);
-//            this.Ad_Show = true;
-//            this.interstitialAd.setAdListener(new C08862());
-        } catch (Exception unused) {
-            GoToMainScreen();
-        }
+
     }
+
 
 
 
