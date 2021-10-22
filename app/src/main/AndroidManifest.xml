@@ -12,7 +12,7 @@
     <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
-        android:name=".all.MyApp"
+        android:name=".allLeading.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,12 +20,6 @@
         android:theme="@style/AppTheme"
         android:networkSecurityConfig="@xml/network_security_config"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".view.CurrencyActivity"
-            android:exported="true" />
-        <activity
-            android:name=".view.CreateUserFormActivity"
-            android:exported="true" />
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -44,7 +38,7 @@
         </provider>
 
         <activity
-            android:name=".view.SplashActivity"
+            android:name=".viewLeading.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,126 +47,126 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".all.utils.TermAndServiceActivity"
+            android:name=".allLeading.utils.TermAndServiceActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".view.MainActivityDashboard"
+            android:name=".viewLeading.MainActivityDashboardLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".view.DashboardActivity"
+            android:name=".viewLeading.DashboardActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.CostListActivity"
+            android:name=".allLeading.view.CostListActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.AddEditCostActivity"
+            android:name=".allLeading.view.AddEditCostActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.AddEditPaymentActivity"
+            android:name=".allLeading.view.AddEditPaymentActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.VendorListActivity"
+            android:name=".allLeading.view.VendorListActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.AddEditVendorActivity"
+            android:name=".allLeading.view.AddEditVendorActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.GuestListActivity"
+            android:name=".allLeading.view.GuestListActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.AddEditGuestActivity"
+            android:name=".allLeading.view.AddEditGuestActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.AddEditCompanionsActivity"
+            android:name=".allLeading.view.AddEditCompanionsActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.TaskListActivity"
+            android:name=".allLeading.view.TaskListActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.AddEditTaskActivity"
+            android:name=".allLeading.view.AddEditTaskActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.AddEditSubTaskActivity"
+            android:name=".allLeading.view.AddEditSubTaskActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.AddEditProfileActivity"
+            android:name=".allLeading.view.AddEditProfileActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".view.SettingActivity"
+            android:name=".viewLeading.SettingActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.CategoryListActivity"
+            android:name=".allLeading.view.CategoryListActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.PrivacyPolicyActivity"
+            android:name=".allLeading.view.PrivacyPolicyActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.ProfileListActivity"
+            android:name=".allLeading.view.ProfileListActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".backup.RestoreListActivity"
+            android:name=".backupLeading.RestoreListActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".all.view.WeddingProVersionActivity"
+            android:name=".allLeading.view.WeddingProVersionActivityLeading"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity

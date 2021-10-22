@@ -14,14 +14,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="MyDialogTheme" parent="@style/Theme.AppCompat.Light.Dialog">
-        <item name="colorPrimaryVariant">@color/white</item>
-        <item name="fontFamily">@font/firasans_regular</item>
-    </style>
-    <style name="DialogCustomTheme" parent="@android:style/Theme.Holo.Dialog.NoActionBar">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:colorBackgroundCacheHint">@null</item>
-    </style>
+
     <style name="common_edittextview_gaust">
         <item name="android:textSize">@dimen/_11sdp</item>
         <item name="android:textColor">@color/fontColor</item>
@@ -59,16 +52,6 @@
         <item name="android:layout_margin">16dp</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:fontFamily">@font/semibold</item>
-    </style>
-
-    <style name="CardView"></style>
-
-    <style name="CardView.Dark">
-        <item name="cardBackgroundColor">@color/cardview_dark_background</item>
-    </style>
-
-    <style name="CardView.Light">
-        <item name="cardBackgroundColor">@color/cardview_light_background</item>
     </style>
 
     <style name="CardViewCommon">
