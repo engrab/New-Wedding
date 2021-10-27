@@ -197,6 +197,13 @@ public class AddEditPaymentActivityLeading extends BaseActivityBindingLeading {
                 this.binding.etAmount.setText(AppConstants.getFormattedPrice(this.model.getAmount()));
                 binding.etName.setText(model.getName());
                 binding.txtDate.setText(model.getDateFormatted());
+                if(model.isPending()){
+                    binding.txtPending.setChecked(true);
+                    binding.txtPaid.setChecked(false);
+                }else {
+                    binding.txtPending.setChecked(false);
+                    binding.txtPaid.setChecked(true);
+                }
 
             } catch (NumberFormatException e) {
                 this.binding.etAmount.setText(0);

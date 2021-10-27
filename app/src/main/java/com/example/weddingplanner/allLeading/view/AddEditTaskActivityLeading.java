@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -144,6 +145,13 @@ public class AddEditTaskActivityLeading extends BaseActivityRecyclerBindingLeadi
             binding.etName.setText(model.getName());
             binding.txtDate.setText(model.getDateFormatted());
             binding.etNote.setText(model.getNote());
+            if(model.isPending()){
+                binding.txtPending.setChecked(true);
+                binding.txtPaid.setChecked(false);
+            }else {
+                binding.txtPending.setChecked(false);
+                binding.txtPaid.setChecked(true);
+            }
             Log.d(TAG, "setModelDetail: "+model.getNote());
 
             return;

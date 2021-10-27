@@ -46,7 +46,7 @@
         <entry key="app/src/main/res/layout/activity_guest_add_edit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_guest_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_guest_summary.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/activity_main_dashboard.xml" value="0.5282224094355518" />
+        <entry key="app/src/main/res/layout/activity_main_dashboard.xml" value="0.32741617357001973" />
         <entry key="app/src/main/res/layout/activity_payment_add_edit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_privacy_policy.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_profile_add_edit.xml" value="0.33" />
@@ -57,7 +57,7 @@
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_sub_task_add_edit.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/activity_task_add_edit.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_task_add_edit.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_task_list.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_task_summary.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_term_and_service.xml" value="0.14" />
@@ -89,14 +89,14 @@
         <entry key="app/src/main/res/layout/row_custom_tab.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/row_dashboard_item.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/row_drawer_item.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/row_guest.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_guest.xml" value="0.33" />
         <entry key="app/src/main/res/layout/row_image_icon.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/row_image_large.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/row_payment.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/row_profile.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/row_selection_item.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/row_sub_task.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/row_task.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/row_task.xml" value="0.33" />
         <entry key="app/src/main/res/layout/row_vendor.xml" value="0.25" />
         <entry key="app/src/main/res/layout/select_dialog_item_material.xml" value="0.1" />
         <entry key="app/src/main/res/layout/select_dialog_multichoice_material.xml" value="0.1" />

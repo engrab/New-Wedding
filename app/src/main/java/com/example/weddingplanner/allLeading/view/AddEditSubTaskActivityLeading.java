@@ -54,6 +54,13 @@ public class AddEditSubTaskActivityLeading extends BaseActivityBindingLeading {
         if (isEdit){
             binding.etName.setText(model.getName());
             binding.etNote.setText(model.getNote());
+            if(model.isPending()){
+                binding.txtPending.setChecked(true);
+                binding.txtPaid.setChecked(false);
+            }else {
+                binding.txtPending.setChecked(false);
+                binding.txtPaid.setChecked(true);
+            }
             Log.d("TAG", "setModelDetail: "+model.getNote());
         }
     }

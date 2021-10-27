@@ -43,7 +43,7 @@ public class GuestAdapterLeading extends RecyclerView.Adapter {
             RowHolder rowHolder = (RowHolder) viewHolder;
             rowHolder.binding.tvName.setText(arrayList.get(i).getName());
             rowHolder.binding.tvInvitStatus.setText(arrayList.get(i).getInvitationText());
-            rowHolder.binding.tvNumbers.setText(arrayList.get(i).getGenderType()+"");
+            rowHolder.binding.tvNumbers.setText("Companion : "+arrayList.get(i).getCompanions());
             if (arrayList.get(i).getGenderType() == 1){
                 rowHolder.binding.imgIcon.setImageResource(R.drawable.male);
             }else {

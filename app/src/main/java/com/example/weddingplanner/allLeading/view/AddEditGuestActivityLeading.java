@@ -121,6 +121,34 @@ public class AddEditGuestActivityLeading extends BaseActivityRecyclerBindingLead
             binding.etEmailId.setText(model.getEmailId());
             binding.etAddress.setText(model.getAddress());
 
+            if (model.getGenderType()==1){
+                binding.txtMale.setChecked(true);
+                binding.txtFemale.setChecked(false);
+            }else {
+                binding.txtMale.setChecked(false);
+                binding.txtFemale.setChecked(true);
+            }
+            if (model.getStageType()==1){
+                binding.txtAdult.setChecked(true);
+                binding.txtBaby.setChecked(false);
+                binding.txtChild.setChecked(false);
+            }else if (model.getStageType()==2){
+                binding.txtAdult.setChecked(false);
+                binding.txtBaby.setChecked(true);
+                binding.txtChild.setChecked(false);
+            }else {
+                binding.txtAdult.setChecked(false);
+                binding.txtBaby.setChecked(false);
+                binding.txtChild.setChecked(true);
+            }
+            if (model.isInvitationSent()){
+                binding.txtInvitationSent.setChecked(true);
+                binding.txtInvitationNotSent.setChecked(false);
+            }else {
+                binding.txtInvitationSent.setChecked(false);
+                binding.txtInvitationNotSent.setChecked(true);
+            }
+
             return;
         }
 

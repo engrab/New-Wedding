@@ -144,7 +144,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 startActivity(new Intent(MainActivityDashboardLeading.this, TaskListActivityLeading.class));
-                finish();
+
 
             }
         });
@@ -154,7 +154,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 startActivity(new Intent(MainActivityDashboardLeading.this, CostListActivityLeading.class));
-                finish();
+
             }
         });
         binding.navDrawer.llGuest.setOnClickListener(new View.OnClickListener() {
@@ -163,7 +163,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 startActivity(new Intent(MainActivityDashboardLeading.this, GuestListActivityLeading.class));
-                finish();
+
             }
         });
         binding.navDrawer.llVendor.setOnClickListener(new View.OnClickListener() {
@@ -172,7 +172,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 startActivity(new Intent(MainActivityDashboardLeading.this, VendorListActivityLeading.class));
-                finish();
+
             }
         });
 
