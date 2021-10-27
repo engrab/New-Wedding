@@ -117,6 +117,7 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
 //        toolbarModel.setProgressMenu(false);
         setSupportActionBar(binding.includedToolbar.toolbar);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Profile Details");
+        binding.includedToolbar.textTitle.setText("Profile Detail");
         this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
         binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
         binding.includedToolbar.imageHome.setVisibility(View.GONE);
@@ -142,7 +143,7 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
             }
 
             public void onOk() {
-                AddEditProfileActivityLeading.this.deleteProfile();
+                deleteProfile();
             }
         });
     }
@@ -156,72 +157,72 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
             public void doInBackground() {
                 ArrayList arrayList = new ArrayList();
                 try {
-                    arrayList.addAll(AddEditProfileActivityLeading.this.db.taskDao().getAllMarriage(AddEditProfileActivityLeading.this.model.getId()));
+                    arrayList.addAll(db.taskDao().getAllMarriage(model.getId()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 for (int i = 0; i < arrayList.size(); i++) {
                     try {
-                        AddEditProfileActivityLeading.this.db.subTaskDao().deleteAll((String) arrayList.get(i));
+                        db.subTaskDao().deleteAll((String) arrayList.get(i));
                     } catch (Exception e2) {
                         e2.printStackTrace();
                     }
                     try {
-                        AddEditProfileActivityLeading.this.db.taskDao().delete(AddEditProfileActivityLeading.this.model.getId(), (String) arrayList.get(i));
+                        db.taskDao().delete(model.getId(), (String) arrayList.get(i));
                     } catch (Exception e3) {
                         e3.printStackTrace();
                     }
                 }
                 ArrayList arrayList2 = new ArrayList();
                 try {
-                    arrayList2.addAll(AddEditProfileActivityLeading.this.db.guestDao().getAllMarriage(AddEditProfileActivityLeading.this.model.getId()));
+                    arrayList2.addAll(db.guestDao().getAllMarriage(model.getId()));
                 } catch (Exception e4) {
                     e4.printStackTrace();
                 }
                 for (int i2 = 0; i2 < arrayList2.size(); i2++) {
                     try {
-                        AddEditProfileActivityLeading.this.db.guestDao().deleteAllComp(AddEditProfileActivityLeading.this.model.getId(), (String) arrayList2.get(i2));
+                        db.guestDao().deleteAllComp(model.getId(), (String) arrayList2.get(i2));
                     } catch (Exception e5) {
                         e5.printStackTrace();
                     }
                     try {
-                        AddEditProfileActivityLeading.this.db.guestDao().delete(AddEditProfileActivityLeading.this.model.getId(), (String) arrayList2.get(i2));
+                        db.guestDao().delete(model.getId(), (String) arrayList2.get(i2));
                     } catch (Exception e6) {
                         e6.printStackTrace();
                     }
                 }
                 ArrayList arrayList3 = new ArrayList();
                 try {
-                    arrayList3.addAll(AddEditProfileActivityLeading.this.db.costDao().getAllMarriage(AddEditProfileActivityLeading.this.model.getId()));
+                    arrayList3.addAll(db.costDao().getAllMarriage(model.getId()));
                 } catch (Exception e7) {
                     e7.printStackTrace();
                 }
                 for (int i3 = 0; i3 < arrayList3.size(); i3++) {
                     try {
-                        AddEditProfileActivityLeading.this.db.paymentDao().deleteAll((String) arrayList3.get(i3));
+                        db.paymentDao().deleteAll((String) arrayList3.get(i3));
                     } catch (Exception e8) {
                         e8.printStackTrace();
                     }
                     try {
-                        AddEditProfileActivityLeading.this.db.costDao().delete(AddEditProfileActivityLeading.this.model.getId(), (String) arrayList3.get(i3));
+                        db.costDao().delete(model.getId(), (String) arrayList3.get(i3));
                     } catch (Exception e9) {
                         e9.printStackTrace();
                     }
                 }
                 ArrayList arrayList4 = new ArrayList();
                 try {
-                    arrayList4.addAll(AddEditProfileActivityLeading.this.db.vendorDao().getAllMarriage(AddEditProfileActivityLeading.this.model.getId()));
+                    arrayList4.addAll(db.vendorDao().getAllMarriage(model.getId()));
                 } catch (Exception e10) {
                     e10.printStackTrace();
                 }
                 for (int i4 = 0; i4 < arrayList4.size(); i4++) {
                     try {
-                        AddEditProfileActivityLeading.this.db.paymentDao().deleteAll((String) arrayList4.get(i4));
+                        db.paymentDao().deleteAll((String) arrayList4.get(i4));
                     } catch (Exception e11) {
                         e11.printStackTrace();
                     }
                     try {
-                        AddEditProfileActivityLeading.this.db.vendorDao().delete(AddEditProfileActivityLeading.this.model.getId(), (String) arrayList4.get(i4));
+                        db.vendorDao().delete(model.getId(), (String) arrayList4.get(i4));
                     } catch (Exception e12) {
                         e12.printStackTrace();
                     }
@@ -230,11 +231,11 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
 
             public void onPostExecute() {
                 try {
-                    AddEditProfileActivityLeading.this.db.profileDao().delete(AddEditProfileActivityLeading.this.model);
+                    db.profileDao().delete(model);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                AddEditProfileActivityLeading.this.openItemList(true);
+                openItemList(true);
             }
         }).execute();
     }
@@ -366,7 +367,7 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
             }
 
             public void afterTextChanged(Editable editable) {
-                AddEditProfileActivityLeading.this.setWeddingName();
+                setWeddingName();
             }
         });
         this.binding.etNamePartner.addTextChangedListener(new TextWatcher() {
@@ -377,7 +378,7 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
             }
 
             public void afterTextChanged(Editable editable) {
-                AddEditProfileActivityLeading.this.setWeddingName();
+                setWeddingName();
             }
         });
         this.binding.etBudget.addTextChangedListener(new TextWatcher() {
@@ -389,9 +390,9 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
 
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
                 try {
-                    AddEditProfileActivityLeading.this.model.setBudget(Double.valueOf(charSequence.toString().trim()).doubleValue());
+                    model.setBudget(Double.valueOf(charSequence.toString().trim()).doubleValue());
                 } catch (NumberFormatException e) {
-                    AddEditProfileActivityLeading.this.model.setBudget(0.0d);
+                    model.setBudget(0.0d);
                     e.printStackTrace();
                 }
             }
@@ -401,10 +402,10 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
     private void showDatePickerDialog() {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this.context, R.style.AppThemeDialogActionBar, new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                AddEditProfileActivityLeading.this.calendar.set(1, year);
-                AddEditProfileActivityLeading.this.calendar.set(2, month);
-                AddEditProfileActivityLeading.this.calendar.set(5, dayOfMonth);
-                AddEditProfileActivityLeading.this.model.setDateTimeInMillis(AddEditProfileActivityLeading.this.calendar.getTimeInMillis());
+                calendar.set(1, year);
+                calendar.set(2, month);
+                calendar.set(5, dayOfMonth);
+                model.setDateTimeInMillis(calendar.getTimeInMillis());
                 binding.txtDate.setText(""+year+", "+month+", "+dayOfMonth);
             }
         }, this.calendar.get(1), this.calendar.get(2), this.calendar.get(5));
@@ -422,9 +423,9 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
         new TimePickerDialog(this.context, R.style.AppThemeDialogActionBar, new TimePickerDialog.OnTimeSetListener() {
             @SuppressLint({"NewApi"})
             public void onTimeSet(TimePicker timePicker, int hourOfDay, int minuteOfDay) {
-                AddEditProfileActivityLeading.this.calendar.set(11, hourOfDay);
-                AddEditProfileActivityLeading.this.calendar.set(12, minuteOfDay);
-                AddEditProfileActivityLeading.this.model.setDateTimeInMillis(AddEditProfileActivityLeading.this.calendar.getTimeInMillis());
+                calendar.set(11, hourOfDay);
+                calendar.set(12, minuteOfDay);
+                model.setDateTimeInMillis(calendar.getTimeInMillis());
                 binding.txtTime.setText(" "+hourOfDay+", "+minuteOfDay);
             }
         }, this.calendar.get(11), this.calendar.get(12), false).show();

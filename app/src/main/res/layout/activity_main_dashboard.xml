@@ -126,20 +126,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/fab_profile"
+                    android:orientation="horizontal"
                     android:gravity="center">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
                         android:orientation="vertical">
 
-                        <TextView
-                            style="@style/TextViewLightCommon"
-                            android:layout_width="wrap_content"
-                            android:gravity="center"
-                            android:text="Days"
-                            android:textColor="@color/black"
-                            android:textSize="12dp" />
+
 
                         <TextView
                             android:id="@+id/txtDays"
@@ -148,28 +144,24 @@
                             android:textColor="@color/black"
                             android:textSize="20dp" />
 
+                        <TextView
+                            style="@style/TextViewLightCommon"
+                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:text="Days"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+
 
                     </LinearLayout>
-
-                    <TextView
-                        style="@style/TextViewTitleCommon"
-                        android:layout_gravity="top"
-                        android:text=":"
-                        android:textColor="@color/black"
-                        android:textSize="20dp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
                         android:orientation="vertical">
 
-                        <TextView
-                            style="@style/TextViewLightCommon"
-                            android:layout_width="wrap_content"
-                            android:gravity="center"
-                            android:text="Hrs"
-                            android:textColor="@color/black"
-                            android:textSize="12dp" />
+
 
                         <TextView
                             android:id="@+id/txtHours"
@@ -178,28 +170,23 @@
                             android:textColor="@color/black"
                             android:textSize="20dp" />
 
+                        <TextView
+                            style="@style/TextViewLightCommon"
+                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:text="Hrs"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
 
                     </LinearLayout>
-
-                    <TextView
-                        style="@style/TextViewTitleCommon"
-                        android:layout_gravity="top"
-                        android:text=":"
-                        android:textColor="@color/black"
-                        android:textSize="20dp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
                         android:orientation="vertical">
 
-                        <TextView
-                            style="@style/TextViewLightCommon"
-                            android:layout_width="wrap_content"
-                            android:gravity="center"
-                            android:text="Mins"
-                            android:textColor="@color/black"
-                            android:textSize="12dp" />
+
 
                         <TextView
                             android:id="@+id/txtMinutes"
@@ -208,28 +195,25 @@
                             android:textColor="@color/black"
                             android:textSize="20dp" />
 
+                        <TextView
+                            style="@style/TextViewLightCommon"
+                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:text="Mins"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+
 
                     </LinearLayout>
 
-                    <TextView
-                        style="@style/TextViewTitleCommon"
-                        android:layout_gravity="top"
-                        android:text=":"
-                        android:textColor="@color/black"
-                        android:textSize="20dp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
                         android:orientation="vertical">
 
-                        <TextView
-                            style="@style/TextViewLightCommon"
-                            android:layout_width="wrap_content"
-                            android:gravity="center"
-                            android:text="Secs"
-                            android:textColor="@color/black"
-                            android:textSize="12dp" />
+
 
                         <TextView
                             android:id="@+id/txtSeconds"
@@ -238,8 +222,17 @@
                             android:textColor="@color/black"
                             android:textSize="20dp" />
 
+                        <TextView
+                            style="@style/TextViewLightCommon"
+                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:text="Secs"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+
 
                     </LinearLayout>
+
                 </LinearLayout>
 
             </RelativeLayout>

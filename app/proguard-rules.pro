@@ -19,3 +19,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keep class com.tapdaq.sdk.** { *; }
+-keep class com.tapdaq.adapters.* { *; }
+-keep class com.tapdaq.unityplugin.* { *; }
+-keep class com.google.android.gms.ads.identifier.** { *; }
+
+-keep class com.facebook.ads.** { *; }

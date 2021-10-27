@@ -24,7 +24,8 @@
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
-
+        <!-- Debug Views -->
+        <activity android:name="com.tapdaq.sdk.TMTestActivity"  android:configChanges="orientation|screenSize" />
 
 
         <provider

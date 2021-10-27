@@ -46,7 +46,7 @@
         <entry key="app/src/main/res/layout/activity_guest_add_edit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_guest_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_guest_summary.xml" value="0.1640625" />
-        <entry key="app/src/main/res/layout/activity_main_dashboard.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_main_dashboard.xml" value="0.5282224094355518" />
         <entry key="app/src/main/res/layout/activity_payment_add_edit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_privacy_policy.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_profile_add_edit.xml" value="0.33" />
@@ -112,6 +112,8 @@
         <entry key="app/src/main/res/menu/menu_list.xml" value="0.1640625" />
         <entry key="app/src/main/res/menu/menu_report.xml" value="0.1640625" />
         <entry key="app/src/main/res/menu/report_options_menu.xml" value="0.1640625" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.3265625" />
       </map>
     </option>
