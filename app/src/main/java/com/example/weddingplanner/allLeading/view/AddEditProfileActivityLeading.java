@@ -11,6 +11,7 @@ import android.database.Cursor;
 
 import android.net.Uri;
 import android.provider.ContactsContract;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -20,6 +21,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+
 import com.example.weddingplanner.R;
 import com.example.weddingplanner.allLeading.appPref.AppPrefLeading;
 import com.example.weddingplanner.allLeading.baseClass.BaseActivityRecyclerBindingLeading;
@@ -49,14 +51,13 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
     public static String EXTRA_MODEL = "model";
     public static String EXTRA_POSITION = "position";
     private ActivityProfileAddEditBinding binding;
-    
-    public Calendar calendar;
-    
 
-    
+    public Calendar calendar;
+
+
     public AppDataBase db;
     private boolean isEdit = false;
-    
+
     public ProfileRowModel model;
     public ToolbarModel toolbarModel;
 
@@ -89,11 +90,76 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
     }
 
     private void setModelDetail() {
+        this.model = new ProfileRowModel();
         this.isEdit = getIntent().hasExtra(EXTRA_IS_EDIT) && getIntent().getBooleanExtra(EXTRA_IS_EDIT, false);
         if (this.isEdit) {
             this.model = getIntent().getParcelableExtra(EXTRA_MODEL);
+
+            if (!model.getName().trim().isEmpty()) {
+
+                binding.etName.setText(model.getName());
+            }
+            if (!model.getPhoneNo().trim().isEmpty()) {
+
+                binding.etPhoneNumber.setText(model.getPhoneNo());
+            }
+            if (!model.getEmailId().trim().isEmpty()) {
+
+                binding.etEmailId.setText(model.getEmailId());
+            }
+            if (!model.getAddress().trim().isEmpty()) {
+
+                binding.etAddress.setText(model.getAddress());
+            }
+            if (!model.getPartnerName().trim().isEmpty()) {
+
+                binding.etNamePartner.setText(model.getPartnerName());
+            }
+            if (!model.getPartnerPhoneNo().trim().isEmpty()) {
+
+                binding.etPhoneNumberPartner.setText(model.getPartnerPhoneNo());
+            }
+            if (!model.getPartnerEmailId().trim().isEmpty()) {
+
+                binding.etEmailIdPartner.setText(model.getPartnerEmailId());
+            }
+            if (!model.getPartnerAddress().trim().isEmpty()) {
+
+                binding.etAddressPartner.setText(model.getPartnerAddress());
+            }
+            if (!model.getWeddingName().trim().isEmpty()) {
+
+                binding.etNameWedding.setText(model.getWeddingName());
+            }
+            if (!model.getDateFormatted().trim().isEmpty()) {
+
+                binding.txtDate.setText(model.getDateFormatted());
+            }
+            if (!model.getTimeFormatted().trim().isEmpty()) {
+
+                binding.txtTime.setText(model.getTimeFormatted());
+            }
+
+            binding.etBudget.setText(model.getBudget() + "");
+
+            if (model.getPartnerGenderType() == 2) {
+                binding.txtFemalePartner.setChecked(true);
+                binding.txtMalePartner.setChecked(false);
+            } else {
+                binding.txtFemalePartner.setChecked(false);
+                binding.txtMalePartner.setChecked(true);
+            }
+
+            if (model.getGenderType() == 2) {
+                binding.txtMale.setChecked(false);
+                binding.txtFemale.setChecked(true);
+            } else {
+                binding.txtMale.setChecked(true);
+                binding.txtFemale.setChecked(false);
+            }
+
         } else {
-            this.model = new ProfileRowModel();
+
             this.model.setId(AppConstants.getUniqueId());
             this.model.setSelected(true);
         }
@@ -115,19 +181,40 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
 //        this.toolbarModel.setOtherMenu(true);
 //        this.toolbarModel.setDelete(this.isEdit);
 //        toolbarModel.setProgressMenu(false);
-        setSupportActionBar(binding.includedToolbar.toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Profile Details");
-        binding.includedToolbar.textTitle.setText("Profile Detail");
-        this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
-        binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
-        binding.includedToolbar.imageHome.setVisibility(View.GONE);
-        binding.includedToolbar.progressbar.setVisibility(View.GONE);
-        binding.includedToolbar.imgShare.setVisibility(View.GONE);
-        binding.includedToolbar.imgDelete.setVisibility(View.GONE);
-        binding.includedToolbar.etOther.setVisibility(View.GONE);
-        binding.includedToolbar.search.setVisibility(View.GONE);
-        binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
-        binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+//        setSupportActionBar(binding.includedToolbar.toolbar);
+//        Objects.requireNonNull(getSupportActionBar()).setTitle("Profile Details");
+//
+//
+
+        isEdit = getIntent().hasExtra(EXTRA_IS_EDIT);
+        binding.includedToolbar.textTitle.setText(isEdit ? "Edit Profile" : "Add Profile");
+        if (isEdit) {
+
+            this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
+            binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
+            binding.includedToolbar.imgDelete.setVisibility(View.VISIBLE);
+            binding.includedToolbar.imageHome.setVisibility(View.GONE);
+            binding.includedToolbar.progressbar.setVisibility(View.GONE);
+            binding.includedToolbar.imgShare.setVisibility(View.GONE);
+            binding.includedToolbar.etOther.setVisibility(View.GONE);
+            binding.includedToolbar.search.setVisibility(View.GONE);
+            binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        } else {
+
+            this.binding.includedToolbar.imgOther.setImageResource(R.drawable.save);
+            binding.includedToolbar.imgBack.setVisibility(View.VISIBLE);
+            binding.includedToolbar.imageHome.setVisibility(View.GONE);
+            binding.includedToolbar.progressbar.setVisibility(View.GONE);
+            binding.includedToolbar.imgShare.setVisibility(View.GONE);
+            binding.includedToolbar.imgDelete.setVisibility(View.GONE);
+            binding.includedToolbar.etOther.setVisibility(View.GONE);
+            binding.includedToolbar.search.setVisibility(View.GONE);
+            binding.includedToolbar.imgDrawer.setVisibility(View.GONE);
+            binding.includedToolbar.imgAdd.setVisibility(View.GONE);
+        }
+
+
 //        this.binding.includedToolbar.setModel(this.toolbarModel);
     }
 
@@ -148,7 +235,7 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
         });
     }
 
-    
+
     public void deleteProfile() {
         new BackgroundAsync(this.context, true, "", new OnAsyncBackground() {
             public void onPreExecute() {
@@ -245,7 +332,6 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.includedToolbar.imgDelete.setOnClickListener(this);
         this.binding.includedToolbar.imgOther.setOnClickListener(this);
-        this.binding.includedToolbar.imgDelete.setOnClickListener(this);
         this.binding.btnAddEdit.setOnClickListener(this);
         this.binding.imgPickOwn.setOnClickListener(this);
         this.binding.txtMale.setOnClickListener(this);
@@ -325,7 +411,7 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
         }
     }
 
-    
+
     public void setWeddingName() {
         String str = "";
         if (this.model.getName().trim().length() > 0 && this.model.getPartnerName().trim().length() > 0) {
@@ -406,7 +492,7 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
                 calendar.set(2, month);
                 calendar.set(5, dayOfMonth);
                 model.setDateTimeInMillis(calendar.getTimeInMillis());
-                binding.txtDate.setText(""+year+", "+month+", "+dayOfMonth);
+                binding.txtDate.setText("" + year + ", " + month + ", " + dayOfMonth);
             }
         }, this.calendar.get(1), this.calendar.get(2), this.calendar.get(5));
         Calendar instance = Calendar.getInstance();
@@ -426,7 +512,7 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
                 calendar.set(11, hourOfDay);
                 calendar.set(12, minuteOfDay);
                 model.setDateTimeInMillis(calendar.getTimeInMillis());
-                binding.txtTime.setText(" "+hourOfDay+", "+minuteOfDay);
+                binding.txtTime.setText(" " + hourOfDay + ", " + minuteOfDay);
             }
         }, this.calendar.get(11), this.calendar.get(12), false).show();
     }
@@ -1005,7 +1091,7 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
         }
     }
 
-    
+
     public void openItemList(boolean z) {
         Intent intent = new Intent();
         intent.putExtra(EXTRA_IS_DELETED, z);

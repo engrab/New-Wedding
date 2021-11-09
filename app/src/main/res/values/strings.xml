@@ -110,5 +110,6 @@
     <string name="menu_rate_us">Rate Us</string>
     <string name="menu_share">Share</string>
     <string name="menu_privacy_policy">Privacy Policy</string>
+    <string name="menu_profile">Profile Info</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

@@ -28,7 +28,7 @@ public class ProfileListActivityLeading extends BaseActivityRecyclerBindingLeadi
     
 
 
-    public AppDataBase f554db;
+    public AppDataBase db;
     
     public boolean isResultOK;
     
@@ -54,7 +54,7 @@ public class ProfileListActivityLeading extends BaseActivityRecyclerBindingLeadi
         this.model.setNoDataText(getString(R.string.noDataTitleProfile));
         this.model.setNoDataDetail(getString(R.string.noDataDescProfile));
 //        this.binding.setModel(this.model);
-        this.f554db = AppDataBase.getAppDatabase(this.context);
+        this.db = AppDataBase.getAppDatabase(this.context);
     }
 
 
@@ -93,7 +93,7 @@ public class ProfileListActivityLeading extends BaseActivityRecyclerBindingLeadi
 
     public void fillData() {
         try {
-            this.model.getArrayList().addAll(this.f554db.profileDao().getAll());
+            this.model.getArrayList().addAll(this.db.profileDao().getAll());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -119,10 +119,10 @@ public class ProfileListActivityLeading extends BaseActivityRecyclerBindingLeadi
             public void onClick(int i, int i2) {
                 if (i2 == 2) {
                     ProfileListActivityLeading.this.setSelectionAll(false);
-                    ProfileListActivityLeading.this.f554db.profileDao().setDeselectAll();
+                    ProfileListActivityLeading.this.db.profileDao().setDeselectAll();
                     ProfileListActivityLeading.this.model.getArrayList().get(i).setSelected(true);
                     AppPrefLeading.setCurrentEvenId(ProfileListActivityLeading.this.context, ProfileListActivityLeading.this.model.getArrayList().get(i).getId());
-                    ProfileListActivityLeading.this.f554db.profileDao().setSelection(ProfileListActivityLeading.this.model.getArrayList().get(i).getId());
+                    ProfileListActivityLeading.this.db.profileDao().setSelection(ProfileListActivityLeading.this.model.getArrayList().get(i).getId());
                     boolean unused = ProfileListActivityLeading.this.isResultOK = true;
                     return;
                 }
@@ -212,8 +212,8 @@ public class ProfileListActivityLeading extends BaseActivityRecyclerBindingLeadi
 
     private void setDefaultTripDeleted() {
         if (this.model.getArrayList().size() > 0) {
-            this.f554db.profileDao().setDeselectAll();
-            this.f554db.profileDao().setSelection(this.model.getArrayList().get(0).getId());
+            this.db.profileDao().setDeselectAll();
+            this.db.profileDao().setSelection(this.model.getArrayList().get(0).getId());
             AppPrefLeading.setCurrentEvenId(this.context, this.model.getArrayList().get(0).getId());
             setDefaultTrip();
             return;
@@ -233,13 +233,13 @@ public class ProfileListActivityLeading extends BaseActivityRecyclerBindingLeadi
         profileRowModel.setSelected(true);
         setWeddingName(profileRowModel);
         try {
-            j = this.f554db.profileDao().insert(profileRowModel);
+            j = this.db.profileDao().insert(profileRowModel);
         } catch (Exception e) {
             e.printStackTrace();
             j = 0;
         }
         if (j > 0) {
-            this.f554db.profileDao().setDeselectAll();
+            this.db.profileDao().setDeselectAll();
             AppPrefLeading.setCurrentEvenId(this.context, profileRowModel.getId());
             this.model.getArrayList().add(profileRowModel);
             setDefaultTrip();
