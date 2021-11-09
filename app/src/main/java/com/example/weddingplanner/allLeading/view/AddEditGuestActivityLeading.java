@@ -9,14 +9,19 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.ContactsContract;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import com.example.weddingplanner.adsUtilsLeading.AdsUtils;
+import com.google.android.gms.ads.AdView;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -55,6 +60,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -66,7 +72,6 @@ public class AddEditGuestActivityLeading extends BaseActivityRecyclerBindingLead
     public static String EXTRA_POSITION = "position";
     public static String EXTRA_POSITION_MAIN = "positionMain";
     private ActivityGuestAddEditBinding binding;
-
 
 
     public AppDataBase db;
@@ -83,6 +88,7 @@ public class AddEditGuestActivityLeading extends BaseActivityRecyclerBindingLead
     private String subTitle = "Companions";
     public ToolbarModel toolbarModel;
     private PdfWriter writer = null;
+    AdView adView;
 
 
     public void callApi() {
@@ -106,12 +112,30 @@ public class AddEditGuestActivityLeading extends BaseActivityRecyclerBindingLead
         this.db = AppDataBase.getAppDatabase(this);
         setModelDetail();
 //        this.binding.setRowModel(this.model);
+        loadAd();
     }
+
+    public void loadAd() {
+
+
+        adView = AdsUtils.showBanner(this, binding.llAdds);
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        if (adView != null) {
+            adView.destroy();
+        }
+
+        super.onDestroy();
+    }
+
 
     private void setModelDetail() {
         this.model = new GuestRowModel();
         this.model.setEdit(true);
-        isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT,false);
+        isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT, false);
 
         if (this.isEdit) {
             this.model = (GuestRowModel) getIntent().getParcelableExtra(EXTRA_MODEL);
@@ -121,30 +145,30 @@ public class AddEditGuestActivityLeading extends BaseActivityRecyclerBindingLead
             binding.etEmailId.setText(model.getEmailId());
             binding.etAddress.setText(model.getAddress());
 
-            if (model.getGenderType()==1){
+            if (model.getGenderType() == 1) {
                 binding.txtMale.setChecked(true);
                 binding.txtFemale.setChecked(false);
-            }else {
+            } else {
                 binding.txtMale.setChecked(false);
                 binding.txtFemale.setChecked(true);
             }
-            if (model.getStageType()==1){
+            if (model.getStageType() == 1) {
                 binding.txtAdult.setChecked(true);
                 binding.txtBaby.setChecked(false);
                 binding.txtChild.setChecked(false);
-            }else if (model.getStageType()==2){
+            } else if (model.getStageType() == 2) {
                 binding.txtAdult.setChecked(false);
                 binding.txtBaby.setChecked(true);
                 binding.txtChild.setChecked(false);
-            }else {
+            } else {
                 binding.txtAdult.setChecked(false);
                 binding.txtBaby.setChecked(false);
                 binding.txtChild.setChecked(true);
             }
-            if (model.isInvitationSent()){
+            if (model.isInvitationSent()) {
                 binding.txtInvitationSent.setChecked(true);
                 binding.txtInvitationNotSent.setChecked(false);
-            }else {
+            } else {
                 binding.txtInvitationSent.setChecked(false);
                 binding.txtInvitationNotSent.setChecked(true);
             }
@@ -277,6 +301,7 @@ public class AddEditGuestActivityLeading extends BaseActivityRecyclerBindingLead
                 return;
             case R.id.imgOther:
                 isAddUpdate(true);
+                AdsUtils.showInterstitial(this);
                 return;
             case R.id.imgPhone:
                 dialPhoneNumber(this.model.getPhoneNo());
@@ -736,8 +761,6 @@ public class AddEditGuestActivityLeading extends BaseActivityRecyclerBindingLead
             e.printStackTrace();
         }
     }
-
-
 
 
     public void savePdf() {

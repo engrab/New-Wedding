@@ -24,6 +24,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
+import com.example.weddingplanner.adsUtilsLeading.AdsUtils;
+import com.google.android.gms.ads.AdView;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -112,6 +114,7 @@ public class AddEditTaskActivityLeading extends BaseActivityRecyclerBindingLeadi
     private String subTitle = "subTask";
     public ToolbarModel toolbarModel;
     private PdfWriter writer = null;
+    AdView adView;
 
 
     public void callApi() {
@@ -131,8 +134,24 @@ public class AddEditTaskActivityLeading extends BaseActivityRecyclerBindingLeadi
         this.db = AppDataBase.getAppDatabase(this);
         setModelDetail();
 
+        loadAd();
 //        this.binding.setRowModel(this.model);
     }
+    public void loadAd() {
+
+
+        adView = AdsUtils.showBanner(this, binding.llAdds);
+    }
+    @Override
+    protected void onDestroy() {
+
+        if (adView != null){
+            adView.destroy();
+        }
+
+        super.onDestroy();
+    }
+
 
 
     private void setModelDetail() {
@@ -279,7 +298,7 @@ public class AddEditTaskActivityLeading extends BaseActivityRecyclerBindingLeadi
                 }
             case R.id.imgOther:
                 isAddUpdate(true);
-
+                AdsUtils.showInterstitial(this);
                 return;
 
             case R.id.linCategory:

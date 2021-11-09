@@ -36,8 +36,8 @@ public class TaskAdapterLeading extends RecyclerView.Adapter {
             RowHolder rowHolder = (RowHolder) viewHolder;
             rowHolder.binding.imgIcon.setImageResource(arrayList.get(i).getCategoryRowModel().getImgResId());
             rowHolder.binding.tvDate.setText(arrayList.get(i).getDateFormatted());
-            rowHolder.binding.tvStatus.setText(arrayList.get(i).getStatusText());
             rowHolder.binding.tvTitle.setText(arrayList.get(i).getName());
+            rowHolder.binding.tvStatus.setText(arrayList.get(i).getStatusText());
             rowHolder.binding.tvSubtask.setText(arrayList.get(i).getSubTaskText());
 
 //            rowHolder.binding.setRowModel(this.arrayList.get(i));

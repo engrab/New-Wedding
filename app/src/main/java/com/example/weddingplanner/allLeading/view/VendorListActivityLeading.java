@@ -16,6 +16,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.example.weddingplanner.adsUtilsLeading.AdsUtils;
+import com.google.android.gms.ads.AdView;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -106,6 +109,7 @@ public class VendorListActivityLeading extends BaseActivityRecyclerBindingLeadin
     private String subTitle = "Payments";
     private ToolbarModel toolbarModel;
     private PdfWriter writer = null;
+    AdView adView;
 
     public void onRationaleAccepted(int i) {
     }
@@ -126,7 +130,23 @@ public class VendorListActivityLeading extends BaseActivityRecyclerBindingLeadin
         this.model.setNoDataDetail(getString(R.string.noDataDescVendors));
 //        this.binding.setModel(this.model);
         this.db = AppDataBase.getAppDatabase(this.context);
+        loadAd();
     }
+    public void loadAd() {
+
+
+        adView = AdsUtils.showBanner(this, binding.llAdds);
+    }
+    @Override
+    protected void onDestroy() {
+
+        if (adView != null){
+            adView.destroy();
+        }
+
+        super.onDestroy();
+    }
+
 
 
     public void setToolbar() {

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import android.os.Environment;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +21,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import com.example.weddingplanner.adsUtilsLeading.AdsUtils;
+import com.google.android.gms.ads.AdView;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -64,6 +68,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -77,7 +82,6 @@ public class AddEditCostActivityLeading extends BaseActivityRecyclerBindingLeadi
     private ActivityCostAddEditBinding binding;
 
     public ArrayList<CategoryRowModel> categoryList;
-
 
 
     public AppDataBase db;
@@ -107,6 +111,7 @@ public class AddEditCostActivityLeading extends BaseActivityRecyclerBindingLeadi
     private String subTitle = "Payments";
     public ToolbarModel toolbarModel;
     private PdfWriter writer = null;
+    AdView adView;
 
 
     public void callApi() {
@@ -125,8 +130,26 @@ public class AddEditCostActivityLeading extends BaseActivityRecyclerBindingLeadi
         setContentView(view);
         this.db = AppDataBase.getAppDatabase(this);
         setModelDetail();
+        loadAd();
 //        this.binding.setRowModel(this.model);
     }
+
+    public void loadAd() {
+
+
+        adView = AdsUtils.showBanner(this, binding.llAdds);
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        if (adView != null) {
+            adView.destroy();
+        }
+
+        super.onDestroy();
+    }
+
 
     private void setModelDetail() {
         boolean z = false;
@@ -157,7 +180,7 @@ public class AddEditCostActivityLeading extends BaseActivityRecyclerBindingLeadi
 
         isEdit = getIntent().getBooleanExtra(EXTRA_IS_EDIT, false);
         binding.includedToolbar.textTitle.setText(this.isEdit ? "Edit Budget" : "Add Budget");
-        if (isEdit){
+        if (isEdit) {
             binding.includedToolbar.imgDelete.setVisibility(View.VISIBLE);
             binding.includedToolbar.imgShare.setVisibility(View.GONE);
             binding.includedToolbar.etOther.setVisibility(View.GONE);
@@ -166,7 +189,7 @@ public class AddEditCostActivityLeading extends BaseActivityRecyclerBindingLeadi
             binding.includedToolbar.progressbar.setVisibility(View.GONE);
             binding.includedToolbar.imgAdd.setVisibility(View.GONE);
             binding.includedToolbar.spinner.setVisibility(View.GONE);
-        }else {
+        } else {
 
             binding.includedToolbar.imgShare.setVisibility(View.GONE);
             binding.includedToolbar.etOther.setVisibility(View.GONE);
@@ -254,6 +277,7 @@ public class AddEditCostActivityLeading extends BaseActivityRecyclerBindingLeadi
                 return;
             case R.id.imgOther:
                 isAddUpdate(true);
+                AdsUtils.showInterstitial(this);
                 return;
 
             case R.id.linCategory:
@@ -349,8 +373,9 @@ public class AddEditCostActivityLeading extends BaseActivityRecyclerBindingLeadi
         binding.imgIcon.setImageResource(categoryList.get(selectedCategoryPos).getImgResId());
         binding.title.setText(categoryList.get(selectedCategoryPos).getName());
     }
+
     public void setCategoryListDialog() {
-        this.dialogCategoryListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context),  (ViewGroup) null, false);
+        this.dialogCategoryListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context), (ViewGroup) null, false);
         this.dialogCategoryList = new Dialog(this.context);
         this.dialogCategoryList.setContentView(this.dialogCategoryListBinding.getRoot());
         this.dialogCategoryList.setCancelable(false);
@@ -579,7 +604,7 @@ public class AddEditCostActivityLeading extends BaseActivityRecyclerBindingLeadi
         intent.putExtra(AddEditPaymentActivityLeading.EXTRA_IS_EDIT, z);
         intent.putExtra(AddEditPaymentActivityLeading.EXTRA_POSITION, i);
         intent.putExtra(AddEditPaymentActivityLeading.EXTRA_MODEL, paymentRowModel);
-       ;
+        ;
         startActivityForResult(intent, 1002);
     }
 
@@ -705,7 +730,6 @@ public class AddEditCostActivityLeading extends BaseActivityRecyclerBindingLeadi
             super.onBackPressed();
         }
     }
-
 
 
     public void savePdf() {

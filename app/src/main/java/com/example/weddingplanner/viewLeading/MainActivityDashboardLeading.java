@@ -20,6 +20,7 @@ import com.bumptech.glide.RequestBuilder;
 import com.example.weddingplanner.adsUtilsLeading.AdsUtils;
 import com.example.weddingplanner.allLeading.models.profile.ProfileListModel;
 import com.example.weddingplanner.allLeading.models.profile.ProfileRowModel;
+import com.example.weddingplanner.allLeading.roomDatabase.taskList.TaskRowModel;
 import com.example.weddingplanner.allLeading.view.AddEditProfileActivityLeading;
 import com.example.weddingplanner.allLeading.view.CostListActivityLeading;
 import com.example.weddingplanner.allLeading.view.GuestListActivityLeading;
@@ -33,7 +34,8 @@ import com.example.weddingplanner.allLeading.utils.AppConstants;
 import com.example.weddingplanner.databinding.ActivityMainDashboardBinding;
 import com.google.android.gms.ads.AdView;
 
-import java.io.ObjectInput;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -64,8 +66,18 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
         LoadAd();
         initGlid();
         fillData();
+
 //        loadImageFromStorage("profileImage/");
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        taskDataDBDemo();
+        guestDataDBDemo();
+        budgetDataDBDemo();
+        vendorDataDBDemo();
     }
 
     @Override
@@ -77,6 +89,76 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
 
         super.onDestroy();
     }
+//    public void taskDataDB() {
+//        ArrayList<TaskRowModel> listMain = new ArrayList<>();
+//        List arrayList = new ArrayList();
+//        try {
+//            arrayList = this.db.taskDao().getAll(AppPrefLeading.getCurrentEvenId(this.context));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        if (arrayList.size() > 0) {
+//            binding.tvAllTask.setText(arrayList.size()+"");
+//            for (int i = 0; i < arrayList.size(); i++) {
+//                TaskRowModel taskRowModel = (TaskRowModel) arrayList.get(i);
+//                try {
+//                    taskRowModel.setArrayList(new ArrayList());
+//                    taskRowModel.getArrayList().addAll(this.db.subTaskDao().getAll(taskRowModel.getId()));
+//                } catch (Exception e3) {
+//                    e3.printStackTrace();
+//                }
+//                listMain.add(taskRowModel);
+//            }
+//            int count= 0;
+//            for (int i = 0; i < listMain.size(); i++) {
+//                    if (listMain.get(i).isPending()) {
+//                        count++;
+//                    }
+//            }
+//            binding.tvCompletedTask.setText(count+"");
+//        }
+//    }
+
+    public void taskDataDBDemo(){
+            long allCount = db.taskDao().getAllCount(AppPrefLeading.getCurrentEvenId(this.context));
+            long pendingCount = db.taskDao().getAllCount(AppPrefLeading.getCurrentEvenId(this.context), 0);
+            if (allCount > 0){
+                binding.tvAllTask.setText(allCount+"");
+                binding.tvCompletedTask.setText(pendingCount+"");
+            }
+
+
+    }
+
+    public void guestDataDBDemo(){
+
+            long allCount = db.guestDao().getAllCount(AppPrefLeading.getCurrentEvenId(this.context));
+            long pendingCount = db.guestDao().getInvitationSentCount(AppPrefLeading.getCurrentEvenId(this.context),1);
+            binding.tvAllGuest.setText(allCount+"");
+            binding.tvInvited.setText(pendingCount+"");
+
+
+    }
+
+    public void budgetDataDBDemo(){
+
+        double allTotal = db.costDao().getAllTotal(AppPrefLeading.getCurrentEvenId(this.context));
+        double total = db.costDao().getTotal(AppPrefLeading.getCurrentEvenId(this.context), 0);
+        binding.tvTotalBudget.setText(allTotal+"");
+        binding.tvUsedBudget.setText(total+"");
+
+
+    }
+    public void vendorDataDBDemo(){
+
+        long allTotal = db.vendorDao().getAllCount(AppPrefLeading.getCurrentEvenId(this.context));
+        double total = db.vendorDao().getTotal(AppPrefLeading.getCurrentEvenId(this.context),0);
+        binding.tvAllVendor.setText(allTotal+"");
+        binding.tvVendorPaid.setText(total+"");
+
+
+    }
+
 
     private void initGlid() {
         ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_dashboard).centerCrop()).into(binding.navDrawer.imgHome);
@@ -96,6 +178,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivityDashboardLeading.this, TaskListActivityLeading.class));
+                AdsUtils.showInterstitial(MainActivityDashboardLeading.this);
             }
         });
 
@@ -103,6 +186,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivityDashboardLeading.this, GuestListActivityLeading.class));
+                AdsUtils.showInterstitial(MainActivityDashboardLeading.this);
             }
         });
 
@@ -110,12 +194,14 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivityDashboardLeading.this, CostListActivityLeading.class));
+                AdsUtils.showInterstitial(MainActivityDashboardLeading.this);
             }
         });
         binding.cvVendorList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivityDashboardLeading.this, VendorListActivityLeading.class));
+                AdsUtils.showInterstitial(MainActivityDashboardLeading.this);
             }
         });
 
@@ -439,7 +525,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
 
     }
 
-    public static void LoadAd() {
+    public void LoadAd() {
 
 
         adView = AdsUtils.showBanner(this, binding.llAdds);

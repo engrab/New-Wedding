@@ -7,15 +7,20 @@ import android.content.Context;
 import android.content.Intent;
 
 import android.os.Environment;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.example.weddingplanner.adsUtilsLeading.AdsUtils;
+import com.google.android.gms.ads.AdView;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -61,50 +66,52 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class CostListActivityLeading extends BaseActivityRecyclerBindingLeading implements EasyPermissions.PermissionCallbacks, EasyPermissions.RationaleCallbacks {
     public static String EXTRA_IS_FILTER = "EXTRA_IS_FILTER";
     public static String EXTRA_IS_PENDING = "EXTRA_IS_PENDING";
-    
+
     public ActivityCostListBinding binding;
 
 
     private AppDataBase db;
-    
+
     public Dialog dialogFilterTypeList;
     private AlertDialogRecyclerListBinding dialogFilterTypeListBinding;
-    
+
     public Dialog dialogOrderTypeList;
     private AlertDialogRecyclerListBinding dialogOrderTypeListBinding;
     private File dir;
     private Document document;
     private String fileName = null;
-    
+
     public ArrayList<SelectionRowModel> filterTypeList;
-    
+
     public boolean isFilter = false;
     private boolean isPending = false;
     private boolean isUpdateDashboard = false;
-    
+
     public ArrayList<CostRowModel> listMain;
-    
+
     public CostListModelLeading model;
-    
+
     public ArrayList<SelectionRowModel> orderTypeList;
     private Paragraph paragraph;
     private String repoTitle = "List";
     private String repoType = "Budget";
     CostRowModel rowModel = null;
     private String searchText = "";
-    
+
     public int selectedFilterTypePos = 0;
-    
+
     public int selectedOrderTypePos = 0;
     private String subTitle = "Payments";
     private ToolbarModel toolbarModel;
     private PdfWriter writer = null;
+    AdView adView;
 
     public void onRationaleAccepted(int i) {
     }
@@ -125,6 +132,23 @@ public class CostListActivityLeading extends BaseActivityRecyclerBindingLeading 
         this.model.setNoDataDetail(getString(R.string.noDataDescCosts));
 //        this.binding.setModel(this.model);
         this.db = AppDataBase.getAppDatabase(this.context);
+        loadAd();
+    }
+
+    public void loadAd() {
+
+
+        adView = AdsUtils.showBanner(this, binding.llAdds);
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        if (adView != null) {
+            adView.destroy();
+        }
+
+        super.onDestroy();
     }
 
 
@@ -223,7 +247,7 @@ public class CostListActivityLeading extends BaseActivityRecyclerBindingLeading 
         }).execute(new Object[0]);
     }
 
-    
+
     public void fillFromDB() {
         List arrayList = new ArrayList();
         try {
@@ -283,7 +307,7 @@ public class CostListActivityLeading extends BaseActivityRecyclerBindingLeading 
         });
     }
 
-    
+
     public void openItemDetail(int i, int i2, CostRowModel costRowModel, boolean z) {
         Intent intent = new Intent(this.context, AddEditCostActivityLeading.class);
         intent.putExtra(AddEditCostActivityLeading.EXTRA_IS_EDIT, z);
@@ -293,7 +317,7 @@ public class CostListActivityLeading extends BaseActivityRecyclerBindingLeading 
         startActivityForResult(intent, 1002);
     }
 
-    
+
     public void notifyAdapter() {
         if (this.model.getArrayList() != null && this.model.getArrayList().size() > 0) {
             sortBy();
@@ -345,7 +369,7 @@ public class CostListActivityLeading extends BaseActivityRecyclerBindingLeading 
     }
 
     public void setOrderTypeListDialog() {
-        this.dialogOrderTypeListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context),  (ViewGroup) null, false);
+        this.dialogOrderTypeListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context), (ViewGroup) null, false);
         this.dialogOrderTypeList = new Dialog(this.context);
         this.dialogOrderTypeList.setContentView(this.dialogOrderTypeListBinding.getRoot());
         this.dialogOrderTypeList.getWindow().setBackgroundDrawableResource(17170445);
@@ -550,7 +574,7 @@ public class CostListActivityLeading extends BaseActivityRecyclerBindingLeading 
     }
 
     public void setFilterTypeListDialog() {
-        this.dialogFilterTypeListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context),  (ViewGroup) null, false);
+        this.dialogFilterTypeListBinding = AlertDialogRecyclerListBinding.inflate(LayoutInflater.from(this.context), (ViewGroup) null, false);
         this.dialogFilterTypeList = new Dialog(this.context);
         this.dialogFilterTypeList.setContentView(this.dialogFilterTypeListBinding.getRoot());
         this.dialogFilterTypeList.getWindow().setBackgroundDrawableResource(17170445);
@@ -603,7 +627,7 @@ public class CostListActivityLeading extends BaseActivityRecyclerBindingLeading 
         });
     }
 
-    
+
     public void filterList(String str) {
         if (str.equalsIgnoreCase(Constants.FILTER_TYPE_ALL_LIST)) {
             this.isFilter = false;
@@ -658,12 +682,12 @@ public class CostListActivityLeading extends BaseActivityRecyclerBindingLeading 
         filterTyDialogSetup();
     }
 
-    
+
     public void setupFilterIcon(boolean z) {
         this.binding.includedToolbar.imgShare.setImageResource(z ? R.drawable.filter_filled : R.drawable.filter_empty);
     }
 
-    
+
     public void checkFilterAndFillList() {
         this.model.getArrayList().clear();
         if (!this.isFilter) {
@@ -766,7 +790,6 @@ public class CostListActivityLeading extends BaseActivityRecyclerBindingLeading 
     }
 
 
-    
     public void savePdf() {
         if (this.model.getArrayList().size() > 0) {
             if (isHasPermissions(this, "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE")) {
@@ -795,7 +818,7 @@ public class CostListActivityLeading extends BaseActivityRecyclerBindingLeading 
         }).execute(new Object[0]);
     }
 
-    
+
     public void initDoc() {
         this.document = new Document(PageSize.A4, 16.0f, 16.0f, 16.0f, 16.0f);
         this.dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Constants.REPORT_DIRECTORY);
@@ -815,7 +838,7 @@ public class CostListActivityLeading extends BaseActivityRecyclerBindingLeading 
         this.document.open();
     }
 
-    
+
     public void fillDocData() {
         this.paragraph = new Paragraph((this.repoType + " " + this.repoTitle).toUpperCase(), new Font(Font.FontFamily.TIMES_ROMAN, 18.0f, 1));
         this.paragraph.setAlignment(1);
@@ -917,7 +940,7 @@ public class CostListActivityLeading extends BaseActivityRecyclerBindingLeading 
         return arrayList;
     }
 
-    
+
     public void addingDocFooter() {
         new FooterPageEvent().onEndPage(this.writer, this.document);
         try {
@@ -941,8 +964,6 @@ public class CostListActivityLeading extends BaseActivityRecyclerBindingLeading 
             }
         }
     }
-
-    
 
 
     public String getCurrentDateTime() {
