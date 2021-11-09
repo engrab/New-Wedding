@@ -25,7 +25,6 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
         <!-- Debug Views -->
-        <activity android:name="com.tapdaq.sdk.TMTestActivity"  android:configChanges="orientation|screenSize" />
 
 
         <provider
@@ -198,6 +197,11 @@
         <meta-data
             android:name="com.android.vending.derived.apk.id"
             android:value="1" />
+
+        <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/ad_id"/>
     </application>
 
 </manifest>

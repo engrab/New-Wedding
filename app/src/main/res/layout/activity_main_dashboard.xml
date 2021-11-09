@@ -135,8 +135,8 @@
                             <TextView
                                 style="@style/TextViewLightCommon"
                                 android:layout_width="wrap_content"
-                                android:gravity="center"
                                 android:layout_gravity="center"
+                                android:gravity="center"
                                 android:text="Days"
                                 android:textColor="@color/black"
                                 android:textSize="12dp" />
@@ -161,8 +161,8 @@
                             <TextView
                                 style="@style/TextViewLightCommon"
                                 android:layout_width="wrap_content"
-                                android:gravity="center"
                                 android:layout_gravity="center"
+                                android:gravity="center"
                                 android:text="Hrs"
                                 android:textColor="@color/black"
                                 android:textSize="12dp" />
@@ -186,8 +186,8 @@
                             <TextView
                                 style="@style/TextViewLightCommon"
                                 android:layout_width="wrap_content"
-                                android:gravity="center"
                                 android:layout_gravity="center"
+                                android:gravity="center"
                                 android:text="Mins"
                                 android:textColor="@color/black"
                                 android:textSize="12dp" />
@@ -213,8 +213,8 @@
                             <TextView
                                 style="@style/TextViewLightCommon"
                                 android:layout_width="wrap_content"
-                                android:gravity="center"
                                 android:layout_gravity="center"
+                                android:gravity="center"
                                 android:text="Secs"
                                 android:textColor="@color/black"
                                 android:textSize="12dp" />
@@ -235,6 +235,16 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:id="@+id/llAdds"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+
 
                 <ScrollView
                     android:layout_width="match_parent"
@@ -249,7 +259,7 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cvTaskList"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="150dp"
                             android:layout_margin="@dimen/_10sdp"
                             app:cardCornerRadius="@dimen/_10sdp"
                             app:cardElevation="@dimen/_10sdp">
@@ -355,7 +365,7 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cvGuestList"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="150dp"
                             android:layout_margin="@dimen/_10sdp"
                             app:cardCornerRadius="@dimen/_10sdp"
                             app:cardElevation="@dimen/_10sdp">
@@ -461,7 +471,7 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cvBudgetList"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="150dp"
                             android:layout_margin="@dimen/_10sdp"
                             app:cardCornerRadius="@dimen/_10sdp"
                             app:cardElevation="@dimen/_10sdp">
@@ -567,7 +577,7 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cvVendorList"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="150dp"
                             android:layout_margin="@dimen/_10sdp"
                             app:cardCornerRadius="@dimen/_10sdp"
                             app:cardElevation="@dimen/_10sdp">
@@ -676,17 +686,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/llAdds"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <com.tapdaq.sdk.TMBannerAdView
-                    android:id="@+id/adBanner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
 
         </LinearLayout>
 

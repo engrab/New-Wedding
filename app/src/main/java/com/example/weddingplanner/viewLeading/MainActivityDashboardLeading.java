@@ -1,16 +1,10 @@
 package com.example.weddingplanner.viewLeading;
 
-import static com.example.weddingplanner.allLeading.view.AddEditProfileActivityLeading.EXTRA_IS_EDIT;
-
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 
 import androidx.annotation.Nullable;
@@ -18,14 +12,12 @@ import androidx.core.view.GravityCompat;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
-import com.example.weddingplanner.adsUtilsLeading.TapdaqAdsUtilsLeading;
+import com.example.weddingplanner.adsUtilsLeading.AdsUtils;
 import com.example.weddingplanner.allLeading.models.profile.ProfileListModel;
 import com.example.weddingplanner.allLeading.models.profile.ProfileRowModel;
 import com.example.weddingplanner.allLeading.view.AddEditProfileActivityLeading;
@@ -39,22 +31,9 @@ import com.example.weddingplanner.allLeading.baseClass.BaseActivityBindingLeadin
 import com.example.weddingplanner.allLeading.roomDatabase.AppDataBase;
 import com.example.weddingplanner.allLeading.utils.AppConstants;
 import com.example.weddingplanner.databinding.ActivityMainDashboardBinding;
-import com.github.dhaval2404.imagepicker.ImagePicker;
-import com.tapdaq.sdk.STATUS;
-import com.tapdaq.sdk.TMBannerAdView;
-import com.tapdaq.sdk.Tapdaq;
-import com.tapdaq.sdk.TapdaqConfig;
-import com.tapdaq.sdk.common.TMAdError;
-import com.tapdaq.sdk.common.TMBannerAdSizes;
-import com.tapdaq.sdk.listeners.TMAdListener;
-import com.tapdaq.sdk.listeners.TMInitListener;
+import com.google.android.gms.ads.AdView;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.io.ObjectInput;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -70,6 +49,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
     public AppDataBase db;
 
     public ProfileListModel model;
+    AdView adView;
 
 
     public void setBinding() {
@@ -78,17 +58,6 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
         View view = binding.getRoot();
         setContentView(view);
 
-        TapdaqConfig config = Tapdaq.getInstance().config();
-
-        config.setUserSubjectToGdprStatus(STATUS.TRUE); //GDPR declare if user is in EU
-        config.setConsentStatus(STATUS.TRUE); //GDPR consent must be obtained from the user
-        config.setAgeRestrictedUserStatus(STATUS.FALSE); //Is user subject to COPPA or GDPR age restrictions
-
-        Tapdaq.getInstance().initialize(this, "<APP_ID>", "<CLIENT_KEY>", config, new TapdaqInitListener());
-
-        TMBannerAdView ad = new TMBannerAdView(this); // Create ad view
-        binding.adBanner.addView(ad); // Insert view into layout
-        ad.load(this, TMBannerAdSizes.STANDARD, new TMAdListener()); // Load banner with predefined size using default placement
 
         db = AppDataBase.getAppDatabase(this);
 
@@ -102,29 +71,11 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
     @Override
     protected void onDestroy() {
 
-        if (binding.adBanner != null) {
-            binding.adBanner.destroy(this);
+        if (adView != null){
+            adView.destroy();
         }
+
         super.onDestroy();
-    }
-
-    public class TapdaqInitListener extends TMInitListener {
-
-        public void didInitialise() {
-            super.didInitialise();
-            // Ads may now be requested
-
-            TapdaqAdsUtilsLeading.loadInterstitial(MainActivityDashboardLeading.this);
-            TapdaqAdsUtilsLeading.showInterstitial(MainActivityDashboardLeading.this);
-
-
-        }
-
-        @Override
-        public void didFailToInitialise(TMAdError error) {
-            super.didFailToInitialise(error);
-            //Tapdaq failed to initialise
-        }
     }
 
     private void initGlid() {
@@ -394,6 +345,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
 //    }
 
 
+
     public void initMethods() {
         setProfile();
     }
@@ -489,6 +441,9 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
 
     public static void LoadAd() {
 
+
+        adView = AdsUtils.showBanner(this, binding.llAdds);
+        AdsUtils.loadInterstitial(this);
     }
 
 }

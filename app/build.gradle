@@ -16,8 +16,21 @@ android {
     }
 
     buildTypes {
+        debug {
+            resValue 'string', 'ad_id', '"ca-app-pub-3940256099942544~3347511713"'
+            resValue 'string', 'app_inters', '"ca-app-pub-3940256099942544/1033173712"'
+            resValue 'string', 'app_banner', '"ca-app-pub-3940256099942544/6300978111"'
+        }
+
         release {
-            minifyEnabled false
+
+            resValue 'string', 'ad_id', '"ca-app-pub-8154771384545548~7315467440"'
+            resValue 'string', 'app_inters', '"ca-app-pub-8154771384545548/3923017347"'
+            resValue 'string', 'app_banner', '"ca-app-pub-8154771384545548/1871569072"'
+
+            shrinkResources true
+            minifyEnabled true
+
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -81,14 +94,15 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
-
+    // ads
+    implementation 'com.google.android.gms:play-services-ads:20.4.0'
     //Tapdaq
-    implementation 'com.tapdaq.sdk:Tapdaq-BaseSDK:7.9.1'
-    //Adapters - These will automatically pull ad network dependencies
-
-    implementation 'com.tapdaq.sdk:TapdaqFANAdapter:7.9.1'
-
-    implementation 'com.github.dhaval2404:imagepicker:2.1'
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
+//    implementation 'com.tapdaq.sdk:Tapdaq-BaseSDK:7.9.1'
+//    //Adapters - These will automatically pull ad network dependencies
+//
+//    implementation 'com.tapdaq.sdk:TapdaqFANAdapter:7.9.1'
+//
+//    implementation 'com.github.dhaval2404:imagepicker:2.1'
+//    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 }
