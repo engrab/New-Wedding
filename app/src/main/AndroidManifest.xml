@@ -12,7 +12,7 @@
     <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
-        android:name=".allLeading.MyApp"
+        android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -38,7 +38,7 @@
         </provider>
 
         <activity
-            android:name=".viewLeading.SplashActivity"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.viewLeading.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,126 +47,126 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".allLeading.utils.TermAndServiceActivity"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.TermAndServiceActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".viewLeading.MainActivityDashboardLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.viewLeading.MainActivityDashboardLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".viewLeading.DashboardActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.viewLeading.DashboardActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.CostListActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.CostListActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.AddEditCostActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.AddEditCostActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.AddEditPaymentActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.AddEditPaymentActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.VendorListActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.VendorListActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.AddEditVendorActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.AddEditVendorActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.GuestListActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.GuestListActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.AddEditGuestActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.AddEditGuestActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.AddEditCompanionsActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.AddEditCompanionsActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.TaskListActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.TaskListActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.AddEditTaskActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.AddEditTaskActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.AddEditSubTaskActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.AddEditSubTaskActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.AddEditProfileActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.AddEditProfileActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".viewLeading.SettingActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.viewLeading.SettingActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.CategoryListActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.CategoryListActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.PrivacyPolicyActivity"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.PrivacyPolicyActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.ProfileListActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.ProfileListActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".backupLeading.RestoreListActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.backupLeading.RestoreListActivityLeading"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".allLeading.view.WeddingProVersionActivityLeading"
+            android:name="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.WeddingProVersionActivityLeading"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".allLeading.view.WeddingProVersionActivityLeading">
+    tools:context="com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.WeddingProVersionActivityLeading">
 
     <include
         android:id="@+id/includedToolbar"

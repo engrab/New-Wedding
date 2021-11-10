@@ -6,7 +6,7 @@ android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "com.example.weddingplanner"
+        applicationId "com.wedapp.weddingplanner.organizer.checklist.wedding.todolist"
         minSdk 19
         targetSdk 30
         versionCode 1
