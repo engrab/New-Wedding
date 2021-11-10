@@ -22,7 +22,6 @@
     <string name="completed">Completed</string>
     <string name="contact_details">Contact Details</string>
     <string name="cost_details">Budget Details</string>
-    <string name="cost_payments">Budget Payments</string>
     <string name="date">Date</string>
     <string name="delete">Delete</string>
     <string name="delete_all_related_data">It will be deleted all related data of this</string>
@@ -30,7 +29,6 @@
     <string name="drawerTitleBudget">Budget</string>
     <string name="drawerTitleCheckList">Task List</string>
     <string name="drawerTitleGuests">Guests</string>
-    <string name="drawerTitleHome">Dashboard</string>
     <string name="drawerTitlePrivacyPolicy">Privacy Policy</string>
     <string name="drawerTitleProVersion">Pro Version</string>
     <string name="drawerTitleSetting">Setting</string>
@@ -40,7 +38,6 @@
     <string name="export_successfully">Export Successfully</string>
     <string name="failed_to_export">Failed to export</string>
     <string name="failed_to_import">Failed to import</string>
-    <string name="guest_invitations">Guest Invitations</string>
     <string name="import_successfully">Import Successfully</string>
     <string name="invitation_sent">Invitation Sent</string>
     <string name="manage_categories_like_add_or_update_category">Manage Categories like add or update category</string>
@@ -91,13 +88,11 @@
     <string name="select_list_order_type">Select list order type</string>
     <string name="set">Set</string>
     <string name="subtasks">Subtasks</string>
-    <string name="task_and_subtask">Task and Subtask</string>
     <string name="task_details">Task Details</string>
     <string name="task_status">Task status</string>
     <string name="termsOfService">Terms Of Service</string>
-    <string name="termsOfServiceSummery">This app is governed by Mega Mind Studio Terms of Service. By continuing to use this app you represent that you have read and accept the Terms of Service, Privacy Policy and Permission disclosure.</string>
+    <string name="termsOfServiceSummery">This app is governed by Leading Games Studio Terms of Service. By continuing to use this app you represent that you have read and accept the Terms of Service, Privacy Policy and Permission disclosure.</string>
     <string name="vendor_details">Vendor Details</string>
-    <string name="vendor_payments">Vendor Payments</string>
     <string name="website">Website</string>
     <string name="wedding_detail">Wedding detail</string>
     <string name="your_detail">Your Detail</string>
@@ -110,6 +105,5 @@
     <string name="menu_rate_us">Rate Us</string>
     <string name="menu_share">Share</string>
     <string name="menu_privacy_policy">Privacy Policy</string>
-    <string name="menu_profile">Profile Info</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

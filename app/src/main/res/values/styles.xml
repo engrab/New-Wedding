@@ -65,17 +65,6 @@
         <item name="cardElevation">0dp</item>
     </style>
 
-    <style name="CardViewCommonDash">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">4dp</item>
-        <item name="android:layout_marginTop">4dp</item>
-        <item name="android:layout_marginRight">4dp</item>
-        <item name="cardBackgroundColor">@color/white</item>
-        <item name="cardCornerRadius">8dp</item>
-        <item name="cardElevation">0dp</item>
-    </style>
-
     <style name="CustomActivityAnimation">
         <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
         <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
@@ -224,42 +213,9 @@
         <item name="android:fontFamily">@font/semibold</item>
     </style>
 
-    <style name="TextViewTitleCountDash">
-        <item name="android:textSize">32dp</item>
-        <item name="android:textColor">@color/actionbar</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:fontFamily">@font/regular</item>
-    </style>
-
-    <style name="TextViewTitleDash">
-        <item name="android:textSize">22dp</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:padding">8dp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">8dp</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:fontFamily">@font/semibold</item>
-    </style>
-
     <style name="TextViewTitleLightCommon">
         <item name="android:textSize">16dp</item>
         <item name="android:textColor">@color/textColorRegular</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:layout_gravity">left|center_horizontal|clip_horizontal</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:fontFamily">@font/regular</item>
-    </style>
-
-    <style name="TextViewTitleStatusDash">
-        <item name="android:textSize">20dp</item>
-        <item name="android:textColor">@color/textColorBold</item>
         <item name="android:ellipsize">end</item>
         <item name="android:layout_gravity">left|center_horizontal|clip_horizontal</item>
         <item name="android:layout_width">wrap_content</item>
