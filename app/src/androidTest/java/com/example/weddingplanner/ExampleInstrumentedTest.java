@@ -1,4 +1,4 @@
-package com.example.weddingplanner;
+package com.wedapp.weddingplanner.organizer.checklist.wedding.todolist;
 
 import android.content.Context;
 

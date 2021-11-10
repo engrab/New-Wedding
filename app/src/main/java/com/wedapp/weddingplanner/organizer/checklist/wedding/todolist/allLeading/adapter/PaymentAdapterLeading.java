@@ -8,11 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.roomDatabase.AppDataBase;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.roomDatabase.payment.PaymentRowModel;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.RecyclerItemClick;
-import com.example.weddingplanner.databinding.RowPaymentBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.RowPaymentBinding;
 
 import java.util.ArrayList;
 

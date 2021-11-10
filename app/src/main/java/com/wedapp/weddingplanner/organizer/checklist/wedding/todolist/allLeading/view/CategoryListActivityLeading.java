@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.adapter.CategoryAdapterLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.adapter.ImageAdapterLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.appPref.AppPrefLeading;
@@ -28,8 +28,8 @@ import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.OnAsyncBackground;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.RecyclerItemClick;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.TwoButtonDialogListener;
-import com.example.weddingplanner.databinding.ActivityCategoryListBinding;
-import com.example.weddingplanner.databinding.AlertDialogNewCategoryBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.ActivityCategoryListBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.AlertDialogNewCategoryBinding;
 
 import java.util.ArrayList;
 

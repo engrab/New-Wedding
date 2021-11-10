@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.models.selection.SelectionRowModel;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.RecyclerItemClick;
-import com.example.weddingplanner.databinding.RowSelectionItemBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.RowSelectionItemBinding;
 
 import java.util.ArrayList;
 

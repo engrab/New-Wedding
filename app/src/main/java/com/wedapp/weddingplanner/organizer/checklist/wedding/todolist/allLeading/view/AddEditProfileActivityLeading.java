@@ -22,7 +22,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.appPref.AppPrefLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.baseClass.BaseActivityRecyclerBindingLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.models.profile.ProfileRowModel;
@@ -33,7 +33,7 @@ import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.Constants;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.OnAsyncBackground;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.TwoButtonDialogListener;
-import com.example.weddingplanner.databinding.ActivityProfileAddEditBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.ActivityProfileAddEditBinding;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.viewLeading.MainActivityDashboardLeading;
 
 import java.util.ArrayList;

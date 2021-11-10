@@ -3,7 +3,7 @@ package com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.backupLea
 import android.app.Activity;
 import android.app.Dialog;
 import android.widget.TextView;
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import java.lang.ref.WeakReference;
 
 public class BackupRestoreProgress {

@@ -13,7 +13,7 @@ import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.ProfileListActivityLeading;
 import com.google.ads.consent.ConsentInformation;
 import com.google.ads.consent.ConsentStatus;
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.baseClass.BaseActivityBindingLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.models.toolbar.ToolbarModel;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.AdConstants;
@@ -21,7 +21,7 @@ import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.Constants;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.backupLeading.BackupRestoreProgress;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.backupLeading.LocalBackupRestore;
-import com.example.weddingplanner.databinding.ActivitySettingBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.ActivitySettingBinding;
 
 import java.util.List;
 import pub.devrel.easypermissions.AppSettingsDialog;

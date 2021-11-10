@@ -17,7 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.baseClass.BaseActivityRecyclerBindingLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.models.toolbar.ToolbarModel;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.roomDatabase.AppDataBase;
@@ -25,7 +25,7 @@ import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.AppConstants;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.Constants;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.TwoButtonDialogListener;
-import com.example.weddingplanner.databinding.ActivityGuestAddEditBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.ActivityGuestAddEditBinding;
 
 import java.util.List;
 

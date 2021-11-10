@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.adapter.ProfileAdapterLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.appPref.AppPrefLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.baseClass.BaseActivityRecyclerBindingLeading;
@@ -17,7 +17,7 @@ import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.roomDatabase.AppDataBase;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.AppConstants;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.RecyclerItemClick;
-import com.example.weddingplanner.databinding.ActivityProfileListBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.ActivityProfileListBinding;
 
 import java.util.ArrayList;
 import java.util.Calendar;

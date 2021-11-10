@@ -20,11 +20,11 @@ import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.android.billingclient.api.SkuDetails;
 import com.android.billingclient.api.SkuDetailsParams;
 import com.android.billingclient.api.SkuDetailsResponseListener;
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.appPref.AppPrefLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.baseClass.BaseActivityBindingLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.models.toolbar.ToolbarModel;
-import com.example.weddingplanner.databinding.ActivityWeddingProVersionBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.ActivityWeddingProVersionBinding;
 import java.util.ArrayList;
 import java.util.List;
 

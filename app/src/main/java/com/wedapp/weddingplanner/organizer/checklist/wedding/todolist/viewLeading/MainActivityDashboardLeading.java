@@ -25,12 +25,12 @@ import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.GuestListActivityLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.TaskListActivityLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.VendorListActivityLeading;
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.appPref.AppPrefLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.baseClass.BaseActivityBindingLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.roomDatabase.AppDataBase;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.AppConstants;
-import com.example.weddingplanner.databinding.ActivityMainDashboardBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.ActivityMainDashboardBinding;
 import com.google.android.gms.ads.AdView;
 
 import java.util.Timer;
@@ -38,10 +38,8 @@ import java.util.TimerTask;
 
 public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
     private static final int REQUEST_CODE = 1002;
-    public static Activity adActivity;
-    private static Context maincontext;
-    public static String strPrivacyUri = "https://www.google.com/";
-    public static String strTermsUri = "https://www.google.com/";
+    public static String strPrivacyUri = "https://sites.google.com/view/leadinggamesstudio/home";
+
     public ActivityMainDashboardBinding binding;
     private Timer timer;
     boolean doubleBackToExitPressedOnce = false;
@@ -52,7 +50,6 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
 
 
     public void setBinding() {
-        maincontext = this;
         binding = ActivityMainDashboardBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
@@ -151,7 +148,10 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
         long allTotal = db.vendorDao().getAllCount(AppPrefLeading.getCurrentEvenId(this.context));
         double total = db.vendorDao().getTotal(AppPrefLeading.getCurrentEvenId(this.context),0);
         binding.tvAllVendor.setText(allTotal+"");
-        binding.tvVendorPaid.setText(total+"");
+//        binding.tvVendorPaid.setText(total+"");
+        double numberVendor = db.vendorDao().getNumberVendor(AppPrefLeading.getCurrentEvenId(this.context), 0);
+        binding.tvVendorPaid.setText(numberVendor+"");
+
 
 
     }
@@ -164,7 +164,6 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
         ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_guests).centerCrop()).into(binding.navDrawer.imgGuest);
         ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_vendors).centerCrop()).into(binding.navDrawer.imgVendor);
         ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_setting).centerCrop()).into(binding.navDrawer.imgSettings);
-        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_setting).centerCrop()).into(binding.navDrawer.imgProfile);
         ((RequestBuilder) Glide.with(this).load(R.drawable.rate_us).centerCrop()).into(binding.navDrawer.imgRateus);
         ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_share).centerCrop()).into(binding.navDrawer.imgShare);
         ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_privacy_policy).centerCrop()).into(binding.navDrawer.imgPrivacypolicy);
@@ -248,14 +247,6 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
             }
         });
 
-        binding.navDrawer.llProfle.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View view) {
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
-                openItemDetail(model.getArrayList().get(0), true);
-
-            }
-        });
 
         binding.navDrawer.llSettings.setOnClickListener(new View.OnClickListener() {
 
@@ -344,12 +335,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
             e.printStackTrace();
         }
     }
-    public void openItemDetail(ProfileRowModel profileRowModel, boolean z) {
-        Intent intent = new Intent(this.context, AddEditProfileActivityLeading.class);
-        intent.putExtra(AddEditProfileActivityLeading.EXTRA_IS_EDIT, z);
-        intent.putExtra(AddEditProfileActivityLeading.EXTRA_MODEL, profileRowModel);
-        startActivity(intent);
-    }
+
 
 
 

@@ -7,7 +7,7 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.appPref.AppPrefLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.roomDatabase.AppDataBase;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.roomDatabase.category.CategoryRowModel;

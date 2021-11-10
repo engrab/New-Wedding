@@ -10,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.models.drawer.DrawerRowModelLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.RecyclerItemClick;
-import com.example.weddingplanner.databinding.RowDashboardItemBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.RowDashboardItemBinding;
 
 import java.util.ArrayList;
 

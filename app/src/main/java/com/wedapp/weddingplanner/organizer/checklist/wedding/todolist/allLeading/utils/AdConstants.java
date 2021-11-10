@@ -10,7 +10,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import com.google.ads.consent.ConsentInformation;
 import com.google.ads.consent.ConsentStatus;
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 
 public class AdConstants {
     public static String AD_BANNER = "ca-app-pub-3940256099942544/6300978111";

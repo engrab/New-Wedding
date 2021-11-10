@@ -96,13 +96,6 @@ dependencies {
 
     // ads
     implementation 'com.google.android.gms:play-services-ads:20.4.0'
-    //Tapdaq
-//    implementation 'com.tapdaq.sdk:Tapdaq-BaseSDK:7.9.1'
-//    //Adapters - These will automatically pull ad network dependencies
-//
-//    implementation 'com.tapdaq.sdk:TapdaqFANAdapter:7.9.1'
-//
-//    implementation 'com.github.dhaval2404:imagepicker:2.1'
-//    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.google.ads.mediation:facebook:6.8.0.0'
 
 }

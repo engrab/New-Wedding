@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.roomDatabase.category.CategoryRowModel;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.RecyclerItemClick;
-import com.example.weddingplanner.databinding.RowCategoryBinding;
-import com.example.weddingplanner.databinding.RowCategoryManageBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.RowCategoryBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.RowCategoryManageBinding;
 
 import java.util.ArrayList;
 

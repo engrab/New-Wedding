@@ -33,6 +33,10 @@ public interface VendorDao {
     @Query("Select sum(expectedAmount) FROM vendorList where eventId=:currentId and categoryId=:categoryId")
     double getAllTotal(String currentId, String categoryId);
 
+    @Query("Select count(*) FROM vendorList left join paymentList on paymentList.parentId = vendorList.id where eventId=:currentId and isPending=:isPending")
+    double getNumberVendor(String currentId, int isPending);
+
+
     @Query("Select sum(paymentList.amount) FROM vendorList left join paymentList on paymentList.parentId = vendorList.id where eventId=:currentId and isPending=:isPending")
     double getTotal(String currentId, int isPending);
 

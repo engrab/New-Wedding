@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.appPref.AppPrefLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.AddEditProfileActivityLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.viewLeading.MainActivityDashboardLeading;

@@ -19,10 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codemybrainsout.ratingdialog.RatingDialog;
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.appPref.AppPrefLeading;
-import com.example.weddingplanner.databinding.AlertDialogRestoreBinding;
-import com.example.weddingplanner.databinding.AlertDialogTwoButtonBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.AlertDialogRestoreBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.AlertDialogTwoButtonBinding;
 
 import java.io.File;
 import java.text.DateFormat;

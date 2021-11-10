@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.roomDatabase.taskList.TaskRowModel;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.RecyclerItemClick;
-import com.example.weddingplanner.databinding.RowTaskBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.RowTaskBinding;
 
 import java.util.ArrayList;
 

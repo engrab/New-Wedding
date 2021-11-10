@@ -9,9 +9,9 @@ import android.webkit.HttpAuthHandler;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.models.toolbar.ToolbarModel;
-import com.example.weddingplanner.databinding.ActivityPrivacyPolicyBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.ActivityPrivacyPolicyBinding;
 
 public class PrivacyPolicyActivity extends AppCompatActivity implements View.OnClickListener {
     

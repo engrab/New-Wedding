@@ -8,7 +8,7 @@ import androidx.databinding.Bindable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import androidx.annotation.NonNull;
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.MyApp;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.appPref.AppPrefLeading;
 import java.util.ArrayList;

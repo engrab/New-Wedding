@@ -7,7 +7,7 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;

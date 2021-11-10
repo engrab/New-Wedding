@@ -35,7 +35,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.adapter.GuestAdapterLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.adapter.SelectionAdapterLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.appPref.AppPrefLeading;
@@ -50,8 +50,8 @@ import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.Constants;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.OnAsyncBackground;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.RecyclerItemClick;
-import com.example.weddingplanner.databinding.ActivityGuestListBinding;
-import com.example.weddingplanner.databinding.AlertDialogRecyclerListBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.ActivityGuestListBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.AlertDialogRecyclerListBinding;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.pdfViewLeading.ReportRowModel;
 
 import java.io.File;

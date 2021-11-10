@@ -5,7 +5,7 @@ import android.content.Intent;
 import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
-import com.example.weddingplanner.R;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.R;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.appPref.AppPrefLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.baseClass.BaseActivityBindingLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.models.toolbar.ToolbarModel;
@@ -14,7 +14,7 @@ import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.GuestListActivityLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.TaskListActivityLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.VendorListActivityLeading;
-import com.example.weddingplanner.databinding.ActivityDashboardBinding;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.ActivityDashboardBinding;
 
 import java.util.Objects;
 
