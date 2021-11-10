@@ -77,14 +77,11 @@ public class SettingActivityLeading extends BaseActivityBindingLeading implement
         this.binding.includedToolbar.imgBack.setOnClickListener(this);
         this.binding.cardProfile.setOnClickListener(this);
         this.binding.cardCategory.setOnClickListener(this);
-        this.binding.cardAdSettings.setOnClickListener(this);
+
     }
 
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.cardAdSettings:
-                showDialog();
-                return;
 
             case R.id.cardCategory:
                 startActivity(new Intent(this.context, CategoryListActivityLeading.class));
@@ -110,21 +107,7 @@ public class SettingActivityLeading extends BaseActivityBindingLeading implement
         requestPermissions(this, getString(R.string.rationale_export), Constants.REQUEST_PERM_FILE, "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE");
     }
 
-    private void showDialog() {
-        AdConstants.showPersonalizeDialog(false, this, getString(R.string.app_name), getString(R.string.app_description1), getString(R.string.app_description2), getString(R.string.app_description3), new AdMobTwoButtonDialogListener() {
-            public void onCancel() {
-            }
 
-            public void onOk(boolean z) {
-                if (z) {
-                    ConsentInformation.getInstance(SettingActivityLeading.this.context).setConsentStatus(ConsentStatus.PERSONALIZED);
-                } else {
-                    ConsentInformation.getInstance(SettingActivityLeading.this.context).setConsentStatus(ConsentStatus.NON_PERSONALIZED);
-                }
-                AdConstants.setnpa(SettingActivityLeading.this);
-            }
-        });
-    }
 
 
 

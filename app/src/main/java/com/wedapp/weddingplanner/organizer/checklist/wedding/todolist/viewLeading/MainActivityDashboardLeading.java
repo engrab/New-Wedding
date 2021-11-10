@@ -77,7 +77,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
     @Override
     protected void onDestroy() {
 
-        if (adView != null){
+        if (adView != null) {
             adView.destroy();
         }
 
@@ -113,45 +113,42 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
 //        }
 //    }
 
-    public void taskDataDBDemo(){
-            long allCount = db.taskDao().getAllCount(AppPrefLeading.getCurrentEvenId(this.context));
-            long pendingCount = db.taskDao().getAllCount(AppPrefLeading.getCurrentEvenId(this.context), 0);
-            if (allCount > 0){
-                binding.tvAllTask.setText(allCount+"");
-                binding.tvCompletedTask.setText(pendingCount+"");
-            }
+    public void taskDataDBDemo() {
+        long allCount = db.taskDao().getAllCount(AppPrefLeading.getCurrentEvenId(this.context));
+        long pendingCount = db.taskDao().getAllCount(AppPrefLeading.getCurrentEvenId(this.context), 0);
+
+        binding.tvAllTask.setText(allCount + "");
+        binding.tvCompletedTask.setText(pendingCount + "");
 
 
     }
 
-    public void guestDataDBDemo(){
+    public void guestDataDBDemo() {
 
-            long allCount = db.guestDao().getAllCount(AppPrefLeading.getCurrentEvenId(this.context));
-            long pendingCount = db.guestDao().getInvitationSentCount(AppPrefLeading.getCurrentEvenId(this.context),1);
-            binding.tvAllGuest.setText(allCount+"");
-            binding.tvInvited.setText(pendingCount+"");
+        long allCount = db.guestDao().getAllCount(AppPrefLeading.getCurrentEvenId(this.context));
+        long pendingCount = db.guestDao().getInvitationSentCount(AppPrefLeading.getCurrentEvenId(this.context), 1);
+        binding.tvAllGuest.setText(allCount + "");
+        binding.tvInvited.setText(pendingCount + "");
 
 
     }
 
-    public void budgetDataDBDemo(){
+    public void budgetDataDBDemo() {
 
         double allTotal = db.costDao().getAllTotal(AppPrefLeading.getCurrentEvenId(this.context));
         double total = db.costDao().getTotal(AppPrefLeading.getCurrentEvenId(this.context), 0);
-        binding.tvTotalBudget.setText(allTotal+"");
-        binding.tvUsedBudget.setText(total+"");
+        binding.tvTotalBudget.setText(((int)allTotal) + "");
+        binding.tvUsedBudget.setText(((int)total) + "");
 
 
     }
-    public void vendorDataDBDemo(){
+
+    public void vendorDataDBDemo() {
 
         long allTotal = db.vendorDao().getAllCount(AppPrefLeading.getCurrentEvenId(this.context));
-        double total = db.vendorDao().getTotal(AppPrefLeading.getCurrentEvenId(this.context),0);
-        binding.tvAllVendor.setText(allTotal+"");
-//        binding.tvVendorPaid.setText(total+"");
         double numberVendor = db.vendorDao().getNumberVendor(AppPrefLeading.getCurrentEvenId(this.context), 0);
-        binding.tvVendorPaid.setText(numberVendor+"");
-
+        binding.tvAllVendor.setText(allTotal + "");
+        binding.tvVendorPaid.setText(((int)numberVendor) + "");
 
 
     }
@@ -337,8 +334,6 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
     }
 
 
-
-
     public void setOnClicks() {
 
         binding.imgMenu.setOnClickListener(this);
@@ -412,7 +407,6 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
 //            }
 //        }
 //    }
-
 
 
     public void initMethods() {

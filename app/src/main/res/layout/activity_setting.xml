@@ -84,34 +84,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardAdSettings"
-                style="@style/CardViewCommon">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/TextViewTitleCommon"
-                            android:layout_width="match_parent"
-                            android:layout_weight="1"
-                            android:text="Ads Privacy Policy"
-                            android:textColor="@color/actionbar" />
-
-                        <TextView
-                            style="@style/TextViewLightCommon"
-                            android:text="Change your ads privacy policy" />
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

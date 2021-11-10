@@ -89,9 +89,11 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
     }
 
     private void setModelDetail() {
-        this.model = new ProfileRowModel();
-        this.isEdit = getIntent().hasExtra(EXTRA_IS_EDIT) && getIntent().getBooleanExtra(EXTRA_IS_EDIT, false);
-        if (this.isEdit) {
+        model = new ProfileRowModel();
+        isEdit = getIntent().hasExtra(EXTRA_IS_EDIT);
+        if (isEdit) {
+
+
             this.model = getIntent().getParcelableExtra(EXTRA_MODEL);
 
             if (!model.getName().trim().isEmpty()) {
@@ -542,13 +544,19 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
         long j;
         if (isValid()) {
             try {
-                this.model.getName().trim();
-                this.model.getPhoneNo().trim();
-                this.model.getEmailId().trim();
-                this.model.getPartnerName().trim();
-                this.model.getPartnerPhoneNo().trim();
-                this.model.getPartnerEmailId().trim();
-                this.model.getWeddingName().trim();
+                model.setName(binding.etName.getText().toString());
+                model.setAddress(binding.etAddress.getText().toString());
+                model.setEmailId(binding.etEmailId.getText().toString());
+                model.setPhoneNo(binding.etPhoneNumber.getText().toString());
+
+                model.setPartnerName(binding.etNamePartner.getText().toString());
+                model.setPartnerAddress(binding.etAddressPartner.getText().toString());
+                model.setPartnerEmailId(binding.etEmailIdPartner.getText().toString());
+                model.setPartnerPhoneNo(binding.etName.getText().toString());
+
+                model.setBudget(Double.parseDouble(binding.etBudget.getText().toString()));
+                model.setWeddingName(binding.etNameWedding.getText().toString());
+
                 if (this.isEdit) {
                     try {
                         this.db.profileDao().update(this.model);
