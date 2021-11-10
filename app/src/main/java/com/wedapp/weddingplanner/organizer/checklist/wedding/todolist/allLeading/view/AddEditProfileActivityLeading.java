@@ -28,6 +28,7 @@ import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.models.profile.ProfileRowModel;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.models.toolbar.ToolbarModel;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.roomDatabase.AppDataBase;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.roomDatabase.cost.CostRowModel;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.AppConstants;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.BackgroundAsync;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.Constants;
@@ -35,6 +36,7 @@ import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.utils.TwoButtonDialogListener;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.databinding.ActivityProfileAddEditBinding;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.viewLeading.MainActivityDashboardLeading;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.viewLeading.SettingActivityLeading;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -91,6 +93,10 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
     private void setModelDetail() {
         model = new ProfileRowModel();
         isEdit = getIntent().hasExtra(EXTRA_IS_EDIT);
+        if (this.isEdit) {
+            this.model = (ProfileRowModel) getIntent().getParcelableExtra(EXTRA_MODEL);
+
+        }
         if (isEdit) {
 
 
@@ -163,6 +169,7 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
 
             this.model.setId(AppConstants.getUniqueId());
             this.model.setSelected(true);
+
         }
         this.calendar = Calendar.getInstance();
         if (this.model.getDateTimeInMillis() > 0) {
@@ -359,7 +366,11 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
                 openMap(this.model.getPartnerAddress());
                 return;
             case R.id.imgBack:
-                onBackPressed();
+                if (isEdit) {
+                    startActivity(new Intent(AddEditProfileActivityLeading.this, SettingActivityLeading.class));
+                    finish();
+                }
+                super.onBackPressed();
                 return;
             case R.id.imgDelete:
                 deleteItem();
@@ -372,6 +383,10 @@ public class AddEditProfileActivityLeading extends BaseActivityRecyclerBindingLe
                 return;
             case R.id.imgOther:
                 addUpdate();
+                if (isEdit) {
+                    startActivity(new Intent(AddEditProfileActivityLeading.this, SettingActivityLeading.class));
+                    finish();
+                }
                 return;
             case R.id.imgPhone:
                 dialPhoneNumber(this.model.getPhoneNo());

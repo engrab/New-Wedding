@@ -111,6 +111,14 @@ public class ProfileListActivityLeading extends BaseActivityRecyclerBindingLeadi
             }
         }
     }
+    public void skipProfileListActivity(){
+        setSelectionAll(false);
+        db.profileDao().setDeselectAll();
+        model.getArrayList().get(0).setSelected(true);
+        AppPrefLeading.setCurrentEvenId(context, model.getArrayList().get(0).getId());
+        db.profileDao().setSelection(model.getArrayList().get(0).getId());
+        openItemDetail(0, model.getArrayList().get(0), true);
+    }
 
 
     public void setRecycler() {
@@ -118,24 +126,24 @@ public class ProfileListActivityLeading extends BaseActivityRecyclerBindingLeadi
         this.binding.recycler.setAdapter(new ProfileAdapterLeading(this.context, this.model.getArrayList(), new RecyclerItemClick() {
             public void onClick(int i, int i2) {
                 if (i2 == 2) {
-                    ProfileListActivityLeading.this.setSelectionAll(false);
-                    ProfileListActivityLeading.this.db.profileDao().setDeselectAll();
-                    ProfileListActivityLeading.this.model.getArrayList().get(i).setSelected(true);
-                    AppPrefLeading.setCurrentEvenId(ProfileListActivityLeading.this.context, ProfileListActivityLeading.this.model.getArrayList().get(i).getId());
-                    ProfileListActivityLeading.this.db.profileDao().setSelection(ProfileListActivityLeading.this.model.getArrayList().get(i).getId());
-                    boolean unused = ProfileListActivityLeading.this.isResultOK = true;
+                    setSelectionAll(false);
+                    db.profileDao().setDeselectAll();
+                    model.getArrayList().get(i).setSelected(true);
+                    AppPrefLeading.setCurrentEvenId(context, model.getArrayList().get(i).getId());
+                    db.profileDao().setSelection(model.getArrayList().get(i).getId());
+                    boolean unused = isResultOK = true;
                     return;
                 }
-                ProfileListActivityLeading.this.openItemDetail(i, ProfileListActivityLeading.this.model.getArrayList().get(i), true);
+                openItemDetail(i, model.getArrayList().get(i), true);
             }
         }));
         this.binding.recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             public void onScrolled(RecyclerView recyclerView, int i, int i2) {
                 super.onScrolled(recyclerView, i, i2);
-                if (i2 > 0 && ProfileListActivityLeading.this.binding.fabAdd.getVisibility() == View.VISIBLE) {
-                    ProfileListActivityLeading.this.binding.fabAdd.hide();
-                } else if (i2 < 0 && ProfileListActivityLeading.this.binding.fabAdd.getVisibility() != View.VISIBLE) {
-                    ProfileListActivityLeading.this.binding.fabAdd.show();
+                if (i2 > 0 && binding.fabAdd.getVisibility() == View.VISIBLE) {
+                    binding.fabAdd.hide();
+                } else if (i2 < 0 && binding.fabAdd.getVisibility() != View.VISIBLE) {
+                    binding.fabAdd.show();
                 }
             }
         });
@@ -148,7 +156,13 @@ public class ProfileListActivityLeading extends BaseActivityRecyclerBindingLeadi
         }
     }
 
-    
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        skipProfileListActivity();
+    }
+
     public void openItemDetail(int i, ProfileRowModel profileRowModel, boolean z) {
         Intent intent = new Intent(this.context, AddEditProfileActivityLeading.class);
         intent.putExtra(AddEditProfileActivityLeading.EXTRA_IS_EDIT, z);

@@ -68,6 +68,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
     @Override
     protected void onResume() {
         super.onResume();
+        setProfile();
         taskDataDBDemo();
         guestDataDBDemo();
         budgetDataDBDemo();
@@ -155,7 +156,6 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
 
 
     private void initGlid() {
-        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_dashboard).centerCrop()).into(binding.navDrawer.imgHome);
         ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_tasks).centerCrop()).into(binding.navDrawer.imgChecklist);
         ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_budgets).centerCrop()).into(binding.navDrawer.imgBudget);
         ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_guests).centerCrop()).into(binding.navDrawer.imgGuest);
@@ -164,7 +164,6 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
         ((RequestBuilder) Glide.with(this).load(R.drawable.rate_us).centerCrop()).into(binding.navDrawer.imgRateus);
         ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_share).centerCrop()).into(binding.navDrawer.imgShare);
         ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_privacy_policy).centerCrop()).into(binding.navDrawer.imgPrivacypolicy);
-        ((RequestBuilder) Glide.with(this).load(R.drawable.drawer_term_service).centerCrop()).into(binding.navDrawer.imgTerms);
 
 
         binding.cvTaskList.setOnClickListener(new View.OnClickListener() {
@@ -198,14 +197,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
             }
         });
 
-        binding.navDrawer.llHome.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View view) {
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
-                startActivity(new Intent(MainActivityDashboardLeading.this, DashboardActivityLeading.class));
-
-            }
-        });
         binding.navDrawer.llChecklist.setOnClickListener(new View.OnClickListener() {
 
 
@@ -288,7 +280,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
             public void onClick(View view) {
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(strPrivacyUri));
-                intent.addFlags(1208483840);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 try {
                     startActivity(intent);
                 } catch (ActivityNotFoundException unused) {
@@ -296,19 +288,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
                 }
             }
         });
-        binding.navDrawer.llTerms.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View view) {
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
-                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(strPrivacyUri));
-                intent.addFlags(1208483840);
-                try {
-                    startActivity(intent);
-                } catch (ActivityNotFoundException unused) {
-                    startActivity(new Intent("android.intent.action.VIEW", Uri.parse(strPrivacyUri)));
-                }
-            }
-        });
     }
 
     public void hamMenu() {
@@ -410,8 +390,10 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
 
 
     public void initMethods() {
-        setProfile();
+
     }
+
+
 
     private void setRemainingTimer() {
         timer = new Timer();

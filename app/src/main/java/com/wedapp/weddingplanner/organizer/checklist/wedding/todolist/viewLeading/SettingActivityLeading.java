@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.android.gms.ads.AdView;
+import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.adsUtilsLeading.AdsUtils;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.CategoryListActivityLeading;
 import com.wedapp.weddingplanner.organizer.checklist.wedding.todolist.allLeading.view.ProfileListActivityLeading;
 import com.google.ads.consent.ConsentInformation;
@@ -34,6 +36,8 @@ public class SettingActivityLeading extends BaseActivityBindingLeading implement
     private BackupRestoreProgress progressDialog;
     public ToolbarModel toolbarModel;
 
+    AdView adView;
+
     public void onRationaleAccepted(int i) {
     }
 
@@ -53,8 +57,16 @@ public class SettingActivityLeading extends BaseActivityBindingLeading implement
         this.backupRestore = new LocalBackupRestore(this);
         this.progressDialog = new BackupRestoreProgress(this);
 
+        adView = AdsUtils.ShowMediumBanner(this, binding.llAdds);
     }
 
+    @Override
+    protected void onDestroy() {
+        if (adView != null){
+            adView.destroy();
+        }
+        super.onDestroy();
+    }
 
     public void setToolbar() {
         this.toolbarModel = new ToolbarModel();
@@ -88,6 +100,7 @@ public class SettingActivityLeading extends BaseActivityBindingLeading implement
                 return;
 
             case R.id.cardProfile:
+//                startActivityForResult(new Intent(this.context, ProfileListActivityLeading.class), 1002);
                 startActivityForResult(new Intent(this.context, ProfileListActivityLeading.class), 1002);
                 return;
 
