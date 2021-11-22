@@ -15,13 +15,13 @@
     <color name="black">#000000</color>
     <color name="blue">#0000ff</color>
 
-    <color name="colorRipple">#dd9ac6</color>
     <color name="divider">#BDBDBD</color>
     <color name="end_color">@color/colorAccent</color>
     <color name="green">#008000</color>
     <color name="ratingBarBackgroundColor">#d1d1d1</color>
     <color name="ratingBarColor">#f9d71c</color>
     <color name="red">#ff0000</color>
+    <color name="colorRipple">#dd9ac6</color>
     <color name="start_color">@color/colorRipple</color>
     <color name="textColorBold">@color/black</color>
     <color name="textColorLight">#525252</color>
