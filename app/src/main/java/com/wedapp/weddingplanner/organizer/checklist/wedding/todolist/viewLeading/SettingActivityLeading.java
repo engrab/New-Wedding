@@ -105,7 +105,7 @@ public class SettingActivityLeading extends BaseActivityBindingLeading implement
                 return;
 
             case R.id.imgBack:
-                onBackPressed();
+                super.onBackPressed();
                 return;
             default:
                 return;
