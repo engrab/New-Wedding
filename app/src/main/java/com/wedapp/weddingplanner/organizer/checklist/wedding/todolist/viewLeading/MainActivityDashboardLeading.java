@@ -291,6 +291,7 @@ public class MainActivityDashboardLeading extends BaseActivityBindingLeading {
 
     }
 
+
     public void hamMenu() {
         if (!binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.openDrawer(GravityCompat.START);
